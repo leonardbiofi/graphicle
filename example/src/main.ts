@@ -1,5 +1,4 @@
 import "./style.css";
-// import { Graphicle } from "../dist/graphicle";
 import { Graphicle } from "@graphicle";
 
 (async () => {

@@ -50,10 +50,15 @@ h1 {
 
 
 }
+#title {
+  display: flex;
+  gap:20px;
+  align-items: center;
+  padding: 1rem;
+}
 #graphicle {
   margin:0;
   background-color: red;
-
   width: 100%;
   height: 99%;
 }
