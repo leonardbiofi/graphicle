@@ -1,24 +1,12 @@
-type Node = {
-  id: string;
-  type: string;
-  data: any;
-};
-type Edge = {
-  id: string;
-  type: string;
-  source: string;
-  target: string;
-};
+import { GraphData } from "./types";
 
-export type AppState = {
-  nodes: Node[];
-  edges: Edge[];
-};
+export type AppState = {} & GraphData;
 
 export class GraphicleStore {
-  state: AppState;
+  private _state: AppState;
+
   constructor(initialState?: Partial<AppState>) {
-    this.state = {
+    this._state = {
       nodes: [],
       edges: [],
 
@@ -26,11 +14,11 @@ export class GraphicleStore {
     };
   }
 
-  getState() {
-    return this.state;
+  get state() {
+    return this._state;
   }
 
   setState(nextState: Partial<AppState>) {
-    this.state = { ...this.state, ...nextState };
+    this._state = { ...this.state, ...nextState };
   }
 }

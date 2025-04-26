@@ -11,10 +11,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/d3-force": "^3.0.10",
     "typescript": "~5.7.2",
     "vite": "^6.3.1"
   },
   "dependencies": {
+    "d3-force": "^3.0.0",
     "pixi-viewport": "^6.0.3",
     "pixi.js": "^8.9.1"
   }

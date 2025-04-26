@@ -1,7 +1,9 @@
 import { Application, Renderer } from "pixi.js";
 import { Viewport } from "pixi-viewport";
+
 import { GraphicleStore, AppState } from "./store";
-interface Graphicle {}
+import GraphicleRenderer from "./renderer";
+import { ConfigCustomNodeAndEdge } from "./types";
 
 interface GraphicleOptions {
   backgroundAlpha: number;
@@ -10,16 +12,26 @@ interface GraphicleOptions {
 // Values by default Graphicle Options
 const defaultGraphicleOptions = {
   backgroundAlpha: 0,
-} satisfies GraphicleOptions;
+  customNodes: {},
+  customEdges: {},
+};
 
-class Graphicle implements Graphicle {
+class Graphicle {
   private _app: Application | null;
-  viewport: Viewport | null;
+  private viewport: Viewport | null;
+
+  protected renderer: GraphicleRenderer | null;
+
   store: GraphicleStore;
-  options: GraphicleOptions;
-  constructor(initialState?: AppState, options?: GraphicleOptions) {
+  options: GraphicleOptions & ConfigCustomNodeAndEdge;
+
+  constructor(
+    initialState?: AppState,
+    options?: GraphicleOptions & ConfigCustomNodeAndEdge
+  ) {
     this._app = null;
     this.viewport = null;
+    this.renderer = null;
     this.store = new GraphicleStore(initialState);
     this.options = { ...defaultGraphicleOptions, ...options };
   }
@@ -61,6 +73,19 @@ class Graphicle implements Graphicle {
 
     // add the viewport to the stage
     this._app.stage.addChild(this.viewport);
+
+    // Initialize the renderer
+    this.renderer = new GraphicleRenderer(
+      this.viewport,
+      {
+        nodes: this.store.state.nodes,
+        edges: this.store.state.edges,
+      },
+      {
+        customNodes: this.options.customNodes,
+        customEdges: this.options.customEdges,
+      }
+    );
 
     // Mount the app into the wrapper
     wrapper.appendChild(this._app.canvas);
