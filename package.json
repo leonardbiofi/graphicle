@@ -1,0 +1,21 @@
+{
+  "name": "graphicle",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2",
+    "vite": "^6.3.1"
+  },
+  "dependencies": {
+    "pixi-viewport": "^6.0.3",
+    "pixi.js": "^8.9.1"
+  }
+}
