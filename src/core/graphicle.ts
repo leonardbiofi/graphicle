@@ -4,6 +4,9 @@ import { Viewport } from "pixi-viewport";
 import { GraphicleStore, AppState } from "./store";
 import GraphicleRenderer from "./renderer";
 import { ConfigCustomNodeAndEdge } from "./types";
+import EventDispatcher from "./dispatcher";
+import EventHandlers from "./eventHandlers";
+import GraphicleContext from "./context";
 
 interface GraphicleOptions {
   backgroundAlpha: number;
@@ -21,10 +24,11 @@ class Graphicle {
   private viewport: Viewport | null;
 
   protected renderer: GraphicleRenderer | null;
-
+  protected eventDispatcher: EventDispatcher;
+  protected eventHandlers: EventHandlers;
+  protected _context: GraphicleContext | null;
   store: GraphicleStore;
   options: GraphicleOptions & ConfigCustomNodeAndEdge;
-
   constructor(
     initialState?: AppState,
     options?: GraphicleOptions & ConfigCustomNodeAndEdge
@@ -32,6 +36,9 @@ class Graphicle {
     this._app = null;
     this.viewport = null;
     this.renderer = null;
+    this._context = null;
+    this.eventDispatcher = new EventDispatcher();
+    this.eventHandlers = new EventHandlers();
     this.store = new GraphicleStore(initialState);
     this.options = { ...defaultGraphicleOptions, ...options };
   }
@@ -89,12 +96,38 @@ class Graphicle {
 
     // Mount the app into the wrapper
     wrapper.appendChild(this._app.canvas);
+
+    // Inject the context inside all the clients
+    this.injectContext();
+
     return this;
+  }
+
+  injectContext() {
+    // Create the Graphicle Context
+    this._context = new GraphicleContext(
+      this.eventDispatcher!,
+      this.renderer!,
+      this.viewport!,
+      this.app!
+    );
+
+    this.eventHandlers.setContext(this.context);
+
+    /** Inject the context in all nodes */
+    const nodeGfx = Array.from(this.context.renderer.nodeIdToNodeGfx.values());
+
+    nodeGfx.forEach((g) => {
+      g.setContext(this.context!);
+    });
   }
 
   /** Getters */
   get app() {
     return this._app;
+  }
+  get context() {
+    return this._context!;
   }
 }
 

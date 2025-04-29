@@ -14,6 +14,7 @@ import { D3Force, LayoutContext } from "../layout";
 import type { ConfigCustomNodeAndEdge } from "./types";
 
 import DefaultNode from "./nodes/default";
+import StraightEdge from "./edges/straight";
 
 export enum Layers {
   GROUPS = "groups",
@@ -94,19 +95,23 @@ export default class GraphicleRenderer {
 
     this.nodeIdToNodeGfx = new Map(nodeIdGfxPairs);
   }
-  initializeEdges(_edges: Edge[]) {
-    // const layer = this.getLayer(Layers.EDGES);
-    // layer.removeChildren();
-    // const edgeIdGfxPairs: [EdgeId, EdgeGfx][] = edges.map((edge) => {
-    //   const srcnodeGfx = this.nodeIdToNodeGfx.get(edge.source);
-    //   const tgtnodeGfx = this.nodeIdToNodeGfx.get(edge.target);
-    //   if (!srcnodeGfx || !tgtnodeGfx)
-    //     throw new Error("Fatal: Source or target Graphics undefined.");
-    //   const edgeGfx = this.addEdge(edge, srcnodeGfx, tgtnodeGfx);
-    //   layer.addChild(edgeGfx);
-    //   return [edge.id, edgeGfx];
-    // });
-    // this.edgeIdToEdgeGfx = new Map(edgeIdGfxPairs);
+  initializeEdges(edges: Edge[]) {
+    const layer = this.getLayer(Layers.EDGES);
+    layer.removeChildren();
+
+    const edgeIdGfxPairs: [EdgeId, EdgeGfx][] = edges.map((edge) => {
+      const srcNodeGfx = this.nodeIdToNodeGfx.get(edge.source);
+      const tgtNodeGfx = this.nodeIdToNodeGfx.get(edge.target);
+      if (!srcNodeGfx || !tgtNodeGfx) {
+        throw new Error("Fatal: Source or target Graphics undefined.");
+      }
+      const edgeGfx = this.addEdge(edge, srcNodeGfx, tgtNodeGfx);
+      layer.addChild(edgeGfx);
+
+      return [edge.id, edgeGfx];
+    });
+
+    this.edgeIdToEdgeGfx = new Map(edgeIdGfxPairs);
   }
 
   addNode(node: Node): NodeGfx {
@@ -119,5 +124,13 @@ export default class GraphicleRenderer {
     return customNode;
   }
 
-  // addEdge(edge: Edge, sourceGfx: NodeGfx, targetGfx: NodeGfx): EdgeGfx {}
+  addEdge(edge: Edge, sourceGfx: NodeGfx, targetGfx: NodeGfx): EdgeGfx {
+    let customEdge = this.options.customEdges[edge.type];
+    if (!customEdge) {
+      console.warn("Unknown edge type falling back to straight");
+      customEdge = new StraightEdge(edge, sourceGfx, targetGfx);
+    }
+
+    return customEdge;
+  }
 }

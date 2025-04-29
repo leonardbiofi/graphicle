@@ -11,8 +11,11 @@ export default class DefaultNode extends BaseNode {
 
   initGraphics() {
     super.initGraphics();
-    const circle = new Graphics().circle(this.x, this.y, RADIUS).fill("grey");
-
+    const circle = new Graphics()
+      .circle(0 + RADIUS, 0 + RADIUS, RADIUS)
+      .fill("grey");
+    this.width = RADIUS * 2;
+    this.height = RADIUS * 2;
     this.addChild(circle);
     // this.attachLabel();
   }

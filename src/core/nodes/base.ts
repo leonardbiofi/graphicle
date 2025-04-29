@@ -1,5 +1,8 @@
 import { Container } from "pixi.js";
 import type { Node } from "../types";
+import { XYPosition } from "../../layout/type";
+import GraphicleContext, { ContextClient } from "../context";
+import { GraphicleEventType } from "../dispatcher";
 // const LABEL_FONT_FAMILY = ["Arial", "sans-serif"];
 
 // const textStyle = new TextStyle({
@@ -12,15 +15,19 @@ import type { Node } from "../types";
 
 export default abstract class BaseNode extends Container {
   public node: Node;
+  context: GraphicleContext | null;
 
   constructor(node: Node) {
     super();
+    this.context = null;
     this.node = node;
     this.label = "node";
     this.initGraphics();
     this.attachEvents();
   }
-
+  setContext(context: GraphicleContext): void {
+    this.context = context;
+  }
   initGraphics() {
     const { position } = this.node;
     this.x = position.x;
@@ -31,6 +38,12 @@ export default abstract class BaseNode extends Container {
     this.cullable = true;
   }
 
+  getCenter(): XYPosition {
+    return {
+      x: this.x + this.width / 2,
+      y: this.y + this.height / 2,
+    };
+  }
   attachLabel() {
     // const labelGfx = new Container();
     // labelGfx.x = this.width / 2;
@@ -47,6 +60,25 @@ export default abstract class BaseNode extends Container {
   }
 
   attachEvents() {
+    this.on("pointerdown", (event) => {
+      console.log("POINTERDOWN", this.context);
+      // Rigth click
+      if (event.button === 2) {
+        this.context?.eventDispatcher.emit(
+          GraphicleEventType.NODE_CONTEXTMENU,
+          this.node,
+          event
+        );
+      } else {
+        // Left click
+        this.context?.eventDispatcher.emit(
+          GraphicleEventType.NODE_CLICK,
+          this.node,
+          event
+        );
+      }
+    });
+
     // /** Event handlers */
     // this.on("pointerdown", (event) => {
     //   // Right click
