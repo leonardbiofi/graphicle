@@ -58,10 +58,10 @@ export default class EventHandlers implements ContextClient {
         event
       );
     };
-    const throttleNodeDrag = throttle(emitNodeDrag.bind(this), 50);
+    // const throttleNodeDrag = throttle(emitNodeDrag.bind(this), 0);
 
     //register and enable node dragging
-    this.context?.app.stage.on("pointermove", throttleNodeDrag, {
+    this.context?.app.stage.on("pointermove", emitNodeDrag.bind(this), {
       passive: true,
     });
   }

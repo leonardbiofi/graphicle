@@ -152,7 +152,7 @@ export default class GraphicleRenderer implements ContextClient {
       // Get the graphical node and update its position
       const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
       if (!nodeGfx) return;
-
+      nodeGfx.node = node;
       nodeGfx.x = node.position.x;
       nodeGfx.y = node.position.y;
       nodeGfx.cursor = "grabbing";
