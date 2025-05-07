@@ -61,8 +61,7 @@ export default abstract class BaseNode extends Container {
 
   attachEvents() {
     this.on("pointerdown", (event) => {
-      console.log("POINTERDOWN", this.context);
-      // Rigth click
+      // Right click
       if (event.button === 2) {
         this.context?.eventDispatcher.emit(
           GraphicleEventType.NODE_CONTEXTMENU,
@@ -72,11 +71,20 @@ export default abstract class BaseNode extends Container {
       } else {
         // Left click
         this.context?.eventDispatcher.emit(
-          GraphicleEventType.NODE_CLICK,
+          GraphicleEventType.NODE_POINTERDOWN,
           this.node,
           event
         );
       }
+    });
+
+    this.on("pointerup", (event) => {
+      // Release click
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.NODE_POINTERUP,
+        this.node,
+        event
+      );
     });
 
     // /** Event handlers */

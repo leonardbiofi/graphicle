@@ -2,19 +2,24 @@ export enum GraphicleEventType {
   NODE_CLICK = "nodeClick",
   NODE_CONTEXTMENU = "nodeContextMenu",
   NODE_POINTERDOWN = "nodePointerDown",
+  NODE_POINTERUP = "nodePointerUp",
   NODE_MOUSEDOWN = "nodeMouseDown",
+  NODE_DRAG = "nodeDrag",
+  NODE_DRAGSTART = "nodeDragStart",
+  NODE_DRAGEND = "nodeDragEnd",
+  APP_POINTERUP = "appPointerUp",
 }
 
-type Listener<T = any> = (payload: T, event?: MouseEvent) => void;
+type Listener<T = any, E = any> = (payload: T, event?: E) => void;
 
 export default class EventDispatcher {
   private listeners: Map<GraphicleEventType, Listener[]> = new Map();
 
   constructor() {}
 
-  on<T>(
+  on<T, E>(
     eventType: GraphicleEventType,
-    callback: (payload: T, event?: MouseEvent) => void
+    callback: (payload: T, event?: E) => void
   ) {
     const newListener: Listener<T> = callback;
 
@@ -34,7 +39,8 @@ export default class EventDispatcher {
       eventListeners.filter((l) => l !== listener)
     );
   }
-  emit<T>(eventType: GraphicleEventType, payload: T, event?: MouseEvent) {
+  emit<T, E>(eventType: GraphicleEventType, payload: T, event?: E) {
+    console.debug("EVENT EMITTED:", { eventType, payload, event });
     const eventListeners = this.listeners.get(eventType) || [];
     for (const listener of eventListeners) {
       listener(payload, event);

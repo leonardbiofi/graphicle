@@ -38,6 +38,7 @@ export default class StraightEdge extends BaseEdge {
       .moveTo(0, 0)
       .lineTo(targetNodeCenter.x - this.x, targetNodeCenter.y - this.y)
       .stroke({ color: 0xff0000, width: 3 });
+    line.label = "line";
     this.addChild(line);
   }
 }

@@ -1,23 +1,27 @@
 import { Application } from "pixi.js";
 import EventDispatcher from "./dispatcher";
 import GraphicleRenderer from "./renderer";
-import { Viewport } from "pixi-viewport";
+import GraphicleViewport from "./viewport";
+import { GraphicleStore } from "./store";
 
 export default class GraphicleContext {
   protected _eventDispatcher: EventDispatcher;
   protected _renderer: GraphicleRenderer;
-  protected _viewport: Viewport;
+  protected _viewport: GraphicleViewport;
   protected _app: Application;
+  protected _store: GraphicleStore;
   constructor(
     eventDispatcher: EventDispatcher,
     renderer: GraphicleRenderer,
-    viewport: Viewport,
+    viewport: GraphicleViewport,
+    store: GraphicleStore,
     app: Application
   ) {
     this._eventDispatcher = eventDispatcher;
     this._renderer = renderer;
     this._viewport = viewport;
     this._app = app;
+    this._store = store;
   }
 
   /** Getters */
@@ -32,6 +36,9 @@ export default class GraphicleContext {
   }
   get renderer() {
     return this._renderer;
+  }
+  get store() {
+    return this._store;
   }
 }
 

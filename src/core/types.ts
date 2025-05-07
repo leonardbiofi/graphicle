@@ -1,6 +1,8 @@
 import { Container } from "pixi.js";
 import { XYPosition } from "../layout/type";
 import BaseNode from "./nodes/base";
+import BaseEdge from "./edges/base";
+
 export type NodeId = string;
 export type EdgeId = string;
 export type Node = {
@@ -23,7 +25,7 @@ export type GraphData = {
 };
 
 export type NodeGfx = BaseNode;
-export type EdgeGfx = Container;
+export type EdgeGfx = BaseEdge;
 
 type CustomNodesIndex = Record<string, Container>;
 type CustomEdgesIndex = Record<string, Container>;

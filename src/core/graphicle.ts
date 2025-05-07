@@ -1,13 +1,12 @@
-import { Application, Renderer } from "pixi.js";
-import { Viewport } from "pixi-viewport";
+import { Application, FederatedPointerEvent, Renderer } from "pixi.js";
 
 import { GraphicleStore, AppState } from "./store";
 import GraphicleRenderer from "./renderer";
 import { ConfigCustomNodeAndEdge } from "./types";
-import EventDispatcher from "./dispatcher";
+import EventDispatcher, { GraphicleEventType } from "./dispatcher";
 import EventHandlers from "./eventHandlers";
 import GraphicleContext from "./context";
-
+import GraphicleViewport from "./viewport";
 interface GraphicleOptions {
   backgroundAlpha: number;
 }
@@ -21,7 +20,7 @@ const defaultGraphicleOptions = {
 
 class Graphicle {
   private _app: Application | null;
-  private viewport: Viewport | null;
+  private viewport: GraphicleViewport | null;
 
   protected renderer: GraphicleRenderer | null;
   protected eventDispatcher: EventDispatcher;
@@ -66,7 +65,7 @@ class Graphicle {
     this._app.stage.eventMode = "static";
 
     // create viewport
-    this.viewport = new Viewport({
+    this.viewport = new GraphicleViewport({
       screenWidth: SCREEN_WIDTH,
       screenHeight: SCREEN_HEIGHT,
       worldWidth: WORLD_WIDTH,
@@ -85,8 +84,8 @@ class Graphicle {
     this.renderer = new GraphicleRenderer(
       this.viewport,
       {
-        nodes: this.store.state.nodes,
-        edges: this.store.state.edges,
+        nodes: this.store.getNodes(),
+        edges: this.store.getEdges(),
       },
       {
         customNodes: this.options.customNodes,
@@ -100,7 +99,19 @@ class Graphicle {
     // Inject the context inside all the clients
     this.injectContext();
 
+    this.registerEvents();
     return this;
+  }
+
+  registerEvents() {
+    const emitpointerup = (event: FederatedPointerEvent) => {
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.APP_POINTERUP,
+        {},
+        event
+      );
+    };
+    this._app?.stage.on("pointerup", emitpointerup);
   }
 
   injectContext() {
@@ -109,9 +120,11 @@ class Graphicle {
       this.eventDispatcher!,
       this.renderer!,
       this.viewport!,
+      this.store!,
       this.app!
     );
 
+    this.renderer?.setContext(this.context);
     this.eventHandlers.setContext(this.context);
 
     /** Inject the context in all nodes */
