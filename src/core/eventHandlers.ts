@@ -2,7 +2,6 @@ import { FederatedPointerEvent } from "pixi.js";
 import GraphicleContext, { ContextClient } from "./context";
 import { GraphicleEventType } from "./dispatcher";
 import type { Node } from "./types";
-import { throttle } from "underscore";
 export default class EventHandlers implements ContextClient {
   context!: GraphicleContext | null;
 
@@ -33,39 +32,27 @@ export default class EventHandlers implements ContextClient {
       GraphicleEventType.APP_POINTERUP,
       this.onAppPointerUp.bind(this)
     );
-  }
-  onAppPointerUp(_payload: Node, _event?: FederatedPointerEvent) {
-    this.stopNodeDrag();
-  }
-
-  onNodePointerDown(payload: Node, event?: FederatedPointerEvent) {
-    if (!event) return;
-    // Get the clicked position by the pointer
-    const clickedPoint = this.context?.viewport.toWorld(event.global);
-    if (!clickedPoint || !payload) return;
-
-    // Calculate the dx, dy vector
-    const dx = clickedPoint.x - payload.position.x;
-    const dy = clickedPoint.y - payload.position.y;
-
-    const emitNodeDrag = (event: FederatedPointerEvent) => {
-      this.context?.eventDispatcher.emit(
-        GraphicleEventType.NODE_DRAG,
-        {
-          node: payload,
-          translation: { dx, dy },
-        },
-        event
-      );
-    };
-    // const throttleNodeDrag = throttle(emitNodeDrag.bind(this), 0);
-
-    //register and enable node dragging
-    this.context?.app.stage.on("pointermove", emitNodeDrag.bind(this), {
-      passive: true,
-    });
+    this.context?.eventDispatcher.on(
+      GraphicleEventType.NODE_DRAGSTART,
+      this.onNodeDragStart.bind(this)
+    );
+    this.context?.eventDispatcher.on(
+      GraphicleEventType.NODE_DRAGEND,
+      this.onNodeDragEnd.bind(this)
+    );
   }
 
+  /**
+   *
+   * @param _payload
+   * @param _event
+   */
+  onNodeDragEnd(_payload: Node, _event?: FederatedPointerEvent) {
+    this.context?.store.setNodeDrag(null);
+  }
+  onNodeDragStart(payload: Node, _event?: FederatedPointerEvent) {
+    this.context?.store.setNodeDrag(payload);
+  }
   stopNodeDrag() {
     this.context?.app.stage.off("pointermove");
     if (this.context?.store.state.nodeDrag)
@@ -73,14 +60,7 @@ export default class EventHandlers implements ContextClient {
         GraphicleEventType.NODE_DRAGEND,
         this.context?.store.state.nodeDrag
       );
-    this.context?.store.setNodeDrag(null);
     this.context?.viewport.unpauseViewport();
-  }
-  onNodePointerUp(_payload: Node, _event?: FederatedPointerEvent) {
-    if (!this.context) return;
-
-    //unregister and disable node dragging
-    this.stopNodeDrag();
   }
   onNodeDrag(
     payload: { node: Node; translation: { dx: number; dy: number } },
@@ -95,7 +75,6 @@ export default class EventHandlers implements ContextClient {
     // Get the clicked node
     const { node: clickedNode, translation } = payload;
     if (!this.context.store.state.nodeDrag) {
-      this.context.store.setNodeDrag(clickedNode);
       this.context.eventDispatcher.emit(
         GraphicleEventType.NODE_DRAGSTART,
         clickedNode
@@ -127,5 +106,49 @@ export default class EventHandlers implements ContextClient {
 
     // Render the node
     this.context.renderer.updateNodesPosition([{ ...nextNode }]);
+  }
+
+  /**
+   *
+   * @param payload
+   * @param event
+   * @returns
+   */
+  onNodePointerDown(payload: Node, event?: FederatedPointerEvent) {
+    if (!event) return;
+    // Get the clicked position by the pointer
+    const clickedPoint = this.context?.viewport.toWorld(event.global);
+    if (!clickedPoint || !payload) return;
+
+    // Calculate the dx, dy vector
+    const dx = clickedPoint.x - payload.position.x;
+    const dy = clickedPoint.y - payload.position.y;
+
+    const emitNodeDrag = (event: FederatedPointerEvent) => {
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.NODE_DRAG,
+        {
+          node: payload,
+          translation: { dx, dy },
+        },
+        event
+      );
+    };
+    // const throttleNodeDrag = throttle(emitNodeDrag.bind(this), 0);
+
+    //register and enable node dragging
+    this.context?.app.stage.on("pointermove", emitNodeDrag.bind(this), {
+      passive: true,
+    });
+  }
+
+  onNodePointerUp(_payload: Node, _event?: FederatedPointerEvent) {
+    if (!this.context) return;
+
+    //unregister and disable node dragging
+    this.stopNodeDrag();
+  }
+  onAppPointerUp(_payload: Node, _event?: FederatedPointerEvent) {
+    this.stopNodeDrag();
   }
 }

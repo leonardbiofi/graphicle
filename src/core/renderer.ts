@@ -164,16 +164,11 @@ export default class GraphicleRenderer implements ContextClient {
 
       edges.forEach((eds) => {
         // Update line
-        const line = eds.getChildByLabel("line")!;
-        const targetNodeCenter = eds.tgtNodeGfx.getCenter();
-        line
-          ?.clear()
-          .moveTo(0, 0)
-          .lineTo(targetNodeCenter.x - eds.x, targetNodeCenter.y - eds.y)
-          .stroke({ color: "red", width: 3 });
-        eds.addChild(line);
-        this.requestRender();
+        eds.srcNodeGfx = this.nodeIdToNodeGfx.get(eds.edge.source)!;
+        eds.tgtNodeGfx = this.nodeIdToNodeGfx.get(eds.edge.target)!;
+        eds.updatePosition();
       });
+      this.requestRender();
     });
   }
   requestRender() {

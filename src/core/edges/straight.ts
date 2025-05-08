@@ -10,35 +10,42 @@ export default class StraightEdge extends BaseEdge {
 
   initGraphics(): void {
     super.initGraphics();
+    this.updatePosition();
+  }
+
+  updatePosition() {
     // @ts-ignore
     const sourceNodeCenter = this.srcNodeGfx.getCenter();
     // @ts-ignore
     const targetNodeCenter = this.tgtNodeGfx.getCenter();
 
-    this.x = sourceNodeCenter.x;
-    this.y = sourceNodeCenter.y;
-    // this.x = (sourceNodeCenter.x + targetNodeCenter.x) / 2;
-    // this.y = (sourceNodeCenter.y + targetNodeCenter.y) / 2;
+    // this.x = sourceNodeCenter.x;
+    // this.y = sourceNodeCenter.y;
+    this.x = (sourceNodeCenter.x + targetNodeCenter.x) / 2;
+    this.y = (sourceNodeCenter.y + targetNodeCenter.y) / 2;
 
-    // this.rotation = -Math.atan2(
-    //   targetNodeCenter.x - sourceNodeCenter.x,
-    //   targetNodeCenter.y - sourceNodeCenter.y
-    // );
+    this.rotation = -Math.atan2(
+      targetNodeCenter.x - sourceNodeCenter.x,
+      targetNodeCenter.y - sourceNodeCenter.y
+    );
 
-    // this.height = Math.hypot(
-    //   targetNodeCenter.x - sourceNodeCenter.x,
-    //   targetNodeCenter.y - sourceNodeCenter.y
-    // );
-    // const line = new Sprite(Texture.WHITE);
-    // line.label = "line";
-    // line.anchor.set(0.5);
-    // line.width = 3;
+    let line = this.getChildByLabel("line") as Sprite;
+    if (!line) {
+      line = new Sprite(Texture.WHITE);
+      line.label = "line";
+      line.anchor.set(0.5);
+    }
+    line.width = 3;
+    line.height = Math.hypot(
+      targetNodeCenter.x - sourceNodeCenter.x,
+      targetNodeCenter.y - sourceNodeCenter.y
+    );
     // line.tint = "red";
-    const line = new Graphics()
-      .moveTo(0, 0)
-      .lineTo(targetNodeCenter.x - this.x, targetNodeCenter.y - this.y)
-      .stroke({ color: 0xff0000, width: 3 });
-    line.label = "line";
+    // const line = new Graphics()
+    //   .moveTo(0, 0)
+    //   .lineTo(targetNodeCenter.x - this.x, targetNodeCenter.y - this.y)
+    //   .stroke({ color: 0xff0000, width: 3 });
+    // line.label = "line";
     this.addChild(line);
   }
 }
