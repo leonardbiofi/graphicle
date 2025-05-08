@@ -1,6 +1,6 @@
 import { Edge, NodeGfx } from "../types";
 import BaseEdge from "./base";
-import { Sprite, Texture, Graphics } from "pixi.js";
+import { Sprite, Texture } from "pixi.js";
 export default class StraightEdge extends BaseEdge {
   constructor(edge: Edge, srcNodeGfx: NodeGfx, tgtNodeGfx: NodeGfx) {
     super(edge, srcNodeGfx, tgtNodeGfx);

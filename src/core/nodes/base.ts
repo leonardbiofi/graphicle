@@ -1,7 +1,7 @@
 import { Container } from "pixi.js";
 import type { Node } from "../types";
 import { XYPosition } from "../../layout/type";
-import GraphicleContext, { ContextClient } from "../context";
+import GraphicleContext from "../context";
 import { GraphicleEventType } from "../dispatcher";
 // const LABEL_FONT_FAMILY = ["Arial", "sans-serif"];
 
