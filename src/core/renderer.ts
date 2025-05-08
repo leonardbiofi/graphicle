@@ -9,7 +9,6 @@ import type {
   EdgeGfx,
   NodeGfx,
 } from "./types";
-import { D3Force, LayoutContext } from "../layout";
 import type { ConfigCustomNodeAndEdge } from "./types";
 
 import DefaultNode from "./nodes/default";
@@ -46,13 +45,9 @@ export default class GraphicleRenderer implements ContextClient {
     this.edgeIdToEdgeGfx = new Map();
 
     this.options = options;
-    const layout = new LayoutContext(new D3Force());
 
-    // TODO: Allow user to choose the layouting strategies
-    // Maybe don't run a layout on initilization
-    const positionedNodes = layout.runLayout({ nodes, edges });
     this.initializeLayers();
-    this.initializeNodes(positionedNodes);
+    this.initializeNodes(nodes);
     this.initializeEdges(edges);
     // Request render
     this.renderRequestId = null;

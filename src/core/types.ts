@@ -1,5 +1,4 @@
 import { Container } from "pixi.js";
-import { XYPosition } from "../layout/type";
 import BaseNode from "./nodes/base";
 import BaseEdge from "./edges/base";
 
@@ -33,3 +32,16 @@ export type ConfigCustomNodeAndEdge = {
   customNodes: CustomNodesIndex;
   customEdges: CustomEdgesIndex;
 };
+
+/** Geometry types */
+export type XYPosition = {
+  x: number;
+  y: number;
+};
+
+export type Dimensions = {
+  width: number;
+  height: number;
+};
+
+export type Rect = Dimensions & XYPosition;

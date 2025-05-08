@@ -1,12 +1,14 @@
 import { Application, FederatedPointerEvent, Renderer } from "pixi.js";
 
-import { GraphicleStore, AppState } from "./store";
+import { GraphicleStore } from "./store";
 import GraphicleRenderer from "./renderer";
 import { ConfigCustomNodeAndEdge } from "./types";
 import EventDispatcher, { GraphicleEventType } from "./dispatcher";
 import EventHandlers from "./eventHandlers";
 import GraphicleContext from "./context";
 import GraphicleViewport from "./viewport";
+import { D3Force, LayoutContext } from "../layout";
+import type { Node, Edge } from "./types";
 interface GraphicleOptions {
   backgroundAlpha: number;
 }
@@ -29,7 +31,7 @@ class Graphicle {
   store: GraphicleStore;
   options: GraphicleOptions & ConfigCustomNodeAndEdge;
   constructor(
-    initialState?: AppState,
+    initialState?: { nodes: Node[]; edges: Edge[] },
     options?: GraphicleOptions & ConfigCustomNodeAndEdge
   ) {
     this._app = null;
@@ -80,6 +82,17 @@ class Graphicle {
     // add the viewport to the stage
     this._app.stage.addChild(this.viewport);
 
+    //FIXME: Initialize the first layout on startup
+    const layout = new LayoutContext(new D3Force());
+
+    // TODO: Allow user to choose the layouting strategies
+    // Maybe don't run a layout on initilization
+    const positionedNodes = layout.runLayout({
+      nodes: this.store.getNodes(),
+      edges: this.store.getEdges(),
+    });
+    this.store.setNodes(positionedNodes);
+
     // Initialize the renderer
     this.renderer = new GraphicleRenderer(
       this.viewport,
@@ -98,7 +111,6 @@ class Graphicle {
 
     // Inject the context inside all the clients
     this.injectContext();
-
     this.registerEvents();
     return this;
   }
@@ -126,6 +138,7 @@ class Graphicle {
 
     this.renderer?.setContext(this.context);
     this.eventHandlers.setContext(this.context);
+    this.viewport?.setContext(this.context);
 
     /** Inject the context in all nodes */
     const nodeGfx = Array.from(this.context.renderer.nodeIdToNodeGfx.values());

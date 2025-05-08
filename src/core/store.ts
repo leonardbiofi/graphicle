@@ -3,19 +3,21 @@ import type { Node, NodeId, EdgeId, Edge } from "./types";
 export type AppState = {
   nodes: Record<NodeId, Node>;
   edges: Record<EdgeId, Edge>;
-  nodeDrag: Node | null
+  nodeDrag: Node | null;
 };
 
 export class GraphicleStore {
   private _state: AppState;
 
-  constructor(initialState?: Partial<AppState>) {
+  constructor(initialState?: { nodes: Node[]; edges: Edge[] }) {
     this._state = {
+      nodeDrag: null,
       nodes: {},
       edges: {},
-      nodeDrag: null
-      ...initialState,
     };
+
+    if (initialState?.nodes) this.setNodes(initialState.nodes);
+    if (initialState?.edges) this.setEdges(initialState.edges);
   }
 
   get state() {
@@ -27,8 +29,18 @@ export class GraphicleStore {
   getEdges(): Edge[] {
     return Object.values(this.state.edges);
   }
-  setNodeDrag(payload: Node |null) {
-    this.state.nodeDrag = payload
+  setNodes(nodes: Node[]) {
+    nodes.forEach((node) => {
+      this._state.nodes[node.id] = { ...node };
+    });
+  }
+  setEdges(edges: Edge[]) {
+    edges.forEach((edge) => {
+      this._state.edges[edge.id] = { ...edge };
+    });
+  }
+  setNodeDrag(payload: Node | null) {
+    this.state.nodeDrag = payload;
   }
   updateNodes(nodes: Node[]) {
     nodes.forEach((n) => {
