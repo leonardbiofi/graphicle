@@ -109,10 +109,10 @@ export default class EventHandlers implements ContextClient {
     const point = this.context.viewport.toWorld(event?.global);
 
     // Original position
-    // const first = {
-    //   x: clickedNode.position.x,
-    //   y: clickedNode.position.y,
-    // };
+    const first = {
+      x: clickedNode.position.x,
+      y: clickedNode.position.y,
+    };
     const dx = translation?.dx || 0;
     const dy = translation?.dy || 0;
 
@@ -123,13 +123,32 @@ export default class EventHandlers implements ContextClient {
     };
 
     // Move the node with new position
-    const nextNode: Node = {
-      ...clickedNode,
-      position: { x: next.x, y: next.y },
-    };
+    // const nextNode: Node = {
+    //   ...clickedNode,
+    //   position: { x: next.x, y: next.y },
+    // };
+    const t = { x: next.x - first.x, y: next.y - first.y };
+
+    clickedNode.position = { x: next.x, y: next.y };
+    // Get all the other selected nodes and update their position relative to the one being dragged
+    const nextNodes = this.context.store.getNodes().map((n) => {
+      if (n.selected && n.id !== clickedNode.id) {
+        return {
+          ...n,
+          position: {
+            x: n.position.x + t.x,
+            y: n.position.y + t.y,
+          },
+          selected: true,
+        };
+      } else if (n.id === clickedNode.id)
+        return { ...n, position: { x: next.x, y: next.y }, selected: true };
+      else return { ...n, selected: false };
+    });
 
     // Render the node
-    this.context.renderer.updateNodesPosition([{ ...nextNode }]);
+    this.context.renderer.updateNodesPosition(nextNodes);
+    this.context.renderer.updateSelectedNodes(nextNodes);
   }
 
   /**
@@ -177,12 +196,12 @@ export default class EventHandlers implements ContextClient {
 
     // Check whether a node is being dragged
     const draggedNode = this.context?.store.state.nodeDrag;
+    const previousState = payload.selected;
+    console.log("Payload:", payload);
+    // Check if we are in a multiple select state
+    const singleSelected =
+      this.context.store.getNodes().filter((n) => n.selected).length === 1;
     if (!draggedNode) {
-      console.log("HELLO");
-      const previousState = payload.selected;
-      // Check if we are in a multiple select state
-      const singleSelected =
-        this.context.store.getNodes().filter((n) => n.selected).length === 1;
       if (singleSelected) {
         if (!event?.ctrlKey) {
           this.context?.renderer.unselectAllNodes();
@@ -196,11 +215,12 @@ export default class EventHandlers implements ContextClient {
           this.context?.renderer.unselectAllNodes();
           this.context.renderer.setSelectNode(payload, true);
         } else {
+          console.log("HELLO", previousState);
           this.context.renderer.setSelectNode(payload, !previousState);
         }
       }
-      this.context.renderer.updateSelectedNodes();
     }
+    this.context.renderer.updateSelectedNodes(this.context.store.getNodes());
     //unregister and disable node dragging
     this.stopNodeDrag();
   }

@@ -167,9 +167,7 @@ export default class GraphicleRenderer implements ContextClient {
     });
   }
 
-  updateSelectedNodes() {
-    const nodes = this.context?.store.getNodes();
-
+  updateSelectedNodes(nodes: Node[]) {
     nodes?.forEach((node: Node) => {
       // Get the graphical node and update its position
       const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
@@ -197,7 +195,9 @@ export default class GraphicleRenderer implements ContextClient {
     this.context?.store.updateNodes(nextNodes);
   }
   setSelectNode(node: Node, value: boolean) {
-    this.context?.store.updateNodes([{ ...node, selected: value }]);
+    // const newNode = {...node, selected:value}
+    node.selected = value;
+    this.context?.store.updateNodes([node]);
   }
   requestRender() {
     if (this.renderRequestId) return;
