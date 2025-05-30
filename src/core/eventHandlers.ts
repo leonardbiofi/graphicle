@@ -130,6 +130,7 @@ export default class EventHandlers implements ContextClient {
     const t = { x: next.x - first.x, y: next.y - first.y };
 
     clickedNode.position = { x: next.x, y: next.y };
+
     // Get all the other selected nodes and update their position relative to the one being dragged
     const nextNodes = this.context.store.getNodes().map((n) => {
       if (n.selected && n.id !== clickedNode.id) {
@@ -142,10 +143,9 @@ export default class EventHandlers implements ContextClient {
           selected: true,
         };
       } else if (n.id === clickedNode.id)
-        return { ...n, position: { x: next.x, y: next.y }, selected: true };
+        return { ...n, position: { x: next.x, y: next.y } };
       else return { ...n, selected: false };
     });
-
     // Render the node
     this.context.renderer.updateNodesPosition(nextNodes);
     this.context.renderer.updateSelectedNodes(nextNodes);
