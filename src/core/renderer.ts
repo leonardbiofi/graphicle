@@ -166,6 +166,39 @@ export default class GraphicleRenderer implements ContextClient {
       this.requestRender();
     });
   }
+
+  updateSelectedNodes() {
+    const nodes = this.context?.store.getNodes();
+
+    nodes?.forEach((node: Node) => {
+      // Get the graphical node and update its position
+      const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
+      if (!nodeGfx) return;
+
+      if (node.selected) nodeGfx.tint = "red";
+      else {
+        nodeGfx.tint = "gray";
+      }
+    });
+  }
+  updateNodeCursor(node: Node) {
+    const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
+    if (!nodeGfx) return;
+    nodeGfx.cursor = "grab";
+    this.requestRender();
+  }
+  unselectAllNodes() {
+    const nextNodes = this.context?.store.getNodes().map((n) => ({
+      ...n,
+      selected: false,
+    }));
+    if (!nextNodes) return;
+
+    this.context?.store.updateNodes(nextNodes);
+  }
+  setSelectNode(node: Node, value: boolean) {
+    this.context?.store.updateNodes([{ ...node, selected: value }]);
+  }
   requestRender() {
     if (this.renderRequestId) return;
     this.renderRequestId = window.requestAnimationFrame(() => {

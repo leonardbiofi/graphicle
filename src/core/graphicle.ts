@@ -4,13 +4,16 @@ import { GraphicleStore } from "./store";
 import GraphicleRenderer from "./renderer";
 import { ConfigCustomNodeAndEdge } from "./types";
 import EventDispatcher, { GraphicleEventType } from "./dispatcher";
-import EventHandlers from "./eventHandlers";
+import EventHandlers, { type EventHandlersOptions } from "./eventHandlers";
 import GraphicleContext from "./context";
 import GraphicleViewport from "./viewport";
 import { D3Force, LayoutContext } from "../layout";
 import type { Node, Edge } from "./types";
 interface GraphicleOptions {
-  backgroundAlpha: number;
+  customNodes?: {};
+  customEdges?: {};
+  backgroundAlpha?: number;
+  eventHandlers?: EventHandlersOptions;
 }
 
 // Values by default Graphicle Options
@@ -39,7 +42,7 @@ class Graphicle {
     this.renderer = null;
     this._context = null;
     this.eventDispatcher = new EventDispatcher();
-    this.eventHandlers = new EventHandlers();
+    this.eventHandlers = new EventHandlers(options?.eventHandlers);
     this.store = new GraphicleStore(initialState);
     this.options = { ...defaultGraphicleOptions, ...options };
   }
@@ -157,4 +160,29 @@ class Graphicle {
   }
 }
 
-export { Graphicle };
+interface createGraphicleProps {
+  container: HTMLElement;
+  initialState: { nodes: Node[]; edges: Edge[] };
+  options: GraphicleOptions & ConfigCustomNodeAndEdge;
+}
+
+/**
+ * Create Graphicle factory function to quickly instantiate a graphical canvas object
+ * @param HTMLElement
+ * @initialState the initial store state of the graphicle
+ * @options the options to customize the graphicle
+ * @returns
+ */
+const createGraphicle = async ({
+  container,
+  initialState,
+  options,
+}: createGraphicleProps): Promise<Graphicle> => {
+  const graphicle = new Graphicle({ ...initialState }, { ...options });
+
+  await graphicle.mount(container);
+
+  return graphicle;
+};
+
+export { Graphicle, createGraphicle };

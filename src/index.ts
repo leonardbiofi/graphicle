@@ -1,1 +1,1 @@
-export { Graphicle } from "./core/graphicle";
+export { Graphicle, createGraphicle } from "./core/graphicle";

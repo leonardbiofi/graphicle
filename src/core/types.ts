@@ -4,10 +4,12 @@ import BaseEdge from "./edges/base";
 
 export type NodeId = string;
 export type EdgeId = string;
+
 export type Node = {
   id: NodeId;
   type: string;
   position: XYPosition;
+  selected: boolean;
   data?: any;
 };
 export type Edge = {

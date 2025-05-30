@@ -1,5 +1,5 @@
 import "./style.css";
-import { Graphicle } from "@graphicle";
+import { createGraphicle } from "@graphicle";
 
 import { nodes, edges } from "./data";
 
@@ -13,8 +13,18 @@ const nextEdges = edges.map((e) => ({
   if (!graphicleWrapper) return;
 
   /** Create the Graphicle here */
-  const graphicle = new Graphicle({ nodes: nodes, edges: nextEdges });
+  const graphicle = await createGraphicle({
+    container: graphicleWrapper,
+    initialState: {
+      nodes: nodes,
+      edges: nextEdges,
+    },
+    options: {
+      customEdges: {},
+      customNodes: {},
+      eventHandlers: { onNodeClick: (n) => console.log("node Clicked", n) },
+    },
+  });
 
-  /** Mount the graphical canvas to the page */
-  await graphicle.mount(graphicleWrapper);
+  console.log(graphicle);
 })();
