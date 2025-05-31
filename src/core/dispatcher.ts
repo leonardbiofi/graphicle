@@ -8,6 +8,7 @@ export enum GraphicleEventType {
   NODE_DRAGSTART = "nodeDragStart",
   NODE_DRAGEND = "nodeDragEnd",
   APP_POINTERUP = "appPointerUp",
+  VIEWPORT_CLICK = "viewportClick",
 }
 
 type Listener<T = any, E = any> = (payload: T, event?: E) => void;
@@ -40,7 +41,7 @@ export default class EventDispatcher {
     );
   }
   emit<T, E>(eventType: GraphicleEventType, payload: T, event?: E) {
-    console.debug("EVENT EMITTED:", { eventType, payload, event });
+    // console.debug("EVENT EMITTED:", { eventType, payload, event });
     const eventListeners = this.listeners.get(eventType) || [];
     for (const listener of eventListeners) {
       listener(payload, event);

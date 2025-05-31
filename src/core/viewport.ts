@@ -15,6 +15,7 @@ export default class GraphicleViewport
   implements ContextClient
 {
   context: GraphicleContext | null;
+  dragged: boolean;
   constructor({
     screenWidth,
     screenHeight,
@@ -29,7 +30,27 @@ export default class GraphicleViewport
       worldHeight,
       events, // the interaction module is important for wheel to work properly when renderer.view is placed or scaled
     });
+    this.dragged = false;
     this.context = null;
+
+    const onDragStart = () => {
+      this.dragged = true;
+    };
+    const onPointerDown = () => {
+      this.dragged = false;
+      this.on("drag-start", onDragStart.bind(this));
+      this.context?.store.setNodeClicked(null);
+    };
+
+    const onPointerUp = () => {
+      this.off("drag-start");
+      if (!this.dragged) {
+        // console.log("ViewportClick, without dragged");
+      }
+    };
+    this.on("pointerdown", onPointerDown.bind(this));
+
+    this.on("pointerup", onPointerUp.bind(this));
   }
 
   setContext(context: GraphicleContext): void {
@@ -48,8 +69,6 @@ export default class GraphicleViewport
     const { x, y, width, height } = getNodesBounds([
       ...this.context?.renderer.nodeIdToNodeGfx.values(),
     ]);
-
-    console.log(x, y, width, height);
 
     this.fitBounds(
       { x: x + width / 2, y: y + height / 2, height, width },

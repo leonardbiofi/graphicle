@@ -172,7 +172,7 @@ export default class GraphicleRenderer implements ContextClient {
       // Get the graphical node and update its position
       const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
       if (!nodeGfx) return;
-
+      nodeGfx.node = node;
       if (node.selected) nodeGfx.tint = "red";
       else {
         nodeGfx.tint = "gray";
@@ -193,11 +193,14 @@ export default class GraphicleRenderer implements ContextClient {
     if (!nextNodes) return;
 
     this.context?.store.updateNodes(nextNodes);
+    this.updateSelectedNodes(nextNodes);
+    this.requestRender();
   }
   setSelectNode(node: Node, value: boolean) {
     // const newNode = {...node, selected:value}
     node.selected = value;
     this.context?.store.updateNodes([node]);
+    this.updateSelectedNodes([node]);
   }
   requestRender() {
     if (this.renderRequestId) return;

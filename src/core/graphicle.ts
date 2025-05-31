@@ -4,7 +4,10 @@ import { GraphicleStore } from "./store";
 import GraphicleRenderer from "./renderer";
 import { ConfigCustomNodeAndEdge } from "./types";
 import EventDispatcher, { GraphicleEventType } from "./dispatcher";
-import EventHandlers, { type EventHandlersOptions } from "./eventHandlers";
+import EventHandlers, {
+  type Handlers,
+  type EventHandlersOptions,
+} from "./eventHandlers";
 import GraphicleContext from "./context";
 import GraphicleViewport from "./viewport";
 import { D3Force, LayoutContext } from "../layout";
@@ -13,12 +16,15 @@ interface GraphicleOptions {
   customNodes?: {};
   customEdges?: {};
   backgroundAlpha?: number;
-  eventHandlers?: EventHandlersOptions;
+  selectOnDrag?: boolean;
+  handlers: Handlers;
 }
 
 // Values by default Graphicle Options
 const defaultGraphicleOptions = {
   backgroundAlpha: 0,
+  selectOnDrag: true,
+  handlers: {},
   customNodes: {},
   customEdges: {},
 };
@@ -32,19 +38,21 @@ class Graphicle {
   protected eventHandlers: EventHandlers;
   protected _context: GraphicleContext | null;
   store: GraphicleStore;
-  options: GraphicleOptions & ConfigCustomNodeAndEdge;
+  options: GraphicleOptions & ConfigCustomNodeAndEdge & EventHandlersOptions;
   constructor(
     initialState?: { nodes: Node[]; edges: Edge[] },
-    options?: GraphicleOptions & ConfigCustomNodeAndEdge
+    options?: GraphicleOptions & ConfigCustomNodeAndEdge & EventHandlersOptions
   ) {
     this._app = null;
     this.viewport = null;
     this.renderer = null;
     this._context = null;
-    this.eventDispatcher = new EventDispatcher();
-    this.eventHandlers = new EventHandlers(options?.eventHandlers);
-    this.store = new GraphicleStore(initialState);
     this.options = { ...defaultGraphicleOptions, ...options };
+    this.eventDispatcher = new EventDispatcher();
+    this.eventHandlers = new EventHandlers(this.options.handlers, {
+      selectOnDrag: this.options.selectOnDrag,
+    });
+    this.store = new GraphicleStore(initialState);
   }
 
   async mount(wrapper: HTMLElement) {
@@ -163,7 +171,7 @@ class Graphicle {
 interface createGraphicleProps {
   container: HTMLElement;
   initialState: { nodes: Node[]; edges: Edge[] };
-  options: GraphicleOptions & ConfigCustomNodeAndEdge;
+  options: GraphicleOptions & ConfigCustomNodeAndEdge & EventHandlersOptions;
 }
 
 /**

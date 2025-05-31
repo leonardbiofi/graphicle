@@ -4,6 +4,7 @@ export type AppState = {
   nodes: Record<NodeId, Node>;
   edges: Record<EdgeId, Edge>;
   nodeDrag: Node | null;
+  nodeClicked: Node | null;
 };
 
 export class GraphicleStore {
@@ -12,11 +13,21 @@ export class GraphicleStore {
   constructor(initialState?: { nodes: Node[]; edges: Edge[] }) {
     this._state = {
       nodeDrag: null,
+      nodeClicked: null,
       nodes: {},
       edges: {},
     };
 
-    if (initialState?.nodes) this.setNodes(initialState.nodes);
+    if (initialState?.nodes) {
+      // TODO: Validate nodes
+      const nextNodes = initialState.nodes.map((n) => ({
+        ...n,
+        selected: false,
+      }));
+      this.setNodes(nextNodes);
+    }
+
+    //TODO: Validate edges
     if (initialState?.edges) this.setEdges(initialState.edges);
   }
 
@@ -41,6 +52,9 @@ export class GraphicleStore {
   }
   setNodeDrag(payload: Node | null) {
     this.state.nodeDrag = payload;
+  }
+  setNodeClicked(payload: Node | null) {
+    this.state.nodeClicked = payload;
   }
   updateNodes(nodes: Node[]) {
     nodes.forEach((n) => {
