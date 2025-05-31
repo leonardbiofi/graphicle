@@ -22,7 +22,8 @@ const nextEdges = edges.map((e) => ({
     options: {
       customEdges: {},
       customNodes: {},
-      eventHandlers: { onNodeClick: (n) => console.log("node Clicked", n) },
+      selectOnDrag: true,
+      handlers: { onNodeClick: (n) => console.log("node Clicked", n) },
     },
   });
 
