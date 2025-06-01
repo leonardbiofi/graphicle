@@ -1,8 +1,9 @@
 import { Viewport } from "pixi-viewport";
-import type { EventSystem } from "pixi.js";
+import type { EventSystem, FederatedPointerEvent } from "pixi.js";
 import GraphicleContext, { ContextClient } from "./context";
 import type { Rect } from "./types";
 import { getNodesBounds } from "../utils/index";
+import { GraphicleEventType } from "./dispatcher";
 interface GraphicleViewportInterface {
   screenWidth: number;
   screenHeight: number;
@@ -16,6 +17,7 @@ export default class GraphicleViewport
 {
   context: GraphicleContext | null;
   dragged: boolean;
+  rectangleSelect: boolean;
   constructor({
     screenWidth,
     screenHeight,
@@ -32,20 +34,39 @@ export default class GraphicleViewport
     });
     this.dragged = false;
     this.context = null;
+    this.rectangleSelect = false;
 
     const onDragStart = () => {
       this.dragged = true;
     };
-    const onPointerDown = () => {
+    const onPointerDown = (event: FederatedPointerEvent) => {
       this.dragged = false;
+      this.rectangleSelect = false;
       this.on("drag-start", onDragStart.bind(this));
       this.context?.store.setNodeClicked(null);
+
+      if (event.shiftKey) {
+        this.rectangleSelect = true;
+        const clickedPoint = this.toWorld(event.global);
+        this.context?.eventDispatcher.emit(
+          GraphicleEventType.RECTANGLESELECT_START,
+          clickedPoint,
+          event
+        );
+      }
     };
 
-    const onPointerUp = () => {
+    const onPointerUp = (event: FederatedPointerEvent) => {
       this.off("drag-start");
       if (!this.dragged) {
         // console.log("ViewportClick, without dragged");
+      }
+      if (this.rectangleSelect) {
+        this.context?.eventDispatcher.emit(
+          GraphicleEventType.RECTANGLESELECT_STOP,
+          {},
+          event
+        );
       }
     };
     this.on("pointerdown", onPointerDown.bind(this));

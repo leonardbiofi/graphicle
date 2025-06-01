@@ -35,7 +35,7 @@ export default class StraightEdge extends BaseEdge {
       line.label = "line";
       line.anchor.set(0.5);
     }
-    line.width = 3;
+    line.width = 2;
     line.height = Math.hypot(
       targetNodeCenter.x - sourceNodeCenter.x,
       targetNodeCenter.y - sourceNodeCenter.y

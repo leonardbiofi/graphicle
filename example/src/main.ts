@@ -2,11 +2,16 @@ import "./style.css";
 import { createGraphicle } from "@graphicle";
 
 import { nodes, edges } from "./data";
+import { GroupOneNode } from "./nodes/groupOne";
 
 const nextEdges = edges.map((e) => ({
   id: `${e.source}_${e.target}`,
   ...e,
 }));
+
+const customNodes = {
+  one: GroupOneNode,
+};
 
 (async () => {
   const graphicleWrapper = document.getElementById("graphicle");
@@ -21,7 +26,7 @@ const nextEdges = edges.map((e) => ({
     },
     options: {
       customEdges: {},
-      customNodes: {},
+      customNodes,
       selectOnDrag: true,
       handlers: { onNodeClick: (n) => console.log("node Clicked", n) },
     },

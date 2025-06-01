@@ -13,7 +13,7 @@ import { GraphicleEventType } from "../dispatcher";
 //   fontWeight: "500",
 // });
 
-export default abstract class BaseNode extends Container {
+export abstract class BaseNode extends Container {
   public node: Node;
   context: GraphicleContext | null;
 
@@ -82,6 +82,14 @@ export default abstract class BaseNode extends Container {
       // Release click
       this.context?.eventDispatcher.emit(
         GraphicleEventType.NODE_POINTERUP,
+        this.node,
+        event
+      );
+    });
+
+    this.on("mouseover", (event) => {
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.NODE_HOVER,
         this.node,
         event
       );

@@ -1,5 +1,5 @@
 import { Graphics } from "pixi.js";
-import BaseNode from "./base";
+import { BaseNode } from "./base";
 import type { Node } from "../types";
 
 const RADIUS = 20; // default radius size

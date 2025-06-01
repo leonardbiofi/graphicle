@@ -1,5 +1,5 @@
-import { Container } from "pixi.js";
-import BaseNode from "./nodes/base";
+// import { Container } from "pixi.js";
+import { BaseNode } from "./nodes/base";
 import BaseEdge from "./edges/base";
 
 export type NodeId = string;
@@ -27,9 +27,12 @@ export type GraphData = {
 
 export type NodeGfx = BaseNode;
 export type EdgeGfx = BaseEdge;
+type BaseNodeConstructor = new (node: Node) => BaseNode;
+type BaseEdgeConstructor = new (edge: Edge) => BaseEdge;
 
-type CustomNodesIndex = Record<string, Container>;
-type CustomEdgesIndex = Record<string, Container>;
+type CustomNodesIndex = Record<string, BaseNodeConstructor>;
+type CustomEdgesIndex = Record<string, BaseEdgeConstructor>;
+
 export type ConfigCustomNodeAndEdge = {
   customNodes: CustomNodesIndex;
   customEdges: CustomEdgesIndex;

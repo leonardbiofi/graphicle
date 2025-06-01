@@ -1,4 +1,4 @@
-import { Container } from "pixi.js";
+import { Container, Graphics, Point } from "pixi.js";
 
 import type {
   GraphData,
@@ -8,13 +8,14 @@ import type {
   EdgeId,
   EdgeGfx,
   NodeGfx,
+  XYPosition,
 } from "./types";
-import type { ConfigCustomNodeAndEdge } from "./types";
-
+import { GraphicleEventType } from "./dispatcher";
 import DefaultNode from "./nodes/default";
 import StraightEdge from "./edges/straight";
 import GraphicleContext, { ContextClient } from "./context";
 import GraphicleViewport from "./viewport";
+import type { ConfigCustomNodeAndEdge } from "./types";
 
 export enum Layers {
   GROUPS = "groups",
@@ -80,7 +81,6 @@ export default class GraphicleRenderer implements ContextClient {
   getLayer(label: Layers) {
     const layer = this.viewport.getChildByLabel(label);
 
-    console.log(label, layer);
     if (!layer)
       throw new Error(
         `Unknown layer label ${label}. Make sure you are passing a valid layer label `
@@ -121,23 +121,28 @@ export default class GraphicleRenderer implements ContextClient {
   }
 
   addNode(node: Node): NodeGfx {
-    let customNode = this.options.customNodes[node.type];
-    if (!customNode) {
+    let returnNode = null;
+    let CustomNode = this.options.customNodes[node.type];
+    if (!CustomNode) {
       console.warn("Unknown node type falling back to default");
-      customNode = new DefaultNode(node);
+      returnNode = new DefaultNode(node);
+    } else {
+      returnNode = new CustomNode(node);
     }
-
-    return customNode;
+    // @ts-ignore FIXME:
+    return returnNode;
   }
 
   addEdge(edge: Edge, sourceGfx: NodeGfx, targetGfx: NodeGfx): EdgeGfx {
+    let returnEdge = null;
     let customEdge = this.options.customEdges[edge.type];
     if (!customEdge) {
       console.warn("Unknown edge type falling back to straight");
-      customEdge = new StraightEdge(edge, sourceGfx, targetGfx);
+      returnEdge = new StraightEdge(edge, sourceGfx, targetGfx);
     }
 
-    return customEdge;
+    // @ts-ignore FIXME:
+    return returnEdge;
   }
   updateNodesPosition(nodes: Node[]) {
     this.context?.store.updateNodes(nodes);
@@ -173,9 +178,9 @@ export default class GraphicleRenderer implements ContextClient {
       const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
       if (!nodeGfx) return;
       nodeGfx.node = node;
-      if (node.selected) nodeGfx.tint = "red";
+      if (node.selected) nodeGfx.alpha = 1;
       else {
-        nodeGfx.tint = "gray";
+        nodeGfx.alpha = 0.9;
       }
     });
   }
@@ -190,13 +195,67 @@ export default class GraphicleRenderer implements ContextClient {
       ...n,
       selected: false,
     }));
+
+    this.context?.eventDispatcher.emit(
+      GraphicleEventType.NODES_UNSELECT,
+      nextNodes,
+      null
+    );
     if (!nextNodes) return;
 
     this.context?.store.updateNodes(nextNodes);
     this.updateSelectedNodes(nextNodes);
     this.requestRender();
   }
+  updateRectangleSelect(pos1: XYPosition, pos2: XYPosition) {
+    const layer = this.getLayer(Layers.DRAWING);
+    layer?.removeChildren();
+    const rectangle = new Graphics()
+      .moveTo(pos1.x, pos1.y)
+      .lineTo(pos2.x, pos1.y)
+      .lineTo(pos2.x, pos2.y)
+      .lineTo(pos1.x, pos2.y)
+      .lineTo(pos1.x, pos1.y)
+      .fill(0x3333dd);
+    rectangle.label = "rectangleSelect";
+    rectangle.alpha = 0.2;
+    rectangle.stroke({ width: 3, color: 0x3333dd });
+    layer?.addChild(rectangle);
+  }
+  updateRectangleSelectStop() {
+    const layer = this.getLayer(Layers.DRAWING);
+    const rectangle = layer.getChildByLabel("rectangleSelect");
+    if (rectangle) {
+      const nodes = this.context?.store.getNodes();
+      if (!nodes) return;
+      nodes.forEach((node) => {
+        const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
+        if (!nodeGfx) return;
+        const { x, y } = nodeGfx.getCenter();
+        // @ts-expect-error it does have containsPoint FIXME:
+        const contains = rectangle.containsPoint(new Point(x, y));
+        node.selected = contains;
+      });
+
+      this.context?.store.updateNodes(nodes);
+      this.updateSelectedNodes(nodes);
+      rectangle?.destroy({ context: false });
+    }
+  }
   setSelectNode(node: Node, value: boolean) {
+    if (value) {
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.NODES_SELECT,
+        [node],
+        null
+      );
+    } else {
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.NODES_UNSELECT,
+        [node],
+        null
+      );
+    }
     // const newNode = {...node, selected:value}
     node.selected = value;
     this.context?.store.updateNodes([node]);

@@ -1,7 +1,7 @@
 import { FederatedPointerEvent } from "pixi.js";
 import GraphicleContext, { ContextClient } from "./context";
 import { GraphicleEventType } from "./dispatcher";
-import type { Node } from "./types";
+import type { Node, XYPosition } from "./types";
 
 export default class EventHandlers implements ContextClient {
   context!: GraphicleContext | null;
@@ -29,12 +29,12 @@ export default class EventHandlers implements ContextClient {
     ) as [GraphicleEventType, keyof Handlers][]) {
       const callback = this.handlers[callbackName];
       if (callback) {
-        this.context?.eventDispatcher.on<any, FederatedPointerEvent>(
-          eventType,
-          (payload, event) => {
-            callback(payload, event);
-          }
-        );
+        this.context?.eventDispatcher.on<
+          any,
+          FederatedPointerEvent | undefined
+        >(eventType, (payload, event) => {
+          callback(payload, event);
+        });
       }
     }
   }
@@ -67,6 +67,18 @@ export default class EventHandlers implements ContextClient {
     this.context?.eventDispatcher.on(
       GraphicleEventType.NODE_CLICK,
       this.onNodeClick.bind(this)
+    );
+    this.context?.eventDispatcher.on(
+      GraphicleEventType.RECTANGLESELECT_START,
+      this.onRectangleSelectStart.bind(this)
+    );
+    this.context?.eventDispatcher.on(
+      GraphicleEventType.RECTANGLESELECT_STOP,
+      this.onRectangleSelectStop.bind(this)
+    );
+    this.context?.eventDispatcher.on(
+      GraphicleEventType.RECTANGLESELECT_DRAW,
+      this.onRectangleSelectDraw.bind(this)
     );
   }
 
@@ -222,6 +234,7 @@ export default class EventHandlers implements ContextClient {
     if (!draggedNode) {
       if (!event?.ctrlKey) {
         this.context?.renderer.unselectAllNodes();
+
         this.context.renderer.setSelectNode(payload, !previousState);
       } else {
         this.context.renderer.setSelectNode(payload, !previousState);
@@ -233,13 +246,44 @@ export default class EventHandlers implements ContextClient {
     const nodeDragged = this.context?.store.state.nodeDrag;
     const viewportDragged = this.context?.viewport.dragged;
     const nodeClicked = this.context?.store.state.nodeClicked;
-    if (!nodeDragged && !viewportDragged && !nodeClicked) {
+    const rectangleSelect = this.context?.viewport.rectangleSelect;
+    if (!nodeDragged && !viewportDragged && !nodeClicked && !rectangleSelect) {
       this.context?.renderer.unselectAllNodes();
       this.context?.store.setNodeClicked(null);
     }
 
     // Stop the node dragging
     this.stopNodeDrag();
+  }
+
+  onRectangleSelectStart(payload: XYPosition, _event?: FederatedPointerEvent) {
+    this.context?.viewport.pauseViewport();
+    const emitRectangleDraw = (event: FederatedPointerEvent) => {
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.RECTANGLESELECT_DRAW,
+        payload,
+        event
+      );
+    };
+    this.context?.app.stage.on("pointermove", emitRectangleDraw.bind(this), {
+      passive: true,
+    });
+  }
+  onRectangleSelectStop(_payload: XYPosition, _event?: FederatedPointerEvent) {
+    this.context?.app.stage.off("pointermove");
+    this.context?.renderer.updateRectangleSelectStop();
+    this.context?.viewport.unpauseViewport();
+  }
+  onRectangleSelectDraw(payload: XYPosition, event?: FederatedPointerEvent) {
+    if (!event) return;
+
+    // enable viewport dragging
+    this.context?.viewport.pauseViewport();
+
+    const pos1 = payload;
+    const pos2 = this.context?.viewport.toWorld(event.global)!;
+
+    this.context?.renderer.updateRectangleSelect(pos1, pos2);
   }
 }
 
@@ -253,9 +297,15 @@ export interface Handlers {
     info: { node: Node; translation: { dx: number; dy: number } },
     event: FederatedPointerEvent | undefined
   ) => void;
+  onNodeHover?: (node: Node, event: FederatedPointerEvent | undefined) => void;
+  onNodesUnselect?: (nodes: Node[]) => void;
+  onNodesSelect?: (nodes: Node[]) => void;
 }
 
 const eventToCallbackMap: Record<any, keyof Handlers | undefined> = {
   [GraphicleEventType.NODE_CLICK]: "onNodeClick",
   [GraphicleEventType.NODE_DRAG]: "onNodeDrag",
+  [GraphicleEventType.NODE_HOVER]: "onNodeHover",
+  [GraphicleEventType.NODES_UNSELECT]: "onNodesUnselect",
+  [GraphicleEventType.NODES_SELECT]: "onNodesSelect",
 };

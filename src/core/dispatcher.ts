@@ -7,8 +7,14 @@ export enum GraphicleEventType {
   NODE_DRAG = "nodeDrag",
   NODE_DRAGSTART = "nodeDragStart",
   NODE_DRAGEND = "nodeDragEnd",
+  NODE_HOVER = "nodeMouseHover",
+  NODES_SELECT = "nodesSelect",
+  NODES_UNSELECT = "nodesUnselect",
   APP_POINTERUP = "appPointerUp",
   VIEWPORT_CLICK = "viewportClick",
+  RECTANGLESELECT_START = "rectangleSelectStart",
+  RECTANGLESELECT_STOP = "rectangleSelectStop",
+  RECTANGLESELECT_DRAW = "rectangleSelectDraw",
 }
 
 type Listener<T = any, E = any> = (payload: T, event?: E) => void;
