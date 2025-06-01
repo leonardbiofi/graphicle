@@ -222,12 +222,6 @@ export default class EventHandlers implements ContextClient {
         this.context.renderer.setSelectNode(payload, !previousState);
       }
     }
-
-    // console.log("SingleSelected", singleSelected);
-    console.log(this.context.store.getNodes());
-    // this.context.renderer.updateSelectedNodes(this.context.store.getNodes());
-    //unregister and disable node dragging
-    // this.stopNodeDrag();
   }
   onAppPointerUp(_payload: Node, _event?: FederatedPointerEvent) {
     // If no node was dragged unselect all
