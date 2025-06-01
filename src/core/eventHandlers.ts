@@ -145,7 +145,12 @@ export default class EventHandlers implements ContextClient {
       this.context.store.getNodes().filter((n) => n.selected).length > 1;
     // Get all the other selected nodes and update their position relative to the one being dragged
     const nextNodes = this.context.store.getNodes().map((n) => {
-      if (n.selected && n.id !== clickedNode.id && multipleSelect) {
+      if (
+        n.selected &&
+        n.id !== clickedNode.id &&
+        multipleSelect &&
+        (clickedNode.selected || event.ctrlKey)
+      ) {
         return {
           ...n,
           position: {
