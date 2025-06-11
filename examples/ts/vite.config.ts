@@ -10,10 +10,10 @@ export default defineConfig({
       ignored: ["!**/../dist/**"],
     },
   },
-  resolve: {
-    alias: {
-      // Optional: resolve imports to built dist
-      "@graphicle": path.resolve(__dirname, "../../dist"),
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     // Optional: resolve imports to built dist
+  //     "@graphicle": path.resolve(__dirname, "../../dist"),
+  //   },
+  // },
 });

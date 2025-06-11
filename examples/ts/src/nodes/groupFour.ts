@@ -1,4 +1,4 @@
-import { Pixi, BaseNode, type Node } from "@graphicle";
+import { Pixi, BaseNode, type Node } from "@graphicle/base";
 
 const RADIUS = 20;
 

@@ -1,5 +1,5 @@
 import "./style.css";
-import { createGraphicle } from "@graphicle";
+import { createGraphicle } from "@graphicle/base";
 
 import { nodes, edges } from "./data";
 import { GroupOneNode } from "./nodes/groupOne";

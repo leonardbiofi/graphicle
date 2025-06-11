@@ -21,8 +21,8 @@
   ],
   "scripts": {
     "build:watch": "pnpm -r run build:watch",
-    "dev:react-example": "pnpm --filter examples/react run dev",
-    "dev:typescript-example": "pnpm --filter examples/typescript run dev"
+    "dev:react-example": "pnpm --filter react-example run dev",
+    "dev:ts-example": "pnpm --filter ts-example run dev"
   },
   "engines": {
     "node": ">=20",
