@@ -1,0 +1,30 @@
+{
+  "name": "@graphicle/react",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+   "scripts": {
+    "build:watch": "tsc -w && rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "rollup": "^4.43.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@graphicle/base": "workspace:*"
+  },
+   "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

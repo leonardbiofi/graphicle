@@ -1,9 +1,16 @@
 {
-  "extends": "../base/tsconfig.base.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationDir": "dist",
     "outDir": "dist",
-    "jsx": "react-jsx"
+    "sourceMap": true,
+    "module": "ESNext",
+    "target": "ES2019",
+    "composite": true,
+    "isolatedModules": false,
+    "skipLibCheck": true
   },
-  "references": [{ "path": "../base" }],
   "include": ["src"]
 }
