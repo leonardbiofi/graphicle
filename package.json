@@ -8,11 +8,14 @@
     "dev": "vite",
     "build": "tsc",
     "build:watch": "tsc --watch",
+    "docs": "typedoc",
     "preview": "vite preview"
   },
   "devDependencies": {
     "@types/d3-force": "^3.0.10",
     "@types/underscore": "^1.13.0",
+    "typedoc": "^0.28.5",
+    "typedoc-plugin-markdown": "^4.6.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.1"
   },
