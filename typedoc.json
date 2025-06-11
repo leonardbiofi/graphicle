@@ -6,7 +6,7 @@
   "outputs": [
     {
       "name": "html",
-      "path": "./docs/api-html"
+      "path": "./typedoc/docs_html"
     }
     // {
     //   "name": "html",
