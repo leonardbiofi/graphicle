@@ -3,6 +3,9 @@ import { createGraphicle } from "@graphicle";
 
 import { nodes, edges } from "./data";
 import { GroupOneNode } from "./nodes/groupOne";
+import { GroupTwoNode } from "./nodes/groupTwo";
+import { GroupThreeNode } from "./nodes/groupThree";
+import { GroupFourNode } from "./nodes/groupFour";
 
 const nextEdges = edges.map((e) => ({
   id: `${e.source}_${e.target}`,
@@ -11,6 +14,9 @@ const nextEdges = edges.map((e) => ({
 
 const customNodes = {
   one: GroupOneNode,
+  two: GroupTwoNode,
+  three: GroupThreeNode,
+  four: GroupFourNode,
 };
 
 (async () => {

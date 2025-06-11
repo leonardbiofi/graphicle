@@ -13,7 +13,7 @@ export default defineConfig({
   resolve: {
     alias: {
       // Optional: resolve imports to built dist
-      "@graphicle": path.resolve(__dirname, "../dist"),
+      "@graphicle": path.resolve(__dirname, "../../dist"),
     },
   },
 });

@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "ts-example",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,6 +14,7 @@
     "vite": "^6.3.3"
   },
   "dependencies": {
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "@graphicle/base": "workspace:*"
   }
 }

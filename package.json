@@ -1,27 +1,31 @@
 {
-  "name": "@graphicle/js",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@graphicle/monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github-perso:leonardgable/graphicle.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
-  "main": "index.ts",
+  "main": "index.js",
+  "directories": {
+    "packages": "packages",
+    "docs": "docs",
+    "examples": "examples"
+  },
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc",
-    "build:watch": "tsc --watch",
-    "docs": "typedoc",
-    "preview": "vite preview"
+    "build:watch": "pnpm -r run build:watch",
+    "dev:react-example": "pnpm --filter examples/react run dev",
+    "dev:typescript-example": "pnpm --filter examples/typescript run dev"
   },
-  "devDependencies": {
-    "@types/d3-force": "^3.0.10",
-    "@types/underscore": "^1.13.0",
-    "typedoc": "^0.28.5",
-    "typedoc-plugin-markdown": "^4.6.4",
-    "typescript": "^5.8.3",
-    "vite": "^6.3.1"
-  },
-  "dependencies": {
-    "d3-force": "^3.0.0",
-    "pixi-viewport": "^6.0.3",
-    "pixi.js": "^8.9.1"
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=3"
   }
 }
