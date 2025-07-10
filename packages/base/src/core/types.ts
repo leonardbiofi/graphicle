@@ -30,8 +30,8 @@ export type EdgeGfx = BaseEdge;
 type BaseNodeConstructor = new (node: Node) => BaseNode;
 type BaseEdgeConstructor = new (edge: Edge) => BaseEdge;
 
-type CustomNodesIndex = Record<string, BaseNodeConstructor>;
-type CustomEdgesIndex = Record<string, BaseEdgeConstructor>;
+export type CustomNodesIndex = Record<string, BaseNodeConstructor>;
+export type CustomEdgesIndex = Record<string, BaseEdgeConstructor>;
 
 export type ConfigCustomNodeAndEdge = {
   customNodes: CustomNodesIndex;

@@ -12,6 +12,7 @@ import GraphicleContext from "./context";
 import GraphicleViewport from "./viewport";
 import { D3Force, LayoutContext } from "../layout";
 import type { Node, Edge } from "./types";
+import { GraphicleView, ViewContext, DefaultView } from "./view";
 interface GraphicleOptions {
   customNodes?: {};
   customEdges?: {};
@@ -37,6 +38,7 @@ class Graphicle {
   protected eventDispatcher: EventDispatcher;
   protected eventHandlers: EventHandlers;
   protected _context: GraphicleContext | null;
+  protected viewContext: ViewContext;
   store: GraphicleStore;
   options: GraphicleOptions & ConfigCustomNodeAndEdge & EventHandlersOptions;
   constructor(
@@ -53,6 +55,7 @@ class Graphicle {
       selectOnDrag: this.options.selectOnDrag,
     });
     this.store = new GraphicleStore(initialState);
+    this.viewContext = new ViewContext(new DefaultView());
   }
 
   async mount(wrapper: HTMLElement) {
@@ -157,6 +160,13 @@ class Graphicle {
     nodeGfx.forEach((g) => {
       g.setContext(this.context!);
     });
+  }
+
+  switchView(view: GraphicleView) {
+    // Read from the view and assign it to the context
+    this.viewContext.setView(view);
+    // Renderer needs to reinitialise the view. Reinitialise the whole renderer ?
+    // The event handler needs to reassign the callbacks to override
   }
 
   /** Getters */

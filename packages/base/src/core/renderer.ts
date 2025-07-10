@@ -16,7 +16,7 @@ import StraightEdge from "./edges/straight";
 import GraphicleContext, { ContextClient } from "./context";
 import GraphicleViewport from "./viewport";
 import type { ConfigCustomNodeAndEdge } from "./types";
-
+import type { GraphicleView } from "./view";
 export enum Layers {
   GROUPS = "groups",
   NODES = "nodes",
@@ -34,7 +34,6 @@ export default class GraphicleRenderer implements ContextClient {
 
   options: RendererOptions; // Rendering options
   protected renderRequestId: number | null; // Request render
-
   constructor(
     viewport: GraphicleViewport,
     { nodes, edges }: GraphData,
@@ -50,6 +49,7 @@ export default class GraphicleRenderer implements ContextClient {
     this.initializeLayers();
     this.initializeNodes(nodes);
     this.initializeEdges(edges);
+
     // Request render
     this.renderRequestId = null;
   }
@@ -78,6 +78,11 @@ export default class GraphicleRenderer implements ContextClient {
     this.viewport.addChild(drawingLayer);
   }
 
+  /**
+   *
+   * @param Layers
+   * @returns Layer
+   */
   getLayer(label: Layers) {
     const layer = this.viewport.getChildByLabel(label);
 
@@ -122,6 +127,9 @@ export default class GraphicleRenderer implements ContextClient {
 
   addNode(node: Node): NodeGfx {
     let returnNode = null;
+
+    // TODO: Fetch the customnode from the view.
+
     let CustomNode = this.options.customNodes[node.type];
     if (!CustomNode) {
       console.warn("Unknown node type falling back to default");
@@ -135,6 +143,8 @@ export default class GraphicleRenderer implements ContextClient {
 
   addEdge(edge: Edge, sourceGfx: NodeGfx, targetGfx: NodeGfx): EdgeGfx {
     let returnEdge = null;
+
+    // TODO: Fetch the customedge from the view.
     let customEdge = this.options.customEdges[edge.type];
     if (!customEdge) {
       console.warn("Unknown edge type falling back to straight");
