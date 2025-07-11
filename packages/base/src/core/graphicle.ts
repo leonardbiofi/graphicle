@@ -12,7 +12,7 @@ import GraphicleContext from "./context";
 import GraphicleViewport from "./viewport";
 import { D3Force, LayoutContext } from "../layout";
 import type { Node, Edge } from "./types";
-import { GraphicleView, ViewContext, DefaultView } from "./view";
+import { GraphicleView, ViewContext, View } from "./view";
 interface GraphicleOptions {
   customNodes?: {};
   customEdges?: {};
@@ -26,8 +26,8 @@ const defaultGraphicleOptions = {
   backgroundAlpha: 0,
   selectOnDrag: true,
   handlers: {},
-  customNodes: {},
-  customEdges: {},
+  // customNodes: {},
+  // customEdges: {},
 };
 
 class Graphicle {
@@ -40,10 +40,11 @@ class Graphicle {
   protected _context: GraphicleContext | null;
   protected viewContext: ViewContext;
   store: GraphicleStore;
-  options: GraphicleOptions & ConfigCustomNodeAndEdge & EventHandlersOptions;
+  options: GraphicleOptions & EventHandlersOptions;
   constructor(
+    view: GraphicleView = new View("default", {}, {}),
     initialState?: { nodes: Node[]; edges: Edge[] },
-    options?: GraphicleOptions & ConfigCustomNodeAndEdge & EventHandlersOptions
+    options?: GraphicleOptions & EventHandlersOptions
   ) {
     this._app = null;
     this.viewport = null;
@@ -55,7 +56,7 @@ class Graphicle {
       selectOnDrag: this.options.selectOnDrag,
     });
     this.store = new GraphicleStore(initialState);
-    this.viewContext = new ViewContext(new DefaultView());
+    this.viewContext = new ViewContext(view);
   }
 
   async mount(wrapper: HTMLElement) {
@@ -115,8 +116,8 @@ class Graphicle {
         edges: this.store.getEdges(),
       },
       {
-        customNodes: this.options.customNodes,
-        customEdges: this.options.customEdges,
+        customNodes: this.viewContext.getView().nodesIndex,
+        customEdges: this.viewContext.getView().edgesIndex,
       }
     );
 
@@ -181,6 +182,7 @@ class Graphicle {
 interface createGraphicleProps {
   container: HTMLElement;
   initialState: { nodes: Node[]; edges: Edge[] };
+  view: GraphicleView;
   options: GraphicleOptions & ConfigCustomNodeAndEdge & EventHandlersOptions;
 }
 
@@ -194,9 +196,10 @@ interface createGraphicleProps {
 const createGraphicle = async ({
   container,
   initialState,
+  view,
   options,
 }: createGraphicleProps): Promise<Graphicle> => {
-  const graphicle = new Graphicle({ ...initialState }, { ...options });
+  const graphicle = new Graphicle(view, { ...initialState }, { ...options });
 
   await graphicle.mount(container);
 

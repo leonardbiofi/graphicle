@@ -16,7 +16,7 @@ import StraightEdge from "./edges/straight";
 import GraphicleContext, { ContextClient } from "./context";
 import GraphicleViewport from "./viewport";
 import type { ConfigCustomNodeAndEdge } from "./types";
-import type { GraphicleView } from "./view";
+
 export enum Layers {
   GROUPS = "groups",
   NODES = "nodes",

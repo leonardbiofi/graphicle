@@ -51,17 +51,25 @@ export class ViewContext {
   public setView(view: GraphicleView) {
     this.view = view;
   }
+
+  public getView(): GraphicleView {
+    return this.view;
+  }
 }
 
-export class DefaultView implements GraphicleView {
+export class View implements GraphicleView {
   name: string;
   nodesIndex: CustomNodesIndex;
   edgesIndex: CustomEdgesIndex;
 
-  constructor() {
-    this.name = "default";
-    this.nodesIndex = {};
-    this.edgesIndex = {};
+  constructor(
+    name: string,
+    nodesIndex: CustomNodesIndex,
+    edgesIndex: CustomEdgesIndex
+  ) {
+    this.name = name;
+    this.nodesIndex = nodesIndex;
+    this.edgesIndex = edgesIndex;
   }
 
   //   setNodesType(index: CustomNodesIndex) {}

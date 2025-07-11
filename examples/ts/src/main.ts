@@ -30,6 +30,8 @@ const customNodes = {
   const graphicleWrapper = document.getElementById("graphicle");
   if (!graphicleWrapper) return;
 
+  const view = createView(customNodes, customEdges, handlers);
+
   /** Create the Graphicle here */
   const graphicle = await createGraphicle({
     container: graphicleWrapper,
@@ -37,6 +39,7 @@ const customNodes = {
       nodes: nodes,
       edges: nextEdges,
     },
+    view,
     options: {
       customEdges: {},
       customNodes,
