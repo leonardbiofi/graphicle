@@ -21,6 +21,7 @@
   ],
   "scripts": {
     "build:watch": "pnpm -r run build:watch",
+    "dev:docs": "pnpm --filter docs run start",
     "dev:react-example": "pnpm --filter react-example run dev",
     "dev:ts-example": "pnpm --filter ts-example run dev"
   },
