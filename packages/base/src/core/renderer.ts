@@ -11,11 +11,10 @@ import type {
   XYPosition,
 } from "./types";
 import { GraphicleEventType } from "./dispatcher";
-import DefaultNode from "./nodes/default";
-import StraightEdge from "./edges/straight";
+
 import GraphicleContext, { ContextClient } from "./context";
 import GraphicleViewport from "./viewport";
-import type { ConfigCustomNodeAndEdge } from "./types";
+import { ViewRegistry } from "./view";
 
 export enum Layers {
   GROUPS = "groups",
@@ -24,27 +23,22 @@ export enum Layers {
   DRAWING = "drawing",
 }
 
-type RendererOptions = ConfigCustomNodeAndEdge;
-
 export default class GraphicleRenderer implements ContextClient {
   viewport: GraphicleViewport;
   context: GraphicleContext | null;
+  viewRegistry: ViewRegistry;
   nodeIdToNodeGfx: Map<NodeId, NodeGfx>;
   edgeIdToEdgeGfx: Map<EdgeId, EdgeGfx>;
 
-  options: RendererOptions; // Rendering options
   protected renderRequestId: number | null; // Request render
-  constructor(
-    viewport: GraphicleViewport,
-    { nodes, edges }: GraphData,
-    options: RendererOptions
-  ) {
+
+  constructor(viewport: GraphicleViewport, { nodes, edges }: GraphData) {
     this.viewport = viewport;
     this.context = null;
     this.nodeIdToNodeGfx = new Map();
     this.edgeIdToEdgeGfx = new Map();
 
-    this.options = options;
+    this.viewRegistry = new ViewRegistry();
 
     this.initializeLayers();
     this.initializeNodes(nodes);
@@ -98,7 +92,11 @@ export default class GraphicleRenderer implements ContextClient {
     layer.removeChildren();
 
     const nodeIdGfxPairs: [NodeId, NodeGfx][] = nodes.map((node) => {
-      const nodeGfx = this.addNode(node);
+      // Create the node
+      const nodeGfx = this.viewRegistry.createNode(node.type, node);
+
+      // Inject the context in each nodes
+      nodeGfx.setContext(this.context);
       layer.addChild(nodeGfx);
 
       return [node.id, nodeGfx];
@@ -116,7 +114,14 @@ export default class GraphicleRenderer implements ContextClient {
       if (!srcNodeGfx || !tgtNodeGfx) {
         throw new Error("Fatal: Source or target Graphics undefined.");
       }
-      const edgeGfx = this.addEdge(edge, srcNodeGfx, tgtNodeGfx);
+      // Create the edge
+
+      const edgeGfx = this.viewRegistry.createEdge(
+        edge.type,
+        edge,
+        srcNodeGfx,
+        tgtNodeGfx
+      );
       layer.addChild(edgeGfx);
 
       return [edge.id, edgeGfx];
@@ -125,35 +130,35 @@ export default class GraphicleRenderer implements ContextClient {
     this.edgeIdToEdgeGfx = new Map(edgeIdGfxPairs);
   }
 
-  addNode(node: Node): NodeGfx {
-    let returnNode = null;
+  // addNode(node: Node): NodeGfx {
+  //   let returnNode = null;
 
-    // TODO: Fetch the customnode from the view.
+  //   // TODO: Fetch the customnode from the view.
 
-    let CustomNode = this.options.customNodes[node.type];
-    if (!CustomNode) {
-      console.warn("Unknown node type falling back to default");
-      returnNode = new DefaultNode(node);
-    } else {
-      returnNode = new CustomNode(node);
-    }
-    // @ts-ignore FIXME:
-    return returnNode;
-  }
+  //   let CustomNode = this.options.customNodes[node.type];
+  //   if (!CustomNode) {
+  //     console.warn("Unknown node type falling back to default");
+  //     returnNode = new DefaultNode(node);
+  //   } else {
+  //     returnNode = new CustomNode(node);
+  //   }
+  //   // @ts-ignore FIXME:
+  //   return returnNode;
+  // }
 
-  addEdge(edge: Edge, sourceGfx: NodeGfx, targetGfx: NodeGfx): EdgeGfx {
-    let returnEdge = null;
+  // addEdge(edge: Edge, sourceGfx: NodeGfx, targetGfx: NodeGfx): EdgeGfx {
+  //   let returnEdge = null;
 
-    // TODO: Fetch the customedge from the view.
-    let customEdge = this.options.customEdges[edge.type];
-    if (!customEdge) {
-      console.warn("Unknown edge type falling back to straight");
-      returnEdge = new StraightEdge(edge, sourceGfx, targetGfx);
-    }
+  //   // TODO: Fetch the customedge from the view.
+  //   let customEdge = this.options.customEdges[edge.type];
+  //   if (!customEdge) {
+  //     console.warn("Unknown edge type falling back to straight");
+  //     returnEdge = new StraightEdge(edge, sourceGfx, targetGfx);
+  //   }
 
-    // @ts-ignore FIXME:
-    return returnEdge;
-  }
+  //   // @ts-ignore FIXME:
+  //   return returnEdge;
+  // }
   updateNodesPosition(nodes: Node[]) {
     this.context?.store.updateNodes(nodes);
 
@@ -277,5 +282,17 @@ export default class GraphicleRenderer implements ContextClient {
       this.context?.app.render();
       this.renderRequestId = null;
     });
+  }
+
+  switchView(viewName?: string) {
+    this.viewRegistry.setCurrentView(viewName ?? "default");
+
+    const nodes = this.context?.store.getNodes();
+    const edges = this.context?.store.getEdges();
+    if (nodes && edges) {
+      this.initializeNodes(nodes);
+      this.initializeEdges(edges);
+      this.requestRender();
+    }
   }
 }

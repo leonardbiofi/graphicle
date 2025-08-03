@@ -2,7 +2,6 @@ import { Application, FederatedPointerEvent, Renderer } from "pixi.js";
 
 import { GraphicleStore } from "./store";
 import GraphicleRenderer from "./renderer";
-import { ConfigCustomNodeAndEdge } from "./types";
 import EventDispatcher, { GraphicleEventType } from "./dispatcher";
 import EventHandlers, {
   type Handlers,
@@ -12,10 +11,7 @@ import GraphicleContext from "./context";
 import GraphicleViewport from "./viewport";
 import { D3Force, LayoutContext } from "../layout";
 import type { Node, Edge } from "./types";
-import { GraphicleView, ViewContext, View } from "./view";
 interface GraphicleOptions {
-  customNodes?: {};
-  customEdges?: {};
   backgroundAlpha?: number;
   selectOnDrag?: boolean;
   handlers: Handlers;
@@ -26,23 +22,21 @@ const defaultGraphicleOptions = {
   backgroundAlpha: 0,
   selectOnDrag: true,
   handlers: {},
-  // customNodes: {},
-  // customEdges: {},
 };
 
 class Graphicle {
   private _app: Application | null;
   private viewport: GraphicleViewport | null;
 
-  protected renderer: GraphicleRenderer | null;
+  public renderer: GraphicleRenderer | null;
   protected eventDispatcher: EventDispatcher;
   protected eventHandlers: EventHandlers;
   protected _context: GraphicleContext | null;
-  protected viewContext: ViewContext;
+  // protected viewContext: ViewContext;
   store: GraphicleStore;
   options: GraphicleOptions & EventHandlersOptions;
   constructor(
-    view: GraphicleView = new View("default", {}, {}),
+    // view: GraphicleView = new View("default", {}, {}),
     initialState?: { nodes: Node[]; edges: Edge[] },
     options?: GraphicleOptions & EventHandlersOptions
   ) {
@@ -56,7 +50,6 @@ class Graphicle {
       selectOnDrag: this.options.selectOnDrag,
     });
     this.store = new GraphicleStore(initialState);
-    this.viewContext = new ViewContext(view);
   }
 
   async mount(wrapper: HTMLElement) {
@@ -109,17 +102,10 @@ class Graphicle {
     this.store.setNodes(positionedNodes);
 
     // Initialize the renderer
-    this.renderer = new GraphicleRenderer(
-      this.viewport,
-      {
-        nodes: this.store.getNodes(),
-        edges: this.store.getEdges(),
-      },
-      {
-        customNodes: this.viewContext.getView().nodesIndex,
-        customEdges: this.viewContext.getView().edgesIndex,
-      }
-    );
+    this.renderer = new GraphicleRenderer(this.viewport, {
+      nodes: this.store.getNodes(),
+      edges: this.store.getEdges(),
+    });
 
     // Mount the app into the wrapper
     wrapper.appendChild(this._app.canvas);
@@ -154,21 +140,14 @@ class Graphicle {
     this.renderer?.setContext(this.context);
     this.eventHandlers.setContext(this.context);
     this.viewport?.setContext(this.context);
-
-    /** Inject the context in all nodes */
-    const nodeGfx = Array.from(this.context.renderer.nodeIdToNodeGfx.values());
-
-    nodeGfx.forEach((g) => {
-      g.setContext(this.context!);
-    });
   }
 
-  switchView(view: GraphicleView) {
-    // Read from the view and assign it to the context
-    this.viewContext.setView(view);
-    // Renderer needs to reinitialise the view. Reinitialise the whole renderer ?
-    // The event handler needs to reassign the callbacks to override
-  }
+  // switchView(view) {
+  // Read from the view and assign it to the context
+  // this.viewContext.setView(view);
+  // Renderer needs to reinitialise the view. Reinitialise the whole renderer ?
+  // The event handler needs to reassign the callbacks to override
+  // }
 
   /** Getters */
   get app() {
@@ -182,8 +161,7 @@ class Graphicle {
 interface createGraphicleProps {
   container: HTMLElement;
   initialState: { nodes: Node[]; edges: Edge[] };
-  view: GraphicleView;
-  options: GraphicleOptions & ConfigCustomNodeAndEdge & EventHandlersOptions;
+  options: GraphicleOptions & EventHandlersOptions;
 }
 
 /**
@@ -196,10 +174,9 @@ interface createGraphicleProps {
 const createGraphicle = async ({
   container,
   initialState,
-  view,
   options,
 }: createGraphicleProps): Promise<Graphicle> => {
-  const graphicle = new Graphicle(view, { ...initialState }, { ...options });
+  const graphicle = new Graphicle({ ...initialState }, { ...options });
 
   await graphicle.mount(container);
 

@@ -1,5 +1,5 @@
 import { Graphics } from "pixi.js";
-import { BaseNode } from "./base";
+import BaseNode from "./base";
 import type { Node } from "../types";
 
 const RADIUS = 20; // default radius size
@@ -17,6 +17,5 @@ export default class DefaultNode extends BaseNode {
     this.width = RADIUS * 2;
     this.height = RADIUS * 2;
     this.addChild(circle);
-    // this.attachLabel();
   }
 }

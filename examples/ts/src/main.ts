@@ -1,5 +1,5 @@
 // Helper function to initialize the graphicle instance
-import { createGraphicle } from "@graphicle/base";
+import { createGraphicle, createView } from "@graphicle/base";
 
 // Custom nodes
 import { nodes, edges } from "./data";
@@ -30,7 +30,7 @@ const customNodes = {
   const graphicleWrapper = document.getElementById("graphicle");
   if (!graphicleWrapper) return;
 
-  const view = createView(customNodes, customEdges, handlers);
+  const myView = createView("myCustomView", customNodes, {});
 
   /** Create the Graphicle here */
   const graphicle = await createGraphicle({
@@ -39,12 +39,13 @@ const customNodes = {
       nodes: nodes,
       edges: nextEdges,
     },
-    view,
     options: {
-      customEdges: {},
-      customNodes,
       selectOnDrag: true,
       handlers: { onNodeClick: (n) => console.log("node Clicked", n) },
     },
   });
+
+  graphicle.renderer?.viewRegistry.register(myView);
+  graphicle.renderer?.switchView("myCustomView");
+  graphicle.renderer?.switchView();
 })();

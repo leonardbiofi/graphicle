@@ -3,17 +3,8 @@ import type { Node } from "../types";
 import { XYPosition } from "../../layout/type";
 import GraphicleContext from "../context";
 import { GraphicleEventType } from "../dispatcher";
-// const LABEL_FONT_FAMILY = ["Arial", "sans-serif"];
 
-// const textStyle = new TextStyle({
-//   fontFamily: LABEL_FONT_FAMILY,
-//   fontSize: 16,
-//   align: "center",
-//   fill: "black",
-//   fontWeight: "500",
-// });
-
-export abstract class BaseNode extends Container {
+abstract class BaseNode extends Container {
   public node: Node;
   context: GraphicleContext | null;
 
@@ -128,3 +119,5 @@ export abstract class BaseNode extends Container {
     // });
   }
 }
+
+export default BaseNode;

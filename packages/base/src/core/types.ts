@@ -1,5 +1,4 @@
-// import { Container } from "pixi.js";
-import { BaseNode } from "./nodes/base";
+import BaseNode from "./nodes/base";
 import BaseEdge from "./edges/base";
 
 export type NodeId = string;
