@@ -28,6 +28,7 @@ export default class GraphicleContext {
   get eventDispatcher() {
     return this._eventDispatcher;
   }
+
   get viewport() {
     return this._viewport;
   }

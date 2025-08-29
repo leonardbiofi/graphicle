@@ -3,7 +3,8 @@ import type { Node } from "../types";
 import { XYPosition } from "../../layout/type";
 import GraphicleContext from "../context";
 import { GraphicleEventType } from "../dispatcher";
-
+import Label from "./label";
+import { truncateTextToFit } from "../../utils/truncate";
 abstract class BaseNode extends Container {
   public node: Node;
   context: GraphicleContext | null;
@@ -14,6 +15,7 @@ abstract class BaseNode extends Container {
     this.node = node;
     this.label = "node";
     this.initGraphics();
+    this.attachLabel();
     this.attachEvents();
   }
   setContext(context: GraphicleContext): void {
@@ -36,6 +38,21 @@ abstract class BaseNode extends Container {
     };
   }
   attachLabel() {
+    const text = this.node.data.label;
+    if (!text) return;
+
+    /** Get the dimensions */
+    const bounds = this.getBounds();
+    const maxWidth = bounds.width * 0.9;
+
+    const label = new Label(text);
+    const textStyle = label.style;
+    label.anchor.set(0.5);
+    label.position.set(bounds.width / 2, bounds.height / 2);
+
+    const truncated = truncateTextToFit(text, textStyle, maxWidth);
+    label.text = truncated;
+    this.addChild(label);
     // const labelGfx = new Container();
     // labelGfx.x = this.width / 2;
     // labelGfx.y = this.height / 2;

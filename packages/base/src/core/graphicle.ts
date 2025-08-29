@@ -156,6 +156,14 @@ class Graphicle {
   get context() {
     return this._context!;
   }
+
+  /**
+   * Destroy the application mthod the be used when unmounting the graphicle object
+   */
+  destroy() {
+    this._app?.destroy(true);
+    this.eventHandlers.unregisterUserCallbacks();
+  }
 }
 
 interface createGraphicleProps {
@@ -176,7 +184,7 @@ const createGraphicle = async ({
   initialState,
   options,
 }: createGraphicleProps): Promise<Graphicle> => {
-  const graphicle = new Graphicle({ ...initialState }, { ...options });
+  const graphicle = new Graphicle({ ...initialState }, options);
 
   await graphicle.mount(container);
 

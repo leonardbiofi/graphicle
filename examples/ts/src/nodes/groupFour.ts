@@ -12,9 +12,13 @@ export class GroupFourNode extends BaseNode {
     const circle = new Pixi.Graphics()
       .circle(0 + RADIUS, 0 + RADIUS, RADIUS)
       .fill("yellow");
+    circle.label = "shape";
+
     this.width = RADIUS * 2;
     this.height = RADIUS * 2;
     this.addChild(circle);
+
+    super.attachLabel();
   }
 
   //   override getCenter(): XYPosition {

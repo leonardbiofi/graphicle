@@ -24,6 +24,11 @@ export default class EventHandlers implements ContextClient {
   registerUserCallbacks() {
     if (!this.handlers) return;
 
+    if (!this.context)
+      throw new Error(
+        "Context must be initialized before callback registration"
+      );
+
     for (const [eventType, callbackName] of Object.entries(
       eventToCallbackMap
     ) as [GraphicleEventType, keyof Handlers][]) {
@@ -33,7 +38,7 @@ export default class EventHandlers implements ContextClient {
           any,
           FederatedPointerEvent | undefined
         >(eventType, (payload, event) => {
-          callback(payload, event);
+          callback(this.context!, payload, event);
         });
       }
     }
@@ -80,6 +85,18 @@ export default class EventHandlers implements ContextClient {
       GraphicleEventType.RECTANGLESELECT_DRAW,
       this.onRectangleSelectDraw.bind(this)
     );
+  }
+  unregisterUserCallbacks() {
+    for (const [eventType, callbackName] of Object.entries(
+      eventToCallbackMap
+    ) as [GraphicleEventType, keyof Handlers][]) {
+      const callback = this.handlers[callbackName];
+      if (callback) {
+        this.context?.eventDispatcher.off(eventType, (payload, event) => {
+          callback(this.context!, payload, event);
+        });
+      }
+    }
   }
 
   /**
@@ -292,14 +309,23 @@ export interface EventHandlersOptions {
 }
 
 export interface Handlers {
-  onNodeClick?: (node: Node, event: FederatedPointerEvent | undefined) => void;
+  onNodeClick?: (
+    context: GraphicleContext,
+    node: Node,
+    event: FederatedPointerEvent | undefined
+  ) => void;
   onNodeDrag?: (
+    context: GraphicleContext,
     info: { node: Node; translation: { dx: number; dy: number } },
     event: FederatedPointerEvent | undefined
   ) => void;
-  onNodeHover?: (node: Node, event: FederatedPointerEvent | undefined) => void;
-  onNodesUnselect?: (nodes: Node[]) => void;
-  onNodesSelect?: (nodes: Node[]) => void;
+  onNodeHover?: (
+    context: GraphicleContext,
+    node: Node,
+    event: FederatedPointerEvent | undefined
+  ) => void;
+  onNodesUnselect?: (context: GraphicleContext, nodes: Node[]) => void;
+  onNodesSelect?: (context: GraphicleContext, nodes: Node[]) => void;
 }
 
 const eventToCallbackMap: Record<any, keyof Handlers | undefined> = {

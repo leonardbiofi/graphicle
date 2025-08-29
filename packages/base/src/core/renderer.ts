@@ -193,10 +193,11 @@ export default class GraphicleRenderer implements ContextClient {
       const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
       if (!nodeGfx) return;
       nodeGfx.node = node;
-      if (node.selected) nodeGfx.alpha = 1;
-      else {
-        nodeGfx.alpha = 0.9;
-      }
+      // FIXME: Maybe implement a default behaviour that can be overriden ?
+      // if (node.selected) nodeGfx.alpha = 1;
+      // else {
+      //   nodeGfx.alpha = 0.9;
+      // }
     });
   }
   updateNodeCursor(node: Node) {

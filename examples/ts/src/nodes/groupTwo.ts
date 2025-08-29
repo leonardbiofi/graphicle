@@ -12,12 +12,10 @@ export class GroupTwoNode extends BaseNode {
     const circle = new Pixi.Graphics()
       .circle(0 + RADIUS, 0 + RADIUS, RADIUS)
       .fill("red");
+    circle.label = "shape";
     this.width = RADIUS * 2;
     this.height = RADIUS * 2;
     this.addChild(circle);
+    super.attachLabel();
   }
-
-  //   override getCenter(): XYPosition {
-  //     return { x: 0, y: 0 };
-  //   }
 }
