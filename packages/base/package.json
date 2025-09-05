@@ -11,6 +11,11 @@
     "url": "https://github.com/leonardbiofi/graphicle.git",
     "directory": "package/base"
   },
+  "keywords": [
+    "pixijs",
+    "graph",
+    "visualization"
+  ],
   "files": [
     "dist",
     "logo.png",

@@ -5,3 +5,5 @@ packages:
   - "examples/**"
   # Library documentation
   - "docs"
+  # demo
+  - "demo"

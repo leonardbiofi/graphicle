@@ -23,3 +23,10 @@ In the second terminal run this command
 ```bash
 pnpm dev:ts-example
 ```
+
+### Run demo
+
+To start the demo server simply run the following command
+```bash
+pnpm dev:demo
+```
