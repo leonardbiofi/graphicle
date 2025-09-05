@@ -1,7 +1,7 @@
 
 
 <div style="display: flex; align-items: center;">
-  <img src="image-removebg.png" alt="Image" width="200" height="200" style="margin-right: 10px;">
+  <img src="logo.png" alt="Image" width="200" height="200" style="margin-right: 10px;">
   <strong style="font-size: 48px; color: #fff; font-weight: 700;">Graphicle</strong>
 </div>
 
