@@ -11,17 +11,23 @@
 import { createServerRootRoute } from '@tanstack/react-start/server'
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as LayoutRouteRouteImport } from './routes/_layout/route'
+import { Route as LayoutDemoIndexRouteImport } from './routes/_layout/demo/index'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo.start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo.start.api-request'
+import { Route as LayoutDemoDatasetNameRouteImport } from './routes/_layout/demo/$datasetName'
 import { ServerRoute as ApiDemoNamesServerRouteImport } from './routes/api.demo-names'
 
 const rootServerRouteImport = createServerRootRoute()
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const LayoutRouteRoute = LayoutRouteRouteImport.update({
+  id: '/_layout',
   getParentRoute: () => rootRouteImport,
+} as any)
+const LayoutDemoIndexRoute = LayoutDemoIndexRouteImport.update({
+  id: '/demo/',
+  path: '/demo/',
+  getParentRoute: () => LayoutRouteRoute,
 } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
   id: '/demo/start/server-funcs',
@@ -33,6 +39,11 @@ const DemoStartApiRequestRoute = DemoStartApiRequestRouteImport.update({
   path: '/demo/start/api-request',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LayoutDemoDatasetNameRoute = LayoutDemoDatasetNameRouteImport.update({
+  id: '/demo/$datasetName',
+  path: '/demo/$datasetName',
+  getParentRoute: () => LayoutRouteRoute,
+} as any)
 const ApiDemoNamesServerRoute = ApiDemoNamesServerRouteImport.update({
   id: '/api/demo-names',
   path: '/api/demo-names',
@@ -40,31 +51,49 @@ const ApiDemoNamesServerRoute = ApiDemoNamesServerRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/demo/$datasetName': typeof LayoutDemoDatasetNameRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/demo': typeof LayoutDemoIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/demo/$datasetName': typeof LayoutDemoDatasetNameRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/demo': typeof LayoutDemoIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_layout': typeof LayoutRouteRouteWithChildren
+  '/_layout/demo/$datasetName': typeof LayoutDemoDatasetNameRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/_layout/demo/': typeof LayoutDemoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/demo/start/api-request' | '/demo/start/server-funcs'
+  fullPaths:
+    | '/demo/$datasetName'
+    | '/demo/start/api-request'
+    | '/demo/start/server-funcs'
+    | '/demo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/demo/start/api-request' | '/demo/start/server-funcs'
-  id: '__root__' | '/' | '/demo/start/api-request' | '/demo/start/server-funcs'
+  to:
+    | '/demo/$datasetName'
+    | '/demo/start/api-request'
+    | '/demo/start/server-funcs'
+    | '/demo'
+  id:
+    | '__root__'
+    | '/_layout'
+    | '/_layout/demo/$datasetName'
+    | '/demo/start/api-request'
+    | '/demo/start/server-funcs'
+    | '/_layout/demo/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  LayoutRouteRoute: typeof LayoutRouteRouteWithChildren
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
 }
@@ -92,12 +121,19 @@ export interface RootServerRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/_layout': {
+      id: '/_layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof LayoutRouteRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_layout/demo/': {
+      id: '/_layout/demo/'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof LayoutDemoIndexRouteImport
+      parentRoute: typeof LayoutRouteRoute
     }
     '/demo/start/server-funcs': {
       id: '/demo/start/server-funcs'
@@ -113,6 +149,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoStartApiRequestRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_layout/demo/$datasetName': {
+      id: '/_layout/demo/$datasetName'
+      path: '/demo/$datasetName'
+      fullPath: '/demo/$datasetName'
+      preLoaderRoute: typeof LayoutDemoDatasetNameRouteImport
+      parentRoute: typeof LayoutRouteRoute
+    }
   }
 }
 declare module '@tanstack/react-start/server' {
@@ -127,8 +170,22 @@ declare module '@tanstack/react-start/server' {
   }
 }
 
+interface LayoutRouteRouteChildren {
+  LayoutDemoDatasetNameRoute: typeof LayoutDemoDatasetNameRoute
+  LayoutDemoIndexRoute: typeof LayoutDemoIndexRoute
+}
+
+const LayoutRouteRouteChildren: LayoutRouteRouteChildren = {
+  LayoutDemoDatasetNameRoute: LayoutDemoDatasetNameRoute,
+  LayoutDemoIndexRoute: LayoutDemoIndexRoute,
+}
+
+const LayoutRouteRouteWithChildren = LayoutRouteRoute._addFileChildren(
+  LayoutRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  LayoutRouteRoute: LayoutRouteRouteWithChildren,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
 }
