@@ -17,7 +17,7 @@ Build interactive, animated graph UIs with a developer-friendly API and WebGL pe
 Graphicle can be easily installed with npm packages:
 
 ```bash
-npm install @graphicle/js
+npm install @graphicle/base
 ```
 
 
