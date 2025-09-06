@@ -209,6 +209,7 @@ export default class EventHandlers implements ContextClient {
    */
   onNodePointerDown(payload: Node, event?: FederatedPointerEvent) {
     if (!event) return;
+
     // Get the clicked position by the pointer
     const clickedPoint = this.context?.viewport.toWorld(event.global);
     if (!clickedPoint || !payload) return;

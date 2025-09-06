@@ -8,13 +8,12 @@ export const Route = createFileRoute("/_layout")({
 
 function App() {
   return (
-    <div className="flex min-h-[calc(100vh_-_64px)]">
-      <header className="flex flex-col items-center justify-center bg-zinc-700 text-white text-[calc(10px+2vmin)]">
+    <div className="flex h-[calc(100vh_-_64px)] max-w-screen bg-zinc-700">
+      <header className="flex flex-col items-center justify-center bg-zinc-900 text-white text-[calc(10px+2vmin)]">
         <PanelWrapper />
       </header>
-      <article className="bg-yellow-900 w-full">
-        <Outlet />
-      </article>
+
+      <Outlet />
     </div>
   );
 }

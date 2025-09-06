@@ -22,6 +22,7 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
+      "@graphicle/base": ["../packages/base/dist"], // 👈 points to your built dist folder
       "@/*": ["./src/*"],
     }
   }

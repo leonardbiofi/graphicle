@@ -15,8 +15,8 @@ import { Route as LayoutRouteRouteImport } from './routes/_layout/route'
 import { Route as LayoutDemoIndexRouteImport } from './routes/_layout/demo/index'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo.start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo.start.api-request'
-import { Route as LayoutDemoDatasetNameRouteImport } from './routes/_layout/demo/$datasetName'
 import { ServerRoute as ApiDemoNamesServerRouteImport } from './routes/api.demo-names'
+import { ServerRoute as ApiDatasetDatasetNameServerRouteImport } from './routes/api/dataset.$datasetName'
 
 const rootServerRouteImport = createServerRootRoute()
 
@@ -39,25 +39,24 @@ const DemoStartApiRequestRoute = DemoStartApiRequestRouteImport.update({
   path: '/demo/start/api-request',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LayoutDemoDatasetNameRoute = LayoutDemoDatasetNameRouteImport.update({
-  id: '/demo/$datasetName',
-  path: '/demo/$datasetName',
-  getParentRoute: () => LayoutRouteRoute,
-} as any)
 const ApiDemoNamesServerRoute = ApiDemoNamesServerRouteImport.update({
   id: '/api/demo-names',
   path: '/api/demo-names',
   getParentRoute: () => rootServerRouteImport,
 } as any)
+const ApiDatasetDatasetNameServerRoute =
+  ApiDatasetDatasetNameServerRouteImport.update({
+    id: '/api/dataset/$datasetName',
+    path: '/api/dataset/$datasetName',
+    getParentRoute: () => rootServerRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/demo/$datasetName': typeof LayoutDemoDatasetNameRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/demo': typeof LayoutDemoIndexRoute
 }
 export interface FileRoutesByTo {
-  '/demo/$datasetName': typeof LayoutDemoDatasetNameRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/demo': typeof LayoutDemoIndexRoute
@@ -65,28 +64,18 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_layout': typeof LayoutRouteRouteWithChildren
-  '/_layout/demo/$datasetName': typeof LayoutDemoDatasetNameRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/_layout/demo/': typeof LayoutDemoIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/demo/$datasetName'
-    | '/demo/start/api-request'
-    | '/demo/start/server-funcs'
-    | '/demo'
+  fullPaths: '/demo/start/api-request' | '/demo/start/server-funcs' | '/demo'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/demo/$datasetName'
-    | '/demo/start/api-request'
-    | '/demo/start/server-funcs'
-    | '/demo'
+  to: '/demo/start/api-request' | '/demo/start/server-funcs' | '/demo'
   id:
     | '__root__'
     | '/_layout'
-    | '/_layout/demo/$datasetName'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
     | '/_layout/demo/'
@@ -99,24 +88,28 @@ export interface RootRouteChildren {
 }
 export interface FileServerRoutesByFullPath {
   '/api/demo-names': typeof ApiDemoNamesServerRoute
+  '/api/dataset/$datasetName': typeof ApiDatasetDatasetNameServerRoute
 }
 export interface FileServerRoutesByTo {
   '/api/demo-names': typeof ApiDemoNamesServerRoute
+  '/api/dataset/$datasetName': typeof ApiDatasetDatasetNameServerRoute
 }
 export interface FileServerRoutesById {
   __root__: typeof rootServerRouteImport
   '/api/demo-names': typeof ApiDemoNamesServerRoute
+  '/api/dataset/$datasetName': typeof ApiDatasetDatasetNameServerRoute
 }
 export interface FileServerRouteTypes {
   fileServerRoutesByFullPath: FileServerRoutesByFullPath
-  fullPaths: '/api/demo-names'
+  fullPaths: '/api/demo-names' | '/api/dataset/$datasetName'
   fileServerRoutesByTo: FileServerRoutesByTo
-  to: '/api/demo-names'
-  id: '__root__' | '/api/demo-names'
+  to: '/api/demo-names' | '/api/dataset/$datasetName'
+  id: '__root__' | '/api/demo-names' | '/api/dataset/$datasetName'
   fileServerRoutesById: FileServerRoutesById
 }
 export interface RootServerRouteChildren {
   ApiDemoNamesServerRoute: typeof ApiDemoNamesServerRoute
+  ApiDatasetDatasetNameServerRoute: typeof ApiDatasetDatasetNameServerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -149,13 +142,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoStartApiRequestRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_layout/demo/$datasetName': {
-      id: '/_layout/demo/$datasetName'
-      path: '/demo/$datasetName'
-      fullPath: '/demo/$datasetName'
-      preLoaderRoute: typeof LayoutDemoDatasetNameRouteImport
-      parentRoute: typeof LayoutRouteRoute
-    }
   }
 }
 declare module '@tanstack/react-start/server' {
@@ -167,16 +153,21 @@ declare module '@tanstack/react-start/server' {
       preLoaderRoute: typeof ApiDemoNamesServerRouteImport
       parentRoute: typeof rootServerRouteImport
     }
+    '/api/dataset/$datasetName': {
+      id: '/api/dataset/$datasetName'
+      path: '/api/dataset/$datasetName'
+      fullPath: '/api/dataset/$datasetName'
+      preLoaderRoute: typeof ApiDatasetDatasetNameServerRouteImport
+      parentRoute: typeof rootServerRouteImport
+    }
   }
 }
 
 interface LayoutRouteRouteChildren {
-  LayoutDemoDatasetNameRoute: typeof LayoutDemoDatasetNameRoute
   LayoutDemoIndexRoute: typeof LayoutDemoIndexRoute
 }
 
 const LayoutRouteRouteChildren: LayoutRouteRouteChildren = {
-  LayoutDemoDatasetNameRoute: LayoutDemoDatasetNameRoute,
   LayoutDemoIndexRoute: LayoutDemoIndexRoute,
 }
 
@@ -194,6 +185,7 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 const rootServerRouteChildren: RootServerRouteChildren = {
   ApiDemoNamesServerRoute: ApiDemoNamesServerRoute,
+  ApiDatasetDatasetNameServerRoute: ApiDatasetDatasetNameServerRoute,
 }
 export const serverRouteTree = rootServerRouteImport
   ._addFileChildren(rootServerRouteChildren)

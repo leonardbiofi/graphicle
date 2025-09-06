@@ -31,14 +31,20 @@ export default function PanelSample() {
 
       <CollapsibleContent className="flex flex-col gap-2 m-1 p-2 rounded-b-2xl bg-stone-900 ">
         <ul className="flex flex-wrap gap-2">
-          <Button className="w-fit bg-teal-800 rounded-xl" asChild>
-            <Link
-              to="/demo/$datasetName"
-              params={{ datasetName: "miserables" }}
-            >
-              Miserables
-            </Link>
-          </Button>
+          <li>
+            <Button className="w-fit bg-teal-800 rounded-xl" asChild>
+              <Link to="/demo" search={{ name: "miserables" }}>
+                Miserables
+              </Link>
+            </Button>
+          </li>
+          <li>
+            <Button className="w-fit bg-teal-800 rounded-xl" asChild>
+              <Link to="/demo" search={{ name: "genes" }}>
+                Genes
+              </Link>
+            </Button>
+          </li>
         </ul>
       </CollapsibleContent>
     </Collapsible>

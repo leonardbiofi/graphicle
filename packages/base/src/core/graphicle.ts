@@ -26,8 +26,7 @@ const defaultGraphicleOptions = {
 
 class Graphicle {
   private _app: Application | null;
-  private viewport: GraphicleViewport | null;
-
+  public viewport: GraphicleViewport | null;
   public renderer: GraphicleRenderer | null;
   protected eventDispatcher: EventDispatcher;
   protected eventHandlers: EventHandlers;
@@ -55,8 +54,8 @@ class Graphicle {
   async mount(wrapper: HTMLElement) {
     if (!wrapper) throw new Error("Could not find the container element");
     // Get wrapper width and height
-    const SCREEN_WIDTH = wrapper.offsetWidth;
-    const SCREEN_HEIGHT = wrapper.offsetHeight;
+    const SCREEN_WIDTH = wrapper.clientWidth;
+    const SCREEN_HEIGHT = wrapper.clientHeight;
     const WORLD_HEIGHT = 1000;
     const WORLD_WIDTH = 1000;
     // Create a PixiJS application.
@@ -64,7 +63,7 @@ class Graphicle {
 
     // Intialize the application.
     await this._app.init({
-      // background: 'black',
+      // background: "red",
       //   backgroundAlpha: 0, // transparent background
       backgroundAlpha: this.options.backgroundAlpha,
       resizeTo: wrapper,
@@ -85,8 +84,8 @@ class Graphicle {
     });
 
     // activate plugins
-    this.viewport.drag({}).pinch({}).wheel({}).decelerate({});
-
+    // this.viewport.drag({}).pinch({}).wheel({}).decelerate({});
+    this.viewport.drag({}).pinch({}).wheel({});
     // add the viewport to the stage
     this._app.stage.addChild(this.viewport);
 
@@ -140,6 +139,13 @@ class Graphicle {
     this.renderer?.setContext(this.context);
     this.eventHandlers.setContext(this.context);
     this.viewport?.setContext(this.context);
+
+    /** FIXME: Inject the context in all nodes */
+    const nodeGfx = Array.from(this.context.renderer.nodeIdToNodeGfx.values());
+
+    nodeGfx.forEach((g) => {
+      g.setContext(this.context!);
+    });
   }
 
   // switchView(view) {
