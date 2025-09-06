@@ -161,3 +161,47 @@ export const  convertElements = (elements) => {
 
   return { nodes, edges };
 }
+
+export const  convertVisData = (nodes, edges) => {
+  const nodeIdMap = new Map();
+  const convertedNodes = [];
+  const convertedEdges = [];
+
+  // Map nodes to UUIDs and convert
+  for (const node of nodes) {
+    const uuid = uuidv4();
+    nodeIdMap.set(node.id, uuid);
+
+    convertedNodes.push({
+      id: uuid,
+      type: 'one',
+      data: {
+        label: node.label,
+        // Optional: you could extract Country/Team from `title` if needed
+      }
+    });
+  }
+
+  // Convert edges
+  for (const edge of edges) {
+    const fromUUID = nodeIdMap.get(edge.from);
+    const toUUID = nodeIdMap.get(edge.to);
+
+    if (!fromUUID || !toUUID) {
+      console.warn(`Skipping edge from ${edge.from} to ${edge.to} - missing node`);
+      continue;
+    }
+
+    convertedEdges.push({
+      id: `${fromUUID}_${toUUID}`,
+      source: fromUUID,
+      target: toUUID,
+      value: 1, // Static for now, or use something else from edge if needed
+    });
+  }
+
+  return {
+    nodes: convertedNodes,
+    edges: convertedEdges,
+  };
+}

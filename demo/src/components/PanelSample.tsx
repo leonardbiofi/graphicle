@@ -45,6 +45,20 @@ export default function PanelSample() {
               </Link>
             </Button>
           </li>
+          <li>
+            <Button className="w-fit bg-teal-800 rounded-xl" asChild>
+              <Link to="/demo" search={{ name: "circle" }}>
+                Circle
+              </Link>
+            </Button>
+          </li>
+          <li>
+            <Button className="w-fit bg-teal-800 rounded-xl" asChild>
+              <Link to="/demo" search={{ name: "worldcup" }}>
+                Worldcup
+              </Link>
+            </Button>
+          </li>
         </ul>
       </CollapsibleContent>
     </Collapsible>
