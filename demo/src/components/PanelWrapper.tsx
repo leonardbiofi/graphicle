@@ -1,8 +1,8 @@
-import PanelSample from "./PanelSample";
+import PanelExample from "./PanelExample";
 export default function PanelWrapper() {
   return (
     <div className=" flex grow p-2 w-[368px] ">
-      <PanelSample />
+      <PanelExample />
     </div>
   );
 }

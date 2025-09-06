@@ -56,7 +56,9 @@ export default class EventHandlers implements ContextClient {
     this.context?.eventDispatcher.on<
       { node: Node; translation: { dx: number; dy: number } },
       FederatedPointerEvent
-    >(GraphicleEventType.NODE_DRAG, this.onNodeDrag.bind(this));
+    >(GraphicleEventType.NODE_DRAG, this.onNodeDrag.bind(this), {
+      throttle: 100,
+    });
     this.context?.eventDispatcher.on(
       GraphicleEventType.APP_POINTERUP,
       this.onAppPointerUp.bind(this)
@@ -100,6 +102,28 @@ export default class EventHandlers implements ContextClient {
   }
 
   /**
+   * Determine which nodes needs to be selected on node base on the arguments
+   * @param clickedNode
+   * @param ctrlKey
+   */
+  determineSelectedNodes(
+    clickedNode: Node,
+    ctrlKey: boolean,
+    actionType: "click" | "drag"
+  ) {
+    if (actionType === "click") {
+      if (!ctrlKey) this.context?.renderer.unselectAllNodes();
+      const previousState = clickedNode.selected;
+      this.context!.renderer.setSelectNode(clickedNode, !previousState);
+    } else if (actionType === "drag") {
+      this.context!.renderer.setSelectNode(
+        clickedNode,
+        this.options.selectOnDrag
+      );
+    } else throw new Error("Unknown action type, only click|drag are accepted");
+  }
+
+  /**
    *
    * @param _payload
    * @param _event
@@ -110,8 +134,12 @@ export default class EventHandlers implements ContextClient {
     // Reset the cursor to 'grab'
     this.context?.renderer.updateNodeCursor(payload);
   }
-  onNodeDragStart(payload: Node, _event?: FederatedPointerEvent) {
-    this.context?.store.setNodeDrag(payload);
+  onNodeDragStart(payload: Node, event?: FederatedPointerEvent) {
+    if (!this.context || !event) return;
+    // Select the node if the option selectOnDrag is set to true
+    // Unselect other nodes if there is no multiselect
+    this.determineSelectedNodes(payload, event.ctrlKey, "drag");
+    this.context.store.setNodeDrag(payload);
   }
   onNodeClick(payload: Node, _event?: FederatedPointerEvent) {
     this.context?.store.setNodeClicked(payload);
@@ -140,7 +168,8 @@ export default class EventHandlers implements ContextClient {
     if (!this.context.store.state.nodeDrag) {
       this.context.eventDispatcher.emit(
         GraphicleEventType.NODE_DRAGSTART,
-        clickedNode
+        clickedNode,
+        event
       );
     }
 
@@ -162,18 +191,17 @@ export default class EventHandlers implements ContextClient {
     };
 
     // Move the node with new position
-    // const nextNode: Node = {
-    //   ...clickedNode,
-    //   position: { x: next.x, y: next.y },
-    // };
     const t = { x: next.x - first.x, y: next.y - first.y };
 
     clickedNode.position = { x: next.x, y: next.y };
 
-    const multipleSelect =
-      this.context.store.getNodes().filter((n) => n.selected).length > 1;
+    const selectedNodes = this.context.store.getSelectedNodes();
+    const multipleSelect = selectedNodes.length > 1;
+    // console.log("SELECTEDNODES:", selectedNodes, multipleSelect);
+    // const multipleSelect =
+    //   this.context.store.getNodes().filter((n) => n.selected).length > 1;
     // Get all the other selected nodes and update their position relative to the one being dragged
-    const nextNodes = this.context.store.getNodes().map((n) => {
+    const nextNodes = selectedNodes.map((n) => {
       if (
         n.selected &&
         n.id !== clickedNode.id &&
@@ -186,19 +214,19 @@ export default class EventHandlers implements ContextClient {
             x: n.position.x + t.x,
             y: n.position.y + t.y,
           },
-          selected: true,
+          // selected: true,
         };
       } else if (n.id === clickedNode.id)
         return {
           ...n,
           position: { x: next.x, y: next.y },
-          selected: this.options.selectOnDrag,
+          // selected: this.options.selectOnDrag,
         };
-      else return { ...n, selected: false };
+      else return { ...n };
     });
     // Render the node
     this.context.renderer.updateNodesPosition(nextNodes);
-    this.context.renderer.updateSelectedNodes(nextNodes);
+    // this.context.renderer.updateSelectedNodes(nextNodes);
   }
 
   /**
@@ -247,16 +275,17 @@ export default class EventHandlers implements ContextClient {
 
     // Check whether a node is being dragged
     const draggedNode = this.context?.store.state.nodeDrag;
-    const previousState = payload.selected;
-
+    // const previousState = payload.selected;
+    console.log("NODE POINTER UP:", draggedNode);
     if (!draggedNode) {
-      if (!event?.ctrlKey) {
-        this.context?.renderer.unselectAllNodes();
+      this.determineSelectedNodes(payload, !!event?.ctrlKey, "click");
+      // if (!event?.ctrlKey) {
+      //   this.context?.renderer.unselectAllNodes();
 
-        this.context.renderer.setSelectNode(payload, !previousState);
-      } else {
-        this.context.renderer.setSelectNode(payload, !previousState);
-      }
+      //   this.context.renderer.setSelectNode(payload, !previousState);
+      // } else {
+      //   this.context.renderer.setSelectNode(payload, !previousState);
+      // }
     }
   }
   onAppPointerUp(_payload: Node, _event?: FederatedPointerEvent) {

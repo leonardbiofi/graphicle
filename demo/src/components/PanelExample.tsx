@@ -8,7 +8,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
-export default function PanelSample() {
+export default function PanelExample() {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
@@ -20,7 +20,7 @@ export default function PanelSample() {
       <CollapsibleTrigger asChild>
         <div className="flex items-center justify-between gap-4 px-4 py-2 cursor-pointer ">
           <h4 className="text-sm font-semibold flex items-center gap-2">
-            <Waypoints /> Graph Samples
+            <Waypoints /> Graph Examples
           </h4>
           <Button variant="ghost" size="icon" className="size-8 cursor-pointer">
             <ChevronsUpDown />
@@ -31,34 +31,29 @@ export default function PanelSample() {
 
       <CollapsibleContent className="flex flex-col gap-2 m-1 p-2 rounded-b-2xl bg-stone-900 ">
         <ul className="flex flex-wrap gap-2">
-          <li>
-            <Button className="w-fit bg-teal-800 rounded-xl" asChild>
-              <Link to="/demo" search={{ name: "miserables" }}>
-                Miserables
-              </Link>
-            </Button>
-          </li>
-          <li>
-            <Button className="w-fit bg-teal-800 rounded-xl" asChild>
-              <Link to="/demo" search={{ name: "genes" }}>
-                Genes
-              </Link>
-            </Button>
-          </li>
-          <li>
-            <Button className="w-fit bg-teal-800 rounded-xl" asChild>
-              <Link to="/demo" search={{ name: "circle" }}>
-                Circle
-              </Link>
-            </Button>
-          </li>
-          <li>
-            <Button className="w-fit bg-teal-800 rounded-xl" asChild>
-              <Link to="/demo" search={{ name: "worldcup" }}>
-                Worldcup
-              </Link>
-            </Button>
-          </li>
+          <Button className="w-fit bg-teal-800 rounded-xl" asChild>
+            <Link to="/demo" search={{ name: "miserables" }}>
+              Miserables
+            </Link>
+          </Button>
+
+          <Button className="w-fit bg-teal-800 rounded-xl" asChild>
+            <Link to="/demo" search={{ name: "genes" }}>
+              Genes
+            </Link>
+          </Button>
+
+          <Button className="w-fit bg-teal-800 rounded-xl" asChild>
+            <Link to="/demo" search={{ name: "circle" }}>
+              Circle
+            </Link>
+          </Button>
+
+          <Button className="w-fit bg-teal-800 rounded-xl" asChild>
+            <Link to="/demo" search={{ name: "worldcup" }}>
+              Worldcup
+            </Link>
+          </Button>
         </ul>
       </CollapsibleContent>
     </Collapsible>

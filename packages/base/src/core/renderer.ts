@@ -160,7 +160,7 @@ export default class GraphicleRenderer implements ContextClient {
   //   return returnEdge;
   // }
   updateNodesPosition(nodes: Node[]) {
-    this.context?.store.updateNodes(nodes);
+    this.context?.store.updateNodes(nodes, true);
 
     // Render nodes
     nodes.forEach((node: Node) => {
@@ -173,15 +173,18 @@ export default class GraphicleRenderer implements ContextClient {
       nodeGfx.cursor = "grabbing";
 
       // Get all edges connected to that node
-      const edges = [...this.edgeIdToEdgeGfx.values()].filter(
-        (eds) => eds?.edge.target === node.id || eds?.edge.source === node.id
-      );
+      // const edges = [...this.edgeIdToEdgeGfx.values()].filter(
+      //   (eds) => eds?.edge.target === node.id || eds?.edge.source === node.id
+      // );
 
-      edges.forEach((eds) => {
-        // Update line
-        eds.srcNodeGfx = this.nodeIdToNodeGfx.get(eds.edge.source)!;
-        eds.tgtNodeGfx = this.nodeIdToNodeGfx.get(eds.edge.target)!;
-        eds.updatePosition();
+      [...this.edgeIdToEdgeGfx.values()].forEach((eds) => {
+        // Only if edge is connected to that node
+        if (eds?.edge.target === node.id || eds?.edge.source === node.id) {
+          // Update line
+          eds.srcNodeGfx = this.nodeIdToNodeGfx.get(eds.edge.source)!;
+          eds.tgtNodeGfx = this.nodeIdToNodeGfx.get(eds.edge.target)!;
+          eds.updatePosition();
+        }
       });
       this.requestRender();
     });
@@ -189,15 +192,15 @@ export default class GraphicleRenderer implements ContextClient {
 
   updateSelectedNodes(nodes: Node[]) {
     nodes?.forEach((node: Node) => {
-      // Get the graphical node and update its position
+      // Get the graphical node and update its selection
       const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
       if (!nodeGfx) return;
       nodeGfx.node = node;
       // FIXME: Maybe implement a default behaviour that can be overriden ?
-      // if (node.selected) nodeGfx.alpha = 1;
-      // else {
-      //   nodeGfx.alpha = 0.9;
-      // }
+      if (node.selected) nodeGfx.alpha = 0.4;
+      else {
+        nodeGfx.alpha = 1;
+      }
     });
   }
   updateNodeCursor(node: Node) {
@@ -219,7 +222,7 @@ export default class GraphicleRenderer implements ContextClient {
     );
     if (!nextNodes) return;
 
-    this.context?.store.updateNodes(nextNodes);
+    this.context?.store.updateNodes(nextNodes, true);
     this.updateSelectedNodes(nextNodes);
     this.requestRender();
   }
@@ -274,7 +277,7 @@ export default class GraphicleRenderer implements ContextClient {
     }
     // const newNode = {...node, selected:value}
     node.selected = value;
-    this.context?.store.updateNodes([node]);
+    this.context?.store.updateNodes([node], true);
     this.updateSelectedNodes([node]);
   }
   requestRender() {

@@ -1,3 +1,5 @@
+import { throttle } from "../utils/pacer";
+
 export enum GraphicleEventType {
   NODE_CLICK = "nodeClick",
   NODE_CONTEXTMENU = "nodeContextMenu",
@@ -18,7 +20,9 @@ export enum GraphicleEventType {
 }
 
 type Listener<T = any, E = any> = (payload: T, event?: E) => void;
-
+type ListenerOptions = {
+  throttle?: number; // in ms
+};
 export default class EventDispatcher {
   private listeners: Map<GraphicleEventType, Listener[]> = new Map();
 
@@ -26,10 +30,13 @@ export default class EventDispatcher {
 
   on<T, E>(
     eventType: GraphicleEventType,
-    callback: (payload: T, event?: E) => void
+    callback: (payload: T, event?: E) => void,
+    options?: ListenerOptions
   ) {
-    const newListener: Listener<T> = callback;
-
+    let newListener: Listener<T> = callback;
+    if (options?.throttle) {
+      newListener = throttle(callback, options.throttle);
+    }
     if (!this.listeners.has(eventType)) {
       this.listeners.set(eventType, []);
     }
