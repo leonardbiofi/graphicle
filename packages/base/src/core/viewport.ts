@@ -74,7 +74,12 @@ export default class GraphicleViewport
 
     this.on("pointerup", onPointerUp.bind(this));
   }
-
+  zoomIn() {
+    this.zoom(-this.worldWidth / 2, true);
+  }
+  zoomOut() {
+    this.zoom(this.worldWidth / 2, true);
+  }
   setContext(context: GraphicleContext): void {
     this.context = context;
     this.fitView();

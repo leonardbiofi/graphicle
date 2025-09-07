@@ -69,6 +69,7 @@ class Graphicle {
       resizeTo: wrapper,
       width: SCREEN_WIDTH,
       height: SCREEN_HEIGHT,
+      antialias: true,
     });
 
     this._app.stage.eventMode = "static";

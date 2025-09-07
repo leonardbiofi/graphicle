@@ -1,5 +1,6 @@
 import { createGraphicle, Graphicle } from "@graphicle/base";
-import { useEffect, useRef } from "react";
+import { RefObject, useEffect, useRef } from "react";
+import CanvasControls from "./CanvasControls";
 interface CanvasWrapperProps {
   nodes: [];
   edges: [];
@@ -40,7 +41,9 @@ export default function CanvasWrapper({ nodes, edges }: CanvasWrapperProps) {
     <div
       id="graphicle"
       ref={containerRef}
-      className="w-[calc(100vw_-_368px)]"
-    ></div>
+      className="w-[calc(100vw_-_368px)] relative"
+    >
+      <CanvasControls graphicleRef={graphicleRef as RefObject<Graphicle>} />
+    </div>
   );
 }
