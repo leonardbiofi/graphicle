@@ -116,6 +116,10 @@ export default class EventHandlers implements ContextClient {
       const previousState = clickedNode.selected;
       this.context!.renderer.setSelectNode(clickedNode, !previousState);
     } else if (actionType === "drag") {
+      const multipleSelect = this.context!.store.getSelectedNodes().length > 1;
+
+      if (!multipleSelect) this.context?.renderer.unselectAllNodes();
+
       this.context!.renderer.setSelectNode(
         clickedNode,
         this.options.selectOnDrag
@@ -136,6 +140,7 @@ export default class EventHandlers implements ContextClient {
   }
   onNodeDragStart(payload: Node, event?: FederatedPointerEvent) {
     if (!this.context || !event) return;
+
     // Select the node if the option selectOnDrag is set to true
     // Unselect other nodes if there is no multiselect
     this.determineSelectedNodes(payload, event.ctrlKey, "drag");
@@ -276,7 +281,6 @@ export default class EventHandlers implements ContextClient {
     // Check whether a node is being dragged
     const draggedNode = this.context?.store.state.nodeDrag;
     // const previousState = payload.selected;
-    console.log("NODE POINTER UP:", draggedNode);
     if (!draggedNode) {
       this.determineSelectedNodes(payload, !!event?.ctrlKey, "click");
       // if (!event?.ctrlKey) {

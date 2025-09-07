@@ -256,7 +256,7 @@ export default class GraphicleRenderer implements ContextClient {
         node.selected = contains;
       });
 
-      this.context?.store.updateNodes(nodes);
+      this.context?.store.updateNodes(nodes, true);
       this.updateSelectedNodes(nodes);
       rectangle?.destroy({ context: false });
     }
