@@ -3,8 +3,16 @@
   "private": false,
   "version": "0.0.3",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/graphicle.cjs.js",
+  "module": "./dist/graphicle.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/graphicle.cjs.js",
+      "import": "./dist/graphicle.es.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -23,11 +31,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "dev": "vite",
+    "build:watch": "vite build --watch",
     "build": "tsc",
-    "build:watch": "tsc --watch",
-    "docs": "typedoc",
-    "preview": "vite preview"
+    "docs": "typedoc"
   },
   "devDependencies": {
     "@types/d3-force": "^3.0.10",
@@ -36,7 +42,8 @@
     "typedoc": "^0.28.5",
     "typedoc-plugin-markdown": "^4.6.4",
     "typescript": "^5.8.3",
-    "vite": "^6.3.1"
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4"
   },
   "dependencies": {
     "d3-force": "^3.0.0",

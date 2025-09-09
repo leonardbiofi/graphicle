@@ -1,6 +1,7 @@
 import { Edge, NodeGfx } from "../types";
 import BaseEdge from "./base";
 import { Sprite, Texture } from "pixi.js";
+// import ArrowSprite from "./arrow";
 export default class StraightEdge extends BaseEdge {
   constructor(edge: Edge, srcNodeGfx: NodeGfx, tgtNodeGfx: NodeGfx) {
     super(edge, srcNodeGfx, tgtNodeGfx);
@@ -13,6 +14,18 @@ export default class StraightEdge extends BaseEdge {
     this.updatePosition();
   }
 
+  attachMarkerEnd() {
+    // const markerEnd = new ArrowSprite();
+    // const { x: tx, y: ty } = this.tgtNodeGfx.getCenter();
+    // const { x: sx, y: sy } = this.srcNodeGfx.getCenter();
+    // markerEnd.x = tx - sx;
+    // markerEnd.y = ty - sy;
+    // markerEnd.anchor.set(0.5);
+    // markerEnd.scale.set(0.4);
+    // // markerEnd.rotation = -this.lineAngle.target;
+    // markerEnd.label = "markerEnd";
+    // this.addChild(markerEnd);
+  }
   updatePosition() {
     // @ts-ignore
     const sourceNodeCenter = this.srcNodeGfx.getCenter();

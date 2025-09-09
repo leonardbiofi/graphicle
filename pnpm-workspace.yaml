@@ -1,9 +1,9 @@
 packages:
-  # all packages in direct subdirs of packages/
-  - "packages/*"
-  # all packages in subdirs of components/
-  - "examples/**"
-  # Library documentation
-  - "docs"
-  # demo
-  - "demo"
+  - packages/*
+  - examples/**
+  - docs
+  - demo
+
+overrides:
+  '@graphicle/base': link:../../.local/share/pnpm/global/5/node_modules/@graphicle/base
+  base: link:../../.local/share/pnpm/global/5/node_modules/@graphicle/base

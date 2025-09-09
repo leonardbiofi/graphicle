@@ -1,4 +1,5 @@
 import { Application, FederatedPointerEvent, Renderer } from "pixi.js";
+import { Assets } from "pixi.js";
 
 import { GraphicleStore } from "./store";
 import GraphicleRenderer from "./renderer";
@@ -191,6 +192,8 @@ const createGraphicle = async ({
   initialState,
   options,
 }: createGraphicleProps): Promise<Graphicle> => {
+  await Assets.init();
+
   const graphicle = new Graphicle({ ...initialState }, options);
 
   await graphicle.mount(container);

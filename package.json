@@ -29,5 +29,9 @@
   "engines": {
     "node": ">=20",
     "pnpm": ">=3"
+  },
+  "dependencies": {
+    "@graphicle/base": "link:../../.local/share/pnpm/global/5/node_modules/@graphicle/base",
+    "base": "link:../../.local/share/pnpm/global/5/node_modules/@graphicle/base"
   }
 }
