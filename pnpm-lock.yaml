@@ -4,10 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  base: link:../../.local/share/pnpm/global/5/node_modules/@graphicle/base
-  '@graphicle/base': link:../../.local/share/pnpm/global/5/node_modules/@graphicle/base
-
 importers:
 
   .:
@@ -21,6 +17,9 @@ importers:
 
   demo:
     dependencies:
+      '@graphicle/base':
+        specifier: workspace:*
+        version: link:../packages/base
       '@radix-ui/react-collapsible':
         specifier: ^1.1.12
         version: 1.1.12(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -78,6 +77,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
+      reselect:
+        specifier: ^5.1.1
+        version: 5.1.1
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1
@@ -226,8 +228,8 @@ importers:
   examples/ts:
     dependencies:
       '@graphicle/base':
-        specifier: link:../../../../.local/share/pnpm/global/5/node_modules/@graphicle/base
-        version: link:../../../../.local/share/pnpm/global/5/node_modules/@graphicle/base
+        specifier: workspace:*
+        version: link:../../packages/base
       path:
         specifier: ^0.12.7
         version: 0.12.7
@@ -288,8 +290,8 @@ importers:
   packages/react:
     dependencies:
       '@graphicle/base':
-        specifier: link:../../../../.local/share/pnpm/global/5/node_modules/@graphicle/base
-        version: link:../../../../.local/share/pnpm/global/5/node_modules/@graphicle/base
+        specifier: workspace:*
+        version: link:../base
     devDependencies:
       '@rollup/plugin-commonjs':
         specifier: ^28.0.3
@@ -7203,6 +7205,9 @@ packages:
 
   requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
+
+  reselect@5.1.1:
+    resolution: {integrity: sha512-K/BG6eIky/SBpzfHZv/dd+9JBFiS4SWV7FIujVyJRux6e45+73RaUHXLmIR1f7WOMaQ0U1km6qwklRQxpJJY0w==}
 
   resolve-alpn@1.2.1:
     resolution: {integrity: sha512-0a1F4l73/ZFZOakJnQ3FvkJ2+gSTQWz/r2KE5OdDY0TxPm5h4GkqkWWfM47T7HsbnOtcJVEF4epCVy6u7Q3K+g==}
@@ -17115,6 +17120,8 @@ snapshots:
   require-like@0.1.2: {}
 
   requires-port@1.0.0: {}
+
+  reselect@5.1.1: {}
 
   resolve-alpn@1.2.1: {}
 

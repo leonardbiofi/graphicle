@@ -3,7 +3,3 @@ packages:
   - examples/**
   - docs
   - demo
-
-overrides:
-  '@graphicle/base': link:../../.local/share/pnpm/global/5/node_modules/@graphicle/base
-  base: link:../../.local/share/pnpm/global/5/node_modules/@graphicle/base
