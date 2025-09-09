@@ -1,15 +1,16 @@
 import { createGraphicle, Graphicle } from "@graphicle/base";
 import { RefObject, useEffect, useRef } from "react";
 import CanvasControls from "./CanvasControls";
-interface CanvasWrapperProps {
-  nodes: [];
-  edges: [];
-}
+import { useCanvasStore } from "@/store/canvasStore";
+interface CanvasWrapperProps {}
 
-export default function CanvasWrapper({ nodes, edges }: CanvasWrapperProps) {
+export default function CanvasWrapper({}: CanvasWrapperProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const graphicleRef = useRef<Graphicle>(null);
   const initializeRef = useRef<boolean>(false);
+  const nodes = useCanvasStore((state) => state.nodes);
+  const edges = useCanvasStore((state) => state.edges);
+
   useEffect(() => {
     const mountGraphicle = async () => {
       if (!containerRef.current) return;
