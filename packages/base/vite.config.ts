@@ -4,6 +4,8 @@ import path from "path";
 import dts from "vite-plugin-dts";
 export default defineConfig({
   build: {
+    outDir: "dist",
+    emptyOutDir: false, // <-- Don't delete the output folder before build
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "graphicle",

@@ -79,7 +79,7 @@ export default class BaseEdge extends Container {
 
     // this.addChild(line);
 
-    this.attachMarkerEnd();
+    // this.attachMarkerEnd();
     this.attachLabel();
   }
   moveRerender() {
@@ -151,20 +151,6 @@ export default class BaseEdge extends Container {
     //   coefficientLabel.y = this.midCurve.y - this.y;
     //   this.addChild(coefficientLabel);
     // }
-  }
-  attachMarkerEnd() {
-    // const texture = this.canvas.app.renderer.generateTexture({
-    //   target: arrow,
-    //   resolution: 20,
-    // });
-    // const markerEnd = new Sprite(texture);
-    // markerEnd.x = this.coords.itx - this.coords.sx;
-    // markerEnd.y = this.coords.ity - this.coords.sy;
-    // markerEnd.anchor.set(0.5);
-    // markerEnd.scale.set(0.4);
-    // markerEnd.rotation = -this.lineAngle.target;
-    // markerEnd.label = "markerEnd";
-    // this.addChild(markerEnd);
   }
 
   attachLabel() {

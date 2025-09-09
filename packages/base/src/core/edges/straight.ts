@@ -1,7 +1,7 @@
 import { Edge, NodeGfx } from "../types";
 import BaseEdge from "./base";
 import { Sprite, Texture } from "pixi.js";
-// import ArrowSprite from "./arrow";
+import ArrowSprite from "./arrow";
 export default class StraightEdge extends BaseEdge {
   constructor(edge: Edge, srcNodeGfx: NodeGfx, tgtNodeGfx: NodeGfx) {
     super(edge, srcNodeGfx, tgtNodeGfx);
@@ -12,53 +12,74 @@ export default class StraightEdge extends BaseEdge {
   initGraphics(): void {
     super.initGraphics();
     this.updatePosition();
+    // this.attachMarkerEnd();
   }
 
   attachMarkerEnd() {
-    // const markerEnd = new ArrowSprite();
-    // const { x: tx, y: ty } = this.tgtNodeGfx.getCenter();
-    // const { x: sx, y: sy } = this.srcNodeGfx.getCenter();
-    // markerEnd.x = tx - sx;
-    // markerEnd.y = ty - sy;
-    // markerEnd.anchor.set(0.5);
-    // markerEnd.scale.set(0.4);
-    // // markerEnd.rotation = -this.lineAngle.target;
-    // markerEnd.label = "markerEnd";
-    // this.addChild(markerEnd);
+    const markerEnd = new ArrowSprite();
+    const { x: tx, y: ty } = this.tgtNodeGfx.getCenter();
+    const { x: sx, y: sy } = this.srcNodeGfx.getCenter();
+
+    const dx = tx - sx;
+    const dy = ty - sy;
+    const length = Math.hypot(dx, dy);
+    const adjustedLength = length - 22 * 2;
+
+    // const rotation = Math.atan2(tx - sx, ty - sy);
+    // markerEnd.x = this.x - tx;
+    // markerEnd.y = this.y - ty;
+    markerEnd.position.set(0, adjustedLength / 2); // since container is centered
+    // markerEnd.x = -tx - this.y;
+    // markerEnd.y = -ty - this.x;
+    markerEnd.anchor.set(0.5, 0.5);
+    markerEnd.scale.set(0.4);
+    // markerEnd.rotation = rotation;
+    markerEnd.label = "markerEnd";
+    this.addChild(markerEnd);
   }
   updatePosition() {
-    // @ts-ignore
-    const sourceNodeCenter = this.srcNodeGfx.getCenter();
-    // @ts-ignore
-    const targetNodeCenter = this.tgtNodeGfx.getCenter();
-
+    // // @ts-ignore
+    // const sourceNodeCenter = this.srcNodeGfx.getCenter();
+    // // @ts-ignore
+    // const targetNodeCenter = this.tgtNodeGfx.getCenter();
+    const { x: tx, y: ty } = this.tgtNodeGfx.getCenter();
+    const { x: sx, y: sy } = this.srcNodeGfx.getCenter();
     // this.x = sourceNodeCenter.x;
     // this.y = sourceNodeCenter.y;
-    this.x = (sourceNodeCenter.x + targetNodeCenter.x) / 2;
-    this.y = (sourceNodeCenter.y + targetNodeCenter.y) / 2;
-
-    this.rotation = -Math.atan2(
-      targetNodeCenter.x - sourceNodeCenter.x,
-      targetNodeCenter.y - sourceNodeCenter.y
-    );
+    this.x = (sx + tx) / 2;
+    this.y = (sy + ty) / 2;
+    const length = Math.hypot(tx - sx, ty - sy);
+    const rotation = -Math.atan2(tx - sx, ty - sy);
+    const adjustedLength = length - 20 * 2;
+    this.rotation = rotation;
 
     let line = this.getChildByLabel("line") as Sprite;
     if (!line) {
       line = new Sprite(Texture.WHITE);
       line.label = "line";
       line.anchor.set(0.5);
+      this.addChild(line);
     }
     line.width = 1;
-    line.height = Math.hypot(
-      targetNodeCenter.x - sourceNodeCenter.x,
-      targetNodeCenter.y - sourceNodeCenter.y
-    );
+    line.height = adjustedLength;
+
+    // Render markerend
+    let markerEnd = this.getChildByLabel("markerEnd") as Sprite;
+
+    if (!markerEnd) {
+      markerEnd = new ArrowSprite();
+      markerEnd.anchor.set(0.5, 0.5);
+      markerEnd.scale.set(0.4);
+      markerEnd.label = "markerEnd";
+      this.addChild(markerEnd);
+    }
+    markerEnd.position.set(0, (adjustedLength - 4) / 2); // since container is centered
+
     // line.tint = "red";
     // const line = new Graphics()
     //   .moveTo(0, 0)
     //   .lineTo(targetNodeCenter.x - this.x, targetNodeCenter.y - this.y)
     //   .stroke({ color: 0xff0000, width: 3 });
     // line.label = "line";
-    this.addChild(line);
   }
 }
