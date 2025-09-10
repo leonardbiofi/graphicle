@@ -15,20 +15,46 @@ abstract class BaseNode extends Container {
     this.node = node;
     this.label = "node";
     this.initGraphics();
-    this.attachLabel();
     this.attachEvents();
+    this.render();
   }
   setContext(context: GraphicleContext): void {
     this.context = context;
   }
+
   initGraphics() {
-    const { position } = this.node;
-    this.x = position.x;
-    this.y = position.y;
     this.alpha = 1;
     this.cursor = "grab";
     this.eventMode = "static";
     this.cullable = true;
+  }
+
+  renderContainer() {
+    const { position } = this.node;
+    this.x = position.x;
+    this.y = position.y;
+  }
+  renderLabel() {
+    const text = this.node.data.label;
+    if (!text) return;
+
+    /** Get the dimensions */
+    const bounds = this.getBounds();
+    const maxWidth = bounds.width * 0.9;
+
+    let label = this.getChildByLabel("label") as Label;
+    if (!label) {
+      label = new Label(text);
+      label.anchor.set(0.5);
+      this.addChild(label);
+    }
+    const textStyle = label.style;
+    label.position.set(bounds.width / 2, bounds.height / 2);
+    label.text = truncateTextToFit(text, textStyle, maxWidth);
+  }
+  render() {
+    this.renderContainer();
+    this.renderLabel();
   }
 
   getCenter(): XYPosition {
@@ -37,35 +63,35 @@ abstract class BaseNode extends Container {
       y: this.y + this.height / 2,
     };
   }
-  attachLabel() {
-    const text = this.node.data.label;
-    if (!text) return;
+  // attachLabel() {
+  //   const text = this.node.data.label;
+  //   if (!text) return;
 
-    /** Get the dimensions */
-    const bounds = this.getBounds();
-    const maxWidth = bounds.width * 0.9;
+  //   /** Get the dimensions */
+  //   const bounds = this.getBounds();
+  //   const maxWidth = bounds.width * 0.9;
 
-    const label = new Label(text);
-    const textStyle = label.style;
-    label.anchor.set(0.5);
-    label.position.set(bounds.width / 2, bounds.height / 2);
+  //   const label = new Label(text);
+  //   const textStyle = label.style;
+  //   label.anchor.set(0.5);
+  //   label.position.set(bounds.width / 2, bounds.height / 2);
 
-    const truncated = truncateTextToFit(text, textStyle, maxWidth);
-    label.text = truncated;
-    this.addChild(label);
-    // const labelGfx = new Container();
-    // labelGfx.x = this.width / 2;
-    // labelGfx.y = this.height / 2;
-    // labelGfx.label = "label";
-    // const label = new BitmapText({
-    //   text: this.nodeData.data.name,
-    //   style: textStyle,
-    // });
-    // label.x = -label.width / 2;
-    // label.y = -label.height / 2;
-    // labelGfx.addChild(label);
-    // this.addChild(labelGfx);
-  }
+  //   const truncated = truncateTextToFit(text, textStyle, maxWidth);
+  //   label.text = truncated;
+  //   this.addChild(label);
+  //   // const labelGfx = new Container();
+  //   // labelGfx.x = this.width / 2;
+  //   // labelGfx.y = this.height / 2;
+  //   // labelGfx.label = "label";
+  //   // const label = new BitmapText({
+  //   //   text: this.nodeData.data.name,
+  //   //   style: textStyle,
+  //   // });
+  //   // label.x = -label.width / 2;
+  //   // label.y = -label.height / 2;
+  //   // labelGfx.addChild(label);
+  //   // this.addChild(labelGfx);
+  // }
 
   attachEvents() {
     this.on("pointerdown", (event) => {

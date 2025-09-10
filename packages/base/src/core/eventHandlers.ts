@@ -2,7 +2,7 @@ import { FederatedPointerEvent } from "pixi.js";
 import GraphicleContext, { ContextClient } from "./context";
 import { GraphicleEventType } from "./dispatcher";
 import type { Node, XYPosition } from "./types";
-
+import type { NodeChange } from "./store";
 export default class EventHandlers implements ContextClient {
   context!: GraphicleContext | null;
 
@@ -209,7 +209,31 @@ export default class EventHandlers implements ContextClient {
     // const multipleSelect =
     //   this.context.store.getNodes().filter((n) => n.selected).length > 1;
     // Get all the other selected nodes and update their position relative to the one being dragged
-    const nextNodes = selectedNodes.map((n) => {
+    // const nextNodes = selectedNodes.map((n) => {
+    //   if (
+    //     n.selected &&
+    //     n.id !== clickedNode.id &&
+    //     multipleSelect &&
+    //     (clickedNode.selected || event.ctrlKey)
+    //   ) {
+    //     return {
+    //       ...n,
+    //       position: {
+    //         x: n.position.x + t.x,
+    //         y: n.position.y + t.y,
+    //       },
+    //       // selected: true,
+    //     };
+    //   } else if (n.id === clickedNode.id)
+    //     return {
+    //       ...n,
+    //       position: { x: next.x, y: next.y },
+    //       // selected: this.options.selectOnDrag,
+    //     };
+    //   else return { ...n };
+    // });
+
+    const nextNodes: NodeChange[] = selectedNodes.map((n) => {
       if (
         n.selected &&
         n.id !== clickedNode.id &&
@@ -217,23 +241,28 @@ export default class EventHandlers implements ContextClient {
         (clickedNode.selected || event.ctrlKey)
       ) {
         return {
-          ...n,
-          position: {
-            x: n.position.x + t.x,
-            y: n.position.y + t.y,
+          type: "update",
+          id: n.id,
+          changes: {
+            position: {
+              x: n.position.x + t.x,
+              y: n.position.y + t.y,
+            },
           },
-          // selected: true,
         };
-      } else if (n.id === clickedNode.id)
+      }
+      if (n.id === clickedNode.id)
         return {
-          ...n,
-          position: { x: next.x, y: next.y },
-          // selected: this.options.selectOnDrag,
+          type: "update",
+          id: n.id,
+          changes: {
+            position: { x: next.x, y: next.y },
+          },
         };
-      else return { ...n };
     });
     // Render the node
-    this.context.renderer.updateNodesPosition(nextNodes);
+    this.context.renderer.applyNodeChangesInternal(nextNodes);
+    // this.context.renderer.updateNodesPosition(nextNodes);
     // this.context.renderer.updateSelectedNodes(nextNodes);
   }
 

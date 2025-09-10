@@ -79,58 +79,113 @@ export class GraphicleStore {
     }
   }
 
+  applyNodeChanges(changes: NodeChange[]) {
+    const nextNodes = changes.reduce<Record<NodeId, Node>>(
+      (nodes, change) => {
+        switch (change.type) {
+          case "add":
+            nodes[change.item.id] = { ...change.item };
+            return nodes;
+          // return [...nodes, change.item];
+          case "remove":
+            delete nodes[change.id];
+            return nodes;
+          // return nodes.filter((node) => node.id !== change.id);
+          case "update":
+            nodes[change.id] = { ...nodes[change.id], ...changes };
+            return nodes;
+          // return nodes.map((node) =>
+          //   node.id === change.id ? { ...node, ...change.changes } : node
+          // );
+          default:
+            return nodes;
+        }
+      },
+      { ...this._state.nodes }
+    );
+
+    this._state.nodes = nextNodes;
+  }
+  applyEdgeChanges(changes: EdgeChange[]) {
+    const nextEdges = changes.reduce<Record<EdgeId, Edge>>(
+      (edges, change) => {
+        switch (change.type) {
+          case "add":
+            edges[change.item.id] = { ...change.item };
+            return edges;
+          // return [...edges, change.item];
+          case "remove":
+            delete edges[change.id];
+            return edges;
+          // return edges.filter((node) => node.id !== change.id);
+          case "update":
+            edges[change.id] = { ...edges[change.id], ...changes };
+            return edges;
+          // return edges.map((node) =>
+          //   node.id === change.id ? { ...node, ...change.changes } : node
+          // );
+          default:
+            return edges;
+        }
+      },
+      { ...this._state.edges }
+    );
+
+    this._state.edges = nextEdges;
+  }
+
   setState(nextState: Partial<AppState>) {
     this._state = { ...this.state, ...nextState };
   }
 }
 
 // DIFF SYNC SYSTEM
-type NodeChange =
+export type NodeChange =
   | { type: "add"; item: Node }
   | { type: "remove"; id: string }
   | { type: "update"; id: string; changes: Partial<Node> };
 
-type EdgeChange =
+export type EdgeChange =
   | { type: "add"; item: Edge }
   | { type: "remove"; id: string }
   | { type: "update"; id: string; changes: Partial<Edge> };
 
-export function applyNodeChanges(
-  changes: NodeChange[],
-  currentNodes: Node[]
-): Node[] {
-  return changes.reduce((nodes, change) => {
-    switch (change.type) {
-      case "add":
-        return [...nodes, change.item];
-      case "remove":
-        return nodes.filter((node) => node.id !== change.id);
-      case "update":
-        return nodes.map((node) =>
-          node.id === change.id ? { ...node, ...change.changes } : node
-        );
-      default:
-        return nodes;
-    }
-  }, currentNodes);
-}
+// export function applyNodeChanges(
+//   changes: NodeChange[],
+//   currentNodes: Node[]
+// ): Node[] {
+//   return changes.reduce((nodes, change) => {
+//     switch (change.type) {
+//       case "add":
+//         return [...nodes, change.item];
+//       case "remove":
+//         return nodes.filter((node) => node.id !== change.id);
+//       case "update":
+//         return nodes.map((node) =>
+//           node.id === change.id ? { ...node, ...change.changes } : node
+//         );
+//       default:
+//         return nodes;
+//     }
+//   }, currentNodes);
+// }
 
-export function applyEdgeChanges(
-  changes: EdgeChange[],
-  currentEdges: Edge[]
-): Edge[] {
-  return changes.reduce((edges, change) => {
-    switch (change.type) {
-      case "add":
-        return [...edges, change.item];
-      case "remove":
-        return edges.filter((edge) => edge.id !== change.id);
-      case "update":
-        return edges.map((edge) =>
-          edge.id === change.id ? { ...edge, ...change.changes } : edge
-        );
-      default:
-        return edges;
-    }
-  }, currentEdges);
-}
+// export function applyEdgeChanges(
+//   changes: EdgeChange[],
+//   currentEdges: Edge[]
+// ): Edge[] {
+//   return changes.reduce((edges, change) => {
+//     switch (change.type) {
+//       case "add":
+//         return [...edges, change.item];
+//       case "remove":
+//         return edges.filter((edge) => edge.id !== change.id);
+//       case "update":
+//         return edges.map((edge) =>
+//           edge.id === change.id ? { ...edge, ...change.changes } : edge
+//         );
+//       default:
+//         return edges;
+//     }
+//   }, currentEdges);
+// }

@@ -16,6 +16,7 @@ import GraphicleContext, { ContextClient } from "./context";
 import GraphicleViewport from "./viewport";
 import { ViewRegistry } from "./view";
 
+import type { NodeChange, EdgeChange } from "./store";
 export enum Layers {
   GROUPS = "groups",
   NODES = "nodes",
@@ -29,7 +30,7 @@ export default class GraphicleRenderer implements ContextClient {
   viewRegistry: ViewRegistry;
   nodeIdToNodeGfx: Map<NodeId, NodeGfx>;
   edgeIdToEdgeGfx: Map<EdgeId, EdgeGfx>;
-
+  nodeToEdges: Map<NodeId, Set<EdgeId>>;
   protected renderRequestId: number | null; // Request render
 
   constructor(viewport: GraphicleViewport, { nodes, edges }: GraphData) {
@@ -37,17 +38,28 @@ export default class GraphicleRenderer implements ContextClient {
     this.context = null;
     this.nodeIdToNodeGfx = new Map();
     this.edgeIdToEdgeGfx = new Map();
-
+    this.nodeToEdges = new Map();
     this.viewRegistry = new ViewRegistry();
 
     this.initializeLayers();
     this.initializeNodes(nodes);
     this.initializeEdges(edges);
+    this.buildNodeToEdgeMap(edges);
 
     // Request render
     this.renderRequestId = null;
   }
+  buildNodeToEdgeMap(edges: Edge[]) {
+    for (const edge of edges) {
+      if (!this.nodeToEdges.has(edge.source))
+        this.nodeToEdges.set(edge.source, new Set());
+      if (!this.nodeToEdges.has(edge.target))
+        this.nodeToEdges.set(edge.target, new Set());
 
+      this.nodeToEdges.get(edge.source)!.add(edge.id);
+      this.nodeToEdges.get(edge.target)!.add(edge.id);
+    }
+  }
   setContext(context: GraphicleContext) {
     this.context = context;
   }
@@ -91,43 +103,53 @@ export default class GraphicleRenderer implements ContextClient {
     const layer = this.getLayer(Layers.NODES);
     layer.removeChildren();
 
-    const nodeIdGfxPairs: [NodeId, NodeGfx][] = nodes.map((node) => {
-      // Create the node
-      const nodeGfx = this.viewRegistry.createNode(node.type, node);
-
-      // Inject the context in each nodes
-      nodeGfx.setContext(this.context);
-      layer.addChild(nodeGfx);
-
-      return [node.id, nodeGfx];
+    const changes = nodes.map((node: Node) => {
+      return { type: "add", item: node };
     });
 
-    this.nodeIdToNodeGfx = new Map(nodeIdGfxPairs);
+    this.applyNodeChangesInternal(changes);
+
+    // const nodeIdGfxPairs: [NodeId, NodeGfx][] = nodes.map((node) => {
+    //   // Create the node
+    //   const nodeGfx = this.viewRegistry.createNode(node.type, node);
+
+    //   // Inject the context in each nodes
+    //   nodeGfx.setContext(this.context);
+    //   layer.addChild(nodeGfx);
+
+    //   return [node.id, nodeGfx];
+    // });
+
+    // this.nodeIdToNodeGfx = new Map(nodeIdGfxPairs);
   }
   initializeEdges(edges: Edge[]) {
     const layer = this.getLayer(Layers.EDGES);
     layer.removeChildren();
-
-    const edgeIdGfxPairs: [EdgeId, EdgeGfx][] = edges.map((edge) => {
-      const srcNodeGfx = this.nodeIdToNodeGfx.get(edge.source);
-      const tgtNodeGfx = this.nodeIdToNodeGfx.get(edge.target);
-      if (!srcNodeGfx || !tgtNodeGfx) {
-        throw new Error("Fatal: Source or target Graphics undefined.");
-      }
-      // Create the edge
-
-      const edgeGfx = this.viewRegistry.createEdge(
-        edge.type,
-        edge,
-        srcNodeGfx,
-        tgtNodeGfx
-      );
-      layer.addChild(edgeGfx);
-
-      return [edge.id, edgeGfx];
+    const changes = edges.map((edge: Edge) => {
+      return { type: "add", item: edge };
     });
 
-    this.edgeIdToEdgeGfx = new Map(edgeIdGfxPairs);
+    this.applyEdgeChangesInternal(changes);
+    // const edgeIdGfxPairs: [EdgeId, EdgeGfx][] = edges.map((edge) => {
+    //   const srcNodeGfx = this.nodeIdToNodeGfx.get(edge.source);
+    //   const tgtNodeGfx = this.nodeIdToNodeGfx.get(edge.target);
+    //   if (!srcNodeGfx || !tgtNodeGfx) {
+    //     throw new Error("Fatal: Source or target Graphics undefined.");
+    //   }
+    //   // Create the edge
+
+    //   const edgeGfx = this.viewRegistry.createEdge(
+    //     edge.type,
+    //     edge,
+    //     srcNodeGfx,
+    //     tgtNodeGfx
+    //   );
+    //   layer.addChild(edgeGfx);
+
+    //   return [edge.id, edgeGfx];
+    // });
+
+    // this.edgeIdToEdgeGfx = new Map(edgeIdGfxPairs);
   }
 
   // addNode(node: Node): NodeGfx {
@@ -299,6 +321,111 @@ export default class GraphicleRenderer implements ContextClient {
       this.initializeNodes(nodes);
       this.initializeEdges(edges);
       this.requestRender();
+    }
+  }
+
+  applyNodeChangesInternal(changes: NodeChange[]) {
+    this.context?.store.applyNodeChanges(changes);
+
+    const layer = this.getLayer(Layers.NODES);
+
+    // Perform a render or an update
+    for (const change of changes) {
+      if (change.type === "add") {
+        // Add the new node to the dom
+        const node = change.item;
+        const nodeGfx = this.viewRegistry.createNode(node.type, node);
+
+        // Inject the context in each nodes
+        nodeGfx.setContext(this.context);
+        layer.addChild(nodeGfx);
+
+        this.nodeIdToNodeGfx.set(node.id, nodeGfx);
+      } else if (change.type === "remove") {
+        // Remove from dom
+        const nodeGfx = this.nodeIdToNodeGfx.get(change.id)!;
+        if (!nodeGfx) continue;
+        nodeGfx?.destroy({ children: true });
+
+        // Remove also the edges connected to it
+        const edgeIds = this.nodeToEdges.get(change.id);
+        if (!edgeIds) continue;
+        for (const edgeId of edgeIds) {
+          const edgeGfx = this.edgeIdToEdgeGfx.get(edgeId);
+          if (!edgeGfx) continue;
+          edgeGfx.destroy({ children: true });
+          this.edgeIdToEdgeGfx.delete(edgeId);
+        }
+        // Remove the set from the map
+        this.nodeToEdges.delete(change.id);
+      } else if (change.type === "update") {
+        // Rerender the node
+        const nodeGfx = this.nodeIdToNodeGfx.get(change.id)!;
+        if (!nodeGfx) continue;
+        nodeGfx.node = { ...nodeGfx.node, ...changes };
+        nodeGfx.render();
+
+        // Rerender the edges connected to that node as well
+        const edgeIds = this.nodeToEdges.get(change.id);
+        if (!edgeIds) continue;
+        for (const edgeId of edgeIds) {
+          const edgeGfx = this.edgeIdToEdgeGfx.get(edgeId);
+          if (!edgeGfx) continue;
+
+          if (edgeGfx.edge.source === change.id) {
+            edgeGfx.srcNodeGfx = this.nodeIdToNodeGfx.get(change.id)!;
+          }
+          if (edgeGfx.edge.target === change.id) {
+            edgeGfx.tgtNodeGfx = this.nodeIdToNodeGfx.get(change.id)!;
+          }
+
+          edgeGfx.render();
+        }
+      }
+    }
+    this.requestRender();
+  }
+  applyEdgeChangesInternal(changes: EdgeChange[]) {
+    this.context?.store.applyEdgeChanges(changes);
+
+    const layer = this.getLayer(Layers.NODES);
+
+    for (const change of changes) {
+      if (change.type === "add") {
+        const edge = change.item;
+        const srcNodeGfx = this.nodeIdToNodeGfx.get(edge.source);
+        const tgtNodeGfx = this.nodeIdToNodeGfx.get(edge.target);
+        if (!srcNodeGfx || !tgtNodeGfx) {
+          throw new Error("Fatal: Source or target Graphics undefined.");
+        }
+        // Create the edge
+
+        const edgeGfx = this.viewRegistry.createEdge(
+          edge.type,
+          edge,
+          srcNodeGfx,
+          tgtNodeGfx
+        );
+        layer.addChild(edgeGfx);
+        this.edgeIdToEdgeGfx.set(edge.id, edgeGfx);
+
+        // edgeGfx.setContext(this.context);
+      } else if (change.type === "remove") {
+        // Unmount the edge from the DOM
+        const edgeGfx = this.edgeIdToEdgeGfx.get(change.id);
+        if (!edgeGfx) continue;
+
+        const sourceSet = this.nodeToEdges.get(edgeGfx.edge.source);
+        const targetSet = this.nodeToEdges.get(edgeGfx.edge.target);
+
+        if (sourceSet && sourceSet.has(change.id)) sourceSet.delete(change.id);
+        if (targetSet && targetSet.has(change.id)) targetSet.delete(change.id);
+        edgeGfx.destroy({ children: true });
+
+        this.edgeIdToEdgeGfx.delete(change.id);
+      } else if (change.type === "update") {
+        // TODO: To be implemented
+      }
     }
   }
 }

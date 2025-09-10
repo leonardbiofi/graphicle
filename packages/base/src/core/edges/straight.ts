@@ -15,7 +15,7 @@ export default class StraightEdge extends BaseEdge {
     // this.attachMarkerEnd();
   }
 
-  updatePosition() {
+  render() {
     // // @ts-ignore
     // const sourceNodeCenter = this.srcNodeGfx.getCenter();
     // // @ts-ignore

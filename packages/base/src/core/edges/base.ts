@@ -43,6 +43,7 @@ export default class BaseEdge extends Container {
     this.line = new Graphics();
     this.initGraphics();
   }
+  render() {}
 
   initGraphics() {
     // const line = new Graphics();
@@ -80,7 +81,7 @@ export default class BaseEdge extends Container {
     // this.addChild(line);
 
     // this.attachMarkerEnd();
-    this.attachLabel();
+    // this.attachLabel();
   }
   moveRerender() {
     // const {
