@@ -15,28 +15,6 @@ export default class StraightEdge extends BaseEdge {
     // this.attachMarkerEnd();
   }
 
-  attachMarkerEnd() {
-    const markerEnd = new ArrowSprite();
-    const { x: tx, y: ty } = this.tgtNodeGfx.getCenter();
-    const { x: sx, y: sy } = this.srcNodeGfx.getCenter();
-
-    const dx = tx - sx;
-    const dy = ty - sy;
-    const length = Math.hypot(dx, dy);
-    const adjustedLength = length - 22 * 2;
-
-    // const rotation = Math.atan2(tx - sx, ty - sy);
-    // markerEnd.x = this.x - tx;
-    // markerEnd.y = this.y - ty;
-    markerEnd.position.set(0, adjustedLength / 2); // since container is centered
-    // markerEnd.x = -tx - this.y;
-    // markerEnd.y = -ty - this.x;
-    markerEnd.anchor.set(0.5, 0.5);
-    markerEnd.scale.set(0.4);
-    // markerEnd.rotation = rotation;
-    markerEnd.label = "markerEnd";
-    this.addChild(markerEnd);
-  }
   updatePosition() {
     // // @ts-ignore
     // const sourceNodeCenter = this.srcNodeGfx.getCenter();

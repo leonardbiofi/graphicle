@@ -87,3 +87,54 @@ export class GraphicleStore {
     this._state = { ...this.state, ...nextState };
   }
 }
+
+// DIFF SYNC SYSTEM
+type NodeChange =
+  | { type: "add"; item: Node }
+  | { type: "remove"; id: string }
+  | { type: "update"; id: string; changes: Partial<Node> };
+
+type EdgeChange =
+  | { type: "add"; item: Edge }
+  | { type: "remove"; id: string }
+  | { type: "update"; id: string; changes: Partial<Edge> };
+
+export function applyNodeChanges(
+  changes: NodeChange[],
+  currentNodes: Node[]
+): Node[] {
+  return changes.reduce((nodes, change) => {
+    switch (change.type) {
+      case "add":
+        return [...nodes, change.item];
+      case "remove":
+        return nodes.filter((node) => node.id !== change.id);
+      case "update":
+        return nodes.map((node) =>
+          node.id === change.id ? { ...node, ...change.changes } : node
+        );
+      default:
+        return nodes;
+    }
+  }, currentNodes);
+}
+
+export function applyEdgeChanges(
+  changes: EdgeChange[],
+  currentEdges: Edge[]
+): Edge[] {
+  return changes.reduce((edges, change) => {
+    switch (change.type) {
+      case "add":
+        return [...edges, change.item];
+      case "remove":
+        return edges.filter((edge) => edge.id !== change.id);
+      case "update":
+        return edges.map((edge) =>
+          edge.id === change.id ? { ...edge, ...change.changes } : edge
+        );
+      default:
+        return edges;
+    }
+  }, currentEdges);
+}

@@ -6,7 +6,7 @@ export default function CanvasRightPanel() {
 
   return (
     <div>
-      <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2">
+      <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full">
         Node Info
       </h3>
       {selectedNodes.length > 0 && <NodeInfo node={selectedNodes[0]} />}

@@ -253,11 +253,13 @@ export default class GraphicleRenderer implements ContextClient {
         const { x, y } = nodeGfx.getCenter();
         // @ts-expect-error it does have containsPoint FIXME:
         const contains = rectangle.containsPoint(new Point(x, y));
-        node.selected = contains;
+        this.setSelectNode(node, contains);
+        // node.selected = contains;
       });
+      //FIXME: don't cann set selectNode for each node but rather batch the update
 
-      this.context?.store.updateNodes(nodes, true);
-      this.updateSelectedNodes(nodes);
+      // this.context?.store.updateNodes(nodes, true);
+      // this.updateSelectedNodes(nodes);
       rectangle?.destroy({ context: false });
     }
   }
