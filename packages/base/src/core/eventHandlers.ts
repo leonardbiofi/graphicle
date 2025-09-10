@@ -8,11 +8,14 @@ export default class EventHandlers implements ContextClient {
 
   handlers: Handlers;
   options: EventHandlersOptions;
-
+  emitNodeDrag: (event: FederatedPointerEvent) => void;
+  protected _isDragging: Boolean;
   constructor(handlers: Handlers, options: EventHandlersOptions) {
     this.context = null;
     this.handlers = handlers;
     this.options = options;
+    this.emitNodeDrag = () => {};
+    this._isDragging = false;
   }
 
   setContext(context: GraphicleContext): void {
@@ -133,7 +136,7 @@ export default class EventHandlers implements ContextClient {
    * @param _event
    */
   onNodeDragEnd(payload: Node, _event?: FederatedPointerEvent) {
-    this.context?.store.setNodeDrag(null);
+    this._isDragging = false;
 
     // Reset the cursor to 'grab'
     this.context?.renderer.updateNodeCursor(payload);
@@ -141,21 +144,20 @@ export default class EventHandlers implements ContextClient {
   onNodeDragStart(payload: Node, event?: FederatedPointerEvent) {
     if (!this.context || !event) return;
 
+    this._isDragging = true;
     // Select the node if the option selectOnDrag is set to true
     // Unselect other nodes if there is no multiselect
     this.determineSelectedNodes(payload, event.ctrlKey, "drag");
-    this.context.store.setNodeDrag(payload);
+    this._isDragging = true;
   }
   onNodeClick(payload: Node, _event?: FederatedPointerEvent) {
     this.context?.store.setNodeClicked(payload);
   }
   stopNodeDrag() {
-    this.context?.app.stage.off("pointermove");
-    if (this.context?.store.state.nodeDrag)
-      this.context?.eventDispatcher.emit(
-        GraphicleEventType.NODE_DRAGEND,
-        this.context?.store.state.nodeDrag
-      );
+    this.context?.app.stage.off("pointermove", this.emitNodeDrag);
+
+    if (this._isDragging)
+      this.context?.eventDispatcher.emit(GraphicleEventType.NODE_DRAGEND, {});
     this.context?.viewport.unpauseViewport();
   }
   onNodeDrag(
@@ -170,12 +172,13 @@ export default class EventHandlers implements ContextClient {
 
     // Get the clicked node
     const { node: clickedNode, translation } = payload;
-    if (!this.context.store.state.nodeDrag) {
+    if (!this._isDragging) {
       this.context.eventDispatcher.emit(
         GraphicleEventType.NODE_DRAGSTART,
         clickedNode,
         event
       );
+      return;
     }
 
     // Get the coordinate of the destination point
@@ -242,7 +245,7 @@ export default class EventHandlers implements ContextClient {
    */
   onNodePointerDown(payload: Node, event?: FederatedPointerEvent) {
     if (!event) return;
-
+    this._isDragging = false;
     // Get the clicked position by the pointer
     const clickedPoint = this.context?.viewport.toWorld(event.global);
     if (!clickedPoint || !payload) return;
@@ -261,10 +264,11 @@ export default class EventHandlers implements ContextClient {
         event
       );
     };
+    this.emitNodeDrag = emitNodeDrag.bind(this);
     // const throttleNodeDrag = throttle(emitNodeDrag.bind(this), 0);
 
     //register and enable node dragging
-    this.context?.app.stage.on("pointermove", emitNodeDrag.bind(this), {
+    this.context?.app.stage.on("pointermove", this.emitNodeDrag, {
       passive: true,
     });
   }
@@ -279,9 +283,9 @@ export default class EventHandlers implements ContextClient {
     );
 
     // Check whether a node is being dragged
-    const draggedNode = this.context?.store.state.nodeDrag;
+    // const draggedNode = this.context?.store.state.nodeDrag;
     // const previousState = payload.selected;
-    if (!draggedNode) {
+    if (!this._isDragging) {
       this.determineSelectedNodes(payload, !!event?.ctrlKey, "click");
       // if (!event?.ctrlKey) {
       //   this.context?.renderer.unselectAllNodes();
@@ -291,10 +295,12 @@ export default class EventHandlers implements ContextClient {
       //   this.context.renderer.setSelectNode(payload, !previousState);
       // }
     }
+    this._isDragging = false;
+    // this.stopNodeDrag();
   }
   onAppPointerUp(_payload: Node, _event?: FederatedPointerEvent) {
     // If no node was dragged unselect all
-    const nodeDragged = this.context?.store.state.nodeDrag;
+    const nodeDragged = this._isDragging;
     const viewportDragged = this.context?.viewport.dragged;
     const nodeClicked = this.context?.store.state.nodeClicked;
     const rectangleSelect = this.context?.viewport.rectangleSelect;
@@ -302,7 +308,6 @@ export default class EventHandlers implements ContextClient {
       this.context?.renderer.unselectAllNodes();
       this.context?.store.setNodeClicked(null);
     }
-
     // Stop the node dragging
     this.stopNodeDrag();
   }

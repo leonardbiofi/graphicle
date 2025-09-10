@@ -54,7 +54,7 @@ export default class EventDispatcher {
     );
   }
   emit<T, E>(eventType: GraphicleEventType, payload: T, event?: E) {
-    // console.debug("EVENT EMITTED:", { eventType, payload, event });
+    console.debug("EVENT EMITTED:", { eventType, payload, event });
     const eventListeners = this.listeners.get(eventType) || [];
     for (const listener of eventListeners) {
       listener(payload, event);

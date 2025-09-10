@@ -71,6 +71,7 @@ class Graphicle {
       width: SCREEN_WIDTH,
       height: SCREEN_HEIGHT,
       antialias: true,
+      preference: "webgl",
     });
 
     this._app.stage.eventMode = "static";

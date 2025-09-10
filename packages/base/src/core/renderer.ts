@@ -186,8 +186,8 @@ export default class GraphicleRenderer implements ContextClient {
           eds.updatePosition();
         }
       });
-      this.requestRender();
     });
+    this.requestRender();
   }
 
   updateSelectedNodes(nodes: Node[]) {

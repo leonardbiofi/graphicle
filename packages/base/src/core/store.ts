@@ -5,7 +5,6 @@ export type AppState = {
   edges: Record<EdgeId, Edge>;
   selectedNodes: Record<NodeId, Node>;
   // dragCandidates: { nodes: Record<NodeId, Node>; edges: Record<EdgeId, Edge> };
-  nodeDrag: Node | null;
   nodeClicked: Node | null;
 };
 
@@ -14,7 +13,6 @@ export class GraphicleStore {
 
   constructor(initialState?: { nodes: Node[]; edges: Edge[] }) {
     this._state = {
-      nodeDrag: null,
       nodeClicked: null,
       nodes: {},
       edges: {},
@@ -63,9 +61,7 @@ export class GraphicleStore {
       this._state.edges[edge.id] = { ...edge };
     });
   }
-  setNodeDrag(payload: Node | null) {
-    this.state.nodeDrag = payload;
-  }
+
   setNodeClicked(payload: Node | null) {
     this.state.nodeClicked = payload;
   }
