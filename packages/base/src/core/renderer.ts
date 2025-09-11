@@ -10,7 +10,6 @@ import type {
   NodeGfx,
   XYPosition,
 } from "./types";
-import { GraphicleEventType } from "./dispatcher";
 
 import GraphicleContext, { ContextClient } from "./context";
 import GraphicleViewport from "./viewport";
@@ -103,7 +102,7 @@ export default class GraphicleRenderer implements ContextClient {
     const layer = this.getLayer(Layers.NODES);
     layer.removeChildren();
 
-    const changes = nodes.map((node: Node) => {
+    const changes: NodeChange[] = nodes.map((node: Node) => {
       return { type: "add", item: node };
     });
 
@@ -125,7 +124,8 @@ export default class GraphicleRenderer implements ContextClient {
   initializeEdges(edges: Edge[]) {
     const layer = this.getLayer(Layers.EDGES);
     layer.removeChildren();
-    const changes = edges.map((edge: Edge) => {
+
+    const changes: EdgeChange[] = edges.map((edge: Edge) => {
       return { type: "add", item: edge };
     });
 
@@ -225,10 +225,10 @@ export default class GraphicleRenderer implements ContextClient {
       }
     });
   }
-  updateNodeCursor(node: Node) {
+  updateNodeCursor(node: Node, cursor: "grab" | "grabbing") {
     const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
     if (!nodeGfx) return;
-    nodeGfx.cursor = "grab";
+    nodeGfx.cursor = cursor;
     this.requestRender();
   }
   unselectAllNodes() {

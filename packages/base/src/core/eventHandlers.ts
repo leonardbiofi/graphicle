@@ -155,7 +155,7 @@ export default class EventHandlers implements ContextClient {
     this._isDragging = false;
 
     // Reset the cursor to 'grab'
-    this.context?.renderer.updateNodeCursor(payload);
+    // this.context?.renderer.updateNodeCursor(payload, "grab");
   }
   onNodeDragStart(payload: Node, event?: FederatedPointerEvent) {
     if (!this.context || !event) return;

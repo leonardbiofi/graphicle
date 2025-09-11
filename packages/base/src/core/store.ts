@@ -51,11 +51,7 @@ export class GraphicleStore {
       this._state.nodes[node.id] = { ...node };
     });
   }
-  // setSelectedNodes(nodes: Node[]) {
-  //   nodes.forEach((node) => {
-  //     this._state.selectedNodes[node.id] = { ...node };
-  //   });
-  // }
+
   setEdges(edges: Edge[]) {
     edges.forEach((edge) => {
       this._state.edges[edge.id] = { ...edge };
@@ -65,19 +61,19 @@ export class GraphicleStore {
   setNodeClicked(payload: Node | null) {
     this.state.nodeClicked = payload;
   }
-  updateNodes(nodes: Node[], refreshSelected: boolean = false) {
-    nodes.forEach((n) => {
-      // get node
-      const node = this.state.nodes[n.id];
-      if (node) this.state.nodes[n.id] = { ...node, ...n };
-    });
-    if (refreshSelected) {
-      this.state.selectedNodes = {};
-      this.getNodes().forEach((n) => {
-        if (n.selected) this.state.selectedNodes[n.id] = { ...n };
-      });
-    }
-  }
+  // updateNodes(nodes: Node[], refreshSelected: boolean = false) {
+  //   nodes.forEach((n) => {
+  //     // get node
+  //     const node = this.state.nodes[n.id];
+  //     if (node) this.state.nodes[n.id] = { ...node, ...n };
+  //   });
+  //   if (refreshSelected) {
+  //     this.state.selectedNodes = {};
+  //     this.getNodes().forEach((n) => {
+  //       if (n.selected) this.state.selectedNodes[n.id] = { ...n };
+  //     });
+  //   }
+  // }
 
   applyNodeChanges(changes: NodeChange[]) {
     let refreshSelected = false;
@@ -101,9 +97,7 @@ export class GraphicleStore {
             }
 
             return nodes;
-          // return nodes.map((node) =>
-          //   node.id === change.id ? { ...node, ...change.changes } : node
-          // );
+
           default:
             return nodes;
         }
@@ -133,9 +127,7 @@ export class GraphicleStore {
           case "update":
             edges[change.id] = { ...edges[change.id], ...changes };
             return edges;
-          // return edges.map((node) =>
-          //   node.id === change.id ? { ...node, ...change.changes } : node
-          // );
+
           default:
             return edges;
         }
@@ -161,43 +153,3 @@ export type EdgeChange =
   | { type: "add"; item: Edge }
   | { type: "remove"; id: string }
   | { type: "update"; id: string; changes: Partial<Edge> };
-
-// export function applyNodeChanges(
-//   changes: NodeChange[],
-//   currentNodes: Node[]
-// ): Node[] {
-//   return changes.reduce((nodes, change) => {
-//     switch (change.type) {
-//       case "add":
-//         return [...nodes, change.item];
-//       case "remove":
-//         return nodes.filter((node) => node.id !== change.id);
-//       case "update":
-//         return nodes.map((node) =>
-//           node.id === change.id ? { ...node, ...change.changes } : node
-//         );
-//       default:
-//         return nodes;
-//     }
-//   }, currentNodes);
-// }
-
-// export function applyEdgeChanges(
-//   changes: EdgeChange[],
-//   currentEdges: Edge[]
-// ): Edge[] {
-//   return changes.reduce((edges, change) => {
-//     switch (change.type) {
-//       case "add":
-//         return [...edges, change.item];
-//       case "remove":
-//         return edges.filter((edge) => edge.id !== change.id);
-//       case "update":
-//         return edges.map((edge) =>
-//           edge.id === change.id ? { ...edge, ...change.changes } : edge
-//         );
-//       default:
-//         return edges;
-//     }
-//   }, currentEdges);
-// }

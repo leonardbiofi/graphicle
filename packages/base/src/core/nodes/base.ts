@@ -117,6 +117,7 @@ abstract class BaseNode extends Container {
           this.node,
           event
         );
+        this.cursor = "grabbing";
       }
     });
 
@@ -127,6 +128,8 @@ abstract class BaseNode extends Container {
         this.node,
         event
       );
+
+      this.cursor = "grab";
     });
 
     this.on("mouseover", (event) => {
