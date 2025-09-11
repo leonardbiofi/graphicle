@@ -295,6 +295,10 @@ export default class EventHandlers implements ContextClient {
     const clickedPoint = this.context?.viewport.toWorld(event.global);
     if (!clickedPoint || !payload) return;
 
+    // Store drag origin
+    // TODO: Implement drag start threshold
+    // const startPos = { x: clickedPoint.x, y: clickedPoint.y };
+
     // Calculate the dx, dy vector
     const dx = clickedPoint.x - payload.position.x;
     const dy = clickedPoint.y - payload.position.y;

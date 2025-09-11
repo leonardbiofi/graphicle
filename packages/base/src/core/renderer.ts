@@ -181,36 +181,36 @@ export default class GraphicleRenderer implements ContextClient {
   //   // @ts-ignore FIXME:
   //   return returnEdge;
   // }
-  updateNodesPosition(nodes: Node[]) {
-    this.context?.store.updateNodes(nodes, true);
+  // updateNodesPosition(nodes: Node[]) {
+  //   this.context?.store.updateNodes(nodes, true);
 
-    // Render nodes
-    nodes.forEach((node: Node) => {
-      // Get the graphical node and update its position
-      const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
-      if (!nodeGfx) return;
-      nodeGfx.node = node;
-      nodeGfx.x = node.position.x;
-      nodeGfx.y = node.position.y;
-      nodeGfx.cursor = "grabbing";
+  //   // Render nodes
+  //   nodes.forEach((node: Node) => {
+  //     // Get the graphical node and update its position
+  //     const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
+  //     if (!nodeGfx) return;
+  //     nodeGfx.node = node;
+  //     nodeGfx.x = node.position.x;
+  //     nodeGfx.y = node.position.y;
+  //     nodeGfx.cursor = "grabbing";
 
-      // Get all edges connected to that node
-      // const edges = [...this.edgeIdToEdgeGfx.values()].filter(
-      //   (eds) => eds?.edge.target === node.id || eds?.edge.source === node.id
-      // );
+  //     // Get all edges connected to that node
+  //     // const edges = [...this.edgeIdToEdgeGfx.values()].filter(
+  //     //   (eds) => eds?.edge.target === node.id || eds?.edge.source === node.id
+  //     // );
 
-      [...this.edgeIdToEdgeGfx.values()].forEach((eds) => {
-        // Only if edge is connected to that node
-        if (eds?.edge.target === node.id || eds?.edge.source === node.id) {
-          // Update line
-          eds.srcNodeGfx = this.nodeIdToNodeGfx.get(eds.edge.source)!;
-          eds.tgtNodeGfx = this.nodeIdToNodeGfx.get(eds.edge.target)!;
-          eds.updatePosition();
-        }
-      });
-    });
-    this.requestRender();
-  }
+  //     [...this.edgeIdToEdgeGfx.values()].forEach((eds) => {
+  //       // Only if edge is connected to that node
+  //       if (eds?.edge.target === node.id || eds?.edge.source === node.id) {
+  //         // Update line
+  //         eds.srcNodeGfx = this.nodeIdToNodeGfx.get(eds.edge.source)!;
+  //         eds.tgtNodeGfx = this.nodeIdToNodeGfx.get(eds.edge.target)!;
+  //         eds.updatePosition();
+  //       }
+  //     });
+  //   });
+  //   this.requestRender();
+  // }
 
   updateSelectedNodes(nodes: Node[]) {
     nodes?.forEach((node: Node) => {
