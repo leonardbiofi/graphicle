@@ -232,21 +232,29 @@ export default class GraphicleRenderer implements ContextClient {
     this.requestRender();
   }
   unselectAllNodes() {
-    const nextNodes = this.context?.store.getNodes().map((n) => ({
-      ...n,
-      selected: false,
+    const nodes = this.context!.store.getNodes();
+
+    const changes: NodeChange[] = nodes?.map((n) => ({
+      type: "update",
+      id: n.id,
+      changes: { selected: false },
     }));
+    // const nextNodes = this.context?.store.getNodes().map((n) => ({
+    //   ...n,
+    //   selected: false,
+    // }));
+    this.applyNodeChangesInternal(changes);
 
-    this.context?.eventDispatcher.emit(
-      GraphicleEventType.NODES_UNSELECT,
-      nextNodes,
-      null
-    );
-    if (!nextNodes) return;
+    // this.context?.eventDispatcher.emit(
+    //   GraphicleEventType.NODES_UNSELECT,
+    //   [],
+    //   null
+    // );
+    // if (!nextNodes) return;
 
-    this.context?.store.updateNodes(nextNodes, true);
-    this.updateSelectedNodes(nextNodes);
-    this.requestRender();
+    // this.context?.store.updateNodes(nextNodes, true);
+    // this.updateSelectedNodes(nextNodes);
+    // this.requestRender();
   }
   updateRectangleSelect(pos1: XYPosition, pos2: XYPosition) {
     const layer = this.getLayer(Layers.DRAWING);
@@ -269,16 +277,35 @@ export default class GraphicleRenderer implements ContextClient {
     if (rectangle) {
       const nodes = this.context?.store.getNodes();
       if (!nodes) return;
-      nodes.forEach((node) => {
-        const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
-        if (!nodeGfx) return;
+      // nodes.forEach((node) => {
+      //   const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
+      //   if (!nodeGfx) return;
+      //   const { x, y } = nodeGfx.getCenter();
+      //   // @ts-expect-error it does have containsPoint FIXME:
+      //   const contains = rectangle.containsPoint(new Point(x, y));
+      //   this.setSelectNode(node, contains);
+      //   // node.selected = contains;
+      // });
+
+      const changes: NodeChange[] = nodes.map((node) => {
+        const nodeGfx = this.nodeIdToNodeGfx.get(node.id)!;
         const { x, y } = nodeGfx.getCenter();
         // @ts-expect-error it does have containsPoint FIXME:
         const contains = rectangle.containsPoint(new Point(x, y));
-        this.setSelectNode(node, contains);
-        // node.selected = contains;
+        return { type: "update", id: node.id, changes: { selected: contains } };
+        // this.setSelectNode(node, contains);
       });
-      //FIXME: don't cann set selectNode for each node but rather batch the update
+
+      this.applyNodeChangesInternal(changes);
+      // nodes.forEach((node) => {
+      //   const nodeGfx = this.nodeIdToNodeGfx.get(node.id);
+      //   if (!nodeGfx) return;
+      //   const { x, y } = nodeGfx.getCenter();
+      //   // @ts-expect-error it does have containsPoint FIXME:
+      //   const contains = rectangle.containsPoint(new Point(x, y));
+      //   this.setSelectNode(node, contains);
+      //   // node.selected = contains;
+      // });
 
       // this.context?.store.updateNodes(nodes, true);
       // this.updateSelectedNodes(nodes);
@@ -286,23 +313,23 @@ export default class GraphicleRenderer implements ContextClient {
     }
   }
   setSelectNode(node: Node, value: boolean) {
-    if (value) {
-      this.context?.eventDispatcher.emit(
-        GraphicleEventType.NODES_SELECT,
-        [node],
-        null
-      );
-    } else {
-      this.context?.eventDispatcher.emit(
-        GraphicleEventType.NODES_UNSELECT,
-        [node],
-        null
-      );
-    }
+    // if (value) {
+    //   this.context?.eventDispatcher.emit(
+    //     GraphicleEventType.NODES_SELECT,
+    //     [node],
+    //     null
+    //   );
+    // } else {
+    //   this.context?.eventDispatcher.emit(
+    //     GraphicleEventType.NODES_UNSELECT,
+    //     [node],
+    //     null
+    //   );
+    // }
     // const newNode = {...node, selected:value}
-    node.selected = value;
-    this.context?.store.updateNodes([node], true);
-    this.updateSelectedNodes([node]);
+    // node.selected = value;
+    // this.context?.store.updateNodes([node], true);
+    // this.updateSelectedNodes([node]);
   }
   requestRender() {
     if (this.renderRequestId) return;

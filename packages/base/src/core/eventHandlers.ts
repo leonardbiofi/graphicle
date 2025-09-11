@@ -164,7 +164,6 @@ export default class EventHandlers implements ContextClient {
     // Select the node if the option selectOnDrag is set to true
     // Unselect other nodes if there is no multiselect
     this.determineSelectedNodes(payload, event.ctrlKey, "drag");
-    this._isDragging = true;
   }
   onNodeClick(payload: Node, _event?: FederatedPointerEvent) {
     this.context?.store.setNodeClicked(payload);
@@ -185,7 +184,6 @@ export default class EventHandlers implements ContextClient {
 
     // enable viewport dragging
     this.context.viewport.pauseViewport();
-
     // Get the clicked node
     const { node: clickedNode, translation } = payload;
     if (!this._isDragging) {
@@ -221,7 +219,6 @@ export default class EventHandlers implements ContextClient {
 
     const selectedNodes = this.context.store.getSelectedNodes();
     const multipleSelect = selectedNodes.length > 1;
-    // console.log("SELECTEDNODES:", selectedNodes, multipleSelect);
     // const multipleSelect =
     //   this.context.store.getNodes().filter((n) => n.selected).length > 1;
     // Get all the other selected nodes and update their position relative to the one being dragged
@@ -249,7 +246,7 @@ export default class EventHandlers implements ContextClient {
     //   else return { ...n };
     // });
 
-    const nextNodes: NodeChange[] = selectedNodes.map((n) => {
+    const changes: NodeChange[] = selectedNodes.map((n) => {
       if (
         n.selected &&
         n.id !== clickedNode.id &&
@@ -264,6 +261,7 @@ export default class EventHandlers implements ContextClient {
               x: n.position.x + t.x,
               y: n.position.y + t.y,
             },
+            selected: true,
           },
         };
       }
@@ -273,13 +271,12 @@ export default class EventHandlers implements ContextClient {
           id: n.id,
           changes: {
             position: { x: next.x, y: next.y },
+            selected: true,
           },
         };
     });
     // Render the node
-    this.context.renderer.applyNodeChangesInternal(nextNodes);
-    // this.context.renderer.updateNodesPosition(nextNodes);
-    // this.context.renderer.updateSelectedNodes(nextNodes);
+    this.context.renderer.applyNodeChangesInternal(changes);
   }
 
   /**

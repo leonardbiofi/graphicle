@@ -28,7 +28,11 @@ abstract class BaseNode extends Container {
     this.eventMode = "static";
     this.cullable = true;
   }
+  renderSelected() {
+    const { selected } = this.node;
 
+    this.alpha = selected ? 0.7 : 1;
+  }
   renderContainer() {
     const { position } = this.node;
     this.x = position.x;
@@ -45,16 +49,20 @@ abstract class BaseNode extends Container {
     let label = this.getChildByLabel("label") as Label;
     if (!label) {
       label = new Label(text);
+      label.label = "label";
       label.anchor.set(0.5);
+      const textStyle = label.style;
+
+      label.text = truncateTextToFit(text, textStyle, maxWidth);
+      label.position.set(bounds.width / 2, bounds.height / 2);
+
       this.addChild(label);
     }
-    const textStyle = label.style;
-    label.position.set(bounds.width / 2, bounds.height / 2);
-    label.text = truncateTextToFit(text, textStyle, maxWidth);
   }
   render() {
     this.renderContainer();
     this.renderLabel();
+    this.renderSelected();
   }
 
   getCenter(): XYPosition {

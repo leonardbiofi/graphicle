@@ -3,7 +3,7 @@ import type { Node, NodeId, EdgeId, Edge } from "./types";
 export type AppState = {
   nodes: Record<NodeId, Node>;
   edges: Record<EdgeId, Edge>;
-  selectedNodes: Record<NodeId, Node>;
+  selectedNodes: Array<Node>;
   // dragCandidates: { nodes: Record<NodeId, Node>; edges: Record<EdgeId, Edge> };
   nodeClicked: Node | null;
 };
@@ -16,7 +16,7 @@ export class GraphicleStore {
       nodeClicked: null,
       nodes: {},
       edges: {},
-      selectedNodes: {},
+      selectedNodes: [],
     };
 
     if (initialState?.nodes) {
@@ -44,7 +44,7 @@ export class GraphicleStore {
     return Object.values(this.state.edges);
   }
   getSelectedNodes(): Node[] {
-    return Object.values(this.state.selectedNodes);
+    return this.state.selectedNodes;
   }
   setNodes(nodes: Node[]) {
     nodes.forEach((node) => {
@@ -80,6 +80,7 @@ export class GraphicleStore {
   }
 
   applyNodeChanges(changes: NodeChange[]) {
+    let refreshSelected = false;
     const nextNodes = changes.reduce<Record<NodeId, Node>>(
       (nodes, change) => {
         switch (change.type) {
@@ -92,7 +93,13 @@ export class GraphicleStore {
             return nodes;
           // return nodes.filter((node) => node.id !== change.id);
           case "update":
-            nodes[change.id] = { ...nodes[change.id], ...changes };
+            nodes[change.id] = { ...nodes[change.id], ...change.changes };
+
+            // If changes includes selected then it's important to refresh the selected
+            if (!refreshSelected && change.changes.hasOwnProperty("selected")) {
+              refreshSelected = true;
+            }
+
             return nodes;
           // return nodes.map((node) =>
           //   node.id === change.id ? { ...node, ...change.changes } : node
@@ -104,6 +111,11 @@ export class GraphicleStore {
       { ...this._state.nodes }
     );
 
+    if (refreshSelected) {
+      this._state.selectedNodes = Object.values(nextNodes).filter(
+        (n) => n.selected
+      );
+    }
     this._state.nodes = nextNodes;
   }
   applyEdgeChanges(changes: EdgeChange[]) {
