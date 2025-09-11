@@ -13,39 +13,22 @@ export default class DefaultNode extends BaseNode {
 
   initGraphics() {
     super.initGraphics();
-    const circle = new Graphics()
-      .circle(0 + RADIUS, 0 + RADIUS, RADIUS)
-      .fill("grey");
+    const circle = new Graphics();
+    circle.circle(0 + RADIUS, 0 + RADIUS, RADIUS);
+    circle.fill("#f4f4f5");
     circle.label = "circle";
-    this.width = RADIUS * 2;
-    this.height = RADIUS * 2;
     this.addChild(circle);
   }
 
-  // renderShape() {
-  //   let circle = this.getChildByLabel("circle") as Graphics;
-
-  //   if (!circle) {
-  //     circle = new Graphics()
-  //       .circle(0 + RADIUS, 0 + RADIUS, RADIUS)
-  //       .fill("grey");
-  //     circle.label = "circle";
-  //     this.width = RADIUS * 2;
-  //     this.height = RADIUS * 2;
-  //   }
-  // }
   renderSelected() {
     const { selected } = this.node;
     const circle = this.getChildByLabel("circle") as Graphics;
     if (!circle) return;
-
     circle.clear();
     circle.circle(0 + RADIUS, 0 + RADIUS, RADIUS);
-    circle.fill("grey");
+    circle.fill("#f4f4f5");
     if (selected) circle.stroke({ width: 4, color: "#0084d1", alpha: 1 });
     else circle.stroke({ width: 0, color: "#0084d1", alpha: 0 });
-
-    // this.alpha = selected ? 0.7 : 1;
   }
   renderLabel() {
     const text = this.node.data.label;

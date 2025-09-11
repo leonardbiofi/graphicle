@@ -28,8 +28,6 @@ abstract class BaseNode extends Container {
     this.cullable = true;
   }
 
-  renderShape() {}
-
   renderSelected() {}
 
   renderLabel() {}
@@ -42,7 +40,6 @@ abstract class BaseNode extends Container {
 
   render() {
     this.renderContainer();
-    this.renderShape();
     this.renderLabel();
     this.renderSelected();
   }

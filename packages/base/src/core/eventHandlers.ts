@@ -151,7 +151,7 @@ export default class EventHandlers implements ContextClient {
    * @param _payload
    * @param _event
    */
-  onNodeDragEnd(payload: Node, _event?: FederatedPointerEvent) {
+  onNodeDragEnd(_payload: Node, _event?: FederatedPointerEvent) {
     this._isDragging = false;
 
     // Reset the cursor to 'grab'
@@ -186,14 +186,14 @@ export default class EventHandlers implements ContextClient {
     this.context.viewport.pauseViewport();
     // Get the clicked node
     const { node: clickedNode, translation } = payload;
-    if (!this._isDragging) {
-      this.context.eventDispatcher.emit(
-        GraphicleEventType.NODE_DRAGSTART,
-        clickedNode,
-        event
-      );
-      return;
-    }
+    // if (!this._isDragging) {
+    //   this.context.eventDispatcher.emit(
+    //     GraphicleEventType.NODE_DRAGSTART,
+    //     clickedNode,
+    //     event
+    //   );
+    //   return;
+    // }
 
     // Get the coordinate of the destination point
     const point = this.context.viewport.toWorld(event?.global);
@@ -287,7 +287,10 @@ export default class EventHandlers implements ContextClient {
    */
   onNodePointerDown(payload: Node, event?: FederatedPointerEvent) {
     if (!event) return;
+
     this._isDragging = false;
+    // this.context?.app.stage.off("pointermove", this.emitNodeDrag);
+
     // Get the clicked position by the pointer
     const clickedPoint = this.context?.viewport.toWorld(event.global);
     if (!clickedPoint || !payload) return;
@@ -309,6 +312,11 @@ export default class EventHandlers implements ContextClient {
     this.emitNodeDrag = emitNodeDrag.bind(this);
     // const throttleNodeDrag = throttle(emitNodeDrag.bind(this), 0);
 
+    this.context?.eventDispatcher.emit(
+      GraphicleEventType.NODE_DRAGSTART,
+      payload,
+      event
+    );
     //register and enable node dragging
     this.context?.app.stage.on("pointermove", this.emitNodeDrag, {
       passive: true,
@@ -337,8 +345,8 @@ export default class EventHandlers implements ContextClient {
       //   this.context.renderer.setSelectNode(payload, !previousState);
       // }
     }
-    this._isDragging = false;
-    // this.stopNodeDrag();
+    // this._isDragging = false;
+    this.stopNodeDrag();
   }
   onAppPointerUp(_payload: Node, _event?: FederatedPointerEvent) {
     // If no node was dragged unselect all

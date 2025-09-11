@@ -195,7 +195,6 @@ export default class BaseEdge extends Container {
     //   ity,
     // };
   }
-  updatePosition() {}
 
   //   destroy() {
   //     super.destroy({ children: true });

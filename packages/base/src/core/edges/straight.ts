@@ -11,7 +11,6 @@ export default class StraightEdge extends BaseEdge {
 
   initGraphics(): void {
     super.initGraphics();
-    this.updatePosition();
     // this.attachMarkerEnd();
   }
 
@@ -34,6 +33,7 @@ export default class StraightEdge extends BaseEdge {
     let line = this.getChildByLabel("line") as Sprite;
     if (!line) {
       line = new Sprite(Texture.WHITE);
+      line.tint = "grey";
       line.label = "line";
       line.anchor.set(0.5);
       this.addChild(line);
