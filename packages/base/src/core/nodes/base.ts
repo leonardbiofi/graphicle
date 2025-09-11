@@ -3,8 +3,7 @@ import type { Node } from "../types";
 import { XYPosition } from "../../layout/type";
 import GraphicleContext from "../context";
 import { GraphicleEventType } from "../dispatcher";
-import Label from "./label";
-import { truncateTextToFit } from "../../utils/truncate";
+
 abstract class BaseNode extends Container {
   public node: Node;
   context: GraphicleContext | null;
@@ -28,39 +27,22 @@ abstract class BaseNode extends Container {
     this.eventMode = "static";
     this.cullable = true;
   }
-  renderSelected() {
-    const { selected } = this.node;
 
-    this.alpha = selected ? 0.7 : 1;
-  }
+  renderShape() {}
+
+  renderSelected() {}
+
+  renderLabel() {}
+
   renderContainer() {
     const { position } = this.node;
     this.x = position.x;
     this.y = position.y;
   }
-  renderLabel() {
-    const text = this.node.data.label;
-    if (!text) return;
 
-    /** Get the dimensions */
-    const bounds = this.getBounds();
-    const maxWidth = bounds.width * 0.9;
-
-    let label = this.getChildByLabel("label") as Label;
-    if (!label) {
-      label = new Label(text);
-      label.label = "label";
-      label.anchor.set(0.5);
-      const textStyle = label.style;
-
-      label.text = truncateTextToFit(text, textStyle, maxWidth);
-      label.position.set(bounds.width / 2, bounds.height / 2);
-
-      this.addChild(label);
-    }
-  }
   render() {
     this.renderContainer();
+    this.renderShape();
     this.renderLabel();
     this.renderSelected();
   }
