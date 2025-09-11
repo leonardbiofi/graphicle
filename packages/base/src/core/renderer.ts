@@ -42,9 +42,9 @@ export default class GraphicleRenderer implements ContextClient {
     this.viewRegistry = new ViewRegistry();
 
     this.initializeLayers();
+    this.buildNodeToEdgeMap(edges);
     this.initializeNodes(nodes);
     this.initializeEdges(edges);
-    this.buildNodeToEdgeMap(edges);
 
     // Request render
     this.renderRequestId = null;
@@ -362,7 +362,7 @@ export default class GraphicleRenderer implements ContextClient {
         // Rerender the node
         const nodeGfx = this.nodeIdToNodeGfx.get(change.id)!;
         if (!nodeGfx) continue;
-        nodeGfx.node = { ...nodeGfx.node, ...changes };
+        nodeGfx.node = { ...nodeGfx.node, ...change.changes };
         nodeGfx.render();
 
         // Rerender the edges connected to that node as well
@@ -388,7 +388,7 @@ export default class GraphicleRenderer implements ContextClient {
   applyEdgeChangesInternal(changes: EdgeChange[]) {
     this.context?.store.applyEdgeChanges(changes);
 
-    const layer = this.getLayer(Layers.NODES);
+    const layer = this.getLayer(Layers.EDGES);
 
     for (const change of changes) {
       if (change.type === "add") {
@@ -399,14 +399,15 @@ export default class GraphicleRenderer implements ContextClient {
           throw new Error("Fatal: Source or target Graphics undefined.");
         }
         // Create the edge
-
         const edgeGfx = this.viewRegistry.createEdge(
           edge.type,
           edge,
           srcNodeGfx,
           tgtNodeGfx
         );
+        edgeGfx.render();
         layer.addChild(edgeGfx);
+
         this.edgeIdToEdgeGfx.set(edge.id, edgeGfx);
 
         // edgeGfx.setContext(this.context);

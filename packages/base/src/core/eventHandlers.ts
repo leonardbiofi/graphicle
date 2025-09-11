@@ -117,16 +117,32 @@ export default class EventHandlers implements ContextClient {
     if (actionType === "click") {
       if (!ctrlKey) this.context?.renderer.unselectAllNodes();
       const previousState = clickedNode.selected;
-      this.context!.renderer.setSelectNode(clickedNode, !previousState);
+      this.context?.renderer.applyNodeChangesInternal([
+        {
+          type: "update",
+          id: clickedNode.id,
+          changes: { selected: !previousState },
+        },
+      ]);
+      // this.context!.renderer.setSelectNode(clickedNode, !previousState);
     } else if (actionType === "drag") {
       const multipleSelect = this.context!.store.getSelectedNodes().length > 1;
 
-      if (!multipleSelect) this.context?.renderer.unselectAllNodes();
+      if (!multipleSelect) {
+        this.context?.renderer.unselectAllNodes();
+      }
 
-      this.context!.renderer.setSelectNode(
-        clickedNode,
-        this.options.selectOnDrag
-      );
+      this.context?.renderer.applyNodeChangesInternal([
+        {
+          type: "update",
+          id: clickedNode.id,
+          changes: { selected: this.options.selectOnDrag },
+        },
+      ]);
+      // this.context!.renderer.setSelectNode(
+      //   clickedNode,
+      //   this.options.selectOnDrag
+      // );
     } else throw new Error("Unknown action type, only click|drag are accepted");
   }
 
