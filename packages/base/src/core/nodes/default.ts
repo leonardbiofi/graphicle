@@ -26,9 +26,9 @@ export default class DefaultNode extends BaseNode {
     if (!circle) return;
     circle.clear();
     circle.circle(0 + RADIUS, 0 + RADIUS, RADIUS);
-    circle.fill("#f4f4f5");
-    if (selected) circle.stroke({ width: 4, color: "#0084d1", alpha: 1 });
-    else circle.stroke({ width: 0, color: "#0084d1", alpha: 0 });
+    // circle.fill("#f4f4f5");
+    if (selected) circle.fill("#0084d1");
+    else circle.fill("#f4f4f5");
   }
   renderLabel() {
     const text = this.node.data.label;

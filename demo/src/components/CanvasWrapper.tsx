@@ -4,6 +4,7 @@ import CanvasControls from "./CanvasControls";
 import { useGraphicleStore } from "@/store/graphicleStore";
 import CanvasRightPanel from "./CanvasRightPanel";
 import { useGraphicle } from "./GraphicleProvider";
+import { basicView } from "@/features/graphicle/view/basic";
 interface CanvasWrapperProps {}
 
 export default function CanvasWrapper({}: CanvasWrapperProps) {
@@ -13,8 +14,8 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
   const initializeRef = useRef<boolean>(false);
   const nodes = useGraphicleStore((state) => state.nodes);
   const edges = useGraphicleStore((state) => state.edges);
-  const selectNodes = useGraphicleStore((state) => state.selectNodes);
-  const unselectNodes = useGraphicleStore((state) => state.unselectNodes);
+  const setNodes = useGraphicleStore((state) => state.setNodes);
+  const setEdges = useGraphicleStore((state) => state.setEdges);
   useEffect(() => {
     const mountGraphicle = async () => {
       if (!containerRef.current) return;
@@ -25,12 +26,16 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
         options: {
           handlers: {
             onNodeClick: () => {},
-            onNodesUnselect: (_, nodes) => unselectNodes(nodes),
-            onNodesSelect: (_, nodes) => selectNodes(nodes),
+            onNodesUpdate: (_, nodes) => setNodes(nodes),
+            onEdgesUpdate: (_, edges) => setEdges(edges),
           },
           selectOnDrag: true,
         },
       });
+
+      console.log(basicView);
+      graphicle.renderer?.viewRegistry.register(basicView);
+      graphicle.renderer?.switchView("basicView");
 
       setGraphicle(graphicle);
       initializeRef.current = false;
@@ -45,7 +50,6 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
       if (containerRef.current) containerRef.current.innerHTML = "";
     };
   }, []);
-  console.log("nodes:", nodes);
   return (
     <div className="w-[calc(100vw_-_368px)] relative">
       <div id="graphicle" ref={containerRef} className="w-full h-full"></div>

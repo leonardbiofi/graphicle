@@ -4,7 +4,7 @@ import { XYPosition } from "../../layout/type";
 import GraphicleContext from "../context";
 import { GraphicleEventType } from "../dispatcher";
 
-abstract class BaseNode extends Container {
+class BaseNode extends Container {
   public node: Node;
   context: GraphicleContext | null;
 

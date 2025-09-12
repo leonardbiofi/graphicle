@@ -345,10 +345,14 @@ export default class GraphicleRenderer implements ContextClient {
 
     const nodes = this.context?.store.getNodes();
     const edges = this.context?.store.getEdges();
-    if (nodes && edges) {
-      this.initializeNodes(nodes);
-      this.initializeEdges(edges);
-      this.requestRender();
+    try {
+      if (nodes && edges) {
+        this.initializeNodes(nodes);
+        this.initializeEdges(edges);
+        this.requestRender();
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 

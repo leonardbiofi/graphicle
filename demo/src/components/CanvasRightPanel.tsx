@@ -1,15 +1,27 @@
-import { useGraphicleStore } from "@/store/graphicleStore";
+import { selectedNodes, useGraphicleStore } from "@/store/graphicleStore";
 import NodeInfo from "./NodeInfo";
+import NodeTypesInfo from "./NodeTypesInfo";
 
 export default function CanvasRightPanel() {
-  const selectedNodes = useGraphicleStore((state) => state.selectedNodes);
+  const nodes = useGraphicleStore(selectedNodes);
 
   return (
-    <div>
-      <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full">
-        Node Info
-      </h3>
-      {selectedNodes.length > 0 && <NodeInfo node={selectedNodes[0]} />}
+    <div className="space-y-5">
+      <section>
+        <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full">
+          Node Info
+        </h3>
+        {nodes.length > 0 && <NodeInfo node={nodes[0]} />}
+        {nodes.length === 0 && (
+          <span className="text-zinc-400 text-xs">None selected</span>
+        )}
+      </section>
+      <section>
+        <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full">
+          Node Types
+        </h3>
+        <NodeTypesInfo />
+      </section>
     </div>
   );
 }

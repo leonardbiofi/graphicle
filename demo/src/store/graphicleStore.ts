@@ -8,8 +8,6 @@ export interface GraphicleStoreState {
   nodes: Node[];
   edges: Edge[];
   selectedNodes: Node[];
-  selectNodes: (nodes: Node[]) => void;
-  unselectNodes: (nodes: Node[]) => void;
   setNodes: (nodes: Node[]) => void;
   setEdges: (edges: Edge[]) => void;
 }
@@ -19,17 +17,6 @@ export const useGraphicleStore = create<GraphicleStoreState>()(
     nodes: [],
     edges: [],
     selectedNodes: [],
-    selectNodes: (nodes) =>
-      set((state) => ({ selectedNodes: [...nodes, ...state.selectedNodes] })),
-    unselectNodes: (nodes) =>
-      set((state) => {
-        const unselectIds = nodes.map((n) => n.id);
-        const nextNodes = state.selectedNodes.filter(
-          (n) => !unselectIds.includes(n.id)
-        );
-        return { selectedNodes: nextNodes };
-      }),
-
     setNodes: (nodes) => set(() => ({ nodes })),
     setEdges: (edges) => set(() => ({ edges })),
   }))
@@ -47,10 +34,18 @@ const unsub3 = useGraphicleStore.subscribe(
 
     graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
     graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
-    console.log("GRAPHICLE:", graphicle, diffEdges);
+    // console.log("GRAPHICLE:", graphicle, diffEdges, diffNodes);
   },
   {
     equalityFn: () => false,
+  }
+);
+
+export const selectedNodes = createSelector(
+  (state) => state.nodes,
+  (nodes: Node[]) => {
+    const selectedNodes = nodes.filter((n) => n.selected);
+    return [...selectedNodes];
   }
 );
 export const selectNodeTypes = createSelector(

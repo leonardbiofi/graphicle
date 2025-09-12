@@ -1,7 +1,7 @@
 import { FederatedPointerEvent } from "pixi.js";
 import GraphicleContext, { ContextClient } from "./context";
 import { GraphicleEventType } from "./dispatcher";
-import type { Node, XYPosition } from "./types";
+import type { Node, Edge, XYPosition } from "./types";
 import type { NodeChange } from "./store";
 export default class EventHandlers implements ContextClient {
   context!: GraphicleContext | null;
@@ -246,6 +246,7 @@ export default class EventHandlers implements ContextClient {
     //   else return { ...n };
     // });
 
+    /** @ts-expect-error do not return in all cases but should neven happen FIXME: */
     const changes: NodeChange[] = selectedNodes.map((n) => {
       if (
         n.selected &&
@@ -419,6 +420,8 @@ export interface Handlers {
   ) => void;
   onNodesUnselect?: (context: GraphicleContext, nodes: Node[]) => void;
   onNodesSelect?: (context: GraphicleContext, nodes: Node[]) => void;
+  onNodesUpdate?: (context: GraphicleContext, nodes: Node[]) => void;
+  onEdgesUpdate?: (context: GraphicleContext, edges: Edge[]) => void;
 }
 
 const eventToCallbackMap: Record<any, keyof Handlers | undefined> = {
@@ -427,4 +430,6 @@ const eventToCallbackMap: Record<any, keyof Handlers | undefined> = {
   [GraphicleEventType.NODE_HOVER]: "onNodeHover",
   [GraphicleEventType.NODES_UNSELECT]: "onNodesUnselect",
   [GraphicleEventType.NODES_SELECT]: "onNodesSelect",
+  [GraphicleEventType.NODES_UPDATE]: "onNodesUpdate",
+  [GraphicleEventType.EDGES_UPDATE]: "onEdgesUpdate",
 };
