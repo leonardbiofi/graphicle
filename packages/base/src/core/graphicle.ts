@@ -12,7 +12,6 @@ import GraphicleContext from "./context";
 import GraphicleViewport from "./viewport";
 import { D3Force, LayoutContext } from "../layout";
 import type { Node, Edge } from "./types";
-import type { NodeChange, EdgeChange } from "./store";
 interface GraphicleOptions {
   backgroundAlpha?: number;
   selectOnDrag?: boolean;

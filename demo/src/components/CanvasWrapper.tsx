@@ -44,8 +44,8 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
       }
       if (containerRef.current) containerRef.current.innerHTML = "";
     };
-  }, [nodes, edges]);
-
+  }, []);
+  console.log("nodes:", nodes);
   return (
     <div className="w-[calc(100vw_-_368px)] relative">
       <div id="graphicle" ref={containerRef} className="w-full h-full"></div>

@@ -9,6 +9,7 @@ import {
 import { useGraphicleStore } from "@/store/graphicleStore";
 
 import { useMutation } from "@tanstack/react-query";
+import { D3Force, LayoutContext } from "@graphicle/base";
 
 function getData(name: string) {
   return fetch(`/api/dataset/${name}`).then((res) => res.json());
@@ -23,7 +24,14 @@ export default function PanelExample() {
     onSuccess: (data) => {
       const { nodes, edges } = data;
 
-      useGraphicleStore.setState(() => ({ nodes, edges }));
+      const layoutContext = new LayoutContext(new D3Force());
+
+      const positionNodes = layoutContext.runLayout({ nodes, edges });
+      // Layout the nodes because they might have no position
+      useGraphicleStore.setState(() => ({
+        nodes: [...positionNodes],
+        edges: [...edges],
+      }));
       return data;
     },
   });

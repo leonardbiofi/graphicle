@@ -27,19 +27,19 @@ export default function CanvasControls({ graphicleRef }: CanvasControlProps) {
         </li>
         <li
           className="cursor-pointer hover:text-teal-600"
-          onClick={() => graphicle.viewport?.zoomIn()}
+          onClick={() => graphicleRef.current?.viewport?.zoomIn()}
         >
           <Plus />
         </li>
         <li
           className="cursor-pointer hover:text-teal-600"
-          onClick={() => graphicle.viewport?.zoomOut()}
+          onClick={() => graphicleRef.current?.viewport?.zoomOut()}
         >
           <Minus />
         </li>
         <li
           className="cursor-pointer hover:text-teal-600"
-          onClick={() => graphicle.viewport?.fitView()}
+          onClick={() => graphicleRef.current?.viewport?.fitView()}
         >
           <ScanSearch />
         </li>

@@ -107,7 +107,7 @@ export default class GraphicleRenderer implements ContextClient {
       return { type: "add", item: node };
     });
 
-    this.applyNodeChangesInternal(changes);
+    this.applyNodeChangesInternal(changes, false);
 
     // const nodeIdGfxPairs: [NodeId, NodeGfx][] = nodes.map((node) => {
     //   // Create the node
@@ -130,7 +130,7 @@ export default class GraphicleRenderer implements ContextClient {
       return { type: "add", item: edge };
     });
 
-    this.applyEdgeChangesInternal(changes);
+    this.applyEdgeChangesInternal(changes, false);
     // const edgeIdGfxPairs: [EdgeId, EdgeGfx][] = edges.map((edge) => {
     //   const srcNodeGfx = this.nodeIdToNodeGfx.get(edge.source);
     //   const tgtNodeGfx = this.nodeIdToNodeGfx.get(edge.target);
@@ -369,12 +369,12 @@ export default class GraphicleRenderer implements ContextClient {
       if (change.type === "add") {
         // Add the new node to the dom
         const node = change.item;
+
         const nodeGfx = this.viewRegistry.createNode(node.type, node);
 
         // Inject the context in each nodes
         nodeGfx.setContext(this.context);
         layer.addChild(nodeGfx);
-
         this.nodeIdToNodeGfx.set(node.id, nodeGfx);
       } else if (change.type === "remove") {
         // Remove from dom
@@ -451,6 +451,14 @@ export default class GraphicleRenderer implements ContextClient {
         layer.addChild(edgeGfx);
 
         this.edgeIdToEdgeGfx.set(edge.id, edgeGfx);
+
+        const srcNodeSet = this.nodeToEdges.get(edge.source) ?? new Set();
+        srcNodeSet?.add(edge.id);
+        this.nodeToEdges.set(edge.source, srcNodeSet);
+
+        const tgtNodeSet = this.nodeToEdges.get(edge.target) ?? new Set();
+        tgtNodeSet.add(edge.id);
+        this.nodeToEdges.set(edge.target, tgtNodeSet);
 
         // edgeGfx.setContext(this.context);
       } else if (change.type === "remove") {

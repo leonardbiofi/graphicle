@@ -2,7 +2,8 @@ import { create } from "zustand";
 import { createSelector } from "reselect";
 import { Node, Edge } from "@graphicle/base";
 import { subscribeWithSelector } from "zustand/middleware";
-
+import { diffArrays } from "./listeners";
+import { getGraphicle } from "@/components/GraphicleProvider";
 export interface GraphicleStoreState {
   nodes: Node[];
   edges: Edge[];
@@ -34,6 +35,24 @@ export const useGraphicleStore = create<GraphicleStoreState>()(
   }))
 );
 
+const unsub3 = useGraphicleStore.subscribe(
+  (state): [Node[], Edge[]] => [state.nodes, state.edges],
+  ([nodes, edges], [previousNodes, previousEdges]) => {
+    const diffNodes = diffArrays<Node>(previousNodes, nodes);
+    const diffEdges = diffArrays<Edge>(previousEdges, edges);
+
+    const graphicle = getGraphicle();
+
+    if (!graphicle) return;
+
+    graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
+    graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
+    console.log("GRAPHICLE:", graphicle, diffEdges);
+  },
+  {
+    equalityFn: () => false,
+  }
+);
 export const selectNodeTypes = createSelector(
   (state: GraphicleStoreState) => state.nodes,
   (nodes: Node[]) => {

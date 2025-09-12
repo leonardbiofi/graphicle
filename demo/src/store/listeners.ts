@@ -56,17 +56,3 @@ export const diffArrays = <T>(
 
   return changes;
 };
-
-const unsub3 = useGraphicleStore.subscribe(
-  (state): [Node[], Edge[]] => [state.nodes, state.edges],
-  ([nodes, edges], [previousNodes, previousEdges]) => {
-    const diffNodes = diffArrays<Node>(previousNodes, nodes);
-    const diffEdges = diffArrays<Edge>(previousEdges, edges);
-
-    const graphicle = getGraphicle();
-    if (!graphicle) return;
-
-    graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
-    graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
-  }
-);
