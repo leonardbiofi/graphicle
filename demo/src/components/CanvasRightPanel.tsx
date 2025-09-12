@@ -1,8 +1,8 @@
-import { useCanvasStore } from "@/store/canvasStore";
+import { useGraphicleStore } from "@/store/graphicleStore";
 import NodeInfo from "./NodeInfo";
 
 export default function CanvasRightPanel() {
-  const selectedNodes = useCanvasStore((state) => state.selectedNodes);
+  const selectedNodes = useGraphicleStore((state) => state.selectedNodes);
 
   return (
     <div>

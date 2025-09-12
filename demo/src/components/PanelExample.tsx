@@ -6,7 +6,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { useCanvasStore } from "@/store/canvasStore";
+import { useGraphicleStore } from "@/store/graphicleStore";
 
 import { useMutation } from "@tanstack/react-query";
 
@@ -23,7 +23,7 @@ export default function PanelExample() {
     onSuccess: (data) => {
       const { nodes, edges } = data;
 
-      useCanvasStore.setState(() => ({ nodes, edges }));
+      useGraphicleStore.setState(() => ({ nodes, edges }));
       return data;
     },
   });

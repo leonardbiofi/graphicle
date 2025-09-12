@@ -12,6 +12,8 @@ export enum GraphicleEventType {
   NODE_HOVER = "nodeMouseHover",
   NODES_SELECT = "nodesSelect",
   NODES_UNSELECT = "nodesUnselect",
+  NODES_UPDATE = "nodesUpdate",
+  EDGES_UPDATE = "edgesUpdate",
   APP_POINTERUP = "appPointerUp",
   VIEWPORT_CLICK = "viewportClick",
   RECTANGLESELECT_START = "rectangleSelectStart",

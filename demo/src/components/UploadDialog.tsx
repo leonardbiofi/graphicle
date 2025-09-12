@@ -12,7 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import FileUpload from "./FileUpload";
-import { useCanvasStore } from "@/store/canvasStore";
+import { useGraphicleStore } from "@/store/graphicleStore";
 
 const readGraphicleJsonFile = (file: File): Promise<any> => {
   return new Promise((resolve, reject) => {
@@ -33,7 +33,7 @@ const readGraphicleJsonFile = (file: File): Promise<any> => {
 export default function UploadDialog() {
   const [filesToUpload, setFilesToUpload] = useState<File[]>([]);
   const [open, setOpen] = useState<boolean>(false);
-  // const { setNodes, setEdges } = useCanvasStore();
+  // const { setNodes, setEdges } = useGraphicleStore();
   const removeFile = (fileName: string) => {
     setFilesToUpload((prev) => {
       return prev.filter((f) => f.name !== fileName);
@@ -46,10 +46,10 @@ export default function UploadDialog() {
       const json = await readGraphicleJsonFile(file);
       console.log("JSON:", json);
       const { nodes, edges } = json;
-      useCanvasStore.setState(() => ({ nodes, edges }));
+      useGraphicleStore.setState(() => ({ nodes, edges }));
     }
     setOpen(false);
-  }, [filesToUpload, useCanvasStore]);
+  }, [filesToUpload, useGraphicleStore]);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>

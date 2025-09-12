@@ -144,12 +144,11 @@ export class GraphicleStore {
 }
 
 // DIFF SYNC SYSTEM
-export type NodeChange =
-  | { type: "add"; item: Node }
-  | { type: "remove"; id: string }
-  | { type: "update"; id: string; changes: Partial<Node> };
 
-export type EdgeChange =
-  | { type: "add"; item: Edge }
+export type Change<T> =
+  | { type: "add"; item: T }
   | { type: "remove"; id: string }
-  | { type: "update"; id: string; changes: Partial<Edge> };
+  | { type: "update"; id: string; changes: Partial<T> };
+
+export type NodeChange = Change<Node>;
+export type EdgeChange = Change<Edge>;

@@ -16,6 +16,7 @@ import GraphicleViewport from "./viewport";
 import { ViewRegistry } from "./view";
 
 import type { NodeChange, EdgeChange } from "./store";
+import { GraphicleEventType } from "./dispatcher";
 export enum Layers {
   GROUPS = "groups",
   NODES = "nodes",
@@ -351,8 +352,15 @@ export default class GraphicleRenderer implements ContextClient {
     }
   }
 
-  applyNodeChangesInternal(changes: NodeChange[]) {
+  applyNodeChangesInternal(changes: NodeChange[], notify = true) {
     this.context?.store.applyNodeChanges(changes);
+
+    if (notify)
+      // Emit the event when the state is upated internally. Important to sync data with external store
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.NODES_UPDATE,
+        this.context.store.getNodes()
+      );
 
     const layer = this.getLayer(Layers.NODES);
 
@@ -412,8 +420,15 @@ export default class GraphicleRenderer implements ContextClient {
     }
     this.requestRender();
   }
-  applyEdgeChangesInternal(changes: EdgeChange[]) {
+  applyEdgeChangesInternal(changes: EdgeChange[], notify = true) {
     this.context?.store.applyEdgeChanges(changes);
+
+    if (notify)
+      // Emit the event when the state is upated internally. Important to sync data with external store
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.EDGES_UPDATE,
+        this.context.store.getEdges()
+      );
 
     const layer = this.getLayer(Layers.EDGES);
 
