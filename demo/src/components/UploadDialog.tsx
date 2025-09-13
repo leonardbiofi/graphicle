@@ -45,7 +45,6 @@ export default function UploadDialog() {
     // read the file and setup the nodes and edges
     for (const file of filesToUpload) {
       const json = await readGraphicleJsonFile(file);
-      console.log("JSON:", json);
       const { nodes, edges } = json;
 
       const layoutContext = new LayoutContext(new D3Force());
