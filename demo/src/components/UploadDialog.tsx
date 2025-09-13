@@ -13,7 +13,8 @@ import {
 } from "@/components/ui/dialog";
 import FileUpload from "./FileUpload";
 import { useGraphicleStore } from "@/store/graphicleStore";
-
+import { LayoutContext, D3Force } from "@graphicle/base";
+import { getGraphicle } from "./GraphicleProvider";
 const readGraphicleJsonFile = (file: File): Promise<any> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -46,6 +47,17 @@ export default function UploadDialog() {
       const json = await readGraphicleJsonFile(file);
       console.log("JSON:", json);
       const { nodes, edges } = json;
+
+      const layoutContext = new LayoutContext(new D3Force());
+
+      const positionNodes = layoutContext.runLayout({ nodes, edges });
+      // Layout the nodes because they might have no position
+      useGraphicleStore.setState(() => ({
+        nodes: [...positionNodes],
+        edges: [...edges],
+      }));
+
+      getGraphicle()?.viewport?.fitView();
       useGraphicleStore.setState(() => ({ nodes, edges }));
     }
     setOpen(false);

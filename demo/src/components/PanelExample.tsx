@@ -42,11 +42,11 @@ export default function PanelExample() {
 
       // console.log("Variables:", variables);
 
-      const viewSettings = exampleViews[variables];
-      if (viewSettings) {
-        getGraphicle()?.renderer?.viewRegistry.register(viewSettings.view);
-        getGraphicle()?.renderer?.switchView("basic");
-      }
+      // const viewSettings = exampleViews[variables];
+      // if (viewSettings) {
+      //   getGraphicle()?.renderer?.viewRegistry.register(viewSettings.view);
+      //   getGraphicle()?.renderer?.switchView("basic");
+      // }
       return data;
     },
   });

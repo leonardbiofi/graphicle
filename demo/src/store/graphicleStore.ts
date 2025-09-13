@@ -51,8 +51,9 @@ export const selectedNodes = createSelector(
 );
 
 function areArraysEqual(a: string[], b: string[]): boolean {
-  if (a === b) return true;
+  // console.log("EQUAL:", a, b);
   if (a.length !== b.length) return false;
+  if (a === b) return true;
   for (let i = 0; i < a.length; i++) {
     if (a[i] !== b[i]) return false;
   }
@@ -64,14 +65,14 @@ const createSelectorShallowEqual = createSelectorCreator({
   memoizeOptions: {
     // equalityCheck: areArraysEqual,
     resultEqualityCheck: areArraysEqual,
-    maxSize: 10,
+    // maxSize: 10,
   },
-  argsMemoize: lruMemoize,
-  argsMemoizeOptions: {
-    // equalityCheck: areArraysEqual,
-    resultEqualityCheck: areArraysEqual,
-    maxSize: 10,
-  },
+  // argsMemoize: lruMemoize,
+  // argsMemoizeOptions: {
+  //   equalityCheck: areArraysEqual,
+  //   // resultEqualityCheck: areArraysEqual,
+  //   maxSize: 10,
+  // },
 });
 export const selectNodeTypes = createSelectorShallowEqual(
   [(state: GraphicleStoreState) => state.nodes],
