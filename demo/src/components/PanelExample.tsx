@@ -10,6 +10,10 @@ import { useGraphicleStore } from "@/store/graphicleStore";
 
 import { useMutation } from "@tanstack/react-query";
 import { D3Force, LayoutContext } from "@graphicle/base";
+import { getGraphicle } from "./GraphicleProvider";
+
+import exampleViews from "@/features/graphicle/views";
+import { useExampleStore } from "@/store/exampleStore";
 
 function getData(name: string) {
   return fetch(`/api/dataset/${name}`).then((res) => res.json());
@@ -21,7 +25,7 @@ export default function PanelExample() {
   const fetchExampleMutation = useMutation({
     mutationFn: (value: string) => getData(value),
     mutationKey: ["example"],
-    onSuccess: (data) => {
+    onSuccess: (data, variables) => {
       const { nodes, edges } = data;
 
       const layoutContext = new LayoutContext(new D3Force());
@@ -32,6 +36,17 @@ export default function PanelExample() {
         nodes: [...positionNodes],
         edges: [...edges],
       }));
+      useExampleStore.setState({ name: variables });
+
+      getGraphicle()?.viewport?.fitView();
+
+      // console.log("Variables:", variables);
+
+      const viewSettings = exampleViews[variables];
+      if (viewSettings) {
+        getGraphicle()?.renderer?.viewRegistry.register(viewSettings.view);
+        getGraphicle()?.renderer?.switchView("basic");
+      }
       return data;
     },
   });

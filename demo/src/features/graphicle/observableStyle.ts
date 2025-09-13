@@ -4,7 +4,7 @@ export class ObservableStyle<TStyle extends object> {
   private store: StoreApi<TStyle>;
 
   constructor(initialStyle: TStyle) {
-    this.store = create<TStyle>((_set) => initialStyle);
+    this.store = create<TStyle>((_set) => ({ ...initialStyle }));
   }
 
   get(): TStyle {

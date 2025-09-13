@@ -11,12 +11,12 @@ export function ReactiveStyleMixin<
   styleStore: ObservableStyle<TStyle>;
 } {
   return class extends Base {
-    public readonly styleStore = styleStore;
+    public readonly styleStore;
     private unsubscribe: () => void;
 
     constructor(...args: any[]) {
       super(...args);
-
+      this.styleStore = styleStore;
       this.unsubscribe = this.styleStore.subscribe(() => {
         if (typeof (this as any).render === "function") {
           (this as any).render();
@@ -26,6 +26,8 @@ export function ReactiveStyleMixin<
       if (typeof (this as any).render === "function") {
         (this as any).render();
       }
+      this.initGraphics();
+      this.render();
     }
 
     destroy(options?: any) {

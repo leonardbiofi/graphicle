@@ -1,10 +1,9 @@
-import { createGraphicle, Graphicle } from "@graphicle/base";
-import { RefObject, useEffect, useRef } from "react";
+import { createGraphicle } from "@graphicle/base";
+import { useEffect, useRef } from "react";
 import CanvasControls from "./CanvasControls";
 import { useGraphicleStore } from "@/store/graphicleStore";
 import CanvasRightPanel from "./CanvasRightPanel";
 import { useGraphicle } from "./GraphicleProvider";
-import { basicView } from "@/features/graphicle/view/basic";
 interface CanvasWrapperProps {}
 
 export default function CanvasWrapper({}: CanvasWrapperProps) {
@@ -33,9 +32,8 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
         },
       });
 
-      console.log(basicView);
-      graphicle.renderer?.viewRegistry.register(basicView);
-      graphicle.renderer?.switchView("basicView");
+      // graphicle.renderer?.viewRegistry.register(basicView);
+      // graphicle.renderer?.switchView("basicView");
 
       setGraphicle(graphicle);
       initializeRef.current = false;

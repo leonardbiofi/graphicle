@@ -9,6 +9,8 @@ const RADIUS = 20; // default radius size
 export default class DefaultNode extends BaseNode {
   constructor(node: Node) {
     super(node); // Pass nodeData to the BaseNode constructor
+    this.initGraphics();
+    this.render();
   }
 
   initGraphics() {

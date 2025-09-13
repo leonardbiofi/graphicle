@@ -1,9 +1,10 @@
 import { create } from "zustand";
-import { createSelector } from "reselect";
+import { createSelector, lruMemoize, createSelectorCreator } from "reselect";
 import { Node, Edge } from "@graphicle/base";
 import { subscribeWithSelector } from "zustand/middleware";
 import { diffArrays } from "./listeners";
 import { getGraphicle } from "@/components/GraphicleProvider";
+import deepEqual from "fast-deep-equal";
 export interface GraphicleStoreState {
   nodes: Node[];
   edges: Edge[];
@@ -48,15 +49,39 @@ export const selectedNodes = createSelector(
     return [...selectedNodes];
   }
 );
-export const selectNodeTypes = createSelector(
-  (state: GraphicleStoreState) => state.nodes,
+
+function areArraysEqual(a: string[], b: string[]): boolean {
+  if (a === b) return true;
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
+const createSelectorShallowEqual = createSelectorCreator({
+  memoize: lruMemoize,
+  memoizeOptions: {
+    // equalityCheck: areArraysEqual,
+    resultEqualityCheck: areArraysEqual,
+    maxSize: 10,
+  },
+  argsMemoize: lruMemoize,
+  argsMemoizeOptions: {
+    // equalityCheck: areArraysEqual,
+    resultEqualityCheck: areArraysEqual,
+    maxSize: 10,
+  },
+});
+export const selectNodeTypes = createSelectorShallowEqual(
+  [(state: GraphicleStoreState) => state.nodes],
   (nodes: Node[]) => {
     const nodeTypes = new Set(nodes.map((n) => n.type));
     return [...nodeTypes].sort();
   }
 );
 
-export const selectEdgeTypes = createSelector(
+export const selectEdgeTypes = createSelectorShallowEqual(
   (state: GraphicleStoreState) => state.edges,
   (edges: Edge[]) => {
     const nodeTypes = new Set(edges.map((n) => n.type));

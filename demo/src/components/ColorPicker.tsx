@@ -5,16 +5,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useObservableStyle } from "@/features/graphicle/hooks";
-import { circleStyle } from "@/features/graphicle/view/basic";
-import { useCallback } from "react";
+
 import { HexColorPicker } from "react-colorful";
-export function ColorPicker({ color }: { color: string }) {
-  const style = useObservableStyle(circleStyle);
-  const onColorChange = useCallback((nextColor: string) => {
-    console.log(nextColor);
-    circleStyle.set({ fillColor: nextColor });
-  }, []);
+
+export function ColorPicker({
+  color,
+  onChange,
+}: {
+  color: string;
+  onChange: (color: string) => void;
+}) {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -24,7 +24,7 @@ export function ColorPicker({ color }: { color: string }) {
         ></span>
       </PopoverTrigger>
       <PopoverContent className="">
-        <HexColorPicker color={color} onChange={onColorChange} />
+        <HexColorPicker color={color} onChange={onChange} />
       </PopoverContent>
     </Popover>
   );

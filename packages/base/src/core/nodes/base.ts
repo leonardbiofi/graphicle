@@ -13,9 +13,9 @@ class BaseNode extends Container {
     this.context = null;
     this.node = node;
     this.label = "node";
-    this.initGraphics();
+    // this.initGraphics();
     this.attachEvents();
-    this.render();
+    // this.render();
   }
   setContext(context: GraphicleContext): void {
     this.context = context;
