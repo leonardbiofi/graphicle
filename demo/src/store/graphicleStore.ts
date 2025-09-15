@@ -4,7 +4,6 @@ import { Node, Edge } from "@graphicle/base";
 import { subscribeWithSelector } from "zustand/middleware";
 import { diffArrays } from "./listeners";
 import { getGraphicle } from "@/components/GraphicleProvider";
-import deepEqual from "fast-deep-equal";
 export interface GraphicleStoreState {
   nodes: Node[];
   edges: Edge[];
@@ -83,9 +82,9 @@ export const selectNodeTypes = createSelectorShallowEqual(
 );
 
 export const selectEdgeTypes = createSelectorShallowEqual(
-  (state: GraphicleStoreState) => state.edges,
+  [(state: GraphicleStoreState) => state.edges],
   (edges: Edge[]) => {
-    const nodeTypes = new Set(edges.map((n) => n.type));
-    return [...nodeTypes].sort();
+    const edgeTypes = new Set(edges.map((eds) => eds.type));
+    return [...edgeTypes].sort();
   }
 );

@@ -18,9 +18,6 @@ export default function CanvasRightPanel() {
         )}
       </section>
       <section>
-        <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full">
-          Node Types
-        </h3>
         <ViewBuilder />
       </section>
 
