@@ -79,7 +79,7 @@ export class GraphicleStore {
     let refreshSelected = false;
     const nextNodes = changes.reduce<Record<NodeId, Node>>(
       (nodes, change) => {
-        switch (change.type) {
+        switch (change?.type) {
           case "add":
             nodes[change.item.id] = { ...change.item };
             return nodes;
@@ -115,7 +115,7 @@ export class GraphicleStore {
   applyEdgeChanges(changes: EdgeChange[]) {
     const nextEdges = changes.reduce<Record<EdgeId, Edge>>(
       (edges, change) => {
-        switch (change.type) {
+        switch (change?.type) {
           case "add":
             edges[change.item.id] = { ...change.item };
             return edges;

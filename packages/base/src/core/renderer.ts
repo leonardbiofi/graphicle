@@ -370,6 +370,8 @@ export default class GraphicleRenderer implements ContextClient {
 
     // Perform a render or an update
     for (const change of changes) {
+      if (!change) continue;
+
       if (change.type === "add") {
         // Add the new node to the dom
         const node = change.item;
@@ -437,6 +439,7 @@ export default class GraphicleRenderer implements ContextClient {
     const layer = this.getLayer(Layers.EDGES);
 
     for (const change of changes) {
+      if (!change) continue;
       if (change.type === "add") {
         const edge = change.item;
         const srcNodeGfx = this.nodeIdToNodeGfx.get(edge.source);

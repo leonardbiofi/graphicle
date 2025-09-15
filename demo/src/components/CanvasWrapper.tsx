@@ -4,9 +4,13 @@ import CanvasControls from "./CanvasControls";
 import { useGraphicleStore } from "@/store/graphicleStore";
 import CanvasRightPanel from "./CanvasRightPanel";
 import { useGraphicle } from "./GraphicleProvider";
+import { useForceLayout } from "@/features/graphicle/hooks";
+import { SwitchForceLayout } from "./SwitchForceLayout";
 interface CanvasWrapperProps {}
 
 export default function CanvasWrapper({}: CanvasWrapperProps) {
+  const dragEvents = useForceLayout();
+
   const containerRef = useRef<HTMLDivElement>(null);
   // const graphicleRef = useRef<Graphicle>(null);
   const { setGraphicle, graphicleRef } = useGraphicle();
@@ -15,6 +19,7 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
   const edges = useGraphicleStore((state) => state.edges);
   const setNodes = useGraphicleStore((state) => state.setNodes);
   const setEdges = useGraphicleStore((state) => state.setEdges);
+
   useEffect(() => {
     const mountGraphicle = async () => {
       if (!containerRef.current) return;
@@ -25,6 +30,9 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
         options: {
           handlers: {
             onNodeClick: () => {},
+            onNodeDrag: (_, { node }) => dragEvents.drag(node),
+            onNodeDragStart: (_, node) => dragEvents.start(node),
+            onNodeDragEnd: () => dragEvents.stop(),
             onNodesUpdate: (_, nodes) => setNodes(nodes),
             onEdgesUpdate: (_, edges) => setEdges(edges),
           },
@@ -51,6 +59,7 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
   return (
     <div className="w-[calc(100vw_-_368px)] relative">
       <div id="graphicle" ref={containerRef} className="w-full h-full"></div>
+
       <CanvasControls graphicleRef={graphicleRef} />
       <div className="bg-zinc-900 absolute w-[350px] top-0 right-0 px-2 py-4">
         <CanvasRightPanel />

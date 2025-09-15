@@ -418,6 +418,8 @@ export interface Handlers {
     node: Node,
     event: FederatedPointerEvent | undefined
   ) => void;
+  onNodeDragStart?: (context: GraphicleContext, node: Node) => void;
+  onNodeDragEnd?: (context: GraphicleContext, node: Node) => void;
   onNodesUnselect?: (context: GraphicleContext, nodes: Node[]) => void;
   onNodesSelect?: (context: GraphicleContext, nodes: Node[]) => void;
   onNodesUpdate?: (context: GraphicleContext, nodes: Node[]) => void;
@@ -427,6 +429,8 @@ export interface Handlers {
 const eventToCallbackMap: Record<any, keyof Handlers | undefined> = {
   [GraphicleEventType.NODE_CLICK]: "onNodeClick",
   [GraphicleEventType.NODE_DRAG]: "onNodeDrag",
+  [GraphicleEventType.NODE_DRAGSTART]: "onNodeDragStart",
+  [GraphicleEventType.NODE_DRAGEND]: "onNodeDragEnd",
   [GraphicleEventType.NODE_HOVER]: "onNodeHover",
   [GraphicleEventType.NODES_UNSELECT]: "onNodesUnselect",
   [GraphicleEventType.NODES_SELECT]: "onNodesSelect",
