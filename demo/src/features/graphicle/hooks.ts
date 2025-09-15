@@ -62,7 +62,7 @@ export function useForceLayout() {
           .forceLink(simulationEdges)
           .id((d: any) => d.id)
           .distance(50)
-          .strength(0.05)
+          .strength(0.01)
       )
       .force("charge", d3.forceManyBody().strength(-200))
       .force("center", d3.forceCenter())
