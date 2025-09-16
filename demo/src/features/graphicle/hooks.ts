@@ -2,11 +2,11 @@ import { useEffect, useMemo, useRef, useSyncExternalStore } from "react";
 import * as d3 from "d3-force";
 import { Simulation } from "d3-force";
 import type { Node } from "@graphicle/base";
-import { throttle } from "@tanstack/pacer";
+import { debounce, throttle } from "@tanstack/pacer";
 
 import { useGraphicleStore } from "@/store/graphicleStore";
 import { useForceLayoutStore } from "@/store/layoutStore";
-import { useGraphicle } from "@/components/GraphicleProvider";
+import { getGraphicle, useGraphicle } from "@/components/GraphicleProvider";
 
 import { ObservableStyle } from "./observableStyle";
 import { createWebworker } from "./workers/forceWorker";
@@ -19,7 +19,6 @@ export function useObservableStyle<TStyle extends object>(
   );
   return [style, styleStore];
 }
-const delta = 1 / 60;
 
 export function useForceLayout() {
   // const edges = useGraphicleStore((s) => s.edges);
@@ -29,31 +28,39 @@ export function useForceLayout() {
   const setNodes = useGraphicleStore((s) => s.setNodes);
   const isForceActive = useForceLayoutStore((s) => s.active);
   const draggingNodeRef = useRef<null | Node>(null);
-  const { graphicleRef } = useGraphicle();
-  const simulationRef = useRef<Simulation<any, any>>(null);
+  // const simulationRef = useRef<Simulation<any, any>>(null);
   const dragEvents = useMemo(
     () => ({
       start: (node: Node) => (draggingNodeRef.current = node),
       drag: (node: Node) => {
         draggingNodeRef.current = node;
-        if (simulationRef.current && simulationRef.current.alpha() < 0.3) {
-          simulationRef.current.alpha(1).restart();
-        }
+        // if (simulationRef.current && simulationRef.current.alpha() < 0.3) {
+        //   simulationRef.current.alpha(1).restart();
+        // }
         if (workerRef.current)
           workerRef.current.postMessage({
-            type: "dragging",
+            type: "draggingNode",
             draggingNode: node,
           });
       },
-      stop: () => (draggingNodeRef.current = null),
+      stop: () => {
+        draggingNodeRef.current = null;
+        if (workerRef.current)
+          workerRef.current.postMessage({
+            type: "draggingNode",
+            draggingNode: undefined,
+          });
+      },
     }),
     []
   );
 
   useEffect(() => {
-    if (graphicleRef.current && isForceActive) {
-      const nodes = graphicleRef.current.store.getNodes();
-      const edges = graphicleRef.current.store.getEdges();
+    if (isForceActive) {
+      const graphicle = getGraphicle();
+      if (!graphicle) return;
+      const nodes = graphicle.store.getNodes();
+      const edges = graphicle.store.getEdges();
       const simulationEdges = edges.map((eds) => ({ ...eds }));
       const simulationNodes = nodes.map((node: Node) => ({
         id: node.id,
@@ -75,16 +82,16 @@ export function useForceLayout() {
 
         nodesBuffer = event.data.nodesBuffer;
 
-        if (type === "updateMainBuffers" && graphicleRef.current) {
+        if (type === "updateMainBuffers") {
           // console.log(nodesBuffer);
           // graph = event.data;
 
           // updateNodesFromBuffer();
 
-          const currentNodes = graphicleRef.current.store.getNodes();
+          // const currentNodes = graphicle.store.getNodes();
 
           // Rerender the node, update the nodes from buffer
-          const nextNodes = currentNodes.map((n, i) => {
+          const nextNodes = nodes.map((n, i) => {
             if (n.id !== draggingNodeRef.current?.id) {
               return {
                 ...n,
@@ -94,49 +101,32 @@ export function useForceLayout() {
                 },
               };
             } else {
-              return { ...n };
+              return { ...draggingNodeRef.current };
             }
           });
 
           setNodes(nextNodes);
-          // Update nodes from buffer
-          // for (var i = 0; i < nodes.length; i++) {
-          //   const node = graph.nodes[i];
-          //   if (draggingNode !== node) {
-          //     // const gfx = gfxMap.get(node);
-          //     const gfx = gfxIDMap[node.id];
-          //     // gfx.position = new PIXI.Point(x, y);
-
-          //     if (params.interpolatePositions) {
-          //       gfx.smoothFollowX.set((node.x = nodesBuffer[i * 2 + 0]));
-          //       gfx.smoothFollowY.set((node.y = nodesBuffer[i * 2 + 1]));
-          //     } else {
-          //       gfx.position.x = node.x = nodesBuffer[i * 2 + 0];
-          //       gfx.position.y = node.y = nodesBuffer[i * 2 + 1];
-          //     }
-          //   }
-          // }
-          let delay = delta * 1000 - (Date.now() - (sendTime.current || 0));
-          if (delay < 0) {
-            delay = 0;
-          }
-          setTimeout(updateWorkerBuffers, delay);
+          updateWorkerBuffers();
 
           // } else if(type === 'updateMainSharedBuffer') {
           //   updateNodesFromSharedBuffer();
         }
       };
-      function updateWorkerBuffers() {
-        if (!workerRef.current) return;
-        sendTime.current = Date.now();
-        workerRef.current.postMessage(
-          {
-            type: "updateWorkerBuffers",
-            nodesBuffer,
-          },
-          [nodesBuffer.buffer]
-        );
-      }
+
+      const updateWorkerBuffers = throttle(
+        () => {
+          if (!workerRef.current) return;
+          sendTime.current = Date.now();
+          workerRef.current.postMessage(
+            {
+              type: "updateWorkerBuffers",
+              nodesBuffer,
+            },
+            [nodesBuffer.buffer]
+          );
+        },
+        { wait: 0 }
+      );
 
       // Create the simulation object
       workerRef.current.postMessage(
@@ -152,7 +142,14 @@ export function useForceLayout() {
     } else {
       workerRef.current = null;
     }
-  }, [graphicleRef, isForceActive]);
+
+    return () => {
+      if (workerRef.current) {
+        workerRef.current.terminate();
+        workerRef.current = null;
+      }
+    };
+  }, [isForceActive]);
   // useEffect(() => {
   //   if (!isForceActive) return () => {};
   //   if (!graphicleRef.current) return;

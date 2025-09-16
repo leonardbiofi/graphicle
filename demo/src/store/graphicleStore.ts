@@ -4,6 +4,7 @@ import { Node, Edge } from "@graphicle/base";
 import { subscribeWithSelector } from "zustand/middleware";
 import { diffArrays } from "./listeners";
 import { getGraphicle } from "@/components/GraphicleProvider";
+import { throttle } from "@tanstack/pacer";
 export interface GraphicleStoreState {
   nodes: Node[];
   edges: Edge[];
@@ -32,8 +33,22 @@ const unsub3 = useGraphicleStore.subscribe(
 
     if (!graphicle) return;
 
-    graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
-    graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
+    const throttledDiffNodes = throttle(
+      (diffNodes) => {
+        graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
+      },
+      { wait: 50 }
+    );
+    const throttledDiffEdges = throttle(
+      (diffEdges) => {
+        graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
+      },
+      { wait: 50 }
+    );
+    throttledDiffNodes(diffNodes);
+    throttledDiffEdges(diffEdges);
+    // graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
+    // graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
     // console.log("GRAPHICLE:", graphicle, diffEdges, diffNodes);
   },
   {

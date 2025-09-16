@@ -95,14 +95,24 @@ export default class GraphicleViewport
   /** Viewport helper methods */
   fitView() {
     if (!this.context) return;
-    const { x, y, width, height } = getNodesBounds([
-      ...this.context?.renderer.nodeIdToNodeGfx.values(),
-    ]);
+    try {
+      const nodes = [...this.context?.renderer.nodeIdToNodeGfx.values()]
+        .filter((gfx) => gfx)
+        .map((gfx) => ({
+          position: { ...gfx.node.position },
+          width: 100,
+          height: 100,
+        }));
 
-    this.fitBounds(
-      { x: x + width / 2, y: y + height / 2, height, width },
-      { padding: 50 }
-    );
+      const { x, y, width, height } = getNodesBounds(nodes);
+
+      this.fitBounds(
+        { x: x + width / 2, y: y + height / 2, height, width },
+        { padding: 50 }
+      );
+    } catch (err) {
+      console.error(err);
+    }
   }
   /**
    * Fits the view to the given bounds

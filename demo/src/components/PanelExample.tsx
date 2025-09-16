@@ -31,7 +31,6 @@ export default function PanelExample() {
 
       const positionNodes = layoutContext.runLayout({ nodes, edges });
 
-      console.log("NODES:", positionNodes, "edges:", edges);
       // Layout the nodes because they might have no position
       useGraphicleStore.setState(() => ({
         nodes: [...positionNodes],
@@ -39,9 +38,10 @@ export default function PanelExample() {
       }));
       useExampleStore.setState({ name: variables });
 
-      getGraphicle()?.viewport?.fitView();
+      const graphicle = getGraphicle();
 
-      getGraphicle()?.renderer?.requestRender();
+      console.log("GRPHILE:", graphicle);
+      getGraphicle()?.viewport?.fitView();
 
       // console.log("Variables:", variables);
 

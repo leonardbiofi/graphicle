@@ -104,6 +104,7 @@ export default class GraphicleRenderer implements ContextClient {
     layer.removeChildren();
 
     const changes: NodeChange[] = nodes.map((node: Node) => {
+      if (!node.type) node.type = "undefined";
       return { type: "add", item: node };
     });
 
@@ -127,6 +128,8 @@ export default class GraphicleRenderer implements ContextClient {
     layer.removeChildren();
 
     const changes: EdgeChange[] = edges.map((edge: Edge) => {
+      if (!edge.type) edge.type = "undefined";
+
       return { type: "add", item: edge };
     });
 
@@ -410,7 +413,6 @@ export default class GraphicleRenderer implements ContextClient {
   }
   applyEdgeChangesInternal(changes: EdgeChange[], notify = true) {
     this.context?.store.applyEdgeChanges(changes);
-
     if (notify)
       // Emit the event when the state is upated internally. Important to sync data with external store
       this.context?.eventDispatcher.emit(
