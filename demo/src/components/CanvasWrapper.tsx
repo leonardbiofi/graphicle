@@ -57,7 +57,7 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
     };
   }, []);
   return (
-    <div className="w-[calc(100vw_-_368px)] relative">
+    <div className="w-[calc(100vw_-_368px)] relative bg-opacity-0">
       <div id="graphicle" ref={containerRef} className="w-full h-full"></div>
       <div className="absolute top-0 left-0 m-5 text-white">
         <SwitchForceLayout />

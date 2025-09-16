@@ -1,6 +1,10 @@
 import { Viewport } from "pixi-viewport";
 
-import type { EventSystem, FederatedPointerEvent } from "pixi.js";
+import type {
+  EventSystem,
+  ExtractImageOptions,
+  FederatedPointerEvent,
+} from "pixi.js";
 import { Graphics } from "pixi.js";
 import GraphicleContext, { ContextClient } from "./context";
 import type { Rect } from "./types";
@@ -121,7 +125,8 @@ export default class GraphicleViewport
     { mode, flash }: { mode: "download" | "clipboard"; flash: boolean } = {
       mode: "clipboard",
       flash: true,
-    }
+    },
+    extractOptions?: { clearColor?: string; resolution?: number }
   ) {
     if (!this.context) return;
     if (mode !== "download" && mode !== "clipboard") {
@@ -132,10 +137,13 @@ export default class GraphicleViewport
     }
     // Get the viewport bounds
     const visibleBounds = this.getVisibleBounds();
+
     // Take the screenshot
     const url = await this.context.app.renderer.extract.base64({
       target: this,
       frame: visibleBounds,
+      // clearColor: "#ff0000",
+      ...extractOptions,
     }); // Extract only what is visible
 
     if (mode === "download") {

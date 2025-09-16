@@ -30,9 +30,14 @@ export default function CanvasControls({ graphicleRef }: CanvasControlProps) {
         <li
           className="cursor-pointer hover:text-teal-600"
           onClick={() => {
-            graphicleRef.current?.viewport?.screenShot().then(() => {
-              setScreenShot(true);
-            });
+            graphicleRef.current?.viewport
+              ?.screenShot(
+                { mode: "clipboard", flash: true },
+                { clearColor: "#3f3f46", resolution: 2 }
+              )
+              .then(() => {
+                setScreenShot(true);
+              });
           }}
         >
           <Camera />

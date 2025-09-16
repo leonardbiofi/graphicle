@@ -14,6 +14,7 @@ import { D3Force, LayoutContext } from "../layout";
 import type { Node, Edge } from "./types";
 interface GraphicleOptions {
   backgroundAlpha?: number;
+  backgroundColor?: string;
   selectOnDrag?: boolean;
   handlers: Handlers;
 }
@@ -66,6 +67,7 @@ class Graphicle {
     await this._app.init({
       // background: "red",
       //   backgroundAlpha: 0, // transparent background
+      backgroundColor: this.options.backgroundColor,
       backgroundAlpha: this.options.backgroundAlpha,
       resizeTo: wrapper,
       width: SCREEN_WIDTH,
