@@ -288,3 +288,9 @@ Files prefixed with `demo` can be safely deleted. They are there to provide a st
 # Learn More
 
 You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+
+
+
+# Webworkeer example
+
+https://github.com/markuslerner/d3-webworker-pixijs/blob/master/js/index.js

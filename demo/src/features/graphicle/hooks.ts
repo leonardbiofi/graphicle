@@ -93,7 +93,7 @@ export function useForceLayout() {
         // @ts-expect-error FIXME: need better typescript handling
         setNodes(nextNodes); // trigger state update}, { wait: 100 });
       },
-      { wait: 100 }
+      { wait: 50 }
     );
 
     simulationRef.current = d3
@@ -112,6 +112,7 @@ export function useForceLayout() {
       // .alphaDecay(0.015) // slower cooling
       .alpha(0.3)
       .restart()
+      .tick(1)
       .on("tick", onTick);
 
     return () => {
