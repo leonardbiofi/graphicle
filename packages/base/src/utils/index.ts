@@ -30,6 +30,7 @@ export const getNodesBounds = (nodes: any[]): Rect => {
     (currBox, node) => {
       let currentNode = node;
 
+      if (!currentNode) return {};
       const nodeBox = currentNode
         ? nodeToBox(currentNode)
         : { x: 0, y: 0, x2: 0, y2: 0 };

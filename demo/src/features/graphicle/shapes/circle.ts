@@ -54,6 +54,7 @@ class CircleNode extends BaseNode {
       label = new Label(text, textStyle);
       label.label = "label";
       label.anchor.set(0.5);
+      label.resolution = 5;
 
       // label.text = truncateTextToFit(text, textStyle, maxWidth);
       const circle = this.getChildByLabel("circle") as Pixi.Graphics;

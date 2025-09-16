@@ -63,7 +63,7 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
         <SwitchForceLayout />
       </div>
       <CanvasControls graphicleRef={graphicleRef} />
-      <div className="bg-zinc-900 absolute w-[350px] top-0 right-0 px-2 py-4">
+      <div className="bg-zinc-900 absolute w-[350px] top-0 right-0 px-4 py-4">
         <CanvasRightPanel />
       </div>
     </div>

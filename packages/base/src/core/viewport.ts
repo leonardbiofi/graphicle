@@ -1,10 +1,12 @@
 import { Viewport } from "pixi-viewport";
 
 import type { EventSystem, FederatedPointerEvent } from "pixi.js";
+import { Graphics } from "pixi.js";
 import GraphicleContext, { ContextClient } from "./context";
 import type { Rect } from "./types";
 import { getNodesBounds } from "../utils/index";
 import { GraphicleEventType } from "./dispatcher";
+import { Layers } from "./renderer";
 interface GraphicleViewportInterface {
   screenWidth: number;
   screenHeight: number;
@@ -110,5 +112,78 @@ export default class GraphicleViewport
   fitBounds({ x, y, height, width }: Rect, { padding } = { padding: 0 }) {
     this.fit(true, width + padding, height + padding);
     this.moveCenter(x, y);
+  }
+
+  /**
+   * Take a screenshot of the current viewport
+   */
+  async screenShot(
+    { mode, flash }: { mode: "download" | "clipboard"; flash: boolean } = {
+      mode: "clipboard",
+      flash: true,
+    }
+  ) {
+    if (!this.context) return;
+    if (mode !== "download" && mode !== "clipboard") {
+      console.error(
+        "Screenshot method only accept 'download' or 'clipboard' as mode "
+      );
+      return;
+    }
+    // Get the viewport bounds
+    const visibleBounds = this.getVisibleBounds();
+    // Take the screenshot
+    const url = await this.context.app.renderer.extract.base64({
+      target: this,
+      frame: visibleBounds,
+    }); // Extract only what is visible
+
+    if (mode === "download") {
+      const anchorElement = document.createElement("a");
+
+      anchorElement.href = url;
+      anchorElement.download = "screenshot";
+      document.body.appendChild(anchorElement);
+      anchorElement.click();
+      document.body.removeChild(anchorElement);
+    } else if (mode === "clipboard") {
+      // Convert base64 to Blob
+      const res = await fetch(url);
+      const blob = await res.blob();
+
+      // Create ClipboardItem
+      const clipboardItem = new ClipboardItem({ [blob.type]: blob });
+
+      // Write to clipboard
+      await navigator.clipboard.write([clipboardItem]);
+    }
+    // Draw flash rectangle
+    if (flash) {
+      const flashEffect = new Graphics()
+        .rect(
+          visibleBounds.left,
+          visibleBounds.top,
+          visibleBounds.width,
+          visibleBounds.height
+        )
+        .fill("white");
+      flashEffect.alpha = 0.6;
+      flashEffect.label = "flash";
+      this.context.renderer.getLayer(Layers.DRAWING).addChild(flashEffect);
+
+      // Start ticker to reduce alpha value
+      const tickerCallback = () => {
+        flashEffect.alpha -= 0.02;
+      };
+      const screenShotTicker = this.context.app.ticker.add(tickerCallback);
+
+      // Stop the ticker after timeout and take screenshot
+      setTimeout(async () => {
+        this.context?.renderer.getLayer(Layers.DRAWING).removeChildren();
+
+        //  Stop animation ticker
+        screenShotTicker.remove(tickerCallback);
+      }, 800);
+    }
   }
 }
