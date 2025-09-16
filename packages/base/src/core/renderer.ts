@@ -313,25 +313,7 @@ export default class GraphicleRenderer implements ContextClient {
       rectangle?.destroy({ context: false });
     }
   }
-  setSelectNode(node: Node, value: boolean) {
-    // if (value) {
-    //   this.context?.eventDispatcher.emit(
-    //     GraphicleEventType.NODES_SELECT,
-    //     [node],
-    //     null
-    //   );
-    // } else {
-    //   this.context?.eventDispatcher.emit(
-    //     GraphicleEventType.NODES_UNSELECT,
-    //     [node],
-    //     null
-    //   );
-    // }
-    // const newNode = {...node, selected:value}
-    // node.selected = value;
-    // this.context?.store.updateNodes([node], true);
-    // this.updateSelectedNodes([node]);
-  }
+
   requestRender() {
     if (this.renderRequestId) return;
     this.renderRequestId = window.requestAnimationFrame(() => {

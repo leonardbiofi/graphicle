@@ -1,10 +1,6 @@
 import { Viewport } from "pixi-viewport";
 
-import type {
-  EventSystem,
-  ExtractImageOptions,
-  FederatedPointerEvent,
-} from "pixi.js";
+import type { EventSystem, FederatedPointerEvent } from "pixi.js";
 import { Graphics } from "pixi.js";
 import GraphicleContext, { ContextClient } from "./context";
 import type { Rect } from "./types";

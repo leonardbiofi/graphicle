@@ -157,8 +157,8 @@ export class ViewRegistry {
   ): any {
     const view = this.getCurrentView<NK, any>();
 
-    if (!view.nodeMap[type])
-      console.warn("Unknown Node type falling back to default");
+    if (!view.nodeMap[type]) return;
+    // console.warn("Unknown Node type falling back to default");
 
     const Cls = view.nodeMap[type] ?? view.nodeMap.default;
     return new Cls(...args);
@@ -170,8 +170,8 @@ export class ViewRegistry {
   ): any {
     const view = this.getCurrentView<any, EK>();
 
-    if (!view.edgeMap[type])
-      console.warn("Unknown Edge type falling back to default");
+    if (!view.edgeMap[type]) return;
+    // console.warn("Unknown Edge type falling back to default");
 
     const Cls = view.edgeMap[type] ?? view.edgeMap.default;
     return new Cls(...args);
