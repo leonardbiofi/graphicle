@@ -1,6 +1,6 @@
-import { Link } from "@tanstack/react-router";
 import Logo from "./Logo";
 import GithubSvg from "@/assets/github.svg";
+
 export default function Header() {
   return (
     <header className="p-4 flex gap-2 bg-zinc-800 text-black justify-between items-center h-16">
@@ -31,13 +31,5 @@ export default function Header() {
         </div> */}
       </nav>
     </header>
-  );
-}
-
-function NavLink({ to }: { to: string }) {
-  return (
-    <div className="px-2 font-bold text-white">
-      <Link to={to}>Home</Link>
-    </div>
   );
 }

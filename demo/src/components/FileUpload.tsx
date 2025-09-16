@@ -2,7 +2,7 @@ import { ChangeEvent, DragEventHandler, useRef, useState } from "react";
 import { Button } from "./ui/button";
 import clsx from "clsx";
 
-const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 10000000;
+const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 100000000;
 
 type ListFiles = { [filename: string]: File };
 interface FileUploadProps {

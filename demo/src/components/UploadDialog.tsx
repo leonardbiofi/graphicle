@@ -15,20 +15,14 @@ import FileUpload from "./FileUpload";
 import { useGraphicleStore } from "@/store/graphicleStore";
 import { LayoutContext, D3Force } from "@graphicle/base";
 import { getGraphicle } from "./GraphicleProvider";
-const readGraphicleJsonFile = (file: File): Promise<any> => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const json = JSON.parse(event.target?.result as string);
-        resolve(json);
-      } catch (err) {
-        reject(err);
-      }
-    };
-    reader.onerror = reject;
-    reader.readAsText(file);
-  });
+import parser from "@/lib/parser";
+
+type AcceptedFormats = "json" | "graphml";
+
+const acceptedFormats: AcceptedFormats[] = ["json", "graphml"];
+
+const isAcceptedFormat = (ext: string): ext is AcceptedFormats => {
+  return acceptedFormats.includes(ext as AcceptedFormats);
 };
 
 export default function UploadDialog() {
@@ -44,7 +38,20 @@ export default function UploadDialog() {
   const onFileUpload = useCallback(async () => {
     // read the file and setup the nodes and edges
     for (const file of filesToUpload) {
-      const json = await readGraphicleJsonFile(file);
+      if (!file) continue;
+
+      // Get file extension
+      const fileExt = file.name.split(".").at(-1);
+      // Select the correct parser function
+      if (!fileExt || !isAcceptedFormat(fileExt)) {
+        console.error(
+          `Unsupported file format: ${fileExt}. Accepted formats are ${acceptedFormats.join(
+            ","
+          )}`
+        );
+        continue;
+      }
+      const json = await parser[fileExt](file);
       const { nodes, edges } = json;
 
       const layoutContext = new LayoutContext(new D3Force());
@@ -77,7 +84,7 @@ export default function UploadDialog() {
         {!filesToUpload.length && (
           <FileUpload
             multiple={false}
-            formats={["json"]}
+            formats={acceptedFormats}
             onUpdateFiles={(files: File[]) => setFilesToUpload(files)}
           />
         )}
