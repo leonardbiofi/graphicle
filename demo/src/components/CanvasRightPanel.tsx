@@ -1,6 +1,5 @@
 import { selectedNodes, useGraphicleStore } from "@/store/graphicleStore";
 import NodeInfo from "./NodeInfo";
-import NodeTypesInfo from "./NodeTypesInfo";
 import ViewBuilder from "./ViewBuilder";
 import { SwitchForceLayout } from "./SwitchForceLayout";
 export default function CanvasRightPanel() {
@@ -11,7 +10,6 @@ export default function CanvasRightPanel() {
       <section>
         <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full">
           Node Info
-          <SwitchForceLayout />
         </h3>
         {nodes.length > 0 && <NodeInfo node={nodes[0]} />}
         {nodes.length === 0 && (

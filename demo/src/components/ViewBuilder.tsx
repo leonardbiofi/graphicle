@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import {
   useGraphicleStore,
   selectNodeTypes,
@@ -13,6 +13,7 @@ import { arrowLineStyle } from "@/features/graphicle/lines/arrowLine";
 import { createView } from "@graphicle/base";
 import { ColorPicker } from "./ColorPicker";
 import { useGraphicle } from "./GraphicleProvider";
+import CheckboxLabels from "./CheckboxLabels";
 
 export default function ViewBuilder() {
   const nodeTypes = useGraphicleStore(selectNodeTypes);
@@ -22,6 +23,17 @@ export default function ViewBuilder() {
   const [nodeAssignments, setNodeAssignments] = useState({});
   const [edgeAssignments, setEdgeAssignments] = useState({});
 
+  const [showLabels, setShowLabels] = useState(true);
+
+  const onShowLabelsChange = useCallback(
+    (value: boolean) => {
+      setShowLabels(value);
+      Object.values(nodeAssignments).forEach((assignment) => {
+        assignment?.style.set({ showLabel: value });
+      });
+    },
+    [nodeAssignments]
+  );
   useEffect(() => {
     setNodeAssignments(() => {
       const obj: Record<string, any> = {};
@@ -42,7 +54,7 @@ export default function ViewBuilder() {
       edgeTypes.forEach((type) => {
         obj[type] = {
           style: new ObservableStyle({ ...arrowLineStyle }), // default value
-          edgeKey: "arrowLine", // Default value
+          edgeKey: "arrowLine", // Default line
         };
       });
 
@@ -79,9 +91,13 @@ export default function ViewBuilder() {
   return (
     <div className="space-y-4 text-white">
       <div>
-        <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full">
-          Node Types
-        </h3>
+        <header className="border-b-zinc-700 border-b pb-2 mb-2 flex justify-between items-center">
+          <h3 className="text-white text-sm font-bold">Node Types</h3>
+          <CheckboxLabels
+            checked={showLabels}
+            onCheckedChange={onShowLabelsChange}
+          />
+        </header>
         {nodeTypes.map((type) => (
           <div key={type} className="flex items-center gap-4 justify-between">
             <span className="w-20">{type}</span>

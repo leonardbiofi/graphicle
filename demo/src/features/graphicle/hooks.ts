@@ -109,7 +109,7 @@ export function useForceLayout() {
       .force("charge", d3.forceManyBody().strength(-200))
       .force("center", d3.forceCenter())
       .force("collide", d3.forceCollide().radius(80))
-      .alphaDecay(0.015) // slower cooling
+      // .alphaDecay(0.015) // slower cooling
       .alpha(0.3)
       .restart()
       .on("tick", onTick);

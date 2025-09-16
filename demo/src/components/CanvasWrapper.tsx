@@ -59,7 +59,9 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
   return (
     <div className="w-[calc(100vw_-_368px)] relative">
       <div id="graphicle" ref={containerRef} className="w-full h-full"></div>
-
+      <div className="absolute top-0 left-0 m-5 text-white">
+        <SwitchForceLayout />
+      </div>
       <CanvasControls graphicleRef={graphicleRef} />
       <div className="bg-zinc-900 absolute w-[350px] top-0 right-0 px-2 py-4">
         <CanvasRightPanel />

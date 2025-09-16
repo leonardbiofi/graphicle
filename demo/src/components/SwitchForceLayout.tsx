@@ -12,7 +12,9 @@ export function SwitchForceLayout() {
         checked={active}
         onCheckedChange={(value) => setActiveForce(value)}
       />
-      <label htmlFor="force-layout">Force Layout</label>
+      <label htmlFor="force-layout" className="font-semibold">
+        Force Layout
+      </label>
     </div>
   );
 }
