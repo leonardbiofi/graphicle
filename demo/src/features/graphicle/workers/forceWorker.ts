@@ -1,7 +1,7 @@
-function createWebworker() {
+export function createWebworker() {
   // console.log('Create web worker');
 
-  nodesBuffer = new Float32Array(graph.nodes.length * 2); // transferable object
+  // nodesBuffer = new Float32Array(graph.nodes.length * 2); // transferable object
 
   // const size = Int32Array.BYTES_PER_ELEMENT * graph.nodes.length * 2;
   // sharedBuffer = new SharedArrayBuffer(size);
@@ -11,12 +11,13 @@ function createWebworker() {
     importScripts('https://unpkg.com/d3@7/dist/d3.min.js');
 
     let simulation;
-    let graph;
+    let nodes;
+    let links;
 
     function copyDataToBuffers(nodesBuffer) {
       // Copy over the data to the buffers
-      for(var i = 0; i < graph.nodes.length; i++){
-          var node = graph.nodes[i];
+      for(var i = 0; i < nodes.length; i++){
+          var node = nodes[i];
           nodesBuffer[i * 2 + 0] = node.x;
           nodesBuffer[i * 2 + 1] = node.y;
       }
@@ -25,29 +26,20 @@ function createWebworker() {
     }
 
     self.onmessage = event => {
-      // console.log('event.data', event.data);
-      // const result = forceLayout.apply(undefined, event.data);
 
-      if(!graph) graph = event.data.graph;
-
-      const { options, type } = event.data;
-      // console.log(type);
-
-      const { nodes, links } = graph;
+      if(!nodes) nodes =event.data.nodes;
+      if(!links) links = event.data.edges; 
+      const {type } = event.data
 
       if(type === 'createSimulation') {
         if(!simulation) {
-          const { alpha, alphaDecay, alphaTarget, iterations, nodeRepulsionStrength, width, height } = options;
 
-          simulation = d3.forceSimulation()
-            .alpha(alpha)
-            .alphaDecay(alphaDecay)
-            .alphaTarget(alphaTarget)
-            .nodes(nodes)
-            .force("link", d3.forceLink(links).id(d => d.id))
-            .force("charge", d3.forceManyBody().strength(-nodeRepulsionStrength))
-            .force('center', d3.forceCenter(width / 2, height / 2))
-            .tick(iterations)
+          simulation = d3.forceSimulation(nodes)
+            .alpha(0.3)
+            .force("link", d3.forceLink(links).id(d => d.id).distance(50).strength(0.01))
+            .force("charge", d3.forceManyBody().strength(-200))
+            .force('center', d3.forceCenter())
+            .tick(1)
             .stop()
             ;
 
@@ -74,16 +66,37 @@ function createWebworker() {
 
       } else if(type === 'updateWorkerBuffers') {
         if(simulation) {
-          const { iterations, width, height } = options;
 
           simulation
-            .force('center', d3.forceCenter(width / 2, height / 2))
-            .tick(iterations)
+            .force('center', d3.forceCenter())
+            .tick(1)
             ;
         }
 
         copyDataToBuffers(event.data.nodesBuffer);
 
+      } else if(type === 'draggingNode') {
+
+        const { draggingNode } = event.data
+
+        if(simulation) {
+        
+          const nodes = simulation.nodes();
+
+          for(var i = 0; i < nodes.length; i++) {
+            const node = nodes[i]
+            if(draggingNode.id === node.id) {
+              node.x = draggingNode.position.x;
+              node.y = draggingNode.position.y;
+              node.fx = draggingNode.position.x;
+              node.fy = draggingNode.position.y;
+            } else {
+              delete node.fx
+              delete node.fy
+              }
+          }
+
+        }
       }
 
     }
@@ -91,47 +104,48 @@ function createWebworker() {
 
   const workerBlob = new Blob([workerCode], { type: "application/javascript" });
   const workerUrl = URL.createObjectURL(workerBlob);
-  worker = new Worker(workerUrl);
 
-  worker.onmessage = (event) => {
-    // worker.terminate();
-    // URL.revokeObjectURL(workerUrl);
+  return new Worker(workerUrl);
 
-    const { type } = event.data;
+  // worker.onmessage = (event) => {
+  //   // worker.terminate();
+  //   // URL.revokeObjectURL(workerUrl);
 
-    nodesBuffer = event.data.nodesBuffer;
+  //   const { type } = event.data;
 
-    if (type === "updateMainBuffers") {
-      // console.log(nodesBuffer);
-      // graph = event.data;
+  //   nodesBuffer = event.data.nodesBuffer;
 
-      updateNodesFromBuffer();
+  //   if (type === "updateMainBuffers") {
+  //     // console.log(nodesBuffer);
+  //     // graph = event.data;
 
-      // } else if(type === 'updateMainSharedBuffer') {
-      //   updateNodesFromSharedBuffer();
-    }
-  };
+  //     updateNodesFromBuffer();
 
-  createWorkerSimulation();
+  //     // } else if(type === 'updateMainSharedBuffer') {
+  //     //   updateNodesFromSharedBuffer();
+  //   }
+  // };
+
+  // createWorkerSimulation();
 }
 
-function createWorkerSimulation() {
-  sendTime = Date.now();
-  worker.postMessage(
-    {
-      type: "createSimulation",
-      graph,
-      options: {
-        alpha: ALPHA,
-        alphaDecay: ALPHA_DECAY,
-        alphaTarget: ALPHA_TARGET,
-        iterations: params.numInterations,
-        nodeRepulsionStrength: FORCE_LAYOUT_NODE_REPULSION_STRENGTH,
-        width,
-        height,
-      },
-      nodesBuffer,
-    },
-    [nodesBuffer.buffer]
-  );
-}
+// function createWorkerSimulation() {
+//   sendTime = Date.now();
+//   worker.postMessage(
+//     {
+//       type: "createSimulation",
+//       graph,
+//       options: {
+//         alpha: ALPHA,
+//         alphaDecay: ALPHA_DECAY,
+//         alphaTarget: ALPHA_TARGET,
+//         iterations: params.numInterations,
+//         nodeRepulsionStrength: FORCE_LAYOUT_NODE_REPULSION_STRENGTH,
+//         width,
+//         height,
+//       },
+//       nodesBuffer,
+//     },
+//     [nodesBuffer.buffer]
+//   );
+// }

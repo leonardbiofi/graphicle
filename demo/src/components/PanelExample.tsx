@@ -12,7 +12,6 @@ import { useMutation } from "@tanstack/react-query";
 import { D3Force, LayoutContext } from "@graphicle/base";
 import { getGraphicle } from "./GraphicleProvider";
 
-import exampleViews from "@/features/graphicle/views";
 import { useExampleStore } from "@/store/exampleStore";
 
 function getData(name: string) {
@@ -31,6 +30,8 @@ export default function PanelExample() {
       const layoutContext = new LayoutContext(new D3Force());
 
       const positionNodes = layoutContext.runLayout({ nodes, edges });
+
+      console.log("NODES:", positionNodes, "edges:", edges);
       // Layout the nodes because they might have no position
       useGraphicleStore.setState(() => ({
         nodes: [...positionNodes],
@@ -39,6 +40,8 @@ export default function PanelExample() {
       useExampleStore.setState({ name: variables });
 
       getGraphicle()?.viewport?.fitView();
+
+      getGraphicle()?.renderer?.requestRender();
 
       // console.log("Variables:", variables);
 

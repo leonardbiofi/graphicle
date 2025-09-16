@@ -291,6 +291,6 @@ You can learn more about all of the offerings from TanStack in the [TanStack doc
 
 
 
-# Webworkeer example
+# Webworker example
 
 https://github.com/markuslerner/d3-webworker-pixijs/blob/master/js/index.js
