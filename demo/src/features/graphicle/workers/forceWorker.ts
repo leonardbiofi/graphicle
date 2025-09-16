@@ -1,48 +1,160 @@
-importScripts("https://d3js.org/d3.v7.min.js");
+function createWebworker() {
+  // console.log('Create web worker');
 
-let simulation;
+  nodesBuffer = new Float32Array(graph.nodes.length * 2); // transferable object
 
-self.onmessage = function (e) {
-  const { type, nodes, links, draggedId, draggedPos } = e.data;
+  // const size = Int32Array.BYTES_PER_ELEMENT * graph.nodes.length * 2;
+  // sharedBuffer = new SharedArrayBuffer(size);
+  // sharedArray = new Int32Array(sharedBuffer);
 
-  if (type === "start") {
-    simulation = d3
-      .forceSimulation(nodes)
-      .force(
-        "link",
-        d3
-          .forceLink(links)
-          .id((d) => d.id)
-          .distance(50)
-          .strength(0.01)
-      )
-      .force("charge", d3.forceManyBody().strength(-200))
-      .force("center", d3.forceCenter())
-      .force("collide", d3.forceCollide().radius(80))
-      .alpha(0.3)
-      .on("tick", () => {
-        self.postMessage({ type: "tick", nodes });
-      });
-  }
+  const workerCode = `
+    importScripts('https://unpkg.com/d3@7/dist/d3.min.js');
 
-  if (type === "stop") {
-    simulation?.stop();
-  }
+    let simulation;
+    let graph;
 
-  if (type === "drag") {
-    // Fix position of dragged node
-    const node = simulation.nodes().find((n) => n.id === draggedId);
-    if (node) {
-      node.fx = draggedPos.x;
-      node.fy = draggedPos.y;
+    function copyDataToBuffers(nodesBuffer) {
+      // Copy over the data to the buffers
+      for(var i = 0; i < graph.nodes.length; i++){
+          var node = graph.nodes[i];
+          nodesBuffer[i * 2 + 0] = node.x;
+          nodesBuffer[i * 2 + 1] = node.y;
+      }
+
+      postMessage({ type: 'updateMainBuffers', nodesBuffer }, [nodesBuffer.buffer]);
     }
-  }
 
-  if (type === "dragEnd") {
-    const node = simulation.nodes().find((n) => n.id === draggedId);
-    if (node) {
-      node.fx = null;
-      node.fy = null;
+    // function copyDataToSharedBuffer(sharedBuffer) {
+    //   const sharedArray = new Int32Array(sharedBuffer);
+    //   for(var i = 0; i < graph.nodes.length; i++){
+    //       var node = graph.nodes[i];
+    //       sharedArray[i * 2 + 0] = node.x;
+    //       sharedArray[i * 2 + 1] = node.y;
+    //   }
+    //
+    //   postMessage({ type: 'updateMainSharedBuffer', sharedBuffer });
+    // }
+
+    self.onmessage = event => {
+      // console.log('event.data', event.data);
+      // const result = forceLayout.apply(undefined, event.data);
+
+      if(!graph) graph = event.data.graph;
+
+      const { options, type } = event.data;
+      // console.log(type);
+
+      const { nodes, links } = graph;
+
+      if(type === 'createSimulation') {
+        if(!simulation) {
+          const { alpha, alphaDecay, alphaTarget, iterations, nodeRepulsionStrength, width, height } = options;
+
+          simulation = d3.forceSimulation()
+            .alpha(alpha)
+            .alphaDecay(alphaDecay)
+            .alphaTarget(alphaTarget)
+            .nodes(nodes)
+            .force("link", d3.forceLink(links).id(d => d.id))
+            .force("charge", d3.forceManyBody().strength(-nodeRepulsionStrength))
+            .force('center', d3.forceCenter(width / 2, height / 2))
+            .tick(iterations)
+            .stop()
+            ;
+
+        }
+
+        copyDataToBuffers(event.data.nodesBuffer);
+        // copyDataToSharedBuffer(event.data.sharedBuffer);
+
+      } else if(type === 'updateWorkerGraph') {
+        graph = event.data.graph;
+        simulation
+          .nodes(graph.nodes)
+          .force("link", d3.forceLink(graph.links).id(d => d.id))
+        ;
+
+      } else if(type === 'updateWorkerNodePositions') {
+        const { nodes } = event.data;
+
+        const n = simulation.nodes();
+        for(var i = 0; i < n.length; i++){
+            n[i].x = nodes[i].x;
+            n[i].y = nodes[i].y;
+        }
+
+      } else if(type === 'updateWorkerBuffers') {
+        if(simulation) {
+          const { iterations, width, height } = options;
+
+          simulation
+            .force('center', d3.forceCenter(width / 2, height / 2))
+            .tick(iterations)
+            ;
+        }
+
+        copyDataToBuffers(event.data.nodesBuffer);
+
+      // } else if(type === 'updateWorkerSharedBuffer') {
+      //   if(simulation) {
+      //     const { iterations, width, height } = options;
+      //
+      //     simulation
+      //       .force('center', d3.forceCenter(width / 2, height / 2))
+      //       .tick(iterations)
+      //       ;
+      //   }
+      //
+      //   copyDataToSharedBuffer(event.data.sharedBuffer);
+
+      }
+
     }
-  }
-};
+  `;
+
+  const workerBlob = new Blob([workerCode], { type: "application/javascript" });
+  const workerUrl = URL.createObjectURL(workerBlob);
+  worker = new Worker(workerUrl);
+
+  worker.onmessage = (event) => {
+    // worker.terminate();
+    // URL.revokeObjectURL(workerUrl);
+
+    const { type } = event.data;
+
+    nodesBuffer = event.data.nodesBuffer;
+
+    if (type === "updateMainBuffers") {
+      // console.log(nodesBuffer);
+      // graph = event.data;
+
+      updateNodesFromBuffer();
+
+      // } else if(type === 'updateMainSharedBuffer') {
+      //   updateNodesFromSharedBuffer();
+    }
+  };
+
+  createWorkerSimulation();
+}
+
+function createWorkerSimulation() {
+  sendTime = Date.now();
+  worker.postMessage(
+    {
+      type: "createSimulation",
+      graph,
+      options: {
+        alpha: ALPHA,
+        alphaDecay: ALPHA_DECAY,
+        alphaTarget: ALPHA_TARGET,
+        iterations: params.numInterations,
+        nodeRepulsionStrength: FORCE_LAYOUT_NODE_REPULSION_STRENGTH,
+        width,
+        height,
+      },
+      nodesBuffer,
+    },
+    [nodesBuffer.buffer]
+  );
+}
