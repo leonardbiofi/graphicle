@@ -7,7 +7,7 @@ var nodes = [
   {
     id: 1,
     label: "Abdelmoumene Djabou",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Club Africain",
+    title: "Algeria",
     value: 22,
     group: 24,
     x: -1392.5499,
@@ -16,7 +16,7 @@ var nodes = [
   {
     id: 2,
     label: "Abel Aguilar",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Toulouse",
+    title: "Colombia",
     value: 24,
     group: 11,
     x: -660.82574,
@@ -25,7 +25,7 @@ var nodes = [
   {
     id: 3,
     label: "Abel Hernández",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Palermo",
+    title: "Uruguay",
     value: 22,
     group: 6,
     x: -85.6025,
@@ -34,7 +34,7 @@ var nodes = [
   {
     id: 4,
     label: "Adam Kwarasey",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Strømsgodset",
+    title: "Ghana",
     value: 22,
     group: 5,
     x: 427.39853,
@@ -43,7 +43,7 @@ var nodes = [
   {
     id: 5,
     label: "Adam Lallana",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Southampton",
+    title: "England",
     value: 26,
     group: 28,
     x: -133.68427,
@@ -52,7 +52,7 @@ var nodes = [
   {
     id: 6,
     label: "Adam Taggart",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Newcastle Jets",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2042.4272,
@@ -61,7 +61,7 @@ var nodes = [
   {
     id: 7,
     label: "Admir Mehmedi",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "SC Freiburg",
+    title: "Switzerland",
     value: 24,
     group: 0,
     x: 126.91814,
@@ -70,7 +70,7 @@ var nodes = [
   {
     id: 8,
     label: "Adnan Januzaj",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Manchester United",
+    title: "Belgium",
     value: 34,
     group: 28,
     x: -638.503,
@@ -79,7 +79,7 @@ var nodes = [
   {
     id: 9,
     label: "Adrián Bone",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "El Nacional",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1657.1593,
@@ -88,7 +88,7 @@ var nodes = [
   {
     id: 10,
     label: "Adrián Ramos",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Hertha BSC",
+    title: "Colombia",
     value: 23,
     group: 11,
     x: -712.13385,
@@ -97,7 +97,7 @@ var nodes = [
   {
     id: 11,
     label: "Afriyie Acquah",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Parma",
+    title: "Ghana",
     value: 26,
     group: 5,
     x: 358.25735,
@@ -106,7 +106,7 @@ var nodes = [
   {
     id: 12,
     label: "Agustín Orión",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Boca Juniors",
+    title: "Argentina",
     value: 22,
     group: 19,
     x: -1115.8746,
@@ -115,7 +115,7 @@ var nodes = [
   {
     id: 13,
     label: "Ahmad Alenemeh",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Naft Tehran",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 2028.4565,
@@ -124,7 +124,7 @@ var nodes = [
   {
     id: 14,
     label: "Ahmed Musa",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "CSKA Moscow",
+    title: "Nigeria",
     value: 27,
     group: 14,
     x: -341.64163,
@@ -133,7 +133,7 @@ var nodes = [
   {
     id: 15,
     label: "Aïssa Mandi",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Reims",
+    title: "Algeria",
     value: 22,
     group: 24,
     x: -1380.8287,
@@ -142,7 +142,7 @@ var nodes = [
   {
     id: 16,
     label: "Alan Dzagoev",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "CSKA Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1268.165,
@@ -151,7 +151,7 @@ var nodes = [
   {
     id: 17,
     label: "Alan Pulido",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "UANL",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2016.3092,
@@ -160,7 +160,7 @@ var nodes = [
   {
     id: 18,
     label: "Albert Adomah",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Middlesbrough",
+    title: "Ghana",
     value: 23,
     group: 5,
     x: 449.02316,
@@ -169,7 +169,7 @@ var nodes = [
   {
     id: 19,
     label: "Alberto Aquilani",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Fiorentina",
+    title: "Italy",
     value: 24,
     group: 3,
     x: 51.16946,
@@ -178,7 +178,7 @@ var nodes = [
   {
     id: 20,
     label: "Alejandro Bedoya",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Nantes",
+    title: "United States",
     value: 22,
     group: 26,
     x: 784.4289,
@@ -187,8 +187,7 @@ var nodes = [
   {
     id: 21,
     label: "Aleksandr Kerzhakov",
-    title:
-      "Country: " + "Russia" + "<br>" + "Team: " + "Zenit Saint Petersburg",
+    title: "Russia",
     value: 26,
     group: 2,
     x: -1228.8892,
@@ -197,7 +196,7 @@ var nodes = [
   {
     id: 22,
     label: "Aleksandr Kokorin",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Dynamo Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1414.3739,
@@ -206,7 +205,7 @@ var nodes = [
   {
     id: 23,
     label: "Aleksandr Samedov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Lokomotiv Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1362.3624,
@@ -215,7 +214,7 @@ var nodes = [
   {
     id: 24,
     label: "Aleksei Ionov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Dynamo Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1428.0071,
@@ -224,7 +223,7 @@ var nodes = [
   {
     id: 25,
     label: "Aleksei Kozlov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Dynamo Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1463.2527,
@@ -233,7 +232,7 @@ var nodes = [
   {
     id: 26,
     label: "Alessio Cerci",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Torino",
+    title: "Italy",
     value: 23,
     group: 3,
     x: 276.62708,
@@ -242,7 +241,7 @@ var nodes = [
   {
     id: 27,
     label: "Alex Oxlade-Chamberlain",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Arsenal",
+    title: "England",
     value: 30,
     group: 28,
     x: -56.50232,
@@ -251,7 +250,7 @@ var nodes = [
   {
     id: 28,
     label: "Alex Song",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Barcelona",
+    title: "Cameroon",
     value: 37,
     group: 17,
     x: -256.07828,
@@ -260,8 +259,7 @@ var nodes = [
   {
     id: 29,
     label: "Alex Wilkinson",
-    title:
-      "Country: " + "Australia" + "<br>" + "Team: " + "Jeonbuk Hyundai Motors",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2120.3818,
@@ -270,7 +268,7 @@ var nodes = [
   {
     id: 30,
     label: "Alexander Domínguez",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "LDU Quito",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1643.0283,
@@ -279,7 +277,7 @@ var nodes = [
   {
     id: 31,
     label: "Alexander Mejía",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Atlético Nacional",
+    title: "Colombia",
     value: 22,
     group: 11,
     x: -761.32623,
@@ -288,7 +286,7 @@ var nodes = [
   {
     id: 32,
     label: "Alexandros Tziolis",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Kayserispor",
+    title: "Greece",
     value: 22,
     group: 15,
     x: 1617.3293,
@@ -297,7 +295,7 @@ var nodes = [
   {
     id: 33,
     label: "Alexis Sánchez",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Barcelona",
+    title: "Chile",
     value: 37,
     group: 18,
     x: -613.0529,
@@ -306,7 +304,7 @@ var nodes = [
   {
     id: 34,
     label: "Alfredo Talavera",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Toluca",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -1995.7101,
@@ -315,7 +313,7 @@ var nodes = [
   {
     id: 35,
     label: "Alireza Haghighi",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Sporting Covilhã",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1910.1731,
@@ -324,7 +322,7 @@ var nodes = [
   {
     id: 36,
     label: "Alireza Jahanbakhsh",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "NEC",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1942.0732,
@@ -333,7 +331,7 @@ var nodes = [
   {
     id: 37,
     label: "Allan Nyom",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Granada",
+    title: "Cameroon",
     value: 24,
     group: 17,
     x: 381.53027,
@@ -342,7 +340,7 @@ var nodes = [
   {
     id: 38,
     label: "Álvaro González",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Lazio",
+    title: "Uruguay",
     value: 28,
     group: 6,
     x: 13.4137335,
@@ -351,7 +349,7 @@ var nodes = [
   {
     id: 39,
     label: "Álvaro Pereira",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "São Paulo",
+    title: "Uruguay",
     value: 22,
     group: 6,
     x: -93.8017,
@@ -360,7 +358,7 @@ var nodes = [
   {
     id: 40,
     label: "Amir Hossein Sadeghi",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Esteghlal",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1990.1855,
@@ -369,7 +367,7 @@ var nodes = [
   {
     id: 41,
     label: "Andranik Teymourian",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Esteghlal",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1940.6577,
@@ -378,7 +376,7 @@ var nodes = [
   {
     id: 42,
     label: "André Almeida",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Benfica",
+    title: "Portugal",
     value: 25,
     group: 8,
     x: -733.05725,
@@ -387,7 +385,7 @@ var nodes = [
   {
     id: 43,
     label: "André Ayew",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Marseille",
+    title: "Ghana",
     value: 24,
     group: 5,
     x: 486.66187,
@@ -396,7 +394,7 @@ var nodes = [
   {
     id: 44,
     label: "André Schürrle",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Chelsea",
+    title: "Germany",
     value: 33,
     group: 13,
     x: 130.8471,
@@ -405,7 +403,7 @@ var nodes = [
   {
     id: 45,
     label: "Andrea Barzagli",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Juventus",
+    title: "Italy",
     value: 28,
     group: 3,
     x: 109.97049,
@@ -414,7 +412,7 @@ var nodes = [
   {
     id: 46,
     label: "Andrea Pirlo",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Juventus",
+    title: "Italy",
     value: 28,
     group: 3,
     x: 108.0534,
@@ -423,7 +421,7 @@ var nodes = [
   {
     id: 47,
     label: "Andreas Samaris",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Olympiacos",
+    title: "Greece",
     value: 23,
     group: 15,
     x: 1692.9755,
@@ -432,7 +430,7 @@ var nodes = [
   {
     id: 48,
     label: "Andrei Semyonov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Terek Grozny",
+    title: "Russia",
     value: 22,
     group: 2,
     x: -1427.7258,
@@ -441,7 +439,7 @@ var nodes = [
   {
     id: 49,
     label: "Andrés Guardado",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Bayer Leverkusen",
+    title: "Mexico",
     value: 24,
     group: 21,
     x: -1822.0682,
@@ -450,7 +448,7 @@ var nodes = [
   {
     id: 50,
     label: "Andrés Iniesta",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Barcelona",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -1067.9244,
@@ -459,7 +457,7 @@ var nodes = [
   {
     id: 51,
     label: "Andrey Yeshchenko",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Anzhi Makhachkala",
+    title: "Russia",
     value: 22,
     group: 2,
     x: -1412.1168,
@@ -468,7 +466,7 @@ var nodes = [
   {
     id: 52,
     label: "Andy Najar",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Anderlecht",
+    title: "Honduras",
     value: 23,
     group: 7,
     x: 1494.2014,
@@ -477,8 +475,7 @@ var nodes = [
   {
     id: 53,
     label: "Anel Hadžic",
-    title:
-      "Country: " + "Bosnia and Herzegovina" + "<br>" + "Team: " + "Sturm Graz",
+    title: "Bosnia and Herzegovina",
     value: 22,
     group: 20,
     x: 1149.5178,
@@ -487,7 +484,7 @@ var nodes = [
   {
     id: 54,
     label: "Ángel di María",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Real Madrid",
+    title: "Argentina",
     value: 33,
     group: 19,
     x: -968.5764,
@@ -496,7 +493,7 @@ var nodes = [
   {
     id: 55,
     label: "Ante Rebic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Fiorentina",
+    title: "Croatia",
     value: 24,
     group: 25,
     x: -308.12177,
@@ -505,7 +502,7 @@ var nodes = [
   {
     id: 56,
     label: "Anthony Vanden Borre",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Anderlecht",
+    title: "Belgium",
     value: 23,
     group: 28,
     x: -577.6633,
@@ -514,7 +511,7 @@ var nodes = [
   {
     id: 57,
     label: "Antoine Griezmann",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Real Sociedad",
+    title: "France",
     value: 25,
     group: 16,
     x: 63.922184,
@@ -523,7 +520,7 @@ var nodes = [
   {
     id: 58,
     label: "Antonio Candreva",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Lazio",
+    title: "Italy",
     value: 28,
     group: 3,
     x: 180.96414,
@@ -532,7 +529,7 @@ var nodes = [
   {
     id: 59,
     label: "Antonio Cassano",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Parma",
+    title: "Italy",
     value: 24,
     group: 3,
     x: 193.04764,
@@ -541,7 +538,7 @@ var nodes = [
   {
     id: 60,
     label: "Antonio Valencia (c)",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Manchester United",
+    title: "Ecuador",
     value: 35,
     group: 4,
     x: -1293.8275,
@@ -550,7 +547,7 @@ var nodes = [
   {
     id: 61,
     label: "Arjen Robben",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Netherlands",
     value: 35,
     group: 22,
     x: 630.80566,
@@ -559,7 +556,7 @@ var nodes = [
   {
     id: 62,
     label: "Aron Jóhannsson",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "AZ",
+    title: "United States",
     value: 22,
     group: 26,
     x: 819.32007,
@@ -568,7 +565,7 @@ var nodes = [
   {
     id: 63,
     label: "Arthur Boka",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "VfB Stuttgart",
+    title: "Ivory Coast",
     value: 25,
     group: 9,
     x: 447.86835,
@@ -577,7 +574,7 @@ var nodes = [
   {
     id: 64,
     label: "Arturo Vidal",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Juventus",
+    title: "Chile",
     value: 32,
     group: 18,
     x: -116.507996,
@@ -586,7 +583,7 @@ var nodes = [
   {
     id: 65,
     label: "Asamoah Gyan (c)",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Al-Ain",
+    title: "Ghana",
     value: 22,
     group: 5,
     x: 384.49658,
@@ -595,7 +592,7 @@ var nodes = [
   {
     id: 66,
     label: "Ashkan Dejagah",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Fulham",
+    title: "Iran",
     value: 24,
     group: 1,
     x: 1842.1604,
@@ -604,12 +601,7 @@ var nodes = [
   {
     id: 67,
     label: "Asmir Avdukic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Borac Banja Luka",
+    title: "Bosnia and Herzegovina",
     value: 22,
     group: 20,
     x: 1126.5564,
@@ -618,8 +610,7 @@ var nodes = [
   {
     id: 68,
     label: "Asmir Begovic",
-    title:
-      "Country: " + "Bosnia and Herzegovina" + "<br>" + "Team: " + "Stoke City",
+    title: "Bosnia and Herzegovina",
     value: 25,
     group: 20,
     x: 1126.9225,
@@ -628,7 +619,7 @@ var nodes = [
   {
     id: 69,
     label: "Atsuto Uchida",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Schalke 04",
+    title: "Japan",
     value: 28,
     group: 27,
     x: 789.175,
@@ -637,7 +628,7 @@ var nodes = [
   {
     id: 70,
     label: "Augusto Fernández",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Celta Vigo",
+    title: "Argentina",
     value: 23,
     group: 19,
     x: -1096.7728,
@@ -646,7 +637,7 @@ var nodes = [
   {
     id: 71,
     label: "Aurélien Chedjou",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Galatasaray",
+    title: "Cameroon",
     value: 26,
     group: 17,
     x: 479.9816,
@@ -655,7 +646,7 @@ var nodes = [
   {
     id: 72,
     label: "Austin Ejide",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Hapoel Beer Sheva",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -127.8801,
@@ -664,12 +655,7 @@ var nodes = [
   {
     id: 73,
     label: "Avdija Vršajevic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Hajduk Split",
+    title: "Bosnia and Herzegovina",
     value: 22,
     group: 20,
     x: 1155.9982,
@@ -678,8 +664,7 @@ var nodes = [
   {
     id: 74,
     label: "Axel Witsel",
-    title:
-      "Country: " + "Belgium" + "<br>" + "Team: " + "Zenit Saint Petersburg",
+    title: "Belgium",
     value: 28,
     group: 28,
     x: -844.52124,
@@ -688,7 +673,7 @@ var nodes = [
   {
     id: 75,
     label: "Azubuike Egwuekwe",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Warri Wolves",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -40.194813,
@@ -697,7 +682,7 @@ var nodes = [
   {
     id: 76,
     label: "Bacary Sagna",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Arsenal",
+    title: "France",
     value: 29,
     group: 16,
     x: -102.573074,
@@ -706,7 +691,7 @@ var nodes = [
   {
     id: 77,
     label: "Bailey Wright",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Preston North End",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2074.923,
@@ -715,7 +700,7 @@ var nodes = [
   {
     id: 78,
     label: "Bakhtiar Rahmani",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Foolad",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 2063.0938,
@@ -724,7 +709,7 @@ var nodes = [
   {
     id: 79,
     label: "Bastian Schweinsteiger",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Germany",
     value: 29,
     group: 13,
     x: 244.85414,
@@ -733,7 +718,7 @@ var nodes = [
   {
     id: 80,
     label: "Ben Foster",
-    title: "Country: " + "England" + "<br>" + "Team: " + "West Bromwich Albion",
+    title: "England",
     value: 23,
     group: 28,
     x: -170.48405,
@@ -742,7 +727,7 @@ var nodes = [
   {
     id: 81,
     label: "Ben Halloran",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Fortuna Düsseldorf",
+    title: "Australia",
     value: 23,
     group: 12,
     x: 1954.242,
@@ -751,7 +736,7 @@ var nodes = [
   {
     id: 82,
     label: "Benedikt Höwedes",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Schalke 04",
+    title: "Germany",
     value: 27,
     group: 13,
     x: 472.64325,
@@ -760,7 +745,7 @@ var nodes = [
   {
     id: 83,
     label: "Benjamin Moukandjo",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Nancy",
+    title: "Cameroon",
     value: 22,
     group: 17,
     x: 415.3849,
@@ -769,7 +754,7 @@ var nodes = [
   {
     id: 84,
     label: "Benoît Assou-Ekotto",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Queens Park Rangers",
+    title: "Cameroon",
     value: 23,
     group: 17,
     x: 484.1712,
@@ -778,7 +763,7 @@ var nodes = [
   {
     id: 85,
     label: "Bernard",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Shakhtar Donetsk",
+    title: "Brazil",
     value: 24,
     group: 23,
     x: -458.8,
@@ -787,7 +772,7 @@ var nodes = [
   {
     id: 86,
     label: "Beto",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Sevilla",
+    title: "Portugal",
     value: 25,
     group: 8,
     x: -614.7038,
@@ -796,7 +781,7 @@ var nodes = [
   {
     id: 87,
     label: "Blaise Matuidi",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Paris Saint-Germain",
+    title: "France",
     value: 29,
     group: 16,
     x: -108.933846,
@@ -805,7 +790,7 @@ var nodes = [
   {
     id: 88,
     label: "Blerim Džemaili",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Napoli",
+    title: "Switzerland",
     value: 31,
     group: 0,
     x: -243.03868,
@@ -814,7 +799,7 @@ var nodes = [
   {
     id: 89,
     label: "Boubacar Barry",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Lokeren",
+    title: "Ivory Coast",
     value: 22,
     group: 9,
     x: 488.79492,
@@ -823,7 +808,7 @@ var nodes = [
   {
     id: 90,
     label: "Brad Davis",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Houston Dynamo",
+    title: "United States",
     value: 23,
     group: 26,
     x: 915.66956,
@@ -832,7 +817,7 @@ var nodes = [
   {
     id: 91,
     label: "Brad Guzan",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Aston Villa",
+    title: "United States",
     value: 23,
     group: 26,
     x: 829.8172,
@@ -841,7 +826,7 @@ var nodes = [
   {
     id: 92,
     label: "Brayan Beckeles",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Olimpia",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1616.757,
@@ -850,7 +835,7 @@ var nodes = [
   {
     id: 93,
     label: "Bruno Alves",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Fenerbahçe",
+    title: "Portugal",
     value: 25,
     group: 8,
     x: -538.8344,
@@ -859,7 +844,7 @@ var nodes = [
   {
     id: 94,
     label: "Bruno Martins Indi",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Feyenoord",
+    title: "Netherlands",
     value: 22,
     group: 22,
     x: 870.94403,
@@ -868,7 +853,7 @@ var nodes = [
   {
     id: 95,
     label: "Bryan Ruiz (c)",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "PSV",
+    title: "Costa Rica",
     value: 25,
     group: 29,
     x: 2006.2959,
@@ -877,7 +862,7 @@ var nodes = [
   {
     id: 96,
     label: "Camilo Vargas",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Santa Fe",
+    title: "Colombia",
     value: 23,
     group: 11,
     x: -870.7738,
@@ -886,7 +871,7 @@ var nodes = [
   {
     id: 97,
     label: "Carl Medjani",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Valenciennes",
+    title: "Algeria",
     value: 23,
     group: 24,
     x: -1275.9651,
@@ -895,7 +880,7 @@ var nodes = [
   {
     id: 98,
     label: "Carlo Costly",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Real España",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1569.5697,
@@ -904,7 +889,7 @@ var nodes = [
   {
     id: 99,
     label: "Carlos Bacca",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Sevilla",
+    title: "Colombia",
     value: 25,
     group: 11,
     x: -687.1921,
@@ -913,7 +898,7 @@ var nodes = [
   {
     id: 100,
     label: "Carlos Carbonero",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "River Plate",
+    title: "Colombia",
     value: 22,
     group: 11,
     x: -742.21783,
@@ -922,7 +907,7 @@ var nodes = [
   {
     id: 101,
     label: "Carlos Carmona",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Atalanta",
+    title: "Chile",
     value: 23,
     group: 18,
     x: -345.68073,
@@ -931,7 +916,7 @@ var nodes = [
   {
     id: 102,
     label: "Carlos Gruezo",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "VfB Stuttgart",
+    title: "Ecuador",
     value: 25,
     group: 4,
     x: -1417.159,
@@ -940,7 +925,7 @@ var nodes = [
   {
     id: 103,
     label: "Carlos Peña",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "León",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2037.2489,
@@ -949,7 +934,7 @@ var nodes = [
   {
     id: 104,
     label: "Carlos Salcido",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "UANL",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2011.8602,
@@ -958,7 +943,7 @@ var nodes = [
   {
     id: 105,
     label: "Carlos Sánchez",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Elche",
+    title: "Colombia",
     value: 22,
     group: 11,
     x: -775.67804,
@@ -967,7 +952,7 @@ var nodes = [
   {
     id: 106,
     label: "Carlos Valdés",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "San Lorenzo",
+    title: "Colombia",
     value: 22,
     group: 11,
     x: -788.68494,
@@ -976,7 +961,7 @@ var nodes = [
   {
     id: 107,
     label: "Cédric Djeugoué",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Coton Sport",
+    title: "Cameroon",
     value: 22,
     group: 17,
     x: 458.03027,
@@ -985,7 +970,7 @@ var nodes = [
   {
     id: 108,
     label: "Cédric Si Mohamed",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "CS Constantine",
+    title: "Algeria",
     value: 22,
     group: 24,
     x: -1432.4459,
@@ -994,7 +979,7 @@ var nodes = [
   {
     id: 109,
     label: "Celso Borges",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "AIK",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2214.5396,
@@ -1003,7 +988,7 @@ var nodes = [
   {
     id: 110,
     label: "César Azpilicueta",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Chelsea",
+    title: "Spain",
     value: 32,
     group: 23,
     x: -780.85876,
@@ -1012,7 +997,7 @@ var nodes = [
   {
     id: 111,
     label: "Cesc Fàbregas",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Barcelona",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -1070.0735,
@@ -1021,7 +1006,7 @@ var nodes = [
   {
     id: 112,
     label: "Charles Aránguiz",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Internacional",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -251.59665,
@@ -1030,7 +1015,7 @@ var nodes = [
   {
     id: 113,
     label: "Charles Itandje",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Konyaspor",
+    title: "Cameroon",
     value: 23,
     group: 17,
     x: 514.87463,
@@ -1039,7 +1024,7 @@ var nodes = [
   {
     id: 114,
     label: "Cheick Tioté",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Newcastle United",
+    title: "Ivory Coast",
     value: 27,
     group: 9,
     x: 389.42743,
@@ -1048,7 +1033,7 @@ var nodes = [
   {
     id: 115,
     label: "Chigozie Agbim",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Gombe United",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -67.006065,
@@ -1057,7 +1042,7 @@ var nodes = [
   {
     id: 116,
     label: "Chris Smalling",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Manchester United",
+    title: "England",
     value: 32,
     group: 28,
     x: -375.02072,
@@ -1066,12 +1051,7 @@ var nodes = [
   {
     id: 117,
     label: "Chris Wondolowski",
-    title:
-      "Country: " +
-      "United States" +
-      "<br>" +
-      "Team: " +
-      "San Jose Earthquakes",
+    title: "United States",
     value: 23,
     group: 26,
     x: 915.553,
@@ -1080,7 +1060,7 @@ var nodes = [
   {
     id: 118,
     label: "Christian Atsu",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Vitesse",
+    title: "Ghana",
     value: 23,
     group: 5,
     x: 298.6339,
@@ -1089,7 +1069,7 @@ var nodes = [
   {
     id: 119,
     label: "Christian Bolaños",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Copenhagen",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2234.7017,
@@ -1098,7 +1078,7 @@ var nodes = [
   {
     id: 120,
     label: "Christian Noboa",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Dynamo Moscow",
+    title: "Ecuador",
     value: 28,
     group: 4,
     x: -1672.2358,
@@ -1107,7 +1087,7 @@ var nodes = [
   {
     id: 121,
     label: "Christian Stuani",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Espanyol",
+    title: "Uruguay",
     value: 23,
     group: 6,
     x: -159.9744,
@@ -1116,8 +1096,7 @@ var nodes = [
   {
     id: 122,
     label: "Christoph Kramer",
-    title:
-      "Country: " + "Germany" + "<br>" + "Team: " + "Borussia Mönchengladbach",
+    title: "Germany",
     value: 23,
     group: 13,
     x: 422.9451,
@@ -1126,7 +1105,7 @@ var nodes = [
   {
     id: 123,
     label: "Ciro Immobile",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Torino",
+    title: "Italy",
     value: 23,
     group: 3,
     x: 317.4282,
@@ -1135,7 +1114,7 @@ var nodes = [
   {
     id: 124,
     label: "Claudio Bravo (c)",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Real Sociedad",
+    title: "Chile",
     value: 25,
     group: 18,
     x: -193.70801,
@@ -1144,7 +1123,7 @@ var nodes = [
   {
     id: 125,
     label: "Claudio Marchisio",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Juventus",
+    title: "Italy",
     value: 28,
     group: 3,
     x: 71.69534,
@@ -1153,8 +1132,7 @@ var nodes = [
   {
     id: 126,
     label: "Clint Dempsey (c)",
-    title:
-      "Country: " + "United States" + "<br>" + "Team: " + "Seattle Sounders FC",
+    title: "United States",
     value: 22,
     group: 26,
     x: 742.0546,
@@ -1163,8 +1141,7 @@ var nodes = [
   {
     id: 127,
     label: "Constant Djakpa",
-    title:
-      "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Eintracht Frankfurt",
+    title: "Ivory Coast",
     value: 23,
     group: 9,
     x: 513.1434,
@@ -1173,7 +1150,7 @@ var nodes = [
   {
     id: 128,
     label: "Cristian Gamboa",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Rosenborg",
+    title: "Costa Rica",
     value: 23,
     group: 29,
     x: 2154.0825,
@@ -1182,7 +1159,7 @@ var nodes = [
   {
     id: 129,
     label: "Cristian Rodríguez",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Atlético Madrid",
+    title: "Uruguay",
     value: 28,
     group: 6,
     x: -272.89346,
@@ -1191,7 +1168,7 @@ var nodes = [
   {
     id: 130,
     label: "Cristián Zapata",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Milan",
+    title: "Colombia",
     value: 29,
     group: 11,
     x: -503.784,
@@ -1200,7 +1177,7 @@ var nodes = [
   {
     id: 131,
     label: "Cristiano Ronaldo (c)",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Real Madrid",
+    title: "Portugal",
     value: 31,
     group: 8,
     x: -705.8994,
@@ -1209,7 +1186,7 @@ var nodes = [
   {
     id: 132,
     label: "Cristopher Toselli",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Universidad Católica",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -291.25885,
@@ -1218,7 +1195,7 @@ var nodes = [
   {
     id: 133,
     label: "Daley Blind",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Ajax",
+    title: "Netherlands",
     value: 22,
     group: 22,
     x: 865.13696,
@@ -1227,7 +1204,7 @@ var nodes = [
   {
     id: 134,
     label: "DaMarcus Beasley",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Puebla",
+    title: "United States",
     value: 22,
     group: 26,
     x: 860.4318,
@@ -1236,7 +1213,7 @@ var nodes = [
   {
     id: 135,
     label: "Dani Alves",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Barcelona",
+    title: "Brazil",
     value: 36,
     group: 23,
     x: -742.1678,
@@ -1245,7 +1222,7 @@ var nodes = [
   {
     id: 136,
     label: "Daniel Cambronero",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Herediano",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2228.9766,
@@ -1254,7 +1231,7 @@ var nodes = [
   {
     id: 137,
     label: "Daniel Davari",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Eintracht Braunschweig",
+    title: "Iran",
     value: 23,
     group: 1,
     x: 1905.6099,
@@ -1263,7 +1240,7 @@ var nodes = [
   {
     id: 138,
     label: "Daniel Opare",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Standard Liège",
+    title: "Ghana",
     value: 24,
     group: 5,
     x: 399.65134,
@@ -1272,7 +1249,7 @@ var nodes = [
   {
     id: 139,
     label: "Daniel Sturridge",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Liverpool",
+    title: "England",
     value: 27,
     group: 28,
     x: -202.59894,
@@ -1281,7 +1258,7 @@ var nodes = [
   {
     id: 140,
     label: "Daniel Van Buyten",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Belgium",
     value: 35,
     group: 28,
     x: -361.6232,
@@ -1290,7 +1267,7 @@ var nodes = [
   {
     id: 141,
     label: "Daniele De Rossi",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Roma",
+    title: "Italy",
     value: 26,
     group: 3,
     x: 294.1721,
@@ -1299,7 +1276,7 @@ var nodes = [
   {
     id: 142,
     label: "Danijel Pranjic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Panathinaikos",
+    title: "Croatia",
     value: 23,
     group: 25,
     x: -193.00035,
@@ -1308,7 +1285,7 @@ var nodes = [
   {
     id: 143,
     label: "Danijel Subašic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "AS Monaco",
+    title: "Croatia",
     value: 25,
     group: 25,
     x: -426.1968,
@@ -1317,7 +1294,7 @@ var nodes = [
   {
     id: 144,
     label: "Danny Welbeck",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Manchester United",
+    title: "England",
     value: 32,
     group: 28,
     x: -294.47705,
@@ -1326,7 +1303,7 @@ var nodes = [
   {
     id: 145,
     label: "Dante",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Brazil",
     value: 35,
     group: 23,
     x: -212.9895,
@@ -1335,7 +1312,7 @@ var nodes = [
   {
     id: 146,
     label: "Dany Nounkeu",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Be?ikta?",
+    title: "Cameroon",
     value: 24,
     group: 17,
     x: 382.6164,
@@ -1344,7 +1321,7 @@ var nodes = [
   {
     id: 147,
     label: "Darijo Srna (c)",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Shakhtar Donetsk",
+    title: "Croatia",
     value: 23,
     group: 25,
     x: -317.20358,
@@ -1353,7 +1330,7 @@ var nodes = [
   {
     id: 148,
     label: "Dario Vidošic",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Sion",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2016.2832,
@@ -1362,7 +1339,7 @@ var nodes = [
   {
     id: 149,
     label: "Daryl Janmaat",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Feyenoord",
+    title: "Netherlands",
     value: 22,
     group: 22,
     x: 832.52924,
@@ -1371,7 +1348,7 @@ var nodes = [
   {
     id: 150,
     label: "David de Gea",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Manchester United",
+    title: "Spain",
     value: 34,
     group: 23,
     x: -916.8024,
@@ -1380,7 +1357,7 @@ var nodes = [
   {
     id: 151,
     label: "David Luiz",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Chelsea",
+    title: "Brazil",
     value: 30,
     group: 23,
     x: -401.12976,
@@ -1389,7 +1366,7 @@ var nodes = [
   {
     id: 152,
     label: "David Myrie",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Herediano",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2254.471,
@@ -1398,7 +1375,7 @@ var nodes = [
   {
     id: 153,
     label: "David Ospina",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Nice",
+    title: "Colombia",
     value: 22,
     group: 11,
     x: -821.8875,
@@ -1407,7 +1384,7 @@ var nodes = [
   {
     id: 154,
     label: "David Silva",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Manchester City",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -782.84827,
@@ -1416,7 +1393,7 @@ var nodes = [
   {
     id: 155,
     label: "David Villa",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Atlético Madrid",
+    title: "Spain",
     value: 27,
     group: 23,
     x: -854.8254,
@@ -1425,8 +1402,7 @@ var nodes = [
   {
     id: 156,
     label: "DeAndre Yedlin",
-    title:
-      "Country: " + "United States" + "<br>" + "Team: " + "Seattle Sounders FC",
+    title: "United States",
     value: 22,
     group: 26,
     x: 776.44666,
@@ -1435,7 +1411,7 @@ var nodes = [
   {
     id: 157,
     label: "Dejan Lovren",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Southampton",
+    title: "Croatia",
     value: 28,
     group: 25,
     x: -235.10854,
@@ -1444,7 +1420,7 @@ var nodes = [
   {
     id: 158,
     label: "Denis Glushakov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Spartak Moscow",
+    title: "Russia",
     value: 22,
     group: 2,
     x: -1381.3909,
@@ -1453,7 +1429,7 @@ var nodes = [
   {
     id: 159,
     label: "Didier Drogba (c)",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Galatasaray",
+    title: "Ivory Coast",
     value: 26,
     group: 9,
     x: 598.48517,
@@ -1462,7 +1438,7 @@ var nodes = [
   {
     id: 160,
     label: "Didier Ya Konan",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Hannover 96",
+    title: "Ivory Coast",
     value: 24,
     group: 9,
     x: 543.872,
@@ -1471,7 +1447,7 @@ var nodes = [
   {
     id: 161,
     label: "Didier Zokora",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Trabzonspor",
+    title: "Ivory Coast",
     value: 22,
     group: 9,
     x: 526.23566,
@@ -1480,7 +1456,7 @@ var nodes = [
   {
     id: 162,
     label: "Diego Benaglio",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "VfL Wolfsburg",
+    title: "Switzerland",
     value: 27,
     group: 0,
     x: -65.30554,
@@ -1489,7 +1465,7 @@ var nodes = [
   {
     id: 163,
     label: "Diego Calvo",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Vålerenga",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2308.558,
@@ -1498,7 +1474,7 @@ var nodes = [
   {
     id: 164,
     label: "Diego Costa",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Atlético Madrid",
+    title: "Spain",
     value: 27,
     group: 23,
     x: -946.3432,
@@ -1507,7 +1483,7 @@ var nodes = [
   {
     id: 165,
     label: "Diego Forlán",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Cerezo Osaka",
+    title: "Uruguay",
     value: 24,
     group: 6,
     x: 22.544487,
@@ -1516,7 +1492,7 @@ var nodes = [
   {
     id: 166,
     label: "Diego Godín",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Atlético Madrid",
+    title: "Uruguay",
     value: 28,
     group: 6,
     x: -229.68459,
@@ -1525,7 +1501,7 @@ var nodes = [
   {
     id: 167,
     label: "Diego Lugano (c)",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "West Bromwich Albion",
+    title: "Uruguay",
     value: 23,
     group: 6,
     x: -32.813736,
@@ -1534,7 +1510,7 @@ var nodes = [
   {
     id: 168,
     label: "Diego Pérez",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Bologna",
+    title: "Uruguay",
     value: 24,
     group: 6,
     x: 71.02754,
@@ -1543,7 +1519,7 @@ var nodes = [
   {
     id: 169,
     label: "Diego Reyes",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Porto",
+    title: "Mexico",
     value: 29,
     group: 21,
     x: -1751.0813,
@@ -1552,7 +1528,7 @@ var nodes = [
   {
     id: 170,
     label: "Dimitris Salpingidis",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "PAOK",
+    title: "Greece",
     value: 22,
     group: 15,
     x: 1578.1974,
@@ -1561,7 +1537,7 @@ var nodes = [
   {
     id: 171,
     label: "Dirk Kuyt",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Fenerbahçe",
+    title: "Netherlands",
     value: 26,
     group: 22,
     x: 698.83246,
@@ -1570,7 +1546,7 @@ var nodes = [
   {
     id: 172,
     label: "Divock Origi",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Lille",
+    title: "Belgium",
     value: 25,
     group: 28,
     x: -634.9317,
@@ -1579,7 +1555,7 @@ var nodes = [
   {
     id: 173,
     label: "Djamel Mesbah",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Livorno",
+    title: "Algeria",
     value: 22,
     group: 24,
     x: -1360.7583,
@@ -1588,7 +1564,7 @@ var nodes = [
   {
     id: 174,
     label: "Dmitri Kombarov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Spartak Moscow",
+    title: "Russia",
     value: 22,
     group: 2,
     x: -1369.3798,
@@ -1597,7 +1573,7 @@ var nodes = [
   {
     id: 175,
     label: "Domagoj Vida",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Dynamo Kyiv",
+    title: "Croatia",
     value: 24,
     group: 25,
     x: -257.23795,
@@ -1606,7 +1582,7 @@ var nodes = [
   {
     id: 176,
     label: "Donis Escober",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Olimpia",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1653.151,
@@ -1615,7 +1591,7 @@ var nodes = [
   {
     id: 177,
     label: "Dries Mertens",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Napoli",
+    title: "Belgium",
     value: 33,
     group: 28,
     x: -646.4434,
@@ -1624,7 +1600,7 @@ var nodes = [
   {
     id: 178,
     label: "Edder Delgado",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Real España",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1622.0984,
@@ -1633,7 +1609,7 @@ var nodes = [
   {
     id: 179,
     label: "Eden Hazard",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Chelsea",
+    title: "Belgium",
     value: 33,
     group: 28,
     x: -567.4557,
@@ -1642,7 +1618,7 @@ var nodes = [
   {
     id: 180,
     label: "Éder",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Braga",
+    title: "Portugal",
     value: 22,
     group: 8,
     x: -652.50696,
@@ -1651,7 +1627,7 @@ var nodes = [
   {
     id: 181,
     label: "Éder Álvarez Balanta",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "River Plate",
+    title: "Colombia",
     value: 22,
     group: 11,
     x: -862.32965,
@@ -1660,7 +1636,7 @@ var nodes = [
   {
     id: 182,
     label: "Edgar Salli",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Lens",
+    title: "Cameroon",
     value: 22,
     group: 17,
     x: 416.1859,
@@ -1669,12 +1645,7 @@ var nodes = [
   {
     id: 183,
     label: "Edin Džeko",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Manchester City",
+    title: "Bosnia and Herzegovina",
     value: 31,
     group: 20,
     x: 747.8557,
@@ -1683,12 +1654,8 @@ var nodes = [
   {
     id: 184,
     label: "Edin Višca",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "?stanbul Ba?ak?ehir",
+    title: "Bosnia and Herzegovina",
+
     value: 22,
     group: 20,
     x: 1198.7845,
@@ -1697,7 +1664,7 @@ var nodes = [
   {
     id: 185,
     label: "Edinson Cavani",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Paris Saint-Germain",
+    title: "Uruguay",
     value: 31,
     group: 6,
     x: -109.8151,
@@ -1706,7 +1673,7 @@ var nodes = [
   {
     id: 186,
     label: "Édison Méndez",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Santa Fe",
+    title: "Ecuador",
     value: 23,
     group: 4,
     x: -1680.7289,
@@ -1715,7 +1682,7 @@ var nodes = [
   {
     id: 187,
     label: "Eduardo da Silva",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Shakhtar Donetsk",
+    title: "Croatia",
     value: 23,
     group: 25,
     x: -364.4046,
@@ -1724,7 +1691,7 @@ var nodes = [
   {
     id: 188,
     label: "Eduardo dos Reis Carvalho",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Braga",
+    title: "Portugal",
     value: 22,
     group: 8,
     x: -685.56335,
@@ -1733,7 +1700,7 @@ var nodes = [
   {
     id: 189,
     label: "Eduardo Vargas",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Valencia",
+    title: "Chile",
     value: 26,
     group: 18,
     x: -348.8911,
@@ -1742,7 +1709,7 @@ var nodes = [
   {
     id: 190,
     label: "Efe Ambrose",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Celtic",
+    title: "Nigeria",
     value: 25,
     group: 14,
     x: 91.53676,
@@ -1751,7 +1718,7 @@ var nodes = [
   {
     id: 191,
     label: "Egidio Arévalo Ríos",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Morelia",
+    title: "Uruguay",
     value: 23,
     group: 6,
     x: -140.449,
@@ -1760,7 +1727,7 @@ var nodes = [
   {
     id: 192,
     label: "Ehsan Hajsafi",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Sepahan",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1992.8684,
@@ -1769,7 +1736,7 @@ var nodes = [
   {
     id: 193,
     label: "Eiji Kawashima",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Standard Liège",
+    title: "Japan",
     value: 24,
     group: 27,
     x: 599.24896,
@@ -1778,7 +1745,7 @@ var nodes = [
   {
     id: 194,
     label: "Ejike Uzoenyi",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Enugu Rangers",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -90.413765,
@@ -1787,7 +1754,7 @@ var nodes = [
   {
     id: 195,
     label: "El Arbi Hillel Soudani",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Dinamo Zagreb",
+    title: "Algeria",
     value: 23,
     group: 24,
     x: -1331.9408,
@@ -1796,7 +1763,7 @@ var nodes = [
   {
     id: 196,
     label: "Eliaquim Mangala",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Porto",
+    title: "France",
     value: 30,
     group: 16,
     x: -347.64447,
@@ -1805,7 +1772,7 @@ var nodes = [
   {
     id: 197,
     label: "Emilio Izaguirre",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Celtic",
+    title: "Honduras",
     value: 25,
     group: 7,
     x: 1455.9241,
@@ -1814,12 +1781,7 @@ var nodes = [
   {
     id: 198,
     label: "Emir Spahic (c)",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Bayer Leverkusen",
+    title: "Bosnia and Herzegovina",
     value: 24,
     group: 20,
     x: 1039.7502,
@@ -1828,7 +1790,7 @@ var nodes = [
   {
     id: 199,
     label: "Emmanuel Agyemang-Badu",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Udinese",
+    title: "Ghana",
     value: 23,
     group: 5,
     x: 311.23798,
@@ -1837,7 +1799,7 @@ var nodes = [
   {
     id: 200,
     label: "Emmanuel Emenike",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Fenerbahçe",
+    title: "Nigeria",
     value: 26,
     group: 14,
     x: -64.248405,
@@ -1846,7 +1808,7 @@ var nodes = [
   {
     id: 201,
     label: "Enner Valencia",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Pachuca",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1712.6265,
@@ -1855,7 +1817,7 @@ var nodes = [
   {
     id: 202,
     label: "Enzo Pérez",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Benfica",
+    title: "Argentina",
     value: 25,
     group: 19,
     x: -1057.396,
@@ -1864,7 +1826,7 @@ var nodes = [
   {
     id: 203,
     label: "Erik Durm",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Borussia Dortmund",
+    title: "Germany",
     value: 24,
     group: 13,
     x: 553.0518,
@@ -1873,12 +1835,7 @@ var nodes = [
   {
     id: 204,
     label: "Ermin Bicakcic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Eintracht Braunschweig",
+    title: "Bosnia and Herzegovina",
     value: 23,
     group: 20,
     x: 1292.2596,
@@ -1887,7 +1844,7 @@ var nodes = [
   {
     id: 205,
     label: "Essaïd Belkalem",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Watford",
+    title: "Algeria",
     value: 23,
     group: 24,
     x: -1238.1655,
@@ -1896,7 +1853,7 @@ var nodes = [
   {
     id: 206,
     label: "Esteban Granados",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Herediano",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2281.05,
@@ -1905,7 +1862,7 @@ var nodes = [
   {
     id: 207,
     label: "Esteban Paredes",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Colo-Colo",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -262.22748,
@@ -1914,7 +1871,7 @@ var nodes = [
   {
     id: 208,
     label: "Eugene Galekovic",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Adelaide United",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2152.1602,
@@ -1923,7 +1880,7 @@ var nodes = [
   {
     id: 209,
     label: "Eugenio Mena",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Santos",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -294.9122,
@@ -1932,7 +1889,7 @@ var nodes = [
   {
     id: 210,
     label: "Eyong Enoh",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Antalyaspor",
+    title: "Cameroon",
     value: 22,
     group: 17,
     x: 420.98795,
@@ -1941,7 +1898,7 @@ var nodes = [
   {
     id: 211,
     label: "Ezequiel Garay",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Benfica",
+    title: "Argentina",
     value: 25,
     group: 19,
     x: -1064.4406,
@@ -1950,8 +1907,7 @@ var nodes = [
   {
     id: 212,
     label: "Ezequiel Lavezzi",
-    title:
-      "Country: " + "Argentina" + "<br>" + "Team: " + "Paris Saint-Germain",
+    title: "Argentina",
     value: 31,
     group: 19,
     x: -846.7565,
@@ -1960,8 +1916,7 @@ var nodes = [
   {
     id: 213,
     label: "Fabian Johnson",
-    title:
-      "Country: " + "United States" + "<br>" + "Team: " + "1899 Hoffenheim",
+    title: "United States",
     value: 23,
     group: 26,
     x: 879.29755,
@@ -1970,7 +1925,7 @@ var nodes = [
   {
     id: 214,
     label: "Fabián Orellana",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Celta Vigo",
+    title: "Chile",
     value: 23,
     group: 18,
     x: -331.13403,
@@ -1979,7 +1934,7 @@ var nodes = [
   {
     id: 215,
     label: "Fabian Schär",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Basel",
+    title: "Switzerland",
     value: 25,
     group: 0,
     x: 38.159084,
@@ -1988,7 +1943,7 @@ var nodes = [
   {
     id: 216,
     label: "Fábio Coentrão",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Real Madrid",
+    title: "Portugal",
     value: 31,
     group: 8,
     x: -620.60266,
@@ -1997,7 +1952,7 @@ var nodes = [
   {
     id: 217,
     label: "Fabrice Olinga",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Zulte Waregem",
+    title: "Cameroon",
     value: 23,
     group: 17,
     x: 342.78528,
@@ -2006,7 +1961,7 @@ var nodes = [
   {
     id: 218,
     label: "Faouzi Ghoulam",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Napoli",
+    title: "Algeria",
     value: 33,
     group: 24,
     x: -1163.7886,
@@ -2015,7 +1970,7 @@ var nodes = [
   {
     id: 219,
     label: "Faryd Mondragón",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Deportivo Cali",
+    title: "Colombia",
     value: 22,
     group: 11,
     x: -825.1312,
@@ -2024,7 +1979,7 @@ var nodes = [
   {
     id: 220,
     label: "Fatau Dauda",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Orlando Pirates",
+    title: "Ghana",
     value: 22,
     group: 5,
     x: 508.3159,
@@ -2033,7 +1988,7 @@ var nodes = [
   {
     id: 221,
     label: "Federico Fernández",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Napoli",
+    title: "Argentina",
     value: 32,
     group: 19,
     x: -945.41595,
@@ -2042,7 +1997,7 @@ var nodes = [
   {
     id: 222,
     label: "Felipe Caicedo",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Al-Jazira",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1726.1598,
@@ -2051,7 +2006,7 @@ var nodes = [
   {
     id: 223,
     label: "Felipe Gutiérrez",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Twente",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -184.13504,
@@ -2060,7 +2015,7 @@ var nodes = [
   {
     id: 224,
     label: "Fernandinho",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Manchester City",
+    title: "Brazil",
     value: 31,
     group: 23,
     x: -442.97876,
@@ -2069,7 +2024,7 @@ var nodes = [
   {
     id: 225,
     label: "Fernando Gago",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Boca Juniors",
+    title: "Argentina",
     value: 22,
     group: 19,
     x: -1147.289,
@@ -2078,7 +2033,7 @@ var nodes = [
   {
     id: 226,
     label: "Fernando Muslera",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Galatasaray",
+    title: "Uruguay",
     value: 26,
     group: 6,
     x: 73.75355,
@@ -2087,7 +2042,7 @@ var nodes = [
   {
     id: 227,
     label: "Fernando Torres",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Chelsea",
+    title: "Spain",
     value: 32,
     group: 23,
     x: -744.538,
@@ -2096,7 +2051,7 @@ var nodes = [
   {
     id: 228,
     label: "Fidel Martínez",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Tijuana",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1762.2454,
@@ -2105,7 +2060,7 @@ var nodes = [
   {
     id: 229,
     label: "Francisco Javier Rodríguez",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "América",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2058.6445,
@@ -2114,7 +2069,7 @@ var nodes = [
   {
     id: 230,
     label: "Francisco Silva",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Osasuna",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -207.91714,
@@ -2123,7 +2078,7 @@ var nodes = [
   {
     id: 231,
     label: "Frank Lampard",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Chelsea",
+    title: "England",
     value: 32,
     group: 28,
     x: -247.65233,
@@ -2132,7 +2087,7 @@ var nodes = [
   {
     id: 232,
     label: "Fraser Forster",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Celtic",
+    title: "England",
     value: 25,
     group: 28,
     x: 12.960639,
@@ -2141,7 +2096,7 @@ var nodes = [
   {
     id: 233,
     label: "Fred",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Fluminense",
+    title: "Brazil",
     value: 22,
     group: 23,
     x: -513.3818,
@@ -2150,7 +2105,7 @@ var nodes = [
   {
     id: 234,
     label: "Fredy Guarín",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Internazionale",
+    title: "Colombia",
     value: 29,
     group: 11,
     x: -787.85443,
@@ -2159,7 +2114,7 @@ var nodes = [
   {
     id: 235,
     label: "Frickson Erazo",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Flamengo",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1740.3123,
@@ -2168,7 +2123,7 @@ var nodes = [
   {
     id: 236,
     label: "Gabriel Achilier",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Emelec",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1682.2622,
@@ -2177,7 +2132,7 @@ var nodes = [
   {
     id: 237,
     label: "Gabriel Paletta",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Parma",
+    title: "Italy",
     value: 24,
     group: 3,
     x: 206.93822,
@@ -2186,7 +2141,7 @@ var nodes = [
   {
     id: 238,
     label: "Gary Cahill",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Chelsea",
+    title: "England",
     value: 32,
     group: 28,
     x: -301.79718,
@@ -2195,7 +2150,7 @@ var nodes = [
   {
     id: 239,
     label: "Gary Medel",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Cardiff City",
+    title: "Chile",
     value: 23,
     group: 18,
     x: -135.52126,
@@ -2204,7 +2159,7 @@ var nodes = [
   {
     id: 240,
     label: "Gastón Ramírez",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Southampton",
+    title: "Uruguay",
     value: 28,
     group: 6,
     x: -52.539005,
@@ -2213,7 +2168,7 @@ var nodes = [
   {
     id: 241,
     label: "Gelson Fernandes",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "SC Freiburg",
+    title: "Switzerland",
     value: 24,
     group: 0,
     x: 151.71802,
@@ -2222,7 +2177,7 @@ var nodes = [
   {
     id: 242,
     label: "Geoff Cameron",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Stoke City",
+    title: "United States",
     value: 25,
     group: 26,
     x: 820.3439,
@@ -2231,7 +2186,7 @@ var nodes = [
   {
     id: 243,
     label: "Georgi Shchennikov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "CSKA Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1330.4204,
@@ -2240,7 +2195,7 @@ var nodes = [
   {
     id: 244,
     label: "Georginio Wijnaldum",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "PSV",
+    title: "Netherlands",
     value: 24,
     group: 22,
     x: 874.0655,
@@ -2249,7 +2204,7 @@ var nodes = [
   {
     id: 245,
     label: "Gerard Piqué",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Barcelona",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -1126.4338,
@@ -2258,7 +2213,7 @@ var nodes = [
   {
     id: 246,
     label: "Gervinho",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Roma",
+    title: "Ivory Coast",
     value: 26,
     group: 9,
     x: 560.3703,
@@ -2267,7 +2222,7 @@ var nodes = [
   {
     id: 247,
     label: "Ghasem Haddadifar",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Zob Ahan",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1942.6196,
@@ -2276,7 +2231,7 @@ var nodes = [
   {
     id: 248,
     label: "Giancarlo González",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Columbus Crew",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2265.3667,
@@ -2285,7 +2240,7 @@ var nodes = [
   {
     id: 249,
     label: "Gianluigi Buffon (c)",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Juventus",
+    title: "Italy",
     value: 28,
     group: 3,
     x: 152.25356,
@@ -2294,7 +2249,7 @@ var nodes = [
   {
     id: 250,
     label: "Giannis Fetfatzidis",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Genoa",
+    title: "Greece",
     value: 24,
     group: 15,
     x: 1469.2073,
@@ -2303,7 +2258,7 @@ var nodes = [
   {
     id: 251,
     label: "Giannis Maniatis",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Olympiacos",
+    title: "Greece",
     value: 23,
     group: 15,
     x: 1675.6614,
@@ -2312,7 +2267,7 @@ var nodes = [
   {
     id: 252,
     label: "Giorgio Chiellini",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Juventus",
+    title: "Italy",
     value: 28,
     group: 3,
     x: 168.9661,
@@ -2321,7 +2276,7 @@ var nodes = [
   {
     id: 253,
     label: "Giorgos Karagounis (c)",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Fulham",
+    title: "Greece",
     value: 23,
     group: 15,
     x: 1659.2035,
@@ -2330,7 +2285,7 @@ var nodes = [
   {
     id: 254,
     label: "Giorgos Samaras",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Celtic",
+    title: "Greece",
     value: 25,
     group: 15,
     x: 1468.0847,
@@ -2339,7 +2294,7 @@ var nodes = [
   {
     id: 255,
     label: "Giorgos Tzavellas",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "PAOK",
+    title: "Greece",
     value: 22,
     group: 15,
     x: 1582.3857,
@@ -2348,7 +2303,7 @@ var nodes = [
   {
     id: 256,
     label: "Giovani dos Santos",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Villarreal",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2058.4065,
@@ -2357,7 +2312,7 @@ var nodes = [
   {
     id: 257,
     label: "Giovanni Sio",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Basel",
+    title: "Ivory Coast",
     value: 26,
     group: 9,
     x: 405.23972,
@@ -2366,7 +2321,7 @@ var nodes = [
   {
     id: 258,
     label: "Glen Johnson",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Liverpool",
+    title: "England",
     value: 27,
     group: 28,
     x: -77.03864,
@@ -2375,7 +2330,7 @@ var nodes = [
   {
     id: 259,
     label: "Godfrey Oboabona",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Çaykur Rizespor",
+    title: "Nigeria",
     value: 23,
     group: 14,
     x: 9.590389,
@@ -2384,7 +2339,7 @@ var nodes = [
   {
     id: 260,
     label: "Gökhan Inler (c)",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Napoli",
+    title: "Switzerland",
     value: 31,
     group: 0,
     x: -228.73499,
@@ -2393,7 +2348,7 @@ var nodes = [
   {
     id: 261,
     label: "Gonzalo Higuaín",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Napoli",
+    title: "Argentina",
     value: 32,
     group: 19,
     x: -976.805,
@@ -2402,7 +2357,7 @@ var nodes = [
   {
     id: 262,
     label: "Gonzalo Jara",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Nottingham Forest",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -235.43576,
@@ -2411,7 +2366,7 @@ var nodes = [
   {
     id: 263,
     label: "Gordon Schildenfeld",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Panathinaikos",
+    title: "Croatia",
     value: 23,
     group: 25,
     x: -217.73817,
@@ -2420,7 +2375,7 @@ var nodes = [
   {
     id: 264,
     label: "Gotoku Sakai",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "VfB Stuttgart",
+    title: "Japan",
     value: 25,
     group: 27,
     x: 626.25525,
@@ -2429,12 +2384,7 @@ var nodes = [
   {
     id: 265,
     label: "Graham Zusi",
-    title:
-      "Country: " +
-      "United States" +
-      "<br>" +
-      "Team: " +
-      "Sporting Kansas City",
+    title: "United States",
     value: 22,
     group: 26,
     x: 821.1794,
@@ -2443,12 +2393,7 @@ var nodes = [
   {
     id: 266,
     label: "Granit Xhaka",
-    title:
-      "Country: " +
-      "Switzerland" +
-      "<br>" +
-      "Team: " +
-      "Borussia Mönchengladbach",
+    title: "Switzerland",
     value: 23,
     group: 0,
     x: 60.45976,
@@ -2457,7 +2402,7 @@ var nodes = [
   {
     id: 267,
     label: "Guillermo Ochoa",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Ajaccio",
+    title: "Mexico",
     value: 23,
     group: 21,
     x: -2012.4979,
@@ -2466,7 +2411,7 @@ var nodes = [
   {
     id: 268,
     label: "Ha Dae-sung",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Beijing Guoan",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1235.4569,
@@ -2475,7 +2420,7 @@ var nodes = [
   {
     id: 269,
     label: "Han Kook-young",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Kashiwa Reysol",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1158.8308,
@@ -2484,12 +2429,8 @@ var nodes = [
   {
     id: 270,
     label: "Haris Medunjanin",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Gaziantepspor",
+    title: "Bosnia and Herzegovina",
+
     value: 22,
     group: 20,
     x: 1200.2539,
@@ -2498,7 +2439,7 @@ var nodes = [
   {
     id: 271,
     label: "Haris Seferovic",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Real Sociedad",
+    title: "Switzerland",
     value: 25,
     group: 0,
     x: 141.21535,
@@ -2507,7 +2448,7 @@ var nodes = [
   {
     id: 272,
     label: "Harrison Afful",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Espérance",
+    title: "Ghana",
     value: 22,
     group: 5,
     x: 468.08853,
@@ -2516,7 +2457,7 @@ var nodes = [
   {
     id: 273,
     label: "Hashem Beikzadeh",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Esteghlal",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1986.3362,
@@ -2525,7 +2466,7 @@ var nodes = [
   {
     id: 274,
     label: "Hassan Yebda",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Udinese",
+    title: "Algeria",
     value: 23,
     group: 24,
     x: -1303.4868,
@@ -2534,7 +2475,7 @@ var nodes = [
   {
     id: 275,
     label: "Héctor Herrera",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Porto",
+    title: "Mexico",
     value: 29,
     group: 21,
     x: -1799.6183,
@@ -2543,7 +2484,7 @@ var nodes = [
   {
     id: 276,
     label: "Héctor Moreno",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Espanyol",
+    title: "Mexico",
     value: 23,
     group: 21,
     x: -1943.8708,
@@ -2552,7 +2493,7 @@ var nodes = [
   {
     id: 277,
     label: "Hélder Postiga",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Lazio",
+    title: "Portugal",
     value: 28,
     group: 8,
     x: -469.8896,
@@ -2561,7 +2502,7 @@ var nodes = [
   {
     id: 278,
     label: "Henri Bedimo",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Lyon",
+    title: "Cameroon",
     value: 22,
     group: 17,
     x: 380.54697,
@@ -2570,7 +2511,7 @@ var nodes = [
   {
     id: 279,
     label: "Henrique",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Napoli",
+    title: "Brazil",
     value: 33,
     group: 23,
     x: -572.6227,
@@ -2579,7 +2520,7 @@ var nodes = [
   {
     id: 280,
     label: "Hernanes",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Internazionale",
+    title: "Brazil",
     value: 29,
     group: 23,
     x: -528.0018,
@@ -2588,7 +2529,7 @@ var nodes = [
   {
     id: 281,
     label: "Hiroki Sakai",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Hannover 96",
+    title: "Japan",
     value: 24,
     group: 27,
     x: 714.5649,
@@ -2597,7 +2538,7 @@ var nodes = [
   {
     id: 282,
     label: "Hiroshi Kiyotake",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "1. FC Nürnberg",
+    title: "Japan",
     value: 24,
     group: 27,
     x: 729.62537,
@@ -2606,7 +2547,7 @@ var nodes = [
   {
     id: 283,
     label: "Hong Jeong-ho",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "FC Augsburg",
+    title: "South Korea",
     value: 23,
     group: 10,
     x: 1189.0176,
@@ -2615,7 +2556,7 @@ var nodes = [
   {
     id: 284,
     label: "Hossein Mahini",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Persepolis",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1969.5181,
@@ -2624,7 +2565,7 @@ var nodes = [
   {
     id: 285,
     label: "Hotaru Yamaguchi",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Cerezo Osaka",
+    title: "Japan",
     value: 23,
     group: 27,
     x: 665.15576,
@@ -2633,7 +2574,7 @@ var nodes = [
   {
     id: 286,
     label: "Hugo Almeida",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Be?ikta?",
+    title: "Portugal",
     value: 24,
     group: 8,
     x: -570.7293,
@@ -2642,7 +2583,7 @@ var nodes = [
   {
     id: 287,
     label: "Hugo Campagnaro",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Internazionale",
+    title: "Argentina",
     value: 27,
     group: 19,
     x: -1030.6344,
@@ -2651,7 +2592,7 @@ var nodes = [
   {
     id: 288,
     label: "Hugo Lloris (c)",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Tottenham Hotspur",
+    title: "France",
     value: 27,
     group: 16,
     x: -181.9427,
@@ -2660,8 +2601,7 @@ var nodes = [
   {
     id: 289,
     label: "Hulk",
-    title:
-      "Country: " + "Brazil" + "<br>" + "Team: " + "Zenit Saint Petersburg",
+    title: "Brazil",
     value: 29,
     group: 23,
     x: -676.12946,
@@ -2670,8 +2610,7 @@ var nodes = [
   {
     id: 290,
     label: "Hwang Seok-ho",
-    title:
-      "Country: " + "South Korea" + "<br>" + "Team: " + "Sanfrecce Hiroshima",
+    title: "South Korea",
     value: 23,
     group: 10,
     x: 1138.2103,
@@ -2680,7 +2619,7 @@ var nodes = [
   {
     id: 291,
     label: "Ignazio Abate",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Milan",
+    title: "Italy",
     value: 27,
     group: 3,
     x: 229.40173,
@@ -2689,7 +2628,7 @@ var nodes = [
   {
     id: 292,
     label: "Igor Akinfeev",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "CSKA Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1278.871,
@@ -2698,7 +2637,7 @@ var nodes = [
   {
     id: 293,
     label: "Igor Denisov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Dynamo Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1478.4519,
@@ -2707,7 +2646,7 @@ var nodes = [
   {
     id: 294,
     label: "Iker Casillas (c)",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Real Madrid",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -800.62396,
@@ -2716,7 +2655,7 @@ var nodes = [
   {
     id: 295,
     label: "Isaác Brizuela",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Toluca",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2104.4573,
@@ -2725,7 +2664,7 @@ var nodes = [
   {
     id: 296,
     label: "Islam Slimani",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Sporting CP",
+    title: "Algeria",
     value: 25,
     group: 24,
     x: -1357.2412,
@@ -2734,7 +2673,7 @@ var nodes = [
   {
     id: 297,
     label: "Ismaël Diomandé",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Saint-Étienne",
+    title: "Ivory Coast",
     value: 23,
     group: 9,
     x: 445.33255,
@@ -2743,7 +2682,7 @@ var nodes = [
   {
     id: 298,
     label: "Ivan Franjic",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Brisbane Roar",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2090.495,
@@ -2752,7 +2691,7 @@ var nodes = [
   {
     id: 299,
     label: "Ivan Perišic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "VfL Wolfsburg",
+    title: "Croatia",
     value: 27,
     group: 25,
     x: -294.81628,
@@ -2761,7 +2700,7 @@ var nodes = [
   {
     id: 300,
     label: "Ivan Rakitic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Sevilla",
+    title: "Croatia",
     value: 25,
     group: 25,
     x: -359.27826,
@@ -2770,7 +2709,7 @@ var nodes = [
   {
     id: 301,
     label: "Ivica Olic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "VfL Wolfsburg",
+    title: "Croatia",
     value: 27,
     group: 25,
     x: -356.225,
@@ -2779,12 +2718,8 @@ var nodes = [
   {
     id: 302,
     label: "Izet Hajrovic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Galatasaray",
+    title: "Bosnia and Herzegovina",
+
     value: 26,
     group: 20,
     x: 1073.4325,
@@ -2793,7 +2728,7 @@ var nodes = [
   {
     id: 303,
     label: "Jack Wilshere",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Arsenal",
+    title: "England",
     value: 30,
     group: 28,
     x: -130.01361,
@@ -2802,7 +2737,7 @@ var nodes = [
   {
     id: 304,
     label: "Jackson Martínez",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Porto",
+    title: "Colombia",
     value: 29,
     group: 11,
     x: -870.14624,
@@ -2811,7 +2746,7 @@ var nodes = [
   {
     id: 305,
     label: "Jaime Ayoví",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Tijuana",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1695.5747,
@@ -2820,7 +2755,7 @@ var nodes = [
   {
     id: 306,
     label: "Jalal Hosseini",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Persepolis",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 2076.0352,
@@ -2829,7 +2764,7 @@ var nodes = [
   {
     id: 307,
     label: "James Holland",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Austria Wien",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2105.7495,
@@ -2838,7 +2773,7 @@ var nodes = [
   {
     id: 308,
     label: "James Milner",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Manchester City",
+    title: "England",
     value: 30,
     group: 28,
     x: -219.63795,
@@ -2847,7 +2782,7 @@ var nodes = [
   {
     id: 309,
     label: "James Rodríguez",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "AS Monaco",
+    title: "Colombia",
     value: 25,
     group: 11,
     x: -798.6743,
@@ -2856,7 +2791,7 @@ var nodes = [
   {
     id: 310,
     label: "James Troisi",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Melbourne Victory",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2041.5525,
@@ -2865,7 +2800,7 @@ var nodes = [
   {
     id: 311,
     label: "Jan Vertonghen",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Tottenham Hotspur",
+    title: "Belgium",
     value: 25,
     group: 28,
     x: -726.46454,
@@ -2874,8 +2809,7 @@ var nodes = [
   {
     id: 312,
     label: "Jasmin Fejzic",
-    title:
-      "Country: " + "Bosnia and Herzegovina" + "<br>" + "Team: " + "VfR Aalen",
+    title: "Bosnia and Herzegovina",
     value: 22,
     group: 20,
     x: 1170.3435,
@@ -2884,7 +2818,7 @@ var nodes = [
   {
     id: 313,
     label: "Jason Davidson",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Heracles Almelo",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2027.0093,
@@ -2893,7 +2827,7 @@ var nodes = [
   {
     id: 314,
     label: "Jasper Cillessen",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Ajax",
+    title: "Netherlands",
     value: 22,
     group: 22,
     x: 884.7674,
@@ -2902,7 +2836,7 @@ var nodes = [
   {
     id: 315,
     label: "Javad Nekounam (c)",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Al-Kuwait",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1956.9619,
@@ -2911,7 +2845,7 @@ var nodes = [
   {
     id: 316,
     label: "Javi Martínez",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Spain",
     value: 35,
     group: 23,
     x: -549.74335,
@@ -2920,7 +2854,7 @@ var nodes = [
   {
     id: 317,
     label: "Javier Aquino",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Villarreal",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2081.5557,
@@ -2929,7 +2863,7 @@ var nodes = [
   {
     id: 318,
     label: "Javier Hernández",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Manchester United",
+    title: "Mexico",
     value: 35,
     group: 21,
     x: -1606.5636,
@@ -2938,7 +2872,7 @@ var nodes = [
   {
     id: 319,
     label: "Javier Mascherano",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Barcelona",
+    title: "Argentina",
     value: 36,
     group: 19,
     x: -1221.5325,
@@ -2947,7 +2881,7 @@ var nodes = [
   {
     id: 320,
     label: "Jean Beausejour",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Wigan Athletic",
+    title: "Chile",
     value: 24,
     group: 18,
     x: -67.39274,
@@ -2956,7 +2890,7 @@ var nodes = [
   {
     id: 321,
     label: "Jean Makoun",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Rennes",
+    title: "Cameroon",
     value: 23,
     group: 17,
     x: 430.8337,
@@ -2965,7 +2899,7 @@ var nodes = [
   {
     id: 322,
     label: "Jean-Daniel Akpa-Akpro",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Toulouse",
+    title: "Ivory Coast",
     value: 23,
     group: 9,
     x: 413.52197,
@@ -2974,7 +2908,7 @@ var nodes = [
   {
     id: 323,
     label: "Jefferson",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Botafogo",
+    title: "Brazil",
     value: 22,
     group: 23,
     x: -426.49158,
@@ -2983,7 +2917,7 @@ var nodes = [
   {
     id: 324,
     label: "Jefferson Montero",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Morelia",
+    title: "Ecuador",
     value: 23,
     group: 4,
     x: -1599.2291,
@@ -2992,7 +2926,7 @@ var nodes = [
   {
     id: 325,
     label: "Jeremain Lens",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Dynamo Kyiv",
+    title: "Netherlands",
     value: 25,
     group: 22,
     x: 718.188,
@@ -3001,7 +2935,7 @@ var nodes = [
   {
     id: 326,
     label: "Jermaine Jones",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Be?ikta?",
+    title: "United States",
     value: 24,
     group: 26,
     x: 734.773,
@@ -3010,7 +2944,7 @@ var nodes = [
   {
     id: 327,
     label: "Jérôme Boateng",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Germany",
     value: 29,
     group: 13,
     x: 313.90338,
@@ -3019,8 +2953,7 @@ var nodes = [
   {
     id: 328,
     label: "Jerry Bengtson",
-    title:
-      "Country: " + "Honduras" + "<br>" + "Team: " + "New England Revolution",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1590.5161,
@@ -3029,7 +2962,7 @@ var nodes = [
   {
     id: 329,
     label: "Jerry Palacios",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Alajuelense",
+    title: "Honduras",
     value: 24,
     group: 7,
     x: 1713.397,
@@ -3038,7 +2971,7 @@ var nodes = [
   {
     id: 330,
     label: "Ji Dong-won",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "FC Augsburg",
+    title: "South Korea",
     value: 23,
     group: 10,
     x: 1240.8452,
@@ -3047,7 +2980,7 @@ var nodes = [
   {
     id: 331,
     label: "Jô",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Atlético Mineiro",
+    title: "Brazil",
     value: 22,
     group: 23,
     x: -470.48615,
@@ -3056,7 +2989,7 @@ var nodes = [
   {
     id: 332,
     label: "João Moutinho",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "AS Monaco",
+    title: "Portugal",
     value: 25,
     group: 8,
     x: -709.12415,
@@ -3065,7 +2998,7 @@ var nodes = [
   {
     id: 333,
     label: "João Pereira",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Valencia",
+    title: "Portugal",
     value: 25,
     group: 8,
     x: -649.96454,
@@ -3074,7 +3007,7 @@ var nodes = [
   {
     id: 334,
     label: "Joao Rojas",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Cruz Azul",
+    title: "Ecuador",
     value: 24,
     group: 4,
     x: -1776.6962,
@@ -3083,7 +3016,7 @@ var nodes = [
   {
     id: 335,
     label: "Joe Hart",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Manchester City",
+    title: "England",
     value: 30,
     group: 28,
     x: -212.69391,
@@ -3092,7 +3025,7 @@ var nodes = [
   {
     id: 336,
     label: "Joel Campbell",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Olympiacos",
+    title: "Costa Rica",
     value: 26,
     group: 29,
     x: 2111.164,
@@ -3101,7 +3034,7 @@ var nodes = [
   {
     id: 337,
     label: "Joël Matip",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Schalke 04",
+    title: "Cameroon",
     value: 28,
     group: 17,
     x: 540.77966,
@@ -3110,7 +3043,7 @@ var nodes = [
   {
     id: 338,
     label: "Joël Veltman",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Ajax",
+    title: "Netherlands",
     value: 22,
     group: 22,
     x: 921.6833,
@@ -3119,7 +3052,7 @@ var nodes = [
   {
     id: 339,
     label: "Johan Djourou",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Hamburger SV",
+    title: "Switzerland",
     value: 23,
     group: 0,
     x: 57.06974,
@@ -3128,7 +3061,7 @@ var nodes = [
   {
     id: 340,
     label: "John Boye",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Rennes",
+    title: "Ghana",
     value: 23,
     group: 5,
     x: 493.59833,
@@ -3137,7 +3070,7 @@ var nodes = [
   {
     id: 341,
     label: "John Brooks",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Hertha BSC",
+    title: "United States",
     value: 23,
     group: 26,
     x: 729.48096,
@@ -3146,7 +3079,7 @@ var nodes = [
   {
     id: 342,
     label: "John Obi Mikel",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Chelsea",
+    title: "Nigeria",
     value: 33,
     group: 14,
     x: -197.90224,
@@ -3155,7 +3088,7 @@ var nodes = [
   {
     id: 343,
     label: "Johnny Acosta",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Alajuelense",
+    title: "Costa Rica",
     value: 23,
     group: 29,
     x: 2202.928,
@@ -3164,7 +3097,7 @@ var nodes = [
   {
     id: 344,
     label: "Johnny Herrera",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Universidad de Chile",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -225.40228,
@@ -3173,7 +3106,7 @@ var nodes = [
   {
     id: 345,
     label: "Jonathan de Guzmán",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Swansea City",
+    title: "Netherlands",
     value: 23,
     group: 22,
     x: 917.89813,
@@ -3182,7 +3115,7 @@ var nodes = [
   {
     id: 346,
     label: "Jonathan Mensah",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Évian",
+    title: "Ghana",
     value: 22,
     group: 5,
     x: 461.7189,
@@ -3191,7 +3124,7 @@ var nodes = [
   {
     id: 347,
     label: "Jordan Ayew",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Sochaux",
+    title: "Ghana",
     value: 22,
     group: 5,
     x: 418.20883,
@@ -3200,7 +3133,7 @@ var nodes = [
   {
     id: 348,
     label: "Jordan Henderson",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Liverpool",
+    title: "England",
     value: 27,
     group: 28,
     x: -137.00108,
@@ -3209,7 +3142,7 @@ var nodes = [
   {
     id: 349,
     label: "Jordi Alba",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Barcelona",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -1139.679,
@@ -3218,7 +3151,7 @@ var nodes = [
   {
     id: 350,
     label: "Jordy Clasie",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Feyenoord",
+    title: "Netherlands",
     value: 22,
     group: 22,
     x: 920.4804,
@@ -3227,7 +3160,7 @@ var nodes = [
   {
     id: 351,
     label: "Jorge Claros",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Motagua",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1693.2894,
@@ -3236,7 +3169,7 @@ var nodes = [
   {
     id: 352,
     label: "Jorge Fucile",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Porto",
+    title: "Uruguay",
     value: 30,
     group: 6,
     x: -342.37836,
@@ -3245,7 +3178,7 @@ var nodes = [
   {
     id: 353,
     label: "Jorge Guagua",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Emelec",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1678.4408,
@@ -3254,7 +3187,7 @@ var nodes = [
   {
     id: 354,
     label: "Jorge Valdivia",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Palmeiras",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -250.0152,
@@ -3263,7 +3196,7 @@ var nodes = [
   {
     id: 355,
     label: "José de Jesús Corona",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Cruz Azul",
+    title: "Mexico",
     value: 23,
     group: 21,
     x: -2099.094,
@@ -3272,7 +3205,7 @@ var nodes = [
   {
     id: 356,
     label: "José Holebas",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Olympiacos",
+    title: "Greece",
     value: 23,
     group: 15,
     x: 1657.0046,
@@ -3281,7 +3214,7 @@ var nodes = [
   {
     id: 357,
     label: "José Juan Vázquez",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "León",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2102.5596,
@@ -3290,7 +3223,7 @@ var nodes = [
   {
     id: 358,
     label: "José María Basanta",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Monterrey",
+    title: "Argentina",
     value: 22,
     group: 19,
     x: -1144.7311,
@@ -3299,7 +3232,7 @@ var nodes = [
   {
     id: 359,
     label: "José María Giménez",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Atlético Madrid",
+    title: "Uruguay",
     value: 28,
     group: 6,
     x: -198.00406,
@@ -3308,7 +3241,7 @@ var nodes = [
   {
     id: 360,
     label: "José Miguel Cubero",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Herediano",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2268.5837,
@@ -3317,7 +3250,7 @@ var nodes = [
   {
     id: 361,
     label: "José Pedro Fuenzalida",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Colo-Colo",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -198.39777,
@@ -3326,7 +3259,7 @@ var nodes = [
   {
     id: 362,
     label: "José Rojas",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Universidad de Chile",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -307.82147,
@@ -3335,7 +3268,7 @@ var nodes = [
   {
     id: 363,
     label: "Joseph Yobo (c)",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Norwich City",
+    title: "Nigeria",
     value: 23,
     group: 14,
     x: 3.3988526,
@@ -3344,7 +3277,7 @@ var nodes = [
   {
     id: 364,
     label: "Josip Drmic",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "1. FC Nürnberg",
+    title: "Switzerland",
     value: 25,
     group: 0,
     x: 179.9546,
@@ -3353,7 +3286,7 @@ var nodes = [
   {
     id: 365,
     label: "Jozy Altidore",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Sunderland",
+    title: "United States",
     value: 23,
     group: 26,
     x: 866.4315,
@@ -3362,7 +3295,7 @@ var nodes = [
   {
     id: 366,
     label: "Juan Camilo Zúñiga",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Napoli",
+    title: "Colombia",
     value: 33,
     group: 11,
     x: -759.6773,
@@ -3371,7 +3304,7 @@ var nodes = [
   {
     id: 367,
     label: "Juan Carlos García",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Wigan Athletic",
+    title: "Honduras",
     value: 23,
     group: 7,
     x: 1576.5138,
@@ -3380,7 +3313,7 @@ var nodes = [
   {
     id: 368,
     label: "Juan Carlos Paredes",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Barcelona",
+    title: "Ecuador",
     value: 35,
     group: 4,
     x: -1452.1322,
@@ -3389,7 +3322,7 @@ var nodes = [
   {
     id: 369,
     label: "Juan Fernando Quintero",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Porto",
+    title: "Colombia",
     value: 29,
     group: 11,
     x: -908.9095,
@@ -3398,7 +3331,7 @@ var nodes = [
   {
     id: 370,
     label: "Juan Guillermo Cuadrado",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Fiorentina",
+    title: "Colombia",
     value: 24,
     group: 11,
     x: -683.1348,
@@ -3407,7 +3340,7 @@ var nodes = [
   {
     id: 371,
     label: "Juan Mata",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Manchester United",
+    title: "Spain",
     value: 34,
     group: 23,
     x: -837.1373,
@@ -3416,7 +3349,7 @@ var nodes = [
   {
     id: 372,
     label: "Juan Pablo Montes",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Motagua",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1592.682,
@@ -3425,7 +3358,7 @@ var nodes = [
   {
     id: 373,
     label: "Juanfran",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Atlético Madrid",
+    title: "Spain",
     value: 27,
     group: 23,
     x: -888.2895,
@@ -3434,7 +3367,7 @@ var nodes = [
   {
     id: 374,
     label: "Julian Draxler",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Schalke 04",
+    title: "Germany",
     value: 27,
     group: 13,
     x: 528.5164,
@@ -3443,7 +3376,7 @@ var nodes = [
   {
     id: 375,
     label: "Julian Green",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Bayern Munich",
+    title: "United States",
     value: 35,
     group: 26,
     x: 627.9602,
@@ -3452,7 +3385,7 @@ var nodes = [
   {
     id: 376,
     label: "Júlio César",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Toronto FC",
+    title: "Brazil",
     value: 23,
     group: 23,
     x: -374.46234,
@@ -3461,7 +3394,7 @@ var nodes = [
   {
     id: 377,
     label: "Jung Sung-ryong",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Suwon Bluewings",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1253.4236,
@@ -3470,7 +3403,7 @@ var nodes = [
   {
     id: 378,
     label: "Júnior Díaz",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Mainz 05",
+    title: "Costa Rica",
     value: 26,
     group: 29,
     x: 2052.3333,
@@ -3479,7 +3412,7 @@ var nodes = [
   {
     id: 379,
     label: "Juwon Oshaniwa",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Ashdod",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -3.9951146,
@@ -3488,7 +3421,7 @@ var nodes = [
   {
     id: 380,
     label: "Karim Ansarifard",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Tractor Sazi",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 2030.3977,
@@ -3497,7 +3430,7 @@ var nodes = [
   {
     id: 381,
     label: "Karim Benzema",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Real Madrid",
+    title: "France",
     value: 32,
     group: 16,
     x: -255.21576,
@@ -3506,7 +3439,7 @@ var nodes = [
   {
     id: 382,
     label: "Keisuke Honda",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Milan",
+    title: "Japan",
     value: 29,
     group: 27,
     x: 610.39655,
@@ -3515,7 +3448,7 @@ var nodes = [
   {
     id: 383,
     label: "Kenneth Omeruo",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Middlesbrough",
+    title: "Nigeria",
     value: 23,
     group: 14,
     x: -33.32675,
@@ -3524,7 +3457,7 @@ var nodes = [
   {
     id: 384,
     label: "Kevin De Bruyne",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "VfL Wolfsburg",
+    title: "Belgium",
     value: 28,
     group: 28,
     x: -581.4455,
@@ -3533,7 +3466,7 @@ var nodes = [
   {
     id: 385,
     label: "Kevin Großkreutz",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Borussia Dortmund",
+    title: "Germany",
     value: 24,
     group: 13,
     x: 553.73175,
@@ -3542,7 +3475,7 @@ var nodes = [
   {
     id: 386,
     label: "Kevin Mirallas",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Everton",
+    title: "Belgium",
     value: 26,
     group: 28,
     x: -563.9285,
@@ -3551,7 +3484,7 @@ var nodes = [
   {
     id: 387,
     label: "Kevin-Prince Boateng",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Schalke 04",
+    title: "Ghana",
     value: 28,
     group: 5,
     x: 528.2719,
@@ -3560,7 +3493,7 @@ var nodes = [
   {
     id: 388,
     label: "Keylor Navas",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Levante",
+    title: "Costa Rica",
     value: 23,
     group: 29,
     x: 2179.6377,
@@ -3569,7 +3502,7 @@ var nodes = [
   {
     id: 389,
     label: "Khosro Heydari",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Esteghlal",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 2085.2766,
@@ -3578,7 +3511,7 @@ var nodes = [
   {
     id: 390,
     label: "Ki Sung-yueng",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Sunderland",
+    title: "South Korea",
     value: 23,
     group: 10,
     x: 1168.5514,
@@ -3587,7 +3520,7 @@ var nodes = [
   {
     id: 391,
     label: "Kim Bo-kyung",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Cardiff City",
+    title: "South Korea",
     value: 23,
     group: 10,
     x: 1094.6575,
@@ -3596,7 +3529,7 @@ var nodes = [
   {
     id: 392,
     label: "Kim Chang-soo",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Kashiwa Reysol",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1182.648,
@@ -3605,7 +3538,7 @@ var nodes = [
   {
     id: 393,
     label: "Kim Seung-gyu",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Ulsan Hyundai",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1189.8958,
@@ -3614,7 +3547,7 @@ var nodes = [
   {
     id: 394,
     label: "Kim Shin-wook",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Ulsan Hyundai",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1231.2048,
@@ -3623,8 +3556,7 @@ var nodes = [
   {
     id: 395,
     label: "Kim Young-gwon",
-    title:
-      "Country: " + "South Korea" + "<br>" + "Team: " + "Guangzhou Evergrande",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1284.3221,
@@ -3633,7 +3565,7 @@ var nodes = [
   {
     id: 396,
     label: "Klaas-Jan Huntelaar",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Schalke 04",
+    title: "Netherlands",
     value: 28,
     group: 22,
     x: 809.16656,
@@ -3642,7 +3574,7 @@ var nodes = [
   {
     id: 397,
     label: "Koke",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Atlético Madrid",
+    title: "Spain",
     value: 27,
     group: 23,
     x: -921.22095,
@@ -3651,7 +3583,7 @@ var nodes = [
   {
     id: 398,
     label: "Kolo Touré",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Liverpool",
+    title: "Ivory Coast",
     value: 31,
     group: 9,
     x: 297.04135,
@@ -3660,7 +3592,7 @@ var nodes = [
   {
     id: 399,
     label: "Koo Ja-cheol (c)",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Mainz 05",
+    title: "South Korea",
     value: 25,
     group: 10,
     x: 1210.03,
@@ -3669,7 +3601,7 @@ var nodes = [
   {
     id: 400,
     label: "Kostas Katsouranis",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "PAOK",
+    title: "Greece",
     value: 22,
     group: 15,
     x: 1625.112,
@@ -3678,7 +3610,7 @@ var nodes = [
   {
     id: 401,
     label: "Kostas Manolas",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Olympiacos",
+    title: "Greece",
     value: 23,
     group: 15,
     x: 1643.8208,
@@ -3687,7 +3619,7 @@ var nodes = [
   {
     id: 402,
     label: "Kostas Mitroglou",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Fulham",
+    title: "Greece",
     value: 23,
     group: 15,
     x: 1704.107,
@@ -3696,7 +3628,7 @@ var nodes = [
   {
     id: 403,
     label: "Kunle Odunlami",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Sunshine Stars",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -51.509785,
@@ -3705,7 +3637,7 @@ var nodes = [
   {
     id: 404,
     label: "Kwadwo Asamoah",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Juventus",
+    title: "Ghana",
     value: 33,
     group: 5,
     x: 285.16757,
@@ -3714,7 +3646,7 @@ var nodes = [
   {
     id: 405,
     label: "Kwak Tae-hwi",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Al-Hilal",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1276.5813,
@@ -3723,7 +3655,7 @@ var nodes = [
   {
     id: 406,
     label: "Kyle Beckerman",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Real Salt Lake",
+    title: "United States",
     value: 22,
     group: 26,
     x: 814.4154,
@@ -3732,7 +3664,7 @@ var nodes = [
   {
     id: 407,
     label: "Landry N Guémo",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Bordeaux",
+    title: "Cameroon",
     value: 22,
     group: 17,
     x: 380.33423,
@@ -3741,7 +3673,7 @@ var nodes = [
   {
     id: 408,
     label: "Laurent Ciman",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Standard Liège",
+    title: "Belgium",
     value: 24,
     group: 28,
     x: -542.0193,
@@ -3750,7 +3682,7 @@ var nodes = [
   {
     id: 409,
     label: "Laurent Koscielny",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Arsenal",
+    title: "France",
     value: 29,
     group: 16,
     x: -15.0555935,
@@ -3759,7 +3691,7 @@ var nodes = [
   {
     id: 410,
     label: "Lazaros Christodoulopoulos",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Bologna",
+    title: "Greece",
     value: 23,
     group: 15,
     x: 1501.5779,
@@ -3768,7 +3700,7 @@ var nodes = [
   {
     id: 411,
     label: "Lee Bum-young",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Busan IPark",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1190.9927,
@@ -3777,7 +3709,7 @@ var nodes = [
   {
     id: 412,
     label: "Lee Chung-yong",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Bolton Wanderers",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1146.0409,
@@ -3786,7 +3718,7 @@ var nodes = [
   {
     id: 413,
     label: "Lee Keun-ho",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Sangju Sangmu",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1296.3544,
@@ -3795,7 +3727,7 @@ var nodes = [
   {
     id: 414,
     label: "Lee Yong",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Ulsan Hyundai",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1208.6063,
@@ -3804,7 +3736,7 @@ var nodes = [
   {
     id: 415,
     label: "Leighton Baines",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Everton",
+    title: "England",
     value: 25,
     group: 28,
     x: -237.56212,
@@ -3813,7 +3745,7 @@ var nodes = [
   {
     id: 416,
     label: "Leonardo Bonucci",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Juventus",
+    title: "Italy",
     value: 28,
     group: 3,
     x: 125.05671,
@@ -3822,7 +3754,7 @@ var nodes = [
   {
     id: 417,
     label: "Leroy Fer",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Norwich City",
+    title: "Netherlands",
     value: 23,
     group: 22,
     x: 837.3325,
@@ -3831,7 +3763,7 @@ var nodes = [
   {
     id: 418,
     label: "Liassine Cadamuro-Bentaïba",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Mallorca",
+    title: "Algeria",
     value: 22,
     group: 24,
     x: -1424.9585,
@@ -3840,7 +3772,7 @@ var nodes = [
   {
     id: 419,
     label: "Lionel Messi (c)",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Barcelona",
+    title: "Argentina",
     value: 36,
     group: 19,
     x: -1133.2008,
@@ -3849,7 +3781,7 @@ var nodes = [
   {
     id: 420,
     label: "Loïc Feudjou",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Coton Sport",
+    title: "Cameroon",
     value: 22,
     group: 17,
     x: 464.74194,
@@ -3858,7 +3790,7 @@ var nodes = [
   {
     id: 421,
     label: "Loïc Rémy",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Newcastle United",
+    title: "France",
     value: 25,
     group: 16,
     x: 73.68377,
@@ -3867,7 +3799,7 @@ var nodes = [
   {
     id: 422,
     label: "Lorenzo Insigne",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Napoli",
+    title: "Italy",
     value: 33,
     group: 3,
     x: -68.64961,
@@ -3876,7 +3808,7 @@ var nodes = [
   {
     id: 423,
     label: "Loukas Vyntra",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Levante",
+    title: "Greece",
     value: 23,
     group: 15,
     x: 1712.4525,
@@ -3885,7 +3817,7 @@ var nodes = [
   {
     id: 424,
     label: "Lucas Biglia",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Lazio",
+    title: "Argentina",
     value: 28,
     group: 19,
     x: -845.6186,
@@ -3894,7 +3826,7 @@ var nodes = [
   {
     id: 425,
     label: "Lucas Digne",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Paris Saint-Germain",
+    title: "France",
     value: 29,
     group: 16,
     x: -18.416775,
@@ -3903,7 +3835,7 @@ var nodes = [
   {
     id: 426,
     label: "Luis Garrido",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Olimpia",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1665.7246,
@@ -3912,7 +3844,7 @@ var nodes = [
   {
     id: 427,
     label: "Luis López",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Real España",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1610.1837,
@@ -3921,8 +3853,7 @@ var nodes = [
   {
     id: 428,
     label: "Luís Neto",
-    title:
-      "Country: " + "Portugal" + "<br>" + "Team: " + "Zenit Saint Petersburg",
+    title: "Portugal",
     value: 29,
     group: 8,
     x: -787.05585,
@@ -3931,7 +3862,7 @@ var nodes = [
   {
     id: 429,
     label: "Luis Saritama",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Barcelona",
+    title: "Ecuador",
     value: 35,
     group: 4,
     x: -1546.8987,
@@ -3940,7 +3871,7 @@ var nodes = [
   {
     id: 430,
     label: "Luis Suárez",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Liverpool",
+    title: "Uruguay",
     value: 31,
     group: 6,
     x: -100.21393,
@@ -3949,7 +3880,7 @@ var nodes = [
   {
     id: 431,
     label: "Luiz Gustavo",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "VfL Wolfsburg",
+    title: "Brazil",
     value: 28,
     group: 23,
     x: -456.7165,
@@ -3958,7 +3889,7 @@ var nodes = [
   {
     id: 432,
     label: "Luka Modric",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Real Madrid",
+    title: "Croatia",
     value: 33,
     group: 25,
     x: -410.41797,
@@ -3967,7 +3898,7 @@ var nodes = [
   {
     id: 433,
     label: "Lukas Podolski",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Arsenal",
+    title: "Germany",
     value: 29,
     group: 13,
     x: 202.08969,
@@ -3976,7 +3907,7 @@ var nodes = [
   {
     id: 434,
     label: "Luke Shaw",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Southampton",
+    title: "England",
     value: 26,
     group: 28,
     x: -92.229225,
@@ -3985,7 +3916,7 @@ var nodes = [
   {
     id: 435,
     label: "Madjid Bougherra (c)",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Lekhwiya",
+    title: "Algeria",
     value: 22,
     group: 24,
     x: -1470.3363,
@@ -3994,7 +3925,7 @@ var nodes = [
   {
     id: 436,
     label: "Maicon",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Roma",
+    title: "Brazil",
     value: 26,
     group: 23,
     x: -278.08972,
@@ -4003,7 +3934,7 @@ var nodes = [
   {
     id: 437,
     label: "Majeed Waris",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Valenciennes",
+    title: "Ghana",
     value: 23,
     group: 5,
     x: 324.35605,
@@ -4012,7 +3943,7 @@ var nodes = [
   {
     id: 438,
     label: "Makoto Hasebe (c)",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "1. FC Nürnberg",
+    title: "Japan",
     value: 24,
     group: 27,
     x: 672.80505,
@@ -4021,7 +3952,7 @@ var nodes = [
   {
     id: 439,
     label: "Maksim Kanunnikov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Rubin Kazan",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1315.3818,
@@ -4030,7 +3961,7 @@ var nodes = [
   {
     id: 440,
     label: "Mamadou Sakho",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Liverpool",
+    title: "France",
     value: 31,
     group: 16,
     x: -55.2884,
@@ -4039,7 +3970,7 @@ var nodes = [
   {
     id: 441,
     label: "Manabu Saito",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Yokohama F. Marinos",
+    title: "Japan",
     value: 22,
     group: 27,
     x: 700.693,
@@ -4048,7 +3979,7 @@ var nodes = [
   {
     id: 442,
     label: "Manuel Neuer",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Germany",
     value: 29,
     group: 13,
     x: 362.29532,
@@ -4057,7 +3988,7 @@ var nodes = [
   {
     id: 443,
     label: "Marcelo",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Real Madrid",
+    title: "Brazil",
     value: 33,
     group: 23,
     x: -546.0523,
@@ -4066,7 +3997,7 @@ var nodes = [
   {
     id: 444,
     label: "Marcelo Brozovic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Dinamo Zagreb",
+    title: "Croatia",
     value: 23,
     group: 25,
     x: -406.19418,
@@ -4075,7 +4006,7 @@ var nodes = [
   {
     id: 445,
     label: "Marcelo Díaz",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Basel",
+    title: "Chile",
     value: 27,
     group: 18,
     x: -193.87224,
@@ -4084,7 +4015,7 @@ var nodes = [
   {
     id: 446,
     label: "Marco Fabián",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Cruz Azul",
+    title: "Mexico",
     value: 23,
     group: 21,
     x: -2042.7997,
@@ -4093,7 +4024,7 @@ var nodes = [
   {
     id: 447,
     label: "Marco Parolo",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Parma",
+    title: "Italy",
     value: 24,
     group: 3,
     x: 223.34402,
@@ -4102,7 +4033,7 @@ var nodes = [
   {
     id: 448,
     label: "Marco Ureña",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Kuban Krasnodar",
+    title: "Costa Rica",
     value: 23,
     group: 29,
     x: 2171.2605,
@@ -4111,7 +4042,7 @@ var nodes = [
   {
     id: 449,
     label: "Marco Verratti",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Paris Saint-Germain",
+    title: "Italy",
     value: 29,
     group: 3,
     x: 74.62252,
@@ -4120,7 +4051,7 @@ var nodes = [
   {
     id: 450,
     label: "Marcos Rojo",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Sporting CP",
+    title: "Argentina",
     value: 25,
     group: 19,
     x: -1169.2754,
@@ -4129,7 +4060,7 @@ var nodes = [
   {
     id: 451,
     label: "Mariano Andújar",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Catania",
+    title: "Argentina",
     value: 22,
     group: 19,
     x: -1186.1453,
@@ -4138,7 +4069,7 @@ var nodes = [
   {
     id: 452,
     label: "Mario Balotelli",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Milan",
+    title: "Italy",
     value: 27,
     group: 3,
     x: 253.78076,
@@ -4147,7 +4078,7 @@ var nodes = [
   {
     id: 453,
     label: "Mario Gavranovic",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Zürich",
+    title: "Switzerland",
     value: 22,
     group: 0,
     x: 52.757668,
@@ -4156,7 +4087,7 @@ var nodes = [
   {
     id: 454,
     label: "Mario Götze",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Germany",
     value: 29,
     group: 13,
     x: 301.41776,
@@ -4165,7 +4096,7 @@ var nodes = [
   {
     id: 455,
     label: "Mario Mandžukic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Croatia",
     value: 35,
     group: 25,
     x: -149.6339,
@@ -4174,7 +4105,7 @@ var nodes = [
   {
     id: 456,
     label: "Mario Martínez",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Real España",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1689.1534,
@@ -4183,7 +4114,7 @@ var nodes = [
   {
     id: 457,
     label: "Mario Yepes (c)",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Atalanta",
+    title: "Colombia",
     value: 23,
     group: 11,
     x: -719.321,
@@ -4192,7 +4123,7 @@ var nodes = [
   {
     id: 458,
     label: "Mark Bresciano",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Al-Gharafa",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2122.0056,
@@ -4201,7 +4132,7 @@ var nodes = [
   {
     id: 459,
     label: "Mark Milligan",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Melbourne Victory",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2173.8164,
@@ -4210,7 +4141,7 @@ var nodes = [
   {
     id: 460,
     label: "Marouane Fellaini",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Manchester United",
+    title: "Belgium",
     value: 34,
     group: 28,
     x: -655.5912,
@@ -4219,7 +4150,7 @@ var nodes = [
   {
     id: 461,
     label: "Martín Cáceres",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Juventus",
+    title: "Uruguay",
     value: 33,
     group: 6,
     x: -21.211044,
@@ -4228,7 +4159,7 @@ var nodes = [
   {
     id: 462,
     label: "Martín Demichelis",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Manchester City",
+    title: "Argentina",
     value: 29,
     group: 19,
     x: -893.08545,
@@ -4237,7 +4168,7 @@ var nodes = [
   {
     id: 463,
     label: "Martín Silva",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Vasco da Gama",
+    title: "Uruguay",
     value: 22,
     group: 6,
     x: -0.6348668,
@@ -4246,7 +4177,7 @@ var nodes = [
   {
     id: 464,
     label: "Marvin Chávez",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Chivas USA",
+    title: "Honduras",
     value: 23,
     group: 7,
     x: 1429.7988,
@@ -4255,7 +4186,7 @@ var nodes = [
   {
     id: 465,
     label: "Masahiko Inoha",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Jubilo Iwata",
+    title: "Japan",
     value: 22,
     group: 27,
     x: 730.9411,
@@ -4264,7 +4195,7 @@ var nodes = [
   {
     id: 466,
     label: "Masato Morishige",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "F.C. Tokyo",
+    title: "Japan",
     value: 22,
     group: 27,
     x: 677.74445,
@@ -4273,7 +4204,7 @@ var nodes = [
   {
     id: 467,
     label: "Masoud Shojaei",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Las Palmas",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 2059.2344,
@@ -4282,7 +4213,7 @@ var nodes = [
   {
     id: 468,
     label: "Massimo Luongo",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Swindon Town",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2135.3752,
@@ -4291,7 +4222,7 @@ var nodes = [
   {
     id: 469,
     label: "Mateo Kovacic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Internazionale",
+    title: "Croatia",
     value: 29,
     group: 25,
     x: -492.02667,
@@ -4300,7 +4231,7 @@ var nodes = [
   {
     id: 470,
     label: "Mathew Leckie",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "FSV Frankfurt",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2138.549,
@@ -4309,7 +4240,7 @@ var nodes = [
   {
     id: 471,
     label: "Mathew Ryan",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Club Brugge",
+    title: "Australia",
     value: 23,
     group: 12,
     x: 2056.7805,
@@ -4318,7 +4249,7 @@ var nodes = [
   {
     id: 472,
     label: "Mathieu Debuchy",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Newcastle United",
+    title: "France",
     value: 25,
     group: 16,
     x: 14.882936,
@@ -4327,7 +4258,7 @@ var nodes = [
   {
     id: 473,
     label: "Mathieu Valbuena",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Marseille",
+    title: "France",
     value: 24,
     group: 16,
     x: 44.39426,
@@ -4336,8 +4267,7 @@ var nodes = [
   {
     id: 474,
     label: "Mathis Bolly",
-    title:
-      "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Fortuna Düsseldorf",
+    title: "Ivory Coast",
     value: 23,
     group: 9,
     x: 651.62463,
@@ -4346,7 +4276,7 @@ var nodes = [
   {
     id: 475,
     label: "Mats Hummels",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Borussia Dortmund",
+    title: "Germany",
     value: 24,
     group: 13,
     x: 607.8975,
@@ -4355,12 +4285,8 @@ var nodes = [
   {
     id: 476,
     label: "Matt Besler",
-    title:
-      "Country: " +
-      "United States" +
-      "<br>" +
-      "Team: " +
-      "Sporting Kansas City",
+    title: "United States",
+
     value: 22,
     group: 26,
     x: 861.9521,
@@ -4369,7 +4295,7 @@ var nodes = [
   {
     id: 477,
     label: "Matt McKay",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Brisbane Roar",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2090.5696,
@@ -4378,7 +4304,7 @@ var nodes = [
   {
     id: 478,
     label: "Matteo Darmian",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Torino",
+    title: "Italy",
     value: 23,
     group: 3,
     x: 332.64136,
@@ -4387,12 +4313,8 @@ var nodes = [
   {
     id: 479,
     label: "Matthew Špiranovic",
-    title:
-      "Country: " +
-      "Australia" +
-      "<br>" +
-      "Team: " +
-      "Western Sydney Wanderers",
+    title: "Australia",
+
     value: 22,
     group: 12,
     x: 2061.1667,
@@ -4401,7 +4323,7 @@ var nodes = [
   {
     id: 480,
     label: "Matthias Ginter",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "SC Freiburg",
+    title: "Germany",
     value: 25,
     group: 13,
     x: 444.28552,
@@ -4410,7 +4332,7 @@ var nodes = [
   {
     id: 481,
     label: "Mattia De Sciglio",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Milan",
+    title: "Italy",
     value: 27,
     group: 3,
     x: 304.86957,
@@ -4419,7 +4341,7 @@ var nodes = [
   {
     id: 482,
     label: "Mattia Perin",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Genoa",
+    title: "Italy",
     value: 24,
     group: 3,
     x: 272.21268,
@@ -4428,7 +4350,7 @@ var nodes = [
   {
     id: 483,
     label: "Mauricio Isla",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Juventus",
+    title: "Chile",
     value: 32,
     group: 18,
     x: -142.68803,
@@ -4437,7 +4359,7 @@ var nodes = [
   {
     id: 484,
     label: "Mauricio Pinilla",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Cagliari",
+    title: "Chile",
     value: 23,
     group: 18,
     x: -356.0086,
@@ -4446,7 +4368,7 @@ var nodes = [
   {
     id: 485,
     label: "Max Gradel",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Saint-Étienne",
+    title: "Ivory Coast",
     value: 23,
     group: 9,
     x: 486.36218,
@@ -4455,7 +4377,7 @@ var nodes = [
   {
     id: 486,
     label: "Maxi Pereira",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Benfica",
+    title: "Uruguay",
     value: 26,
     group: 6,
     x: -192.70482,
@@ -4464,7 +4386,7 @@ var nodes = [
   {
     id: 487,
     label: "Maxi Rodríguez",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Newells Old Boys",
+    title: "Argentina",
     value: 22,
     group: 19,
     x: -1193.7656,
@@ -4473,7 +4395,7 @@ var nodes = [
   {
     id: 488,
     label: "Maxim Choupo-Moting",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Mainz 05",
+    title: "Cameroon",
     value: 26,
     group: 17,
     x: 590.2084,
@@ -4482,7 +4404,7 @@ var nodes = [
   {
     id: 489,
     label: "Máximo Banguera",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Barcelona",
+    title: "Ecuador",
     value: 35,
     group: 4,
     x: -1488.9634,
@@ -4491,7 +4413,7 @@ var nodes = [
   {
     id: 490,
     label: "Maxwell",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Paris Saint-Germain",
+    title: "Brazil",
     value: 30,
     group: 23,
     x: -388.1638,
@@ -4500,7 +4422,7 @@ var nodes = [
   {
     id: 491,
     label: "Maya Yoshida",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Southampton",
+    title: "Japan",
     value: 28,
     group: 27,
     x: 540.3439,
@@ -4509,7 +4431,7 @@ var nodes = [
   {
     id: 492,
     label: "Maynor Figueroa",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Hull City",
+    title: "Honduras",
     value: 23,
     group: 7,
     x: 1528.1024,
@@ -4518,7 +4440,7 @@ var nodes = [
   {
     id: 493,
     label: "Medhi Lacen",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Getafe",
+    title: "Algeria",
     value: 23,
     group: 24,
     x: -1321.0677,
@@ -4527,7 +4449,7 @@ var nodes = [
   {
     id: 494,
     label: "Mehdi Mostefa",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Ajaccio",
+    title: "Algeria",
     value: 23,
     group: 24,
     x: -1480.4698,
@@ -4536,7 +4458,7 @@ var nodes = [
   {
     id: 495,
     label: "Mehrdad Pouladi",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Persepolis",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1894.8638,
@@ -4545,7 +4467,7 @@ var nodes = [
   {
     id: 496,
     label: "Memphis Depay",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "PSV",
+    title: "Netherlands",
     value: 24,
     group: 22,
     x: 929.35187,
@@ -4554,12 +4476,8 @@ var nodes = [
   {
     id: 497,
     label: "Mensur Mujdža",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "SC Freiburg",
+    title: "Bosnia and Herzegovina",
+
     value: 25,
     group: 20,
     x: 1039.0459,
@@ -4568,7 +4486,7 @@ var nodes = [
   {
     id: 498,
     label: "Mesut Özil",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Arsenal",
+    title: "Germany",
     value: 29,
     group: 13,
     x: 266.21005,
@@ -4577,7 +4495,7 @@ var nodes = [
   {
     id: 499,
     label: "Michael Arroyo",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Atlante",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1730.8958,
@@ -4586,7 +4504,7 @@ var nodes = [
   {
     id: 500,
     label: "Michael Babatunde",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Volyn Lutsk",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -143.01881,
@@ -4595,7 +4513,7 @@ var nodes = [
   {
     id: 501,
     label: "Michael Barrantes",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Aalesund",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2300.9563,
@@ -4604,7 +4522,7 @@ var nodes = [
   {
     id: 502,
     label: "Michael Bradley",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Toronto FC",
+    title: "United States",
     value: 23,
     group: 26,
     x: 721.9479,
@@ -4613,7 +4531,7 @@ var nodes = [
   {
     id: 503,
     label: "Michael Essien",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Milan",
+    title: "Ghana",
     value: 28,
     group: 5,
     x: 376.83282,
@@ -4622,7 +4540,7 @@ var nodes = [
   {
     id: 504,
     label: "Michael Lang",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Grasshopper",
+    title: "Switzerland",
     value: 22,
     group: 0,
     x: 29.479486,
@@ -4631,7 +4549,7 @@ var nodes = [
   {
     id: 505,
     label: "Michael Uchebo",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Cercle Brugge",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -95.68781,
@@ -4640,7 +4558,7 @@ var nodes = [
   {
     id: 506,
     label: "Michael Umaña",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Saprissa",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2330.0725,
@@ -4649,7 +4567,7 @@ var nodes = [
   {
     id: 507,
     label: "Michel Vorm",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Swansea City",
+    title: "Netherlands",
     value: 23,
     group: 22,
     x: 868.7987,
@@ -4658,7 +4576,7 @@ var nodes = [
   {
     id: 508,
     label: "Mickaël Landreau",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Bastia",
+    title: "France",
     value: 22,
     group: 16,
     x: -46.63565,
@@ -4667,7 +4585,7 @@ var nodes = [
   {
     id: 509,
     label: "Miguel Ángel Ponce",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Toluca",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2068.7258,
@@ -4676,7 +4594,7 @@ var nodes = [
   {
     id: 510,
     label: "Miguel Layún",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "América",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2150.149,
@@ -4685,7 +4603,7 @@ var nodes = [
   {
     id: 511,
     label: "Miguel Veloso",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Dynamo Kyiv",
+    title: "Portugal",
     value: 25,
     group: 8,
     x: -552.1939,
@@ -4694,7 +4612,7 @@ var nodes = [
   {
     id: 512,
     label: "Miiko Albornoz",
-    title: "Country: " + "Chile" + "<br>" + "Team: " + "Malmö FF",
+    title: "Chile",
     value: 22,
     group: 18,
     x: -282.78622,
@@ -4703,7 +4621,7 @@ var nodes = [
   {
     id: 513,
     label: "Mikkel Diskerud",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Rosenborg",
+    title: "United States",
     value: 23,
     group: 26,
     x: 941.49945,
@@ -4712,7 +4630,7 @@ var nodes = [
   {
     id: 514,
     label: "Milan Badelj",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Hamburger SV",
+    title: "Croatia",
     value: 23,
     group: 25,
     x: -271.98166,
@@ -4721,7 +4639,7 @@ var nodes = [
   {
     id: 515,
     label: "Mile Jedinak (c)",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Crystal Palace",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2075.4526,
@@ -4730,7 +4648,7 @@ var nodes = [
   {
     id: 516,
     label: "Miralem Pjanic",
-    title: "Country: " + "Bosnia and Herzegovina" + "<br>" + "Team: " + "Roma",
+    title: "Bosnia and Herzegovina",
     value: 26,
     group: 20,
     x: 1103.221,
@@ -4739,7 +4657,7 @@ var nodes = [
   {
     id: 517,
     label: "Miroslav Klose",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Lazio",
+    title: "Germany",
     value: 28,
     group: 13,
     x: 293.14236,
@@ -4748,7 +4666,7 @@ var nodes = [
   {
     id: 518,
     label: "Mitchell Langerak",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Borussia Dortmund",
+    title: "Australia",
     value: 27,
     group: 12,
     x: 1759.8835,
@@ -4757,7 +4675,7 @@ var nodes = [
   {
     id: 519,
     label: "Mohamed Zemmamouche",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "USM Alger",
+    title: "Algeria",
     value: 22,
     group: 24,
     x: -1405.2527,
@@ -4766,7 +4684,7 @@ var nodes = [
   {
     id: 520,
     label: "Mohammed Rabiu",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Kuban Krasnodar",
+    title: "Ghana",
     value: 23,
     group: 5,
     x: 577.33563,
@@ -4775,7 +4693,7 @@ var nodes = [
   {
     id: 521,
     label: "Morgan Schneiderlin",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Southampton",
+    title: "France",
     value: 28,
     group: 16,
     x: 8.893564,
@@ -4784,7 +4702,7 @@ var nodes = [
   {
     id: 522,
     label: "Mousa Dembélé",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Tottenham Hotspur",
+    title: "Belgium",
     value: 25,
     group: 28,
     x: -780.7014,
@@ -4793,7 +4711,7 @@ var nodes = [
   {
     id: 523,
     label: "Moussa Sissoko",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Newcastle United",
+    title: "France",
     value: 25,
     group: 16,
     x: 49.931614,
@@ -4802,12 +4720,7 @@ var nodes = [
   {
     id: 524,
     label: "Muhamed Bešic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Ferencváros",
+    title: "Bosnia and Herzegovina",
     value: 22,
     group: 20,
     x: 1194.7092,
@@ -4816,7 +4729,7 @@ var nodes = [
   {
     id: 525,
     label: "Nabil Bentaleb",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Tottenham Hotspur",
+    title: "Algeria",
     value: 27,
     group: 24,
     x: -1282.9584,
@@ -4825,7 +4738,7 @@ var nodes = [
   {
     id: 526,
     label: "Nabil Ghilas",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Porto",
+    title: "Algeria",
     value: 30,
     group: 24,
     x: -1331.139,
@@ -4834,7 +4747,7 @@ var nodes = [
   {
     id: 527,
     label: "Nacer Chadli",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Tottenham Hotspur",
+    title: "Belgium",
     value: 25,
     group: 28,
     x: -730.6295,
@@ -4843,7 +4756,7 @@ var nodes = [
   {
     id: 528,
     label: "Nani",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Manchester United",
+    title: "Portugal",
     value: 35,
     group: 8,
     x: -646.50024,
@@ -4852,7 +4765,7 @@ var nodes = [
   {
     id: 529,
     label: "Neymar",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Barcelona",
+    title: "Brazil",
     value: 36,
     group: 23,
     x: -688.3395,
@@ -4861,7 +4774,7 @@ var nodes = [
   {
     id: 530,
     label: "Nick Rimando",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Real Salt Lake",
+    title: "United States",
     value: 22,
     group: 26,
     x: 864.0869,
@@ -4870,7 +4783,7 @@ var nodes = [
   {
     id: 531,
     label: "Nicolás Lodeiro",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Corinthians",
+    title: "Uruguay",
     value: 22,
     group: 6,
     x: -54.92223,
@@ -4879,8 +4792,7 @@ var nodes = [
   {
     id: 532,
     label: "Nicolas Lombaerts",
-    title:
-      "Country: " + "Belgium" + "<br>" + "Team: " + "Zenit Saint Petersburg",
+    title: "Belgium",
     value: 28,
     group: 28,
     x: -803.9264,
@@ -4889,7 +4801,7 @@ var nodes = [
   {
     id: 533,
     label: "Nicolas N Koulou",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Marseille",
+    title: "Cameroon",
     value: 24,
     group: 17,
     x: 368.89407,
@@ -4898,7 +4810,7 @@ var nodes = [
   {
     id: 534,
     label: "Nigel de Jong",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Milan",
+    title: "Netherlands",
     value: 29,
     group: 22,
     x: 764.12317,
@@ -4907,7 +4819,7 @@ var nodes = [
   {
     id: 535,
     label: "Nikica Jelavic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Hull City",
+    title: "Croatia",
     value: 23,
     group: 25,
     x: -197.7674,
@@ -4916,7 +4828,7 @@ var nodes = [
   {
     id: 536,
     label: "Noel Valladares (c)",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Olimpia",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1633.6897,
@@ -4925,7 +4837,7 @@ var nodes = [
   {
     id: 537,
     label: "Ogenyi Onazi",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Lazio",
+    title: "Nigeria",
     value: 28,
     group: 14,
     x: -33.871628,
@@ -4934,8 +4846,7 @@ var nodes = [
   {
     id: 538,
     label: "Ognjen Vranješ",
-    title:
-      "Country: " + "Bosnia and Herzegovina" + "<br>" + "Team: " + "Elaz??spor",
+    title: "Bosnia and Herzegovina",
     value: 22,
     group: 20,
     x: 1242.7872,
@@ -4944,7 +4855,7 @@ var nodes = [
   {
     id: 539,
     label: "Ognjen Vukojevic",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Dynamo Kyiv",
+    title: "Croatia",
     value: 24,
     group: 25,
     x: -265.94672,
@@ -4953,8 +4864,7 @@ var nodes = [
   {
     id: 540,
     label: "Oleg Shatov",
-    title:
-      "Country: " + "Russia" + "<br>" + "Team: " + "Zenit Saint Petersburg",
+    title: "Russia",
     value: 26,
     group: 2,
     x: -1223.3152,
@@ -4963,7 +4873,7 @@ var nodes = [
   {
     id: 541,
     label: "Oliver Bozanic",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Luzern",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2198.3757,
@@ -4972,7 +4882,7 @@ var nodes = [
   {
     id: 542,
     label: "Oliver Zelenika",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Lokomotiva",
+    title: "Croatia",
     value: 22,
     group: 25,
     x: -310.13934,
@@ -4981,7 +4891,7 @@ var nodes = [
   {
     id: 543,
     label: "Olivier Giroud",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Arsenal",
+    title: "France",
     value: 29,
     group: 16,
     x: -51.68798,
@@ -4990,8 +4900,7 @@ var nodes = [
   {
     id: 544,
     label: "Omar Gonzalez",
-    title:
-      "Country: " + "United States" + "<br>" + "Team: " + "Los Angeles Galaxy",
+    title: "United States",
     value: 22,
     group: 26,
     x: 770.25964,
@@ -5000,7 +4909,7 @@ var nodes = [
   {
     id: 545,
     label: "Orestis Karnezis",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Granada",
+    title: "Greece",
     value: 24,
     group: 15,
     x: 1393.8566,
@@ -5009,7 +4918,7 @@ var nodes = [
   {
     id: 546,
     label: "Oribe Peralta",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "Santos Laguna",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2123.5435,
@@ -5018,7 +4927,7 @@ var nodes = [
   {
     id: 547,
     label: "Oscar",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Chelsea",
+    title: "Brazil",
     value: 30,
     group: 23,
     x: -364.28693,
@@ -5027,7 +4936,7 @@ var nodes = [
   {
     id: 548,
     label: "Óscar Bagüí",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Emelec",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1773.5126,
@@ -5036,7 +4945,7 @@ var nodes = [
   {
     id: 549,
     label: "Óscar Boniek García",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Houston Dynamo",
+    title: "Honduras",
     value: 23,
     group: 7,
     x: 1554.0684,
@@ -5045,7 +4954,7 @@ var nodes = [
   {
     id: 550,
     label: "Óscar Duarte",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Club Brugge",
+    title: "Costa Rica",
     value: 23,
     group: 29,
     x: 2292.3699,
@@ -5054,7 +4963,7 @@ var nodes = [
   {
     id: 551,
     label: "Osman Chávez",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Qingdao Jonoon",
+    title: "Honduras",
     value: 22,
     group: 7,
     x: 1657.8716,
@@ -5063,7 +4972,7 @@ var nodes = [
   {
     id: 552,
     label: "Oswaldo Minda",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Chivas USA",
+    title: "Ecuador",
     value: 23,
     group: 4,
     x: -1549.4302,
@@ -5072,7 +4981,7 @@ var nodes = [
   {
     id: 553,
     label: "Ousmane Viera",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Çaykur Rizespor",
+    title: "Ivory Coast",
     value: 23,
     group: 9,
     x: 474.08282,
@@ -5081,7 +4990,7 @@ var nodes = [
   {
     id: 554,
     label: "Pablo Armero",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "West Ham United",
+    title: "Colombia",
     value: 22,
     group: 11,
     x: -854.2187,
@@ -5090,7 +4999,7 @@ var nodes = [
   {
     id: 555,
     label: "Pablo Zabaleta",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Manchester City",
+    title: "Argentina",
     value: 29,
     group: 19,
     x: -933.6388,
@@ -5099,7 +5008,7 @@ var nodes = [
   {
     id: 556,
     label: "Panagiotis Glykos",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "PAOK",
+    title: "Greece",
     value: 22,
     group: 15,
     x: 1575.4261,
@@ -5108,7 +5017,7 @@ var nodes = [
   {
     id: 557,
     label: "Panagiotis Kone",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Bologna",
+    title: "Greece",
     value: 23,
     group: 15,
     x: 1535.2936,
@@ -5117,7 +5026,7 @@ var nodes = [
   {
     id: 558,
     label: "Panagiotis Tachtsidis",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Torino",
+    title: "Greece",
     value: 25,
     group: 15,
     x: 1428.6139,
@@ -5126,7 +5035,7 @@ var nodes = [
   {
     id: 559,
     label: "Park Chu-young",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Watford",
+    title: "South Korea",
     value: 23,
     group: 10,
     x: 1047.7448,
@@ -5135,7 +5044,7 @@ var nodes = [
   {
     id: 560,
     label: "Park Jong-woo",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Guangzhou R&F",
+    title: "South Korea",
     value: 22,
     group: 10,
     x: 1236.0852,
@@ -5144,7 +5053,7 @@ var nodes = [
   {
     id: 561,
     label: "Park Joo-ho",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Mainz 05",
+    title: "South Korea",
     value: 25,
     group: 10,
     x: 1252.9922,
@@ -5153,7 +5062,7 @@ var nodes = [
   {
     id: 562,
     label: "Patrice Evra",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Manchester United",
+    title: "France",
     value: 35,
     group: 16,
     x: -226.57672,
@@ -5162,7 +5071,7 @@ var nodes = [
   {
     id: 563,
     label: "Patrick Pemberton",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Alajuelense",
+    title: "Costa Rica",
     value: 23,
     group: 29,
     x: 2230.4392,
@@ -5171,7 +5080,7 @@ var nodes = [
   {
     id: 564,
     label: "Paul Aguilar",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "América",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2114.9287,
@@ -5180,7 +5089,7 @@ var nodes = [
   {
     id: 565,
     label: "Paul Pogba",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Juventus",
+    title: "France",
     value: 33,
     group: 16,
     x: 8.138252,
@@ -5189,7 +5098,7 @@ var nodes = [
   {
     id: 566,
     label: "Paul Verhaegh",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "FC Augsburg",
+    title: "Netherlands",
     value: 24,
     group: 22,
     x: 949.3831,
@@ -5198,7 +5107,7 @@ var nodes = [
   {
     id: 567,
     label: "Paulinho",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Tottenham Hotspur",
+    title: "Brazil",
     value: 27,
     group: 23,
     x: -575.7446,
@@ -5207,7 +5116,7 @@ var nodes = [
   {
     id: 568,
     label: "Pavel Mogilevets",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Rubin Kazan",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1357.9305,
@@ -5216,7 +5125,7 @@ var nodes = [
   {
     id: 569,
     label: "Pedro",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Barcelona",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -1064.4056,
@@ -5225,7 +5134,7 @@ var nodes = [
   {
     id: 570,
     label: "Pejman Montazeri",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Umm Salal",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 2022.9941,
@@ -5234,7 +5143,7 @@ var nodes = [
   {
     id: 571,
     label: "Pepe",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Real Madrid",
+    title: "Portugal",
     value: 31,
     group: 8,
     x: -652.3342,
@@ -5243,7 +5152,7 @@ var nodes = [
   {
     id: 572,
     label: "Pepe Reina",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Napoli",
+    title: "Spain",
     value: 32,
     group: 23,
     x: -850.5622,
@@ -5252,7 +5161,7 @@ var nodes = [
   {
     id: 573,
     label: "Per Mertesacker",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Arsenal",
+    title: "Germany",
     value: 29,
     group: 13,
     x: 261.49197,
@@ -5261,7 +5170,7 @@ var nodes = [
   {
     id: 574,
     label: "Peter Odemwingie",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Stoke City",
+    title: "Nigeria",
     value: 25,
     group: 14,
     x: 110.87254,
@@ -5270,7 +5179,7 @@ var nodes = [
   {
     id: 575,
     label: "Phil Jagielka",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Everton",
+    title: "England",
     value: 25,
     group: 28,
     x: -210.36139,
@@ -5279,7 +5188,7 @@ var nodes = [
   {
     id: 576,
     label: "Phil Jones",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Manchester United",
+    title: "England",
     value: 32,
     group: 28,
     x: -300.32303,
@@ -5288,7 +5197,7 @@ var nodes = [
   {
     id: 577,
     label: "Philipp Lahm (c)",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Germany",
     value: 29,
     group: 13,
     x: 350.3983,
@@ -5297,7 +5206,7 @@ var nodes = [
   {
     id: 578,
     label: "Philippe Senderos",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Valencia",
+    title: "Switzerland",
     value: 26,
     group: 0,
     x: -84.25211,
@@ -5306,7 +5215,7 @@ var nodes = [
   {
     id: 579,
     label: "Pierre Webó",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Fenerbahçe",
+    title: "Cameroon",
     value: 26,
     group: 17,
     x: 292.58267,
@@ -5315,7 +5224,7 @@ var nodes = [
   {
     id: 580,
     label: "Rafa Silva",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Braga",
+    title: "Portugal",
     value: 22,
     group: 8,
     x: -692.3677,
@@ -5324,7 +5233,7 @@ var nodes = [
   {
     id: 581,
     label: "Rafael Márquez (c)",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "León",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2148.7192,
@@ -5333,7 +5242,7 @@ var nodes = [
   {
     id: 582,
     label: "Rafik Halliche",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Académica",
+    title: "Algeria",
     value: 22,
     group: 24,
     x: -1426.0991,
@@ -5342,7 +5251,7 @@ var nodes = [
   {
     id: 583,
     label: "Raheem Sterling",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Liverpool",
+    title: "England",
     value: 27,
     group: 28,
     x: -93.51011,
@@ -5351,7 +5260,7 @@ var nodes = [
   {
     id: 584,
     label: "Rahman Ahmadi",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Sepahan",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 2011.6289,
@@ -5360,7 +5269,7 @@ var nodes = [
   {
     id: 585,
     label: "Raïs M Bolhi",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "CSKA Sofia",
+    title: "Algeria",
     value: 22,
     group: 24,
     x: -1459.3608,
@@ -5369,7 +5278,7 @@ var nodes = [
   {
     id: 586,
     label: "Ramires",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Chelsea",
+    title: "Brazil",
     value: 30,
     group: 23,
     x: -481.02625,
@@ -5378,7 +5287,7 @@ var nodes = [
   {
     id: 587,
     label: "Ramon Azeez",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Almería",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -83.15391,
@@ -5387,7 +5296,7 @@ var nodes = [
   {
     id: 588,
     label: "Randall Brenes",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Cartaginés",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2309.6873,
@@ -5396,7 +5305,7 @@ var nodes = [
   {
     id: 589,
     label: "Raphaël Varane",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Real Madrid",
+    title: "France",
     value: 32,
     group: 16,
     x: -176.20541,
@@ -5405,7 +5314,7 @@ var nodes = [
   {
     id: 590,
     label: "Rashid Sumaila",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Mamelodi Sundowns",
+    title: "Ghana",
     value: 22,
     group: 5,
     x: 457.3916,
@@ -5414,7 +5323,7 @@ var nodes = [
   {
     id: 591,
     label: "Raúl Albiol",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Napoli",
+    title: "Spain",
     value: 32,
     group: 23,
     x: -934.9327,
@@ -5423,7 +5332,7 @@ var nodes = [
   {
     id: 592,
     label: "Raúl Jiménez",
-    title: "Country: " + "Mexico" + "<br>" + "Team: " + "América",
+    title: "Mexico",
     value: 22,
     group: 21,
     x: -2167.434,
@@ -5432,7 +5341,7 @@ var nodes = [
   {
     id: 593,
     label: "Raul Meireles",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Fenerbahçe",
+    title: "Portugal",
     value: 25,
     group: 8,
     x: -515.2749,
@@ -5441,7 +5350,7 @@ var nodes = [
   {
     id: 594,
     label: "Rémy Cabella",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Montpellier",
+    title: "France",
     value: 22,
     group: 16,
     x: -28.49823,
@@ -5450,7 +5359,7 @@ var nodes = [
   {
     id: 595,
     label: "Renato Ibarra",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Vitesse",
+    title: "Ecuador",
     value: 23,
     group: 4,
     x: -1613.8063,
@@ -5459,7 +5368,7 @@ var nodes = [
   {
     id: 596,
     label: "Reto Ziegler",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Sassuolo",
+    title: "Switzerland",
     value: 22,
     group: 0,
     x: 3.861307,
@@ -5468,7 +5377,7 @@ var nodes = [
   {
     id: 597,
     label: "Reuben Gabriel",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Waasland-Beveren",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -132.04297,
@@ -5477,7 +5386,7 @@ var nodes = [
   {
     id: 598,
     label: "Reza Ghoochannejhad",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Charlton Athletic",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 2037.9062,
@@ -5486,7 +5395,7 @@ var nodes = [
   {
     id: 599,
     label: "Reza Haghighi",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Persepolis",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1912.5083,
@@ -5495,7 +5404,7 @@ var nodes = [
   {
     id: 600,
     label: "Ricardo Álvarez",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Internazionale",
+    title: "Argentina",
     value: 27,
     group: 19,
     x: -991.71326,
@@ -5504,7 +5413,7 @@ var nodes = [
   {
     id: 601,
     label: "Ricardo Costa",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Valencia",
+    title: "Portugal",
     value: 25,
     group: 8,
     x: -699.53125,
@@ -5513,7 +5422,7 @@ var nodes = [
   {
     id: 602,
     label: "Ricardo Rodríguez",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "VfL Wolfsburg",
+    title: "Switzerland",
     value: 27,
     group: 0,
     x: -71.65908,
@@ -5522,7 +5431,7 @@ var nodes = [
   {
     id: 603,
     label: "Rickie Lambert",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Southampton",
+    title: "England",
     value: 26,
     group: 28,
     x: -64.72023,
@@ -5531,7 +5440,7 @@ var nodes = [
   {
     id: 604,
     label: "Rio Mavuba",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Lille",
+    title: "France",
     value: 25,
     group: 16,
     x: -65.83039,
@@ -5540,7 +5449,7 @@ var nodes = [
   {
     id: 605,
     label: "Riyad Mahrez",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Leicester City",
+    title: "Algeria",
     value: 22,
     group: 24,
     x: -1375.4896,
@@ -5549,8 +5458,7 @@ var nodes = [
   {
     id: 606,
     label: "Robin van Persie (c)",
-    title:
-      "Country: " + "Netherlands" + "<br>" + "Team: " + "Manchester United",
+    title: "Netherlands",
     value: 35,
     group: 22,
     x: 425.40573,
@@ -5559,7 +5467,7 @@ var nodes = [
   {
     id: 607,
     label: "Rodrigo Muñoz",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Libertad",
+    title: "Uruguay",
     value: 22,
     group: 6,
     x: -20.128693,
@@ -5568,7 +5476,7 @@ var nodes = [
   {
     id: 608,
     label: "Rodrigo Palacio",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Internazionale",
+    title: "Argentina",
     value: 27,
     group: 19,
     x: -1056.1539,
@@ -5577,7 +5485,7 @@ var nodes = [
   {
     id: 609,
     label: "Roger Espinoza",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Wigan Athletic",
+    title: "Honduras",
     value: 23,
     group: 7,
     x: 1525.8236,
@@ -5586,7 +5494,7 @@ var nodes = [
   {
     id: 610,
     label: "Roman Bürki",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Grasshopper",
+    title: "Switzerland",
     value: 22,
     group: 0,
     x: 84.8047,
@@ -5595,7 +5503,7 @@ var nodes = [
   {
     id: 611,
     label: "Roman Weidenfeller",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Borussia Dortmund",
+    title: "Germany",
     value: 24,
     group: 13,
     x: 605.1841,
@@ -5604,7 +5512,7 @@ var nodes = [
   {
     id: 612,
     label: "Romelu Lukaku",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Everton",
+    title: "Belgium",
     value: 26,
     group: 28,
     x: -624.76385,
@@ -5613,7 +5521,7 @@ var nodes = [
   {
     id: 613,
     label: "Ron Vlaar",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Aston Villa",
+    title: "Netherlands",
     value: 23,
     group: 22,
     x: 922.5167,
@@ -5622,7 +5530,7 @@ var nodes = [
   {
     id: 614,
     label: "Ron-Robert Zieler",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Hannover 96",
+    title: "Germany",
     value: 24,
     group: 13,
     x: 479.21454,
@@ -5631,7 +5539,7 @@ var nodes = [
   {
     id: 615,
     label: "Rony Martínez",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Real Sociedad",
+    title: "Honduras",
     value: 25,
     group: 7,
     x: 1436.8522,
@@ -5640,7 +5548,7 @@ var nodes = [
   {
     id: 616,
     label: "Ross Barkley",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Everton",
+    title: "England",
     value: 25,
     group: 28,
     x: -149.7628,
@@ -5649,8 +5557,7 @@ var nodes = [
   {
     id: 617,
     label: "Roy Miller",
-    title:
-      "Country: " + "Costa Rica" + "<br>" + "Team: " + "New York Red Bulls",
+    title: "Costa Rica",
     value: 23,
     group: 29,
     x: 2341.1836,
@@ -5659,7 +5566,7 @@ var nodes = [
   {
     id: 618,
     label: "Rúben Amorim",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Benfica",
+    title: "Portugal",
     value: 25,
     group: 8,
     x: -743.5818,
@@ -5668,7 +5575,7 @@ var nodes = [
   {
     id: 619,
     label: "Rui Patrício",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Sporting CP",
+    title: "Portugal",
     value: 24,
     group: 8,
     x: -770.5219,
@@ -5677,8 +5584,7 @@ var nodes = [
   {
     id: 620,
     label: "Ryan McGowan",
-    title:
-      "Country: " + "Australia" + "<br>" + "Team: " + "Shandong Luneng Taishan",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2185.5203,
@@ -5687,7 +5593,7 @@ var nodes = [
   {
     id: 621,
     label: "Salomon Kalou",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Lille",
+    title: "Ivory Coast",
     value: 25,
     group: 9,
     x: 392.33093,
@@ -5696,7 +5602,7 @@ var nodes = [
   {
     id: 622,
     label: "Salvatore Sirigu",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Paris Saint-Germain",
+    title: "Italy",
     value: 29,
     group: 3,
     x: 133.34747,
@@ -5705,7 +5611,7 @@ var nodes = [
   {
     id: 623,
     label: "Sami Khedira",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Real Madrid",
+    title: "Germany",
     value: 33,
     group: 13,
     x: 147.37221,
@@ -5714,7 +5620,7 @@ var nodes = [
   {
     id: 624,
     label: "Sammir",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Getafe",
+    title: "Croatia",
     value: 23,
     group: 25,
     x: -386.4237,
@@ -5723,7 +5629,7 @@ var nodes = [
   {
     id: 625,
     label: "Sammy Bossut",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Zulte Waregem",
+    title: "Belgium",
     value: 23,
     group: 28,
     x: -665.6252,
@@ -5732,7 +5638,7 @@ var nodes = [
   {
     id: 626,
     label: "Sammy N Djock",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Fethiyespor",
+    title: "Cameroon",
     value: 22,
     group: 17,
     x: 341.5248,
@@ -5741,7 +5647,7 @@ var nodes = [
   {
     id: 627,
     label: "Samuel Etoo (c)",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Chelsea",
+    title: "Cameroon",
     value: 33,
     group: 17,
     x: 207.89883,
@@ -5750,7 +5656,7 @@ var nodes = [
   {
     id: 628,
     label: "Samuel Inkoom",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Platanias",
+    title: "Ghana",
     value: 22,
     group: 5,
     x: 406.61176,
@@ -5759,7 +5665,7 @@ var nodes = [
   {
     id: 629,
     label: "Santi Cazorla",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Arsenal",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -670.40643,
@@ -5768,7 +5674,7 @@ var nodes = [
   {
     id: 630,
     label: "Santiago Arias",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "PSV",
+    title: "Colombia",
     value: 25,
     group: 11,
     x: -524.84265,
@@ -5777,7 +5683,7 @@ var nodes = [
   {
     id: 631,
     label: "Saphir Taïder",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Internazionale",
+    title: "Algeria",
     value: 29,
     group: 24,
     x: -1233.4976,
@@ -5786,7 +5692,7 @@ var nodes = [
   {
     id: 632,
     label: "Sayouba Mandé",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Stabæk",
+    title: "Ivory Coast",
     value: 22,
     group: 9,
     x: 565.81647,
@@ -5795,8 +5701,7 @@ var nodes = [
   {
     id: 633,
     label: "Sead Kolašinac",
-    title:
-      "Country: " + "Bosnia and Herzegovina" + "<br>" + "Team: " + "Schalke 04",
+    title: "Bosnia and Herzegovina",
     value: 28,
     group: 20,
     x: 1107.5244,
@@ -5805,7 +5710,7 @@ var nodes = [
   {
     id: 634,
     label: "Sebastián Coates",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Nacional",
+    title: "Uruguay",
     value: 22,
     group: 6,
     x: -52.670105,
@@ -5814,12 +5719,8 @@ var nodes = [
   {
     id: 635,
     label: "Sejad Salihovic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "1899 Hoffenheim",
+    title: "Bosnia and Herzegovina",
+
     value: 23,
     group: 20,
     x: 1178.5911,
@@ -5828,7 +5729,7 @@ var nodes = [
   {
     id: 636,
     label: "Senad Lulic",
-    title: "Country: " + "Bosnia and Herzegovina" + "<br>" + "Team: " + "Lazio",
+    title: "Bosnia and Herzegovina",
     value: 28,
     group: 20,
     x: 921.65936,
@@ -5837,12 +5738,8 @@ var nodes = [
   {
     id: 637,
     label: "Senijad Ibricic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Kayseri Erciyesspor",
+    title: "Bosnia and Herzegovina",
+
     value: 22,
     group: 20,
     x: 1235.9749,
@@ -5851,7 +5748,7 @@ var nodes = [
   {
     id: 638,
     label: "Serey Die",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Basel",
+    title: "Ivory Coast",
     value: 26,
     group: 9,
     x: 467.3826,
@@ -5860,7 +5757,7 @@ var nodes = [
   {
     id: 639,
     label: "Serge Aurier",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Toulouse",
+    title: "Ivory Coast",
     value: 23,
     group: 9,
     x: 471.92194,
@@ -5869,7 +5766,7 @@ var nodes = [
   {
     id: 640,
     label: "Sergei Ignashevich",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "CSKA Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1314.4222,
@@ -5878,7 +5775,7 @@ var nodes = [
   {
     id: 641,
     label: "Sergey Ryzhikov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Rubin Kazan",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1292.9913,
@@ -5887,7 +5784,7 @@ var nodes = [
   {
     id: 642,
     label: "Sergio Agüero",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "Manchester City",
+    title: "Argentina",
     value: 29,
     group: 19,
     x: -986.27966,
@@ -5896,7 +5793,7 @@ var nodes = [
   {
     id: 643,
     label: "Sergio Busquets",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Barcelona",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -999.5799,
@@ -5905,7 +5802,7 @@ var nodes = [
   {
     id: 644,
     label: "Sergio Ramos",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Real Madrid",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -838.31433,
@@ -5914,7 +5811,7 @@ var nodes = [
   {
     id: 645,
     label: "Sergio Romero",
-    title: "Country: " + "Argentina" + "<br>" + "Team: " + "AS Monaco",
+    title: "Argentina",
     value: 25,
     group: 19,
     x: -1110.6039,
@@ -5923,7 +5820,7 @@ var nodes = [
   {
     id: 646,
     label: "Shinji Kagawa",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Manchester United",
+    title: "Japan",
     value: 35,
     group: 27,
     x: 282.65262,
@@ -5932,7 +5829,7 @@ var nodes = [
   {
     id: 647,
     label: "Shinji Okazaki",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Mainz 05",
+    title: "Japan",
     value: 26,
     group: 27,
     x: 873.3198,
@@ -5941,7 +5838,7 @@ var nodes = [
   {
     id: 648,
     label: "Shkodran Mustafi",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Sampdoria",
+    title: "Germany",
     value: 22,
     group: 13,
     x: 459.89215,
@@ -5950,7 +5847,7 @@ var nodes = [
   {
     id: 649,
     label: "Shola Ameobi",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Newcastle United",
+    title: "Nigeria",
     value: 27,
     group: 14,
     x: 18.686876,
@@ -5959,7 +5856,7 @@ var nodes = [
   {
     id: 650,
     label: "Shuichi Gonda",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "F.C. Tokyo",
+    title: "Japan",
     value: 22,
     group: 27,
     x: 757.8243,
@@ -5968,7 +5865,7 @@ var nodes = [
   {
     id: 651,
     label: "Shusaku Nishikawa",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Urawa Red Diamonds",
+    title: "Japan",
     value: 22,
     group: 27,
     x: 727.42017,
@@ -5977,7 +5874,7 @@ var nodes = [
   {
     id: 652,
     label: "Silvestre Varela",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Porto",
+    title: "Portugal",
     value: 30,
     group: 8,
     x: -839.6357,
@@ -5986,7 +5883,7 @@ var nodes = [
   {
     id: 653,
     label: "Šime Vrsaljko",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Genoa",
+    title: "Croatia",
     value: 24,
     group: 25,
     x: -183.16594,
@@ -5995,7 +5892,7 @@ var nodes = [
   {
     id: 654,
     label: "Simon Mignolet",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Liverpool",
+    title: "Belgium",
     value: 31,
     group: 28,
     x: -491.45493,
@@ -6004,7 +5901,7 @@ var nodes = [
   {
     id: 655,
     label: "Sofiane Feghouli",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Valencia",
+    title: "Algeria",
     value: 26,
     group: 24,
     x: -1244.9492,
@@ -6013,7 +5910,7 @@ var nodes = [
   {
     id: 656,
     label: "Sokratis Papastathopoulos",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Borussia Dortmund",
+    title: "Greece",
     value: 27,
     group: 15,
     x: 1506.5099,
@@ -6022,7 +5919,7 @@ var nodes = [
   {
     id: 657,
     label: "Sol Bamba",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Trabzonspor",
+    title: "Ivory Coast",
     value: 22,
     group: 9,
     x: 570.6759,
@@ -6031,7 +5928,7 @@ var nodes = [
   {
     id: 658,
     label: "Son Heung-min",
-    title: "Country: " + "South Korea" + "<br>" + "Team: " + "Bayer Leverkusen",
+    title: "South Korea",
     value: 24,
     group: 10,
     x: 1048.6976,
@@ -6040,7 +5937,7 @@ var nodes = [
   {
     id: 659,
     label: "Stefan de Vrij",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Feyenoord",
+    title: "Netherlands",
     value: 22,
     group: 22,
     x: 967.54407,
@@ -6049,7 +5946,7 @@ var nodes = [
   {
     id: 660,
     label: "Stefanos Kapino",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Panathinaikos",
+    title: "Greece",
     value: 24,
     group: 15,
     x: 1427.7283,
@@ -6058,7 +5955,7 @@ var nodes = [
   {
     id: 661,
     label: "Stephan Lichtsteiner",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Juventus",
+    title: "Switzerland",
     value: 33,
     group: 0,
     x: 67.66878,
@@ -6067,7 +5964,7 @@ var nodes = [
   {
     id: 662,
     label: "Stéphane Mbia",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Sevilla",
+    title: "Cameroon",
     value: 25,
     group: 17,
     x: 284.887,
@@ -6076,7 +5973,7 @@ var nodes = [
   {
     id: 663,
     label: "Stéphane Ruffier",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Saint-Étienne",
+    title: "France",
     value: 24,
     group: 16,
     x: 44.785976,
@@ -6085,7 +5982,7 @@ var nodes = [
   {
     id: 664,
     label: "Stephen Adams",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Aduana Stars",
+    title: "Ghana",
     value: 22,
     group: 5,
     x: 502.8429,
@@ -6094,7 +5991,7 @@ var nodes = [
   {
     id: 665,
     label: "Steve von Bergen",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Young Boys",
+    title: "Switzerland",
     value: 22,
     group: 0,
     x: 10.2854805,
@@ -6103,7 +6000,7 @@ var nodes = [
   {
     id: 666,
     label: "Steven Beitashour",
-    title: "Country: " + "Iran" + "<br>" + "Team: " + "Vancouver Whitecaps FC",
+    title: "Iran",
     value: 22,
     group: 1,
     x: 1978.9785,
@@ -6112,7 +6009,7 @@ var nodes = [
   {
     id: 667,
     label: "Steven Defour",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Porto",
+    title: "Belgium",
     value: 30,
     group: 28,
     x: -855.4899,
@@ -6121,7 +6018,7 @@ var nodes = [
   {
     id: 668,
     label: "Steven Gerrard (c)",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Liverpool",
+    title: "England",
     value: 27,
     group: 28,
     x: -159.6521,
@@ -6130,7 +6027,7 @@ var nodes = [
   {
     id: 669,
     label: "Stipe Pletikosa",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Rostov",
+    title: "Croatia",
     value: 22,
     group: 25,
     x: -333.2818,
@@ -6139,7 +6036,7 @@ var nodes = [
   {
     id: 670,
     label: "Sulley Muntari",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Milan",
+    title: "Ghana",
     value: 28,
     group: 5,
     x: 435.759,
@@ -6148,7 +6045,7 @@ var nodes = [
   {
     id: 671,
     label: "Sylvain Gbohouo",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Séwé Sport",
+    title: "Ivory Coast",
     value: 22,
     group: 9,
     x: 531.5453,
@@ -6157,7 +6054,7 @@ var nodes = [
   {
     id: 672,
     label: "Teófilo Gutiérrez",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "River Plate",
+    title: "Colombia",
     value: 22,
     group: 11,
     x: -811.0555,
@@ -6166,7 +6063,7 @@ var nodes = [
   {
     id: 673,
     label: "Terence Kongolo",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Feyenoord",
+    title: "Netherlands",
     value: 22,
     group: 22,
     x: 966.41876,
@@ -6175,7 +6072,7 @@ var nodes = [
   {
     id: 674,
     label: "Theofanis Gekas",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Konyaspor",
+    title: "Greece",
     value: 23,
     group: 15,
     x: 1527.9011,
@@ -6184,7 +6081,7 @@ var nodes = [
   {
     id: 675,
     label: "Thiago Motta",
-    title: "Country: " + "Italy" + "<br>" + "Team: " + "Paris Saint-Germain",
+    title: "Italy",
     value: 29,
     group: 3,
     x: 60.09504,
@@ -6193,7 +6090,7 @@ var nodes = [
   {
     id: 676,
     label: "Thiago Silva (c)",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Paris Saint-Germain",
+    title: "Brazil",
     value: 30,
     group: 23,
     x: -361.46573,
@@ -6202,7 +6099,7 @@ var nodes = [
   {
     id: 677,
     label: "Thibaut Courtois",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Atlético Madrid",
+    title: "Belgium",
     value: 29,
     group: 28,
     x: -784.1882,
@@ -6211,7 +6108,7 @@ var nodes = [
   {
     id: 678,
     label: "Thomas Müller",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Germany",
     value: 29,
     group: 13,
     x: 396.2324,
@@ -6220,7 +6117,7 @@ var nodes = [
   {
     id: 679,
     label: "Thomas Vermaelen",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Arsenal",
+    title: "Belgium",
     value: 31,
     group: 28,
     x: -482.76413,
@@ -6229,7 +6126,7 @@ var nodes = [
   {
     id: 680,
     label: "Tim Cahill",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "New York Red Bulls",
+    title: "Australia",
     value: 23,
     group: 12,
     x: 2114.505,
@@ -6238,7 +6135,7 @@ var nodes = [
   {
     id: 681,
     label: "Tim Howard",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "Everton",
+    title: "United States",
     value: 27,
     group: 26,
     x: 597.101,
@@ -6247,7 +6144,7 @@ var nodes = [
   {
     id: 682,
     label: "Tim Krul",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Newcastle United",
+    title: "Netherlands",
     value: 27,
     group: 22,
     x: 749.57495,
@@ -6256,7 +6153,7 @@ var nodes = [
   {
     id: 683,
     label: "Timothy Chandler",
-    title: "Country: " + "United States" + "<br>" + "Team: " + "1. FC Nürnberg",
+    title: "United States",
     value: 25,
     group: 26,
     x: 803.35706,
@@ -6265,12 +6162,8 @@ var nodes = [
   {
     id: 684,
     label: "Tino-Sven Sušic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Hajduk Split",
+    title: "Bosnia and Herzegovina",
+
     value: 22,
     group: 20,
     x: 1264.119,
@@ -6279,7 +6172,7 @@ var nodes = [
   {
     id: 685,
     label: "Toby Alderweireld",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Atlético Madrid",
+    title: "Belgium",
     value: 29,
     group: 28,
     x: -719.4183,
@@ -6288,7 +6181,7 @@ var nodes = [
   {
     id: 686,
     label: "Tommy Oar",
-    title: "Country: " + "Australia" + "<br>" + "Team: " + "Utrecht",
+    title: "Australia",
     value: 22,
     group: 12,
     x: 2165.0227,
@@ -6297,7 +6190,7 @@ var nodes = [
   {
     id: 687,
     label: "Toni Kroos",
-    title: "Country: " + "Germany" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Germany",
     value: 29,
     group: 13,
     x: 364.47653,
@@ -6306,12 +6199,8 @@ var nodes = [
   {
     id: 688,
     label: "Toni Šunjic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Zorya Luhansk",
+    title: "Bosnia and Herzegovina",
+
     value: 22,
     group: 20,
     x: 1221.8553,
@@ -6320,7 +6209,7 @@ var nodes = [
   {
     id: 689,
     label: "Toshihiro Aoyama",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Sanfrecce Hiroshima",
+    title: "Japan",
     value: 23,
     group: 27,
     x: 774.47,
@@ -6329,8 +6218,7 @@ var nodes = [
   {
     id: 690,
     label: "Tranquillo Barnetta",
-    title:
-      "Country: " + "Switzerland" + "<br>" + "Team: " + "Eintracht Frankfurt",
+    title: "Switzerland",
     value: 23,
     group: 0,
     x: 73.72464,
@@ -6339,7 +6227,7 @@ var nodes = [
   {
     id: 691,
     label: "Uche Nwofor",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Heerenveen",
+    title: "Nigeria",
     value: 22,
     group: 14,
     x: -33.31396,
@@ -6348,7 +6236,7 @@ var nodes = [
   {
     id: 692,
     label: "Valentin Stocker",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Basel",
+    title: "Switzerland",
     value: 25,
     group: 0,
     x: 93.94299,
@@ -6357,7 +6245,7 @@ var nodes = [
   {
     id: 693,
     label: "Valon Behrami",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Napoli",
+    title: "Switzerland",
     value: 31,
     group: 0,
     x: -152.94186,
@@ -6366,7 +6254,7 @@ var nodes = [
   {
     id: 694,
     label: "Vangelis Moras",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Verona",
+    title: "Greece",
     value: 22,
     group: 15,
     x: 1602.7228,
@@ -6375,7 +6263,7 @@ var nodes = [
   {
     id: 695,
     label: "Vasili Berezutski (c)",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "CSKA Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1323.1439,
@@ -6384,7 +6272,7 @@ var nodes = [
   {
     id: 696,
     label: "Vasilis Torosidis",
-    title: "Country: " + "Greece" + "<br>" + "Team: " + "Roma",
+    title: "Greece",
     value: 26,
     group: 15,
     x: 1423.1809,
@@ -6393,12 +6281,8 @@ var nodes = [
   {
     id: 697,
     label: "Vedad Ibiševic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "VfB Stuttgart",
+    title: "Bosnia and Herzegovina",
+
     value: 25,
     group: 20,
     x: 1011.34985,
@@ -6407,7 +6291,7 @@ var nodes = [
   {
     id: 698,
     label: "Vedran Corluka",
-    title: "Country: " + "Croatia" + "<br>" + "Team: " + "Lokomotiv Moscow",
+    title: "Croatia",
     value: 23,
     group: 25,
     x: -415.4615,
@@ -6416,7 +6300,7 @@ var nodes = [
   {
     id: 699,
     label: "Victor",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Atlético Mineiro",
+    title: "Brazil",
     value: 22,
     group: 23,
     x: -504.1157,
@@ -6425,8 +6309,7 @@ var nodes = [
   {
     id: 700,
     label: "Víctor Bernárdez",
-    title:
-      "Country: " + "Honduras" + "<br>" + "Team: " + "San Jose Earthquakes",
+    title: "Honduras",
     value: 23,
     group: 7,
     x: 1542.3271,
@@ -6435,7 +6318,7 @@ var nodes = [
   {
     id: 701,
     label: "Víctor Ibarbo",
-    title: "Country: " + "Colombia" + "<br>" + "Team: " + "Cagliari",
+    title: "Colombia",
     value: 23,
     group: 11,
     x: -760.3384,
@@ -6444,7 +6327,7 @@ var nodes = [
   {
     id: 702,
     label: "Victor Moses",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Liverpool",
+    title: "Nigeria",
     value: 31,
     group: 14,
     x: -114.12856,
@@ -6453,7 +6336,7 @@ var nodes = [
   {
     id: 703,
     label: "Vieirinha",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "VfL Wolfsburg",
+    title: "Portugal",
     value: 28,
     group: 8,
     x: -584.53986,
@@ -6462,8 +6345,7 @@ var nodes = [
   {
     id: 704,
     label: "Viktor Fayzulin",
-    title:
-      "Country: " + "Russia" + "<br>" + "Team: " + "Zenit Saint Petersburg",
+    title: "Russia",
     value: 26,
     group: 2,
     x: -1257.4415,
@@ -6472,7 +6354,7 @@ var nodes = [
   {
     id: 705,
     label: "Vincent Aboubakar",
-    title: "Country: " + "Cameroon" + "<br>" + "Team: " + "Lorient",
+    title: "Cameroon",
     value: 22,
     group: 17,
     x: 458.34485,
@@ -6481,7 +6363,7 @@ var nodes = [
   {
     id: 706,
     label: "Vincent Enyeama",
-    title: "Country: " + "Nigeria" + "<br>" + "Team: " + "Lille",
+    title: "Nigeria",
     value: 25,
     group: 14,
     x: -105.49051,
@@ -6490,7 +6372,7 @@ var nodes = [
   {
     id: 707,
     label: "Vincent Kompany (c)",
-    title: "Country: " + "Belgium" + "<br>" + "Team: " + "Manchester City",
+    title: "Belgium",
     value: 31,
     group: 28,
     x: -575.3739,
@@ -6499,7 +6381,7 @@ var nodes = [
   {
     id: 708,
     label: "Vladimir Granat",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Dynamo Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1378.1497,
@@ -6508,7 +6390,7 @@ var nodes = [
   {
     id: 709,
     label: "Wakaso Mubarak",
-    title: "Country: " + "Ghana" + "<br>" + "Team: " + "Rubin Kazan",
+    title: "Ghana",
     value: 25,
     group: 5,
     x: 209.43652,
@@ -6517,7 +6399,7 @@ var nodes = [
   {
     id: 710,
     label: "Walter Ayoví",
-    title: "Country: " + "Ecuador" + "<br>" + "Team: " + "Pachuca",
+    title: "Ecuador",
     value: 22,
     group: 4,
     x: -1792.0483,
@@ -6526,7 +6408,7 @@ var nodes = [
   {
     id: 711,
     label: "Walter Gargano",
-    title: "Country: " + "Uruguay" + "<br>" + "Team: " + "Parma",
+    title: "Uruguay",
     value: 26,
     group: 6,
     x: -40.095936,
@@ -6535,7 +6417,7 @@ var nodes = [
   {
     id: 712,
     label: "Waylon Francis",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Columbus Crew",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2350.4897,
@@ -6544,7 +6426,7 @@ var nodes = [
   {
     id: 713,
     label: "Wayne Rooney",
-    title: "Country: " + "England" + "<br>" + "Team: " + "Manchester United",
+    title: "England",
     value: 32,
     group: 28,
     x: -356.85434,
@@ -6553,7 +6435,7 @@ var nodes = [
   {
     id: 714,
     label: "Wesley Sneijder",
-    title: "Country: " + "Netherlands" + "<br>" + "Team: " + "Galatasaray",
+    title: "Netherlands",
     value: 26,
     group: 22,
     x: 805.6672,
@@ -6562,7 +6444,7 @@ var nodes = [
   {
     id: 715,
     label: "Wilfried Bony",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Swansea City",
+    title: "Ivory Coast",
     value: 24,
     group: 9,
     x: 607.71,
@@ -6571,7 +6453,7 @@ var nodes = [
   {
     id: 716,
     label: "William Carvalho",
-    title: "Country: " + "Portugal" + "<br>" + "Team: " + "Sporting CP",
+    title: "Portugal",
     value: 24,
     group: 8,
     x: -772.3611,
@@ -6580,7 +6462,7 @@ var nodes = [
   {
     id: 717,
     label: "Willian",
-    title: "Country: " + "Brazil" + "<br>" + "Team: " + "Chelsea",
+    title: "Brazil",
     value: 30,
     group: 23,
     x: -440.73843,
@@ -6589,7 +6471,7 @@ var nodes = [
   {
     id: 718,
     label: "Wilson Palacios",
-    title: "Country: " + "Honduras" + "<br>" + "Team: " + "Stoke City",
+    title: "Honduras",
     value: 25,
     group: 7,
     x: 1475.9537,
@@ -6598,7 +6480,7 @@ var nodes = [
   {
     id: 719,
     label: "Xabi Alonso",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Real Madrid",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -899.6201,
@@ -6607,7 +6489,7 @@ var nodes = [
   {
     id: 720,
     label: "Xavi",
-    title: "Country: " + "Spain" + "<br>" + "Team: " + "Barcelona",
+    title: "Spain",
     value: 31,
     group: 23,
     x: -1013.3928,
@@ -6616,7 +6498,7 @@ var nodes = [
   {
     id: 721,
     label: "Xherdan Shaqiri",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Bayern Munich",
+    title: "Switzerland",
     value: 35,
     group: 0,
     x: 141.7251,
@@ -6625,7 +6507,7 @@ var nodes = [
   {
     id: 722,
     label: "Yacine Brahimi",
-    title: "Country: " + "Algeria" + "<br>" + "Team: " + "Granada",
+    title: "Algeria",
     value: 24,
     group: 24,
     x: -1176.7251,
@@ -6634,7 +6516,7 @@ var nodes = [
   {
     id: 723,
     label: "Yann Sommer",
-    title: "Country: " + "Switzerland" + "<br>" + "Team: " + "Basel",
+    title: "Switzerland",
     value: 25,
     group: 0,
     x: 110.022545,
@@ -6643,7 +6525,7 @@ var nodes = [
   {
     id: 724,
     label: "Yasuhito Endo",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Gamba Osaka",
+    title: "Japan",
     value: 22,
     group: 27,
     x: 785.91925,
@@ -6652,7 +6534,7 @@ var nodes = [
   {
     id: 725,
     label: "Yasuyuki Konno",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Gamba Osaka",
+    title: "Japan",
     value: 22,
     group: 27,
     x: 772.3632,
@@ -6661,7 +6543,7 @@ var nodes = [
   {
     id: 726,
     label: "Yaya Touré",
-    title: "Country: " + "Ivory Coast" + "<br>" + "Team: " + "Manchester City",
+    title: "Ivory Coast",
     value: 31,
     group: 9,
     x: 251.69077,
@@ -6670,7 +6552,7 @@ var nodes = [
   {
     id: 727,
     label: "Yeltsin Tejeda",
-    title: "Country: " + "Costa Rica" + "<br>" + "Team: " + "Saprissa",
+    title: "Costa Rica",
     value: 22,
     group: 29,
     x: 2354.9373,
@@ -6679,7 +6561,7 @@ var nodes = [
   {
     id: 728,
     label: "Yohan Cabaye",
-    title: "Country: " + "France" + "<br>" + "Team: " + "Paris Saint-Germain",
+    title: "France",
     value: 29,
     group: 16,
     x: -73.94801,
@@ -6688,7 +6570,7 @@ var nodes = [
   {
     id: 729,
     label: "Yoichiro Kakitani",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Cerezo Osaka",
+    title: "Japan",
     value: 23,
     group: 27,
     x: 646.941,
@@ -6697,7 +6579,7 @@ var nodes = [
   {
     id: 730,
     label: "Yoshito Okubo",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Kawasaki Frontale",
+    title: "Japan",
     value: 22,
     group: 27,
     x: 717.32806,
@@ -6706,8 +6588,7 @@ var nodes = [
   {
     id: 731,
     label: "Yun Suk-young",
-    title:
-      "Country: " + "South Korea" + "<br>" + "Team: " + "Queens Park Rangers",
+    title: "South Korea",
     value: 23,
     group: 10,
     x: 1131.6682,
@@ -6716,8 +6597,7 @@ var nodes = [
   {
     id: 732,
     label: "Yuri Lodygin",
-    title:
-      "Country: " + "Russia" + "<br>" + "Team: " + "Zenit Saint Petersburg",
+    title: "Russia",
     value: 26,
     group: 2,
     x: -1301.0415,
@@ -6726,7 +6606,7 @@ var nodes = [
   {
     id: 733,
     label: "Yuri Zhirkov",
-    title: "Country: " + "Russia" + "<br>" + "Team: " + "Dynamo Moscow",
+    title: "Russia",
     value: 23,
     group: 2,
     x: -1464.4825,
@@ -6735,7 +6615,7 @@ var nodes = [
   {
     id: 734,
     label: "Yuto Nagatomo",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "Internazionale",
+    title: "Japan",
     value: 29,
     group: 27,
     x: 395.00394,
@@ -6744,7 +6624,7 @@ var nodes = [
   {
     id: 735,
     label: "Yuya Osako",
-    title: "Country: " + "Japan" + "<br>" + "Team: " + "1860 München",
+    title: "Japan",
     value: 22,
     group: 27,
     x: 806.69904,
@@ -6753,12 +6633,8 @@ var nodes = [
   {
     id: 736,
     label: "Zvjezdan Misimovic",
-    title:
-      "Country: " +
-      "Bosnia and Herzegovina" +
-      "<br>" +
-      "Team: " +
-      "Guizhou Renhe",
+    title: "Bosnia and Herzegovina",
+
     value: 22,
     group: 20,
     x: 1277.4697,
@@ -15997,10 +15873,10 @@ var edges = [
   { from: 734, to: 735 },
 ];
 
-import { convertVisData } from "./transform.js"
-import * as fs from 'fs';
-import * as path from 'path';
-const graphData = convertVisData(nodes,edges)
-const outputPath = path.join( 'graph-output.json');
-fs.writeFileSync(outputPath, JSON.stringify(graphData, null, 2), 'utf-8');
-console.log(graphData)
+import { convertVisData } from "./transform.js";
+import * as fs from "fs";
+import * as path from "path";
+const graphData = convertVisData(nodes, edges);
+const outputPath = path.join("graph-output.json");
+fs.writeFileSync(outputPath, JSON.stringify(graphData, null, 2), "utf-8");
+console.log(graphData);

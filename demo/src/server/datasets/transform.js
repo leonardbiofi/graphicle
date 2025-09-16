@@ -174,7 +174,7 @@ export const  convertVisData = (nodes, edges) => {
 
     convertedNodes.push({
       id: uuid,
-      type: 'one',
+      type: node.title,
       data: {
         label: node.label,
         // Optional: you could extract Country/Team from `title` if needed
