@@ -24,17 +24,6 @@ function createWebworker() {
       postMessage({ type: 'updateMainBuffers', nodesBuffer }, [nodesBuffer.buffer]);
     }
 
-    // function copyDataToSharedBuffer(sharedBuffer) {
-    //   const sharedArray = new Int32Array(sharedBuffer);
-    //   for(var i = 0; i < graph.nodes.length; i++){
-    //       var node = graph.nodes[i];
-    //       sharedArray[i * 2 + 0] = node.x;
-    //       sharedArray[i * 2 + 1] = node.y;
-    //   }
-    //
-    //   postMessage({ type: 'updateMainSharedBuffer', sharedBuffer });
-    // }
-
     self.onmessage = event => {
       // console.log('event.data', event.data);
       // const result = forceLayout.apply(undefined, event.data);
@@ -94,18 +83,6 @@ function createWebworker() {
         }
 
         copyDataToBuffers(event.data.nodesBuffer);
-
-      // } else if(type === 'updateWorkerSharedBuffer') {
-      //   if(simulation) {
-      //     const { iterations, width, height } = options;
-      //
-      //     simulation
-      //       .force('center', d3.forceCenter(width / 2, height / 2))
-      //       .tick(iterations)
-      //       ;
-      //   }
-      //
-      //   copyDataToSharedBuffer(event.data.sharedBuffer);
 
       }
 
