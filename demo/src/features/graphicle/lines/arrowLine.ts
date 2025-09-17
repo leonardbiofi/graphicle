@@ -35,7 +35,7 @@ class ArrowLineEdge extends BaseEdge {
     this.y = (sy + ty) / 2;
     const length = Math.hypot(tx - sx, ty - sy);
     const rotation = -Math.atan2(tx - sx, ty - sy);
-    const adjustedLength = length - 20 * 2;
+    const adjustedLength = length - 30 * 2;
     this.rotation = rotation;
 
     let line = this.getChildByLabel("line") as Pixi.Sprite;

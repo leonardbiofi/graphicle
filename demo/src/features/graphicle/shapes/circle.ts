@@ -92,7 +92,7 @@ export const circleStyle = {
   fillColor: "#f4f4f5",
   lineWidth: 2,
   lineColor: 0x000000,
-  radius: 20,
+  radius: 30,
 };
 
 export function createCircleNodeClass<TStyle extends object>(

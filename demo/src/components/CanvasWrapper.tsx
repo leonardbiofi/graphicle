@@ -81,6 +81,20 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
       <div className="bg-zinc-900 absolute w-[350px] top-0 right-0 px-4 py-4">
         <CanvasRightPanel />
       </div>
+
+      <div
+        id="stats"
+        className="absolute bottom-0 right-0 m-5 text-white font-bold "
+      >
+        <div className="grid grid-cols-2 gap-3 ">
+          <span className="col-span-1 ">Nodes:</span>
+          <span className="col-span-1 ">{nodes.length}</span>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <span className="col-span-1">Edges:</span>
+          <span className="col-span-1">{edges.length}</span>
+        </div>
+      </div>
     </div>
   );
 }
