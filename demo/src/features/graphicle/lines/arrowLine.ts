@@ -38,7 +38,7 @@ class ArrowLineEdge extends BaseEdge {
       line.anchor.set(0.5);
       this.addChild(line);
     }
-    const { lineWidth, tintColor, opacity } = this.styleStore.get();
+    const { lineWidth, tintColor } = this.styleStore.get();
     line.tint = tintColor;
     line.width = lineWidth;
 
@@ -57,7 +57,7 @@ class ArrowLineEdge extends BaseEdge {
     markerEnd.tint = tintColor;
     markerEnd.position.set(0, (adjustedLength - 4) / 2); // since container is centered
 
-    this.alpha = opacity;
+    // line.alpha = opacity;
   }
 }
 

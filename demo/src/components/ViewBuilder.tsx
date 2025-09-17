@@ -12,7 +12,7 @@ import { lineFactory } from "@/features/graphicle/lines/factory";
 import { arrowLineStyle } from "@/features/graphicle/lines/arrowLine";
 
 import { ColorPicker } from "./ColorPicker";
-import { useGraphicle } from "./GraphicleProvider";
+import { getGraphicle, useGraphicle } from "./GraphicleProvider";
 import CheckboxLabels from "./CheckboxLabels";
 import { createColorPicker } from "@/lib/color";
 import { useViewStore } from "@/store/viewStore";
@@ -24,13 +24,27 @@ export default function ViewBuilder() {
   const edgeAssignments = useViewStore((state) => state.edgeAssignments);
   // const nodeTypes = useGraphicleStore(selectNodeTypes);
   // const edgeTypes = useGraphicleStore(selectEdgeTypes);
-  const { graphicleRef } = useGraphicle();
   //   const setView = useGraphicleStore(state => state.setView)
   // const [nodeAssignments, setNodeAssignments] = useState({});
   // const [edgeAssignments, setEdgeAssignments] = useState({});
   const [showLabels, setShowLabels] = useState(true);
 
   const onNodeTypeMouseEnter = (type: string) => {
+    // Get all the nodes that are of this type
+
+    const graphicle = getGraphicle();
+    const nodes = graphicle?.store
+      .getNodes()
+      .filter((n) => n.type === type)
+      .map((n) => n.id);
+
+    // const connectedEdgeIds = nodes?.reduce<Array<string>>((acc, curr) => {
+    //   const edgeIds = graphicle?.renderer?.nodeToEdges.get(curr.id);
+    //   if (edgeIds) {
+    //     return [...acc, ...edgeIds];
+    //   } else return acc;
+    // }, []);
+
     Object.keys(nodeAssignments).forEach((keyType: string) => {
       if (keyType === type) {
         nodeAssignments[keyType].style.set({ opacity: 1 });
@@ -122,8 +136,7 @@ export default function ViewBuilder() {
         </header>
         {Object.keys(nodeAssignments).map((type) => (
           <div
-            key={type}
-            className="flex items-center gap-4 justify-between"
+            className="flex items-center gap-4 justify-between hover:bg-teal-900 duration-500 animate space-y-0.5 px-1"
             onMouseEnter={() => onNodeTypeMouseEnter(type)}
             onMouseLeave={() => onNodeTypeMouseLeave(type)}
           >
@@ -168,11 +181,14 @@ export default function ViewBuilder() {
         ))}
       </div>
       <div>
-        <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full">
+        <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full  ">
           Edge Types
         </h3>
         {Object.keys(edgeAssignments).map((type) => (
-          <div key={type} className="flex items-center gap-4 justify-between">
+          <div
+            key={type}
+            className="flex items-center gap-4 justify-between space-y-0.5 px-1"
+          >
             <span className="w-20">{type}</span>
 
             {/* <pre>{JSON.stringify(assignments, null, 2)}</pre> */}
