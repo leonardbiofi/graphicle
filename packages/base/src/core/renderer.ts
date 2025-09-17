@@ -357,8 +357,9 @@ export default class GraphicleRenderer implements ContextClient {
   }
 
   renderNodeChanges(changes: NodeChange[]) {
-    const layer = this.getLayer(Layers.NODES);
-
+    // const t0 = performance.now();
+    const nodelayer = this.getLayer(Layers.NODES);
+    const edgeLayer = this.getLayer(Layers.EDGES);
     // Perform a render or an update
     for (const change of changes) {
       if (!change) continue;
@@ -371,21 +372,22 @@ export default class GraphicleRenderer implements ContextClient {
 
         // Inject the context in each nodes
         nodeGfx.setContext(this.context);
-        layer.addChild(nodeGfx);
+        nodelayer.addChild(nodeGfx);
         this.nodeIdToNodeGfx.set(node.id, nodeGfx);
       } else if (change.type === "remove") {
         // Remove from dom
         const nodeGfx = this.nodeIdToNodeGfx.get(change.id)!;
         if (!nodeGfx) continue;
-        nodeGfx?.destroy({ children: true });
-
+        // nodeGfx?.destroy({ children: true });
+        nodelayer.removeChild(nodeGfx);
         // Remove also the edges connected to it
         const edgeIds = this.nodeToEdges.get(change.id);
         if (!edgeIds) continue;
         for (const edgeId of edgeIds) {
           const edgeGfx = this.edgeIdToEdgeGfx.get(edgeId);
           if (!edgeGfx) continue;
-          edgeGfx.destroy({ children: true });
+          edgeLayer.removeChild(edgeGfx);
+          // edgeGfx.destroy({ children: true });
           this.edgeIdToEdgeGfx.delete(edgeId);
         }
         // Remove the set from the map
@@ -415,11 +417,17 @@ export default class GraphicleRenderer implements ContextClient {
         }
       }
     }
-    this.requestRender();
+
+    // nodelayer.renderable = true;
+    // this.context?.app.renderer.render(nodelayer);
+    // this.requestRender();
+    // const t1 = performance.now();
+    // console.log(`🕗 RENDERNODES: ${t1 - t0}ms`);
   }
   renderEdgeChanges(changes: EdgeChange[]) {
-    const layer = this.getLayer(Layers.EDGES);
+    // const t0 = performance.now();
 
+    const layer = this.getLayer(Layers.EDGES);
     for (const change of changes) {
       if (!change) continue;
       if (change.type === "add") {
@@ -460,13 +468,17 @@ export default class GraphicleRenderer implements ContextClient {
 
         if (sourceSet && sourceSet.has(change.id)) sourceSet.delete(change.id);
         if (targetSet && targetSet.has(change.id)) targetSet.delete(change.id);
-        edgeGfx.destroy({ children: true });
+        layer.removeChild(edgeGfx);
+        // edgeGfx.destroy({ children: true });
 
         this.edgeIdToEdgeGfx.delete(change.id);
       } else if (change.type === "update") {
         // TODO: To be implemented
       }
     }
+
+    // const t1 = performance.now();
+    // console.log(`🕗 RENDERNODES: ${t1 - t0}ms`);
   }
 
   applyNodeChangesInternal(changes: NodeChange[], notify = true) {

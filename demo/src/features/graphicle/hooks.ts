@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useSyncExternalStore } from "react";
-import type { Node } from "@graphicle/base";
-import { throttle } from "@tanstack/pacer";
+import type { Node, Change } from "@graphicle/base";
+import { debounce, throttle } from "@tanstack/pacer";
 
 import { useGraphicleStore } from "@/store/graphicleStore";
 import { useForceLayoutStore } from "@/store/layoutStore";
@@ -89,7 +89,7 @@ export function useForceLayout() {
             [nodesBuffer.buffer]
           );
         },
-        { wait: 20 }
+        { wait: 16 }
       );
       // Listen when the web worker has finished calculation position
       workerRef.current.onmessage = (event) => {
@@ -99,22 +99,44 @@ export function useForceLayout() {
 
         if (type === "updateMainBuffers") {
           // Rerender the node, update the nodes from buffer
-          const nextNodes = graphicle.store.getNodes().map((n, i) => {
-            if (n.id !== draggingNodeRef.current?.id) {
-              return {
-                ...n,
-                position: {
-                  x: nodesBuffer[i * 2 + 0],
-                  y: nodesBuffer[i * 2 + 1],
-                },
-              };
-            } else {
-              return { ...n };
-            }
-          });
+          // const t0 = performance.now();
 
+          // const nextNodes = graphicle.store.getNodes().map((n, i) => {
+          //   if (n.id !== draggingNodeRef.current?.id) {
+          //     return {
+          //       ...n,
+          //       position: {
+          //         x: nodesBuffer[i * 2 + 0],
+          //         y: nodesBuffer[i * 2 + 1],
+          //       },
+          //     };
+          //   } else {
+          //     return { ...n };
+          //   }
+          // });
+          const changes: Change<Node>[] = [];
+          for (let i = 0; i < nodes.length; i++) {
+            const n = nodes[i];
+            if (n.id !== draggingNodeRef.current?.id) {
+              changes.push({
+                type: "update",
+                id: n.id,
+                changes: {
+                  position: {
+                    x: nodesBuffer[i * 2 + 0],
+                    y: nodesBuffer[i * 2 + 1],
+                  },
+                },
+              });
+            }
+          }
+          graphicle.renderer?.applyNodeChangesInternal(changes, true);
+          // const t1 = performance.now();
+          // setNodes(nextNodes);
           updateWorkerBuffers();
-          setNodes(nextNodes);
+
+          // console.log(`FunctionOne took ${t1 - t0} ms`);
+
           // throttleSetNodes(nextNodes);
 
           // } else if(type === 'updateMainSharedBuffer') {
