@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Upload, Trash } from "lucide-react";
+import { Upload, Trash, LoaderCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,10 +12,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import FileUpload from "./FileUpload";
-import { useGraphicleStore } from "@/store/graphicleStore";
 import { LayoutContext, D3Force } from "@graphicle/base";
 import { getGraphicle } from "./GraphicleProvider";
 import parser from "@/lib/parser";
+import { graphLoader } from "@/lib/graphLoader";
+import { useForceLayoutStore } from "@/store/layoutStore";
 
 type AcceptedFormats = "json" | "graphml";
 
@@ -28,6 +29,8 @@ const isAcceptedFormat = (ext: string): ext is AcceptedFormats => {
 export default function UploadDialog() {
   const [filesToUpload, setFilesToUpload] = useState<File[]>([]);
   const [open, setOpen] = useState<boolean>(false);
+  const setActive = useForceLayoutStore((state) => state.setActive);
+  const [loadingGraph, setLoadingGraph] = useState<boolean>(false);
   // const { setNodes, setEdges } = useGraphicleStore();
   const removeFile = (fileName: string) => {
     setFilesToUpload((prev) => {
@@ -36,6 +39,8 @@ export default function UploadDialog() {
   };
 
   const onFileUpload = useCallback(async () => {
+    setLoadingGraph(true);
+    setActive(false);
     // read the file and setup the nodes and edges
     for (const file of filesToUpload) {
       if (!file) continue;
@@ -53,21 +58,11 @@ export default function UploadDialog() {
       }
       const json = await parser[fileExt](file);
       const { nodes, edges } = json;
-
-      const layoutContext = new LayoutContext(new D3Force());
-
-      const positionNodes = layoutContext.runLayout({ nodes, edges });
-      // Layout the nodes because they might have no position
-      useGraphicleStore.setState(() => ({
-        nodes: [...positionNodes],
-        edges: [...edges],
-      }));
-
-      getGraphicle()?.viewport?.fitView();
-      useGraphicleStore.setState(() => ({ nodes, edges }));
+      graphLoader({ nodes, edges });
     }
+    setLoadingGraph(false);
     setOpen(false);
-  }, [filesToUpload, useGraphicleStore]);
+  }, [filesToUpload]);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -91,8 +86,11 @@ export default function UploadDialog() {
         {filesToUpload.length > 0 && (
           <ul>
             {filesToUpload.map((file) => (
-              <li key={file.name} className="flex items-center justify-between">
-                <span className="truncate">{file.name}</span>
+              <li
+                key={file.name}
+                className="flex items-center justify-between w-[370px]"
+              >
+                <span className="truncate max-w-2/3">{file.name}</span>
                 <span>
                   <Trash
                     className="cursor-pointer hover:text-foreground text-zinc-500"
@@ -108,8 +106,15 @@ export default function UploadDialog() {
           <DialogClose asChild>
             <Button variant="outline">Cancel</Button>
           </DialogClose>
-          <Button type="submit" onClick={onFileUpload}>
-            <Upload /> Upload
+          <Button type="submit" onClick={onFileUpload} disabled={loadingGraph}>
+            {loadingGraph ? (
+              <span className="animate-spin">
+                <LoaderCircle />
+              </span>
+            ) : (
+              <Upload />
+            )}
+            Upload
           </Button>
         </DialogFooter>
       </DialogContent>

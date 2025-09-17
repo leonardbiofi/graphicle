@@ -326,28 +326,37 @@ export default class GraphicleRenderer implements ContextClient {
   }
 
   switchView(viewName?: string) {
+    if (!this.context) return;
+    // Remove all existing nodes
+    const nodelayer = this.getLayer(Layers.NODES);
+    nodelayer.removeChildren();
+    const edgeLayer = this.getLayer(Layers.EDGES);
+    edgeLayer.removeChildren();
+
+    // Set the current view
     this.viewRegistry.setCurrentView(viewName ?? "default");
 
-    const nodes = this.context?.store.getNodes();
-    const edges = this.context?.store.getEdges();
-    try {
-      if (nodes && edges) {
-        this.initializeNodes(nodes);
-        this.initializeEdges(edges);
-        this.requestRender();
-      }
-    } catch (err) {
-      console.error(err);
-    }
+    // Define changes
+    const nodeChanges: NodeChange[] = this.context?.store
+      .getNodes()
+      .map((node: Node) => {
+        if (!node.type) node.type = "undefined";
+        return { type: "add", item: node };
+      });
+    const edgeChanges: EdgeChange[] = this.context?.store
+      .getEdges()
+      .map((edge: Edge) => {
+        if (!edge.type) edge.type = "undefined";
+
+        return { type: "add", item: edge };
+      });
+
+    // Rerender everything
+    this.renderNodeChanges(nodeChanges);
+    this.renderEdgeChanges(edgeChanges);
   }
 
-  applyNodeChangesInternal(changes: NodeChange[], notify = true) {
-    this.context?.store.applyNodeChanges(changes);
-
-    if (notify)
-      // Emit the event when the state is upated internally. Important to sync data with external store
-      this.debouncedNodesNotif();
-
+  renderNodeChanges(changes: NodeChange[]) {
     const layer = this.getLayer(Layers.NODES);
 
     // Perform a render or an update
@@ -408,33 +417,7 @@ export default class GraphicleRenderer implements ContextClient {
     }
     this.requestRender();
   }
-  debouncedNodesNotif = debounce(
-    () => {
-      // Emit the event when the state is upated internally. Important to sync data with external store
-      this.context?.eventDispatcher.emit(
-        GraphicleEventType.NODES_UPDATE,
-        this.context.store.getNodes()
-      );
-    },
-    { trailing: true, leading: true, wait: 400 }
-  );
-  debouncedEdgeNotif = debounce(
-    () => {
-      // Emit the event when the state is upated internally. Important to sync data with external store
-      this.context?.eventDispatcher.emit(
-        GraphicleEventType.EDGES_UPDATE,
-        this.context.store.getEdges()
-      );
-    },
-    { trailing: true, leading: true, wait: 400 }
-  );
-  applyEdgeChangesInternal(changes: EdgeChange[], notify = true) {
-    this.context?.store.applyEdgeChanges(changes);
-
-    if (notify)
-      // Emit the event when the state is upated internally. Important to sync data with external store
-      this.debouncedEdgeNotif();
-
+  renderEdgeChanges(changes: EdgeChange[]) {
     const layer = this.getLayer(Layers.EDGES);
 
     for (const change of changes) {
@@ -484,5 +467,44 @@ export default class GraphicleRenderer implements ContextClient {
         // TODO: To be implemented
       }
     }
+  }
+
+  applyNodeChangesInternal(changes: NodeChange[], notify = true) {
+    this.context?.store.applyNodeChanges(changes);
+
+    if (notify)
+      // Emit the event when the state is upated internally. Important to sync data with external store
+      this.debouncedNodesNotif();
+
+    this.renderNodeChanges(changes);
+  }
+  debouncedNodesNotif = debounce(
+    () => {
+      // Emit the event when the state is upated internally. Important to sync data with external store
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.NODES_UPDATE,
+        this.context.store.getNodes()
+      );
+    },
+    { trailing: true, leading: true, wait: 400 }
+  );
+  debouncedEdgeNotif = debounce(
+    () => {
+      // Emit the event when the state is upated internally. Important to sync data with external store
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.EDGES_UPDATE,
+        this.context.store.getEdges()
+      );
+    },
+    { trailing: true, leading: true, wait: 400 }
+  );
+  applyEdgeChangesInternal(changes: EdgeChange[], notify = true) {
+    this.context?.store.applyEdgeChanges(changes);
+
+    if (notify)
+      // Emit the event when the state is upated internally. Important to sync data with external store
+      this.debouncedEdgeNotif();
+
+    this.renderEdgeChanges(changes);
   }
 }

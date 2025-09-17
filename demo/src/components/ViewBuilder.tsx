@@ -83,15 +83,15 @@ export default function ViewBuilder() {
         return [type, factory(style)];
       })
     );
-  }, [nodeAssignments]);
+  }, [edgeAssignments]);
 
   useEffect(() => {
-    const view = createView("custom", nodeMap, edgeMap);
     if (graphicleRef.current) {
+      const view = createView("custom", nodeMap, edgeMap);
       graphicleRef.current?.renderer?.viewRegistry.register(view);
       graphicleRef.current.renderer?.switchView("custom");
     }
-  }, [nodeMap, graphicleRef]);
+  }, [nodeMap, edgeMap, graphicleRef]);
 
   return (
     <div className="space-y-4 text-white">

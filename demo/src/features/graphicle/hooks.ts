@@ -137,7 +137,6 @@ export function useForceLayout() {
     }
 
     return () => {
-      console.log("UNMOUNT");
       if (workerRef.current) {
         workerRef.current.terminate();
         workerRef.current = null;

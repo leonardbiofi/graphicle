@@ -12,6 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 import { D3Force, LayoutContext } from "@graphicle/base";
 import { getGraphicle } from "./GraphicleProvider";
 import { useForceLayoutStore } from "@/store/layoutStore";
+import { graphLoader } from "@/lib/graphLoader";
 function getData(name: string) {
   return fetch(`/api/dataset/${name}`).then((res) => res.json());
 }
@@ -25,18 +26,19 @@ export default function PanelExample() {
     onSuccess: (data, variables) => {
       const { nodes, edges } = data;
 
-      const layoutContext = new LayoutContext(new D3Force());
+      graphLoader({ nodes, edges });
+      // const layoutContext = new LayoutContext(new D3Force());
 
-      const positionNodes = layoutContext.runLayout({ nodes, edges });
+      // const positionNodes = layoutContext.runLayout({ nodes, edges });
 
-      // Layout the nodes because they might have no position
-      useGraphicleStore.setState(() => ({
-        nodes: [...positionNodes],
-        edges: [...edges],
-      }));
-      useForceLayoutStore.setState(() => ({ active: false }));
+      // // Layout the nodes because they might have no position
+      // useGraphicleStore.setState(() => ({
+      //   nodes: [...positionNodes],
+      //   edges: [...edges],
+      // }));
+      // useForceLayoutStore.setState(() => ({ active: false }));
 
-      getGraphicle()?.viewport?.fitView();
+      // getGraphicle()?.viewport?.fitView();
 
       // console.log("Variables:", variables);
 

@@ -95,15 +95,16 @@ class Graphicle {
     this._app.stage.addChild(this.viewport);
 
     //FIXME: Initialize the first layout on startup
-    const layout = new LayoutContext(new D3Force());
+    // const layout = new LayoutContext(new D3Force());
 
-    // TODO: Allow user to choose the layouting strategies
-    // Maybe don't run a layout on initilization
-    const positionedNodes = layout.runLayout({
-      nodes: this.store.getNodes(),
-      edges: this.store.getEdges(),
-    });
-    this.store.setNodes(positionedNodes);
+    // // TODO: Allow user to choose the layouting strategies
+    // // Maybe don't run a layout on initilization
+    // const positionedNodes = layout.runLayout({
+    //   nodes: this.store.getNodes(),
+    //   edges: this.store.getEdges(),
+    // });
+
+    // this.store.setNodes(positionedNodes);
 
     // Initialize the renderer
     this.renderer = new GraphicleRenderer(this.viewport, {

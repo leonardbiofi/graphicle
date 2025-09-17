@@ -154,7 +154,7 @@ export class D3Force implements LayoutStrategy {
       source: eds.source,
     }));
 
-    const iterations = 300;
+    const iterations = 3;
     const nodeRepulsion = -100;
 
     forceSimulation(nodes)

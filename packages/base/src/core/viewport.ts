@@ -84,7 +84,6 @@ export default class GraphicleViewport
   }
   setContext(context: GraphicleContext): void {
     this.context = context;
-    this.fitView();
   }
   pauseViewport() {
     this.pause = true;

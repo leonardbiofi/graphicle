@@ -26,28 +26,13 @@ export const useGraphicleStore = create<GraphicleStoreState>()(
 const unsub3 = useGraphicleStore.subscribe(
   (state): [Node[], Edge[]] => [state.nodes, state.edges],
   ([nodes, edges], [previousNodes, previousEdges]) => {
-    const diffNodes = diffArrays<Node>(previousNodes, nodes);
-    const diffEdges = diffArrays<Edge>(previousEdges, edges);
-
     const graphicle = getGraphicle();
-
     if (!graphicle) return;
 
-    const throttledDiffNodes = throttle(
-      (diffNodes) => {
-        graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
-      },
-      { wait: 50 }
-    );
-    const throttledDiffEdges = throttle(
-      (diffEdges) => {
-        graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
-      },
-      { wait: 50 }
-    );
-    throttledDiffNodes(diffNodes);
-    throttledDiffEdges(diffEdges);
-    // graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
+    const diffNodes = diffArrays<Node>(previousNodes, nodes);
+    const diffEdges = diffArrays<Edge>(previousEdges, edges);
+    graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
+    graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false); // graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
     // graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
     // console.log("GRAPHICLE:", graphicle, diffEdges, diffNodes);
   },
