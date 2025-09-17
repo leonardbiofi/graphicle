@@ -21,6 +21,15 @@ class CircleNode extends BaseNode {
     this.addChild(circle);
   }
 
+  renderContainer() {
+    const { position } = this.node;
+    this.x = position.x;
+    this.y = position.y;
+    const { opacity } = this.styleStore.get();
+
+    this.alpha = opacity;
+  }
+
   renderSelected() {
     const { selected } = this.node;
     const circle = this.getChildByLabel("circle") as Pixi.Graphics;
@@ -93,6 +102,7 @@ export const circleStyle = {
   lineWidth: 2,
   lineColor: 0x000000,
   radius: 30,
+  opacity: 1,
 };
 
 export function createCircleNodeClass<TStyle extends object>(

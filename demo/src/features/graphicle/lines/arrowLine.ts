@@ -13,24 +13,16 @@ class ArrowLineEdge extends BaseEdge {
 
   constructor(edge: Edge, srcNodeGfx: NodeGfx, tgtNodeGfx: NodeGfx) {
     super(edge, srcNodeGfx, tgtNodeGfx);
-    // this.rotation = 0;
-    // this.height = 0; // length
   }
 
   initGraphics(): void {
     super.initGraphics();
-    // this.attachMarkerEnd();
   }
 
   render() {
-    // // @ts-ignore
-    // const sourceNodeCenter = this.srcNodeGfx.getCenter();
-    // // @ts-ignore
-    // const targetNodeCenter = this.tgtNodeGfx.getCenter();
     const { x: tx, y: ty } = this.tgtNodeGfx.getCenter();
     const { x: sx, y: sy } = this.srcNodeGfx.getCenter();
-    // this.x = sourceNodeCenter.x;
-    // this.y = sourceNodeCenter.y;
+
     this.x = (sx + tx) / 2;
     this.y = (sy + ty) / 2;
     const length = Math.hypot(tx - sx, ty - sy);
@@ -46,7 +38,7 @@ class ArrowLineEdge extends BaseEdge {
       line.anchor.set(0.5);
       this.addChild(line);
     }
-    const { lineWidth, tintColor } = this.styleStore.get();
+    const { lineWidth, tintColor, opacity } = this.styleStore.get();
     line.tint = tintColor;
     line.width = lineWidth;
 
@@ -64,12 +56,15 @@ class ArrowLineEdge extends BaseEdge {
     }
     markerEnd.tint = tintColor;
     markerEnd.position.set(0, (adjustedLength - 4) / 2); // since container is centered
+
+    this.alpha = opacity;
   }
 }
 
 export const arrowLineStyle = {
   tintColor: "#575757",
   lineWidth: 2,
+  opacity: 1,
 };
 
 export function createArrowLineClass<TStyle extends object>(

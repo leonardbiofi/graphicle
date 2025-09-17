@@ -30,6 +30,20 @@ export default function ViewBuilder() {
   // const [edgeAssignments, setEdgeAssignments] = useState({});
   const [showLabels, setShowLabels] = useState(true);
 
+  const onNodeTypeMouseEnter = (type: string) => {
+    Object.keys(nodeAssignments).forEach((keyType: string) => {
+      if (keyType === type) {
+        nodeAssignments[keyType].style.set({ opacity: 1 });
+      } else {
+        nodeAssignments[keyType].style.set({ opacity: 0.3 });
+      }
+    });
+  };
+  const onNodeTypeMouseLeave = (type: string) => {
+    Object.keys(nodeAssignments).forEach((keyType: string) => {
+      nodeAssignments[keyType].style.set({ opacity: 1 });
+    });
+  };
   const onShowLabelsChange = useCallback(
     (value: boolean) => {
       setShowLabels(value);
@@ -107,7 +121,12 @@ export default function ViewBuilder() {
           />
         </header>
         {Object.keys(nodeAssignments).map((type) => (
-          <div key={type} className="flex items-center gap-4 justify-between">
+          <div
+            key={type}
+            className="flex items-center gap-4 justify-between"
+            onMouseEnter={() => onNodeTypeMouseEnter(type)}
+            onMouseLeave={() => onNodeTypeMouseLeave(type)}
+          >
             <span className="w-20">{type}</span>
 
             {/* <pre>{JSON.stringify(assignments, null, 2)}</pre> */}
