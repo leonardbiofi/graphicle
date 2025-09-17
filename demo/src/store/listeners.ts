@@ -1,17 +1,15 @@
-import { useGraphicleStore } from "./graphicleStore";
-import deepEqual from "fast-deep-equal";
-import type { Change, Node, Edge } from "@graphicle/base";
-import { getGraphicle } from "@/components/GraphicleProvider";
+import { deepEqual } from "fast-equals";
+import type { Change } from "@graphicle/base";
 // export type DiffArraysResults<T> = {
 //   added: T[];
 //   removed: T[];
 //   changed: T[];
 //   unchanged: T[];
 // };
-export const diffArrays = <T>(
+export const diffArrays = <T, K extends keyof T>(
   prevArray: T[],
   nextArray: T[],
-  key = "id"
+  key: K
 ): Change<T>[] => {
   //   const added = [];
   //   const removed = [];
@@ -20,10 +18,8 @@ export const diffArrays = <T>(
 
   const changes: Change<T>[] = [];
 
-  // @ts-expect-error FIXME: fix typescript error
-  const prevMap = new Map<any, T>(prevArray.map((obj) => [obj[key], obj]));
-  // @ts-expect-error FIXME: fix typescript error
-  const nextMap = new Map<any, T>(nextArray.map((obj) => [obj[key], obj]));
+  const prevMap = new Map<T[K], T>(prevArray.map((obj) => [obj[key], obj]));
+  const nextMap = new Map<T[K], T>(nextArray.map((obj) => [obj[key], obj]));
 
   // Compare objects in prevArray to nextArray
   for (const [id, prevObj] of prevMap) {
@@ -31,10 +27,14 @@ export const diffArrays = <T>(
 
     if (!nextObj) {
       // Object was removed
-      changes.push({ type: "remove", id });
+      changes.push({ type: "remove", id: id as string });
       //   removed.push(prevObj);
-    } else if (!deepEqual(prevObj, nextObj)) {
-      changes.push({ type: "update", id, changes: { ...nextObj } });
+    } else if (prevObj !== nextObj && !deepEqual(prevObj, nextObj)) {
+      changes.push({
+        type: "update",
+        id: id as string,
+        changes: { ...nextObj },
+      });
       //   console.log("Changed:", prevObj, nextObj);
       // Object was changed
       //   changed.push(nextObj);

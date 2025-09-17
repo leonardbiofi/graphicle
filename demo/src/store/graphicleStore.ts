@@ -23,23 +23,48 @@ export const useGraphicleStore = create<GraphicleStoreState>()(
   }))
 );
 
-const unsub3 = useGraphicleStore.subscribe(
-  (state): [Node[], Edge[]] => [state.nodes, state.edges],
-  ([nodes, edges], [previousNodes, previousEdges]) => {
+useGraphicleStore.subscribe(
+  (state) => state.nodes,
+  (nodes, previousNodes) => {
     const graphicle = getGraphicle();
     if (!graphicle) return;
-
-    const diffNodes = diffArrays<Node>(previousNodes, nodes);
-    const diffEdges = diffArrays<Edge>(previousEdges, edges);
+    const diffNodes = diffArrays<Node, "id">(previousNodes, nodes, "id");
     graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
-    graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false); // graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
-    // graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
-    // console.log("GRAPHICLE:", graphicle, diffEdges, diffNodes);
   },
   {
     equalityFn: () => false,
   }
 );
+
+useGraphicleStore.subscribe(
+  (state) => state.edges,
+  (edges, previousEdges) => {
+    const graphicle = getGraphicle();
+    if (!graphicle) return;
+    const diffEdges = diffArrays<Edge, "id">(previousEdges, edges, "id");
+    graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
+  },
+  {
+    equalityFn: () => false,
+  }
+);
+// const unsub3 = useGraphicleStore.subscribe(
+//   (state): [Node[], Edge[]] => [state.nodes, state.edges],
+//   ([nodes, edges], [previousNodes, previousEdges]) => {
+//     const graphicle = getGraphicle();
+//     if (!graphicle) return;
+
+//     const diffNodes = diffArrays<Node, "id">(previousNodes, nodes, "id");
+//     const diffEdges = diffArrays<Edge, "id">(previousEdges, edges, "id");
+//     graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
+//     graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false); // graphicle.context.renderer.applyNodeChangesInternal(diffNodes, false);
+//     // graphicle.context.renderer.applyEdgeChangesInternal(diffEdges, false);
+//     // console.log("GRAPHICLE:", graphicle, diffEdges, diffNodes);
+//   },
+//   {
+//     equalityFn: () => false,
+//   }
+// );
 
 export const selectedNodes = createSelector(
   (state) => state.nodes,

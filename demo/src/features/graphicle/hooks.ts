@@ -71,12 +71,12 @@ export function useForceLayout() {
 
       let nodesBuffer = new Float32Array(nodes.length * 2);
 
-      const throttleSetNodes = throttle(
-        (nextNodes) => {
-          setNodes(nextNodes);
-        },
-        { wait: 16 }
-      );
+      // const throttleSetNodes = throttle(
+      //   (nextNodes) => {
+      //     setNodes(nextNodes);
+      //   },
+      //   { wait: 16 }
+      // );
       const updateWorkerBuffers = throttle(
         () => {
           if (!workerRef.current) return;
@@ -89,7 +89,7 @@ export function useForceLayout() {
             [nodesBuffer.buffer]
           );
         },
-        { wait: 16 }
+        { wait: 20 }
       );
       // Listen when the web worker has finished calculation position
       workerRef.current.onmessage = (event) => {
@@ -114,7 +114,8 @@ export function useForceLayout() {
           });
 
           updateWorkerBuffers();
-          throttleSetNodes(nextNodes);
+          setNodes(nextNodes);
+          // throttleSetNodes(nextNodes);
 
           // } else if(type === 'updateMainSharedBuffer') {
           //   updateNodesFromSharedBuffer();

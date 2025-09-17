@@ -1,24 +1,9 @@
-import { useState, useMemo, useEffect, useCallback } from "react";
-import { createView } from "@graphicle/base";
-import {
-  useGraphicleStore,
-  selectNodeTypes,
-  selectEdgeTypes,
-} from "@/store/graphicleStore";
-import { ObservableStyle } from "@/features/graphicle/observableStyle";
-import { circleStyle } from "@/features/graphicle/shapes/circle";
-import { shapeFactory } from "@/features/graphicle/shapes/factory";
-import { lineFactory } from "@/features/graphicle/lines/factory";
-import { arrowLineStyle } from "@/features/graphicle/lines/arrowLine";
+import { useState, useCallback } from "react";
 
 import { ColorPicker } from "./ColorPicker";
-import { getGraphicle, useGraphicle } from "./GraphicleProvider";
 import CheckboxLabels from "./CheckboxLabels";
-import { createColorPicker } from "@/lib/color";
 import { useViewStore } from "@/store/viewStore";
-
-const colorPicker = createColorPicker();
-
+import { ScrollArea } from "./ui/scroll-area";
 export default function ViewBuilder() {
   const nodeAssignments = useViewStore((state) => state.nodeAssignments);
   const edgeAssignments = useViewStore((state) => state.edgeAssignments);
@@ -32,19 +17,6 @@ export default function ViewBuilder() {
   const onNodeTypeMouseEnter = (type: string) => {
     // Get all the nodes that are of this type
 
-    const graphicle = getGraphicle();
-    const nodes = graphicle?.store
-      .getNodes()
-      .filter((n) => n.type === type)
-      .map((n) => n.id);
-
-    // const connectedEdgeIds = nodes?.reduce<Array<string>>((acc, curr) => {
-    //   const edgeIds = graphicle?.renderer?.nodeToEdges.get(curr.id);
-    //   if (edgeIds) {
-    //     return [...acc, ...edgeIds];
-    //   } else return acc;
-    // }, []);
-
     Object.keys(nodeAssignments).forEach((keyType: string) => {
       if (keyType === type) {
         nodeAssignments[keyType].style.set({ opacity: 1 });
@@ -53,7 +25,7 @@ export default function ViewBuilder() {
       }
     });
   };
-  const onNodeTypeMouseLeave = (type: string) => {
+  const onNodeTypeMouseLeave = (_type: string) => {
     Object.keys(nodeAssignments).forEach((keyType: string) => {
       nodeAssignments[keyType].style.set({ opacity: 1 });
     });
@@ -134,17 +106,18 @@ export default function ViewBuilder() {
             onCheckedChange={onShowLabelsChange}
           />
         </header>
-        {Object.keys(nodeAssignments).map((type) => (
-          <div
-            className="flex items-center gap-4 justify-between hover:bg-teal-900 duration-500 animate space-y-0.5 px-1"
-            onMouseEnter={() => onNodeTypeMouseEnter(type)}
-            onMouseLeave={() => onNodeTypeMouseLeave(type)}
-          >
-            <span className="w-20">{type}</span>
+        <ScrollArea className="h-[300px] pr-5">
+          {Object.keys(nodeAssignments).map((type) => (
+            <div
+              className="flex items-center gap-4 justify-between hover:bg-teal-900 duration-500 animate space-y-0.5 px-1"
+              onMouseEnter={() => onNodeTypeMouseEnter(type)}
+              onMouseLeave={() => onNodeTypeMouseLeave(type)}
+            >
+              <span className="w-20">{type}</span>
 
-            {/* <pre>{JSON.stringify(assignments, null, 2)}</pre> */}
-            {/* Shape Selector */}
-            {/* <select
+              {/* <pre>{JSON.stringify(assignments, null, 2)}</pre> */}
+              {/* Shape Selector */}
+              {/* <select
             value={assignments[type].shapeKey}
             onChange={(e) =>
             setAssignments((prev) => ({
@@ -159,16 +132,16 @@ export default function ViewBuilder() {
                 </option>
                 ))}
                 </select> */}
-            {nodeAssignments[type]?.style && (
-              <ColorPicker
-                color={nodeAssignments[type]?.style.get().fillColor}
-                onChange={(color: string) => {
-                  nodeAssignments[type]?.style.set({ fillColor: color });
-                }}
-              />
-            )}
-            {/* Color Picker */}
-            {/* <input
+              {nodeAssignments[type]?.style && (
+                <ColorPicker
+                  color={nodeAssignments[type]?.style.get().fillColor}
+                  onChange={(color: string) => {
+                    nodeAssignments[type]?.style.set({ fillColor: color });
+                  }}
+                />
+              )}
+              {/* Color Picker */}
+              {/* <input
             type="color"
             value={assignments[type].style.get().fillColor}
             onChange={(e) => {
@@ -177,23 +150,25 @@ export default function ViewBuilder() {
               setAssignments({ ...assignments });
               }}
               /> */}
-          </div>
-        ))}
+            </div>
+          ))}
+        </ScrollArea>
       </div>
       <div>
         <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full  ">
           Edge Types
         </h3>
-        {Object.keys(edgeAssignments).map((type) => (
-          <div
-            key={type}
-            className="flex items-center gap-4 justify-between space-y-0.5 px-1"
-          >
-            <span className="w-20">{type}</span>
+        <ScrollArea className="max-h-[300px] pr-5">
+          {Object.keys(edgeAssignments).map((type) => (
+            <div
+              key={type}
+              className="flex items-center gap-4 justify-between space-y-0.5 px-1"
+            >
+              <span className="w-20">{type}</span>
 
-            {/* <pre>{JSON.stringify(assignments, null, 2)}</pre> */}
-            {/* Shape Selector */}
-            {/* <select
+              {/* <pre>{JSON.stringify(assignments, null, 2)}</pre> */}
+              {/* Shape Selector */}
+              {/* <select
             value={assignments[type].shapeKey}
             onChange={(e) =>
             setAssignments((prev) => ({
@@ -208,16 +183,16 @@ export default function ViewBuilder() {
                 </option>
                 ))}
                 </select> */}
-            {edgeAssignments[type]?.style && (
-              <ColorPicker
-                color={edgeAssignments[type]?.style.get().tintColor}
-                onChange={(color: string) => {
-                  edgeAssignments[type]?.style.set({ tintColor: color });
-                }}
-              />
-            )}
-            {/* Color Picker */}
-            {/* <input
+              {edgeAssignments[type]?.style && (
+                <ColorPicker
+                  color={edgeAssignments[type]?.style.get().tintColor}
+                  onChange={(color: string) => {
+                    edgeAssignments[type]?.style.set({ tintColor: color });
+                  }}
+                />
+              )}
+              {/* Color Picker */}
+              {/* <input
             type="color"
             value={assignments[type].style.get().fillColor}
             onChange={(e) => {
@@ -226,8 +201,9 @@ export default function ViewBuilder() {
               setAssignments({ ...assignments });
               }}
               /> */}
-          </div>
-        ))}
+            </div>
+          ))}
+        </ScrollArea>
       </div>
     </div>
   );
