@@ -112,46 +112,4 @@ export function createWebworker() {
   const workerUrl = URL.createObjectURL(workerBlob);
 
   return new Worker(workerUrl);
-
-  // worker.onmessage = (event) => {
-  //   // worker.terminate();
-  //   // URL.revokeObjectURL(workerUrl);
-
-  //   const { type } = event.data;
-
-  //   nodesBuffer = event.data.nodesBuffer;
-
-  //   if (type === "updateMainBuffers") {
-  //     // console.log(nodesBuffer);
-  //     // graph = event.data;
-
-  //     updateNodesFromBuffer();
-
-  //     // } else if(type === 'updateMainSharedBuffer') {
-  //     //   updateNodesFromSharedBuffer();
-  //   }
-  // };
-
-  // createWorkerSimulation();
 }
-
-// function createWorkerSimulation() {
-//   sendTime = Date.now();
-//   worker.postMessage(
-//     {
-//       type: "createSimulation",
-//       graph,
-//       options: {
-//         alpha: ALPHA,
-//         alphaDecay: ALPHA_DECAY,
-//         alphaTarget: ALPHA_TARGET,
-//         iterations: params.numInterations,
-//         nodeRepulsionStrength: FORCE_LAYOUT_NODE_REPULSION_STRENGTH,
-//         width,
-//         height,
-//       },
-//       nodesBuffer,
-//     },
-//     [nodesBuffer.buffer]
-//   );
-// }

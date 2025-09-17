@@ -15,7 +15,9 @@ export default function CanvasRightPanel() {
           <span className="text-zinc-400 text-xs">None selected</span>
         )}
       </section>
-      <section>{/* <ViewBuilder /> */}</section>
+      <section>
+        <ViewBuilder />
+      </section>
 
       {/* <section>
         <ViewBuilder />

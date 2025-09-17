@@ -7,6 +7,7 @@ import { circleStyle } from "@/features/graphicle/shapes/circle";
 import { arrowLineStyle } from "@/features/graphicle/lines/arrowLine";
 import { shapeFactory } from "@/features/graphicle/shapes/factory";
 import { lineFactory } from "@/features/graphicle/lines/factory";
+import { useViewStore } from "@/store/viewStore";
 
 const colorPicker = createColorPicker();
 
@@ -74,4 +75,6 @@ export const graphLoader = ({ nodes, edges }: GraphData) => {
     nodes: nextNodes,
     edges: nextEdges,
   }));
+
+  useViewStore.setState(() => ({ nodeAssignments, edgeAssignments }));
 };

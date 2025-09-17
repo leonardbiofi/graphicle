@@ -15,16 +15,19 @@ import { ColorPicker } from "./ColorPicker";
 import { useGraphicle } from "./GraphicleProvider";
 import CheckboxLabels from "./CheckboxLabels";
 import { createColorPicker } from "@/lib/color";
+import { useViewStore } from "@/store/viewStore";
 
 const colorPicker = createColorPicker();
 
 export default function ViewBuilder() {
-  const nodeTypes = useGraphicleStore(selectNodeTypes);
-  const edgeTypes = useGraphicleStore(selectEdgeTypes);
+  const nodeAssignments = useViewStore((state) => state.nodeAssignments);
+  const edgeAssignments = useViewStore((state) => state.edgeAssignments);
+  // const nodeTypes = useGraphicleStore(selectNodeTypes);
+  // const edgeTypes = useGraphicleStore(selectEdgeTypes);
   const { graphicleRef } = useGraphicle();
   //   const setView = useGraphicleStore(state => state.setView)
-  const [nodeAssignments, setNodeAssignments] = useState({});
-  const [edgeAssignments, setEdgeAssignments] = useState({});
+  // const [nodeAssignments, setNodeAssignments] = useState({});
+  // const [edgeAssignments, setEdgeAssignments] = useState({});
   const [showLabels, setShowLabels] = useState(true);
 
   const onShowLabelsChange = useCallback(
@@ -36,62 +39,62 @@ export default function ViewBuilder() {
     },
     [nodeAssignments]
   );
-  useEffect(() => {
-    setNodeAssignments(() => {
-      const obj: Record<string, any> = {};
-      nodeTypes.forEach((type) => {
-        obj[type] = {
-          style: new ObservableStyle({
-            ...circleStyle,
-            fillColor: colorPicker(),
-          }), // default value
-          shapeKey: "circle", //Default shapè
-        };
-      });
+  // useEffect(() => {
+  //   setNodeAssignments(() => {
+  //     const obj: Record<string, any> = {};
+  //     nodeTypes.forEach((type) => {
+  //       obj[type] = {
+  //         style: new ObservableStyle({
+  //           ...circleStyle,
+  //           fillColor: colorPicker(),
+  //         }), // default value
+  //         shapeKey: "circle", //Default shapè
+  //       };
+  //     });
 
-      return obj;
-    });
-  }, [nodeTypes]);
+  //     return obj;
+  //   });
+  // }, [nodeTypes]);
 
-  useEffect(() => {
-    setEdgeAssignments(() => {
-      const obj: Record<string, any> = {};
-      edgeTypes.forEach((type) => {
-        obj[type] = {
-          style: new ObservableStyle({ ...arrowLineStyle }), // default value
-          edgeKey: "arrowLine", // Default line
-        };
-      });
+  // useEffect(() => {
+  //   setEdgeAssignments(() => {
+  //     const obj: Record<string, any> = {};
+  //     edgeTypes.forEach((type) => {
+  //       obj[type] = {
+  //         style: new ObservableStyle({ ...arrowLineStyle }), // default value
+  //         edgeKey: "arrowLine", // Default line
+  //       };
+  //     });
 
-      return obj;
-    });
-  }, [edgeTypes]);
+  //     return obj;
+  //   });
+  // }, [edgeTypes]);
 
-  const nodeMap = useMemo(() => {
-    return Object.fromEntries(
-      Object.entries(nodeAssignments).map(([type, { shapeKey, style }]) => {
-        const factory = shapeFactory[shapeKey];
-        return [type, factory(style)];
-      })
-    );
-  }, [nodeAssignments]);
+  // const nodeMap = useMemo(() => {
+  //   return Object.fromEntries(
+  //     Object.entries(nodeAssignments).map(([type, { shapeKey, style }]) => {
+  //       const factory = shapeFactory[shapeKey];
+  //       return [type, factory(style)];
+  //     })
+  //   );
+  // }, [nodeAssignments]);
 
-  const edgeMap = useMemo(() => {
-    return Object.fromEntries(
-      Object.entries(edgeAssignments).map(([type, { edgeKey, style }]) => {
-        const factory = lineFactory[edgeKey];
-        return [type, factory(style)];
-      })
-    );
-  }, [edgeAssignments]);
+  // const edgeMap = useMemo(() => {
+  //   return Object.fromEntries(
+  //     Object.entries(edgeAssignments).map(([type, { edgeKey, style }]) => {
+  //       const factory = lineFactory[edgeKey];
+  //       return [type, factory(style)];
+  //     })
+  //   );
+  // }, [edgeAssignments]);
 
-  useEffect(() => {
-    if (graphicleRef.current) {
-      const view = createView("custom", nodeMap, edgeMap);
-      graphicleRef.current?.renderer?.viewRegistry.register(view);
-      graphicleRef.current.renderer?.switchView("custom");
-    }
-  }, [nodeMap, edgeMap, graphicleRef]);
+  // useEffect(() => {
+  //   if (graphicleRef.current) {
+  //     const view = createView("custom", nodeMap, edgeMap);
+  //     graphicleRef.current?.renderer?.viewRegistry.register(view);
+  //     graphicleRef.current.renderer?.switchView("custom");
+  //   }
+  // }, [nodeMap, edgeMap, graphicleRef]);
 
   return (
     <div className="space-y-4 text-white">
@@ -103,7 +106,7 @@ export default function ViewBuilder() {
             onCheckedChange={onShowLabelsChange}
           />
         </header>
-        {nodeTypes.map((type) => (
+        {Object.keys(nodeAssignments).map((type) => (
           <div key={type} className="flex items-center gap-4 justify-between">
             <span className="w-20">{type}</span>
 
@@ -149,7 +152,7 @@ export default function ViewBuilder() {
         <h3 className="text-white mb-2 text-sm font-bold border-b-zinc-700 border-b pb-2 w-full">
           Edge Types
         </h3>
-        {edgeTypes.map((type) => (
+        {Object.keys(edgeAssignments).map((type) => (
           <div key={type} className="flex items-center gap-4 justify-between">
             <span className="w-20">{type}</span>
 
