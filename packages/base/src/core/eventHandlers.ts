@@ -60,7 +60,7 @@ export default class EventHandlers implements ContextClient {
       { node: Node; translation: { dx: number; dy: number } },
       FederatedPointerEvent
     >(GraphicleEventType.NODE_DRAG, this.onNodeDrag.bind(this), {
-      throttle: 100,
+      throttle: 20,
     });
     this.context?.eventDispatcher.on(
       GraphicleEventType.APP_POINTERUP,

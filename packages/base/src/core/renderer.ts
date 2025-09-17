@@ -79,7 +79,7 @@ export default class GraphicleRenderer implements ContextClient {
     this.viewport.addChild(nodesLayer);
 
     // Layer to draw anything on top
-    const drawingLayer = new Container();
+    const drawingLayer = new Container({ isRenderGroup: true });
     drawingLayer.label = Layers.DRAWING;
     this.viewport.addChild(drawingLayer);
   }

@@ -43,7 +43,7 @@ export function createWebworker() {
             .force("link", d3.forceLink(links).id(d => d.id).distance(100).strength(0.02))
             .force("charge", d3.forceManyBody().strength(-150))
             .force('center', d3.forceCenter())
-            .force("collide", d3.forceCollide().radius(100))
+            .force("collide", d3.forceCollide().radius(110))
             .tick(2)
             .stop()
             ;
