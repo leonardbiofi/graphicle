@@ -58,7 +58,10 @@ export default function UploadDialog() {
       }
       const json = await parser[fileExt](file);
       const { nodes, edges } = json;
+      useForceLayoutStore.setState(() => ({ active: false }));
+
       graphLoader({ nodes, edges });
+      getGraphicle()?.viewport?.fitView();
     }
     setLoadingGraph(false);
     setOpen(false);

@@ -26,26 +26,43 @@ export const graphLoader = ({ nodes, edges }: GraphData) => {
   const nodeTypes = [...new Set(nextNodes.map((n) => n.type))].sort();
   const edgeTypes = [...new Set(nextEdges.map((eds) => eds.type))].sort();
 
-  const nodeMap = nodeTypes.reduce<Record<string, any>>((acc, curr) => {
+  const nodeAssignments = nodeTypes.reduce<Record<string, any>>((acc, curr) => {
     const style = new ObservableStyle({
       ...circleStyle,
       fillColor: colorPicker(),
     });
 
-    acc[curr] = shapeFactory["circle"](style);
+    acc[curr] = { style, shape: "circle" };
 
     return acc;
   }, {});
 
-  const edgeMap = edgeTypes.reduce<Record<string, any>>((acc, curr) => {
+  const edgeAssignments = edgeTypes.reduce<Record<string, any>>((acc, curr) => {
     const style = new ObservableStyle({
       ...arrowLineStyle,
     });
 
-    acc[curr] = lineFactory["arrowLine"](style);
+    acc[curr] = { style, shape: "arrowLine" };
 
     return acc;
   }, {});
+
+  const nodeMap = Object.entries(nodeAssignments).reduce<Record<string, any>>(
+    (acc, [key, value]) => {
+      acc[key] = shapeFactory[value.shape](value.style);
+      return acc;
+    },
+    {}
+  );
+
+  const edgeMap = Object.entries(edgeAssignments).reduce<Record<string, any>>(
+    (acc, [key, value]) => {
+      acc[key] = lineFactory[value.shape](value.style);
+
+      return acc;
+    },
+    {}
+  );
 
   // Set the view prior to initialize node is more efficient because it will render empty arrays
   const view = createView("custom", nodeMap, edgeMap);
@@ -57,6 +74,4 @@ export const graphLoader = ({ nodes, edges }: GraphData) => {
     nodes: nextNodes,
     edges: nextEdges,
   }));
-
-  //   graphicle.viewport?.fitView();
 };

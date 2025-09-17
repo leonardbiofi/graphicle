@@ -6,13 +6,12 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { useGraphicleStore } from "@/store/graphicleStore";
 
 import { useMutation } from "@tanstack/react-query";
-import { D3Force, LayoutContext } from "@graphicle/base";
 import { getGraphicle } from "./GraphicleProvider";
 import { useForceLayoutStore } from "@/store/layoutStore";
 import { graphLoader } from "@/lib/graphLoader";
+
 function getData(name: string) {
   return fetch(`/api/dataset/${name}`).then((res) => res.json());
 }
@@ -26,27 +25,15 @@ export default function PanelExample() {
     onSuccess: (data, variables) => {
       const { nodes, edges } = data;
 
+      // Set the forcelayout to null
+      useForceLayoutStore.setState(() => ({ active: false }));
+
+      // Load the graph data and generate a custom view
       graphLoader({ nodes, edges });
-      // const layoutContext = new LayoutContext(new D3Force());
 
-      // const positionNodes = layoutContext.runLayout({ nodes, edges });
+      // Fit the view of the viewport
+      getGraphicle()?.viewport?.fitView();
 
-      // // Layout the nodes because they might have no position
-      // useGraphicleStore.setState(() => ({
-      //   nodes: [...positionNodes],
-      //   edges: [...edges],
-      // }));
-      // useForceLayoutStore.setState(() => ({ active: false }));
-
-      // getGraphicle()?.viewport?.fitView();
-
-      // console.log("Variables:", variables);
-
-      // const viewSettings = exampleViews[variables];
-      // if (viewSettings) {
-      //   getGraphicle()?.renderer?.viewRegistry.register(viewSettings.view);
-      //   getGraphicle()?.renderer?.switchView("basic");
-      // }
       return data;
     },
   });
