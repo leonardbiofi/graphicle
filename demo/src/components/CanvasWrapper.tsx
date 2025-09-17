@@ -1,5 +1,5 @@
 import { createGraphicle } from "@graphicle/base";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import CanvasControls from "./CanvasControls";
 import { useGraphicleStore } from "@/store/graphicleStore";
 import CanvasRightPanel from "./CanvasRightPanel";
@@ -15,6 +15,7 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
   // const graphicleRef = useRef<Graphicle>(null);
   const { setGraphicle, graphicleRef } = useGraphicle();
   const initializeRef = useRef<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const nodes = useGraphicleStore((state) => state.nodes);
   const edges = useGraphicleStore((state) => state.edges);
   const setNodes = useGraphicleStore((state) => state.setNodes);
@@ -23,28 +24,36 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
   useEffect(() => {
     const mountGraphicle = async () => {
       if (!containerRef.current) return;
-      initializeRef.current = true;
-      const graphicle = await createGraphicle({
-        container: containerRef.current,
-        initialState: { nodes, edges },
-        options: {
-          handlers: {
-            onNodeClick: () => {},
-            onNodeDrag: (_, { node }) => dragEvents.drag(node),
-            onNodeDragStart: (_, node) => dragEvents.start(node),
-            onNodeDragEnd: () => dragEvents.stop(),
-            onNodesUpdate: (_, nodes) => setNodes(nodes),
-            onEdgesUpdate: (_, edges) => setEdges(edges),
+
+      try {
+        initializeRef.current = true;
+        setLoading(true);
+        const graphicle = await createGraphicle({
+          container: containerRef.current,
+          initialState: { nodes, edges },
+          options: {
+            handlers: {
+              onNodeClick: () => {},
+              onNodeDrag: (_, { node }) => dragEvents.drag(node),
+              onNodeDragStart: (_, node) => dragEvents.start(node),
+              onNodeDragEnd: () => dragEvents.stop(),
+              onNodesUpdate: (_, nodes) => setNodes(nodes),
+              onEdgesUpdate: (_, edges) => setEdges(edges),
+            },
+            selectOnDrag: true,
           },
-          selectOnDrag: true,
-        },
-      });
+        });
 
-      // graphicle.renderer?.viewRegistry.register(basicView);
-      // graphicle.renderer?.switchView("basicView");
+        // graphicle.renderer?.viewRegistry.register(basicView);
+        // graphicle.renderer?.switchView("basicView");
 
-      setGraphicle(graphicle);
-      initializeRef.current = false;
+        setGraphicle(graphicle);
+      } catch (err) {
+        throw err;
+      } finally {
+        setLoading(false);
+        initializeRef.current = false;
+      }
     };
     if (!graphicleRef.current && !initializeRef.current) mountGraphicle();
 
@@ -59,6 +68,12 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
   return (
     <div className="w-[calc(100vw_-_368px)] relative bg-opacity-0">
       <div id="graphicle" ref={containerRef} className="w-full h-full"></div>
+      {loading && (
+        <span className="text-white absolute left-1/2 top-1/2">
+          Loading ...
+        </span>
+      )}
+
       <div className="absolute top-0 left-0 m-5 text-white">
         <SwitchForceLayout />
       </div>

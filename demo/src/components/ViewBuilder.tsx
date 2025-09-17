@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
+import { createView } from "@graphicle/base";
 import {
   useGraphicleStore,
   selectNodeTypes,
@@ -10,10 +11,12 @@ import { shapeFactory } from "@/features/graphicle/shapes/factory";
 import { lineFactory } from "@/features/graphicle/lines/factory";
 import { arrowLineStyle } from "@/features/graphicle/lines/arrowLine";
 
-import { createView } from "@graphicle/base";
 import { ColorPicker } from "./ColorPicker";
 import { useGraphicle } from "./GraphicleProvider";
 import CheckboxLabels from "./CheckboxLabels";
+import { createColorPicker } from "@/lib/color";
+
+const colorPicker = createColorPicker();
 
 export default function ViewBuilder() {
   const nodeTypes = useGraphicleStore(selectNodeTypes);
@@ -22,7 +25,6 @@ export default function ViewBuilder() {
   //   const setView = useGraphicleStore(state => state.setView)
   const [nodeAssignments, setNodeAssignments] = useState({});
   const [edgeAssignments, setEdgeAssignments] = useState({});
-
   const [showLabels, setShowLabels] = useState(true);
 
   const onShowLabelsChange = useCallback(
@@ -39,7 +41,10 @@ export default function ViewBuilder() {
       const obj: Record<string, any> = {};
       nodeTypes.forEach((type) => {
         obj[type] = {
-          style: new ObservableStyle({ ...circleStyle }), // default value
+          style: new ObservableStyle({
+            ...circleStyle,
+            fillColor: colorPicker(),
+          }), // default value
           shapeKey: "circle", //Default shapè
         };
       });

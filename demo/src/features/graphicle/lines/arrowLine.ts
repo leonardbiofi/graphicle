@@ -68,7 +68,7 @@ class ArrowLineEdge extends BaseEdge {
 }
 
 export const arrowLineStyle = {
-  tintColor: "#9a9a9a",
+  tintColor: "#575757",
   lineWidth: 2,
 };
 
