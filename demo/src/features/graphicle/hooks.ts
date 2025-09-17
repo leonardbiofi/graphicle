@@ -1,12 +1,10 @@
 import { useEffect, useMemo, useRef, useSyncExternalStore } from "react";
-import * as d3 from "d3-force";
-import { Simulation } from "d3-force";
 import type { Node } from "@graphicle/base";
-import { debounce, throttle } from "@tanstack/pacer";
+import { throttle } from "@tanstack/pacer";
 
 import { useGraphicleStore } from "@/store/graphicleStore";
 import { useForceLayoutStore } from "@/store/layoutStore";
-import { getGraphicle, useGraphicle } from "@/components/GraphicleProvider";
+import { getGraphicle } from "@/components/GraphicleProvider";
 
 import { ObservableStyle } from "./observableStyle";
 import { createWebworker } from "./workers/forceWorker";
@@ -73,46 +71,12 @@ export function useForceLayout() {
 
       let nodesBuffer = new Float32Array(nodes.length * 2);
 
-      // Listen when the web worker has finished calculation position
-      workerRef.current.onmessage = (event) => {
-        // worker.terminate();
-        // URL.revokeObjectURL(workerUrl);
-
-        const { type } = event.data;
-
-        nodesBuffer = event.data.nodesBuffer;
-
-        if (type === "updateMainBuffers") {
-          // console.log(nodesBuffer);
-          // graph = event.data;
-
-          // updateNodesFromBuffer();
-
-          // const currentNodes = graphicle.store.getNodes();
-
-          // Rerender the node, update the nodes from buffer
-          const nextNodes = nodes.map((n, i) => {
-            if (n.id !== draggingNodeRef.current?.id) {
-              return {
-                ...n,
-                position: {
-                  x: nodesBuffer[i * 2 + 0],
-                  y: nodesBuffer[i * 2 + 1],
-                },
-              };
-            } else {
-              return { ...draggingNodeRef.current };
-            }
-          });
-
+      const throttleSetNodes = throttle(
+        (nextNodes) => {
           setNodes(nextNodes);
-          updateWorkerBuffers();
-
-          // } else if(type === 'updateMainSharedBuffer') {
-          //   updateNodesFromSharedBuffer();
-        }
-      };
-
+        },
+        { wait: 16 }
+      );
       const updateWorkerBuffers = throttle(
         () => {
           if (!workerRef.current) return;
@@ -125,8 +89,37 @@ export function useForceLayout() {
             [nodesBuffer.buffer]
           );
         },
-        { wait: 0 }
+        { wait: 16 }
       );
+      // Listen when the web worker has finished calculation position
+      workerRef.current.onmessage = (event) => {
+        const { type } = event.data;
+
+        nodesBuffer = event.data.nodesBuffer;
+
+        if (type === "updateMainBuffers") {
+          // Rerender the node, update the nodes from buffer
+          const nextNodes = graphicle.store.getNodes().map((n, i) => {
+            if (n.id !== draggingNodeRef.current?.id) {
+              return {
+                ...n,
+                position: {
+                  x: nodesBuffer[i * 2 + 0],
+                  y: nodesBuffer[i * 2 + 1],
+                },
+              };
+            } else {
+              return { ...n };
+            }
+          });
+
+          updateWorkerBuffers();
+          throttleSetNodes(nextNodes);
+
+          // } else if(type === 'updateMainSharedBuffer') {
+          //   updateNodesFromSharedBuffer();
+        }
+      };
 
       // Create the simulation object
       workerRef.current.postMessage(
@@ -144,6 +137,7 @@ export function useForceLayout() {
     }
 
     return () => {
+      console.log("UNMOUNT");
       if (workerRef.current) {
         workerRef.current.terminate();
         workerRef.current = null;

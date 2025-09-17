@@ -11,9 +11,7 @@ import { useGraphicleStore } from "@/store/graphicleStore";
 import { useMutation } from "@tanstack/react-query";
 import { D3Force, LayoutContext } from "@graphicle/base";
 import { getGraphicle } from "./GraphicleProvider";
-
-import { useExampleStore } from "@/store/exampleStore";
-
+import { useForceLayoutStore } from "@/store/layoutStore";
 function getData(name: string) {
   return fetch(`/api/dataset/${name}`).then((res) => res.json());
 }
@@ -36,11 +34,8 @@ export default function PanelExample() {
         nodes: [...positionNodes],
         edges: [...edges],
       }));
-      useExampleStore.setState({ name: variables });
+      useForceLayoutStore.setState(() => ({ active: false }));
 
-      const graphicle = getGraphicle();
-
-      console.log("GRPHILE:", graphicle);
       getGraphicle()?.viewport?.fitView();
 
       // console.log("Variables:", variables);

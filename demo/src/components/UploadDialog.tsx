@@ -92,7 +92,7 @@ export default function UploadDialog() {
           <ul>
             {filesToUpload.map((file) => (
               <li key={file.name} className="flex items-center justify-between">
-                <span>{file.name}</span>
+                <span className="truncate">{file.name}</span>
                 <span>
                   <Trash
                     className="cursor-pointer hover:text-foreground text-zinc-500"

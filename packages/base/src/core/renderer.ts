@@ -1,5 +1,5 @@
 import { Container, Graphics, Point } from "pixi.js";
-
+import { debounce } from "@tanstack/pacer";
 import type {
   GraphData,
   Node,
@@ -346,10 +346,7 @@ export default class GraphicleRenderer implements ContextClient {
 
     if (notify)
       // Emit the event when the state is upated internally. Important to sync data with external store
-      this.context?.eventDispatcher.emit(
-        GraphicleEventType.NODES_UPDATE,
-        this.context.store.getNodes()
-      );
+      this.debouncedNodesNotif();
 
     const layer = this.getLayer(Layers.NODES);
 
@@ -411,14 +408,32 @@ export default class GraphicleRenderer implements ContextClient {
     }
     this.requestRender();
   }
-  applyEdgeChangesInternal(changes: EdgeChange[], notify = true) {
-    this.context?.store.applyEdgeChanges(changes);
-    if (notify)
+  debouncedNodesNotif = debounce(
+    () => {
+      // Emit the event when the state is upated internally. Important to sync data with external store
+      this.context?.eventDispatcher.emit(
+        GraphicleEventType.NODES_UPDATE,
+        this.context.store.getNodes()
+      );
+    },
+    { trailing: true, leading: true, wait: 400 }
+  );
+  debouncedEdgeNotif = debounce(
+    () => {
       // Emit the event when the state is upated internally. Important to sync data with external store
       this.context?.eventDispatcher.emit(
         GraphicleEventType.EDGES_UPDATE,
         this.context.store.getEdges()
       );
+    },
+    { trailing: true, leading: true, wait: 400 }
+  );
+  applyEdgeChangesInternal(changes: EdgeChange[], notify = true) {
+    this.context?.store.applyEdgeChanges(changes);
+
+    if (notify)
+      // Emit the event when the state is upated internally. Important to sync data with external store
+      this.debouncedEdgeNotif();
 
     const layer = this.getLayer(Layers.EDGES);
 

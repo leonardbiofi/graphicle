@@ -27,11 +27,13 @@ export function createWebworker() {
 
     self.onmessage = event => {
 
-      if(!nodes) nodes =event.data.nodes;
-      if(!links) links = event.data.edges; 
-      const {type } = event.data
+     
+      const { type } = event.data
 
       if(type === 'createSimulation') {
+
+        if(!nodes) nodes = event.data.nodes;
+        if(!links) links = event.data.edges; 
         if(!simulation) {
 
           simulation = d3.forceSimulation(nodes)
@@ -42,21 +44,20 @@ export function createWebworker() {
             .force("charge", d3.forceManyBody().strength(-150))
             .force('center', d3.forceCenter())
             .force("collide", d3.forceCollide().radius(100))
-            .tick(1)
+            .tick(2)
             .stop()
             ;
 
         }
 
         copyDataToBuffers(event.data.nodesBuffer);
-        // copyDataToSharedBuffer(event.data.sharedBuffer);
 
       } else if(type === 'updateWorkerGraph') {
-        graph = event.data.graph;
-        simulation
-          .nodes(graph.nodes)
-          .force("link", d3.forceLink(graph.links).id(d => d.id))
-        ;
+        // graph = event.data.graph;
+        // simulation
+        //   .nodes(graph.nodes)
+        //   .force("link", d3.forceLink(graph.links).id(d => d.id))
+        // ;
 
       } else if(type === 'updateWorkerNodePositions') {
         const { nodes } = event.data;
@@ -69,8 +70,8 @@ export function createWebworker() {
 
       } else if(type === 'updateWorkerBuffers') {
         if(simulation) {
-
-            simulation.alpha(0.5).alphaDecay(0.01).restart()
+          simulation.tick(2)
+          if(simulation.alpha() < 0.03) simulation.alpha(0.5).alphaDecay(0.01).restart()
         }
 
         copyDataToBuffers(event.data.nodesBuffer);
@@ -97,7 +98,7 @@ export function createWebworker() {
                 delete node.fy
               }
           }
-              simulation.alpha(0.).alphaTarget(0.05).aplhaDecay(0.01).tick(1)
+              // simulation.alpha(0.).alphaTarget(0.05).alphaDecay(0.01).tick(2)
               // copyDataToBuffers(event.data.nodesBuffer);
 
 
