@@ -2,11 +2,11 @@ import { createServerFileRoute } from "@tanstack/react-start/server";
 import { promises as fs } from "fs";
 import path from "path";
 import { json } from "@tanstack/react-start";
-import { fileURLToPath } from "url";
+// import { fileURLToPath } from "url";
 
 // __dirname equivalent in ESM
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 export const ServerRoute = createServerFileRoute(
   "/api/dataset/$datasetName"
@@ -19,13 +19,7 @@ export const ServerRoute = createServerFileRoute(
 
 async function readDataset(filename: string): Promise<any> {
   try {
-    const filePath = path.join(
-      __dirname,
-      "../..",
-      "server",
-      "datasets",
-      `${filename}.json`
-    );
+    const filePath = path.join("datasets", `${filename}.json`);
 
     const fileContents = await fs.readFile(filePath, { encoding: "utf-8" });
 
