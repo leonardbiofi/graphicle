@@ -33,6 +33,7 @@ pnpm dev:demo
 
 
 ## Publish the package the npm
+First bump the version in the `package.json` of the package. then the package can be safely published
 
 To publish the **@grahpicle/base** package to npm
 ```bash
