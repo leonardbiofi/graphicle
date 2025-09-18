@@ -359,7 +359,7 @@ export default class GraphicleRenderer implements ContextClient {
   renderNodeChanges(changes: NodeChange[]) {
     // const t0 = performance.now();
 
-    this.context?.app.stop();
+    // this.context?.app.stop();
     const nodelayer = this.getLayer(Layers.NODES);
     const edgeLayer = this.getLayer(Layers.EDGES);
     // Perform a render or an update
@@ -420,7 +420,7 @@ export default class GraphicleRenderer implements ContextClient {
       }
     }
     // this.context?.app.render();
-    this.context?.app.start();
+    // this.context?.app.start();
 
     // nodelayer.renderable = true;
     // this.context?.app.renderer.render(nodelayer);
