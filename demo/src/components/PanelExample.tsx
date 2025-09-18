@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevronsUpDown, Waypoints } from "lucide-react";
+import { ChevronsUpDown, Waypoints, LoaderCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Collapsible,
@@ -43,10 +43,16 @@ export default function PanelExample() {
       onOpenChange={setIsOpen}
       className="w-[350px]  rounded-2xl  overflow-clip bg-teal-950 h-fit"
     >
+      {fetchExampleMutation.isPending}
       <CollapsibleTrigger asChild>
         <div className="flex items-center justify-between gap-4 px-4 py-1 cursor-pointer ">
           <h4 className="text-sm font-semibold flex items-center gap-2">
             <Waypoints /> Graph Examples
+            {fetchExampleMutation.isPending && (
+              <span className="animate-spin">
+                <LoaderCircle />
+              </span>
+            )}
           </h4>
           <Button variant="ghost" size="icon" className="size-8 cursor-pointer">
             <ChevronsUpDown />
@@ -60,6 +66,7 @@ export default function PanelExample() {
           <Button
             className="w-fit bg-teal-800 rounded-xl"
             onClick={() => fetchExampleMutation.mutate("miserables")}
+            disabled={fetchExampleMutation.isPending}
           >
             Miserables
           </Button>
@@ -67,6 +74,7 @@ export default function PanelExample() {
           <Button
             className="w-fit bg-teal-800 rounded-xl"
             onClick={() => fetchExampleMutation.mutate("genes")}
+            disabled={fetchExampleMutation.isPending}
           >
             Genes
           </Button>
@@ -74,6 +82,7 @@ export default function PanelExample() {
           <Button
             className="w-fit bg-teal-800 rounded-xl"
             onClick={() => fetchExampleMutation.mutate("circle")}
+            disabled={fetchExampleMutation.isPending}
           >
             Circle
           </Button>
@@ -81,6 +90,7 @@ export default function PanelExample() {
           <Button
             className="w-fit bg-teal-800 rounded-xl"
             onClick={() => fetchExampleMutation.mutate("worldcup")}
+            disabled={fetchExampleMutation.isPending}
           >
             Worldcup
           </Button>

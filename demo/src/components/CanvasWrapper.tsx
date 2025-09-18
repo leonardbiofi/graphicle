@@ -28,6 +28,8 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
       try {
         initializeRef.current = true;
         setLoading(true);
+
+        console.log("NODES:", nodes, "EDGES:", edges);
         const graphicle = await createGraphicle({
           container: containerRef.current,
           initialState: { nodes, edges },
@@ -65,6 +67,7 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
       if (containerRef.current) containerRef.current.innerHTML = "";
     };
   }, []);
+
   return (
     <div className="w-[calc(100vw_-_368px)] relative bg-opacity-0">
       <div id="graphicle" ref={containerRef} className="w-full h-full"></div>
