@@ -35,17 +35,15 @@ async function readDataset(filename: string): Promise<any> {
   try {
     // const filePath = path.join("src", "data", `${filename}.json`);
 
-    const fileContents = await fs.promises.readFile(
-      `src/data/${filename}.json`,
-      {
-        encoding: "utf-8",
-      }
-    );
+    const fileContents = await fs.promises.readFile(`data/${filename}.json`, {
+      encoding: "utf-8",
+    });
+
     // const fileContents = datasets[filename];
 
     // console.log("fileConten:", fil);
 
-    return fileContents;
+    return JSON.parse(fileContents);
   } catch (error) {
     console.error(`Failed to read dataset file, ${error}`);
     throw new Error(`Dataset "${filename}" not found or invalid JSON.`);

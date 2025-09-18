@@ -3,4 +3,4 @@
   node_bundler = "esbuild"
 
   # Include all JSON files under data/
-  included_files = ["src/data/*.json"]
+  included_files = ["data/*.json"]
