@@ -1,6 +1,7 @@
 .tanstack
 .nitro
 .output
+.netlify
 
 dist
 *.env
