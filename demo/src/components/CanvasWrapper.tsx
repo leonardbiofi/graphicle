@@ -29,7 +29,6 @@ export default function CanvasWrapper({}: CanvasWrapperProps) {
         initializeRef.current = true;
         setLoading(true);
 
-        console.log("NODES:", nodes, "EDGES:", edges);
         const graphicle = await createGraphicle({
           container: containerRef.current,
           initialState: { nodes, edges },
