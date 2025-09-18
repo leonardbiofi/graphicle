@@ -1,2 +1,2 @@
 [functions]
-  included_files = ["datasets/**"]
+  included_files = ["data/**"]
