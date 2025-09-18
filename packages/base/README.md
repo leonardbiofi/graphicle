@@ -1,9 +1,11 @@
 
 
 
-
+blob/main/DEVELOPERS.md
 <div align="center">
-  <img src="./logo.png" alt="Image" width="200" height="200" style="margin-right: 10px;">
+<img src="https://raw.githubusercontent.com/leonardbiofi/graphicle/main/packages/base/logo.png" alt="Graphicle Logo" class="logo" width="200" height="200" />
+
+ 
 </div>
 <p align="center" style="font-size: 48px; color: #fff; font-weight: 700;">Graphicle</p>
 
@@ -87,7 +89,7 @@ Ways to help:
 
 🧪 Write tests or improve TypeScript types
 
-** For more details please see the [Developer Guide](https://github.com/leonardbiofi/graphicle/blob/main/DEVELOPERS.md)
+**For more details please see the [Developer Guide](https://github.com/leonardbiofi/graphicle/blob/main/DEVELOPERS.md)**
 
 ## ⚠️ IN CONSTRUCTION
 
