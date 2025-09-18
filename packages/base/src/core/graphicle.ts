@@ -154,13 +154,6 @@ class Graphicle {
     });
   }
 
-  // switchView(view) {
-  // Read from the view and assign it to the context
-  // this.viewContext.setView(view);
-  // Renderer needs to reinitialise the view. Reinitialise the whole renderer ?
-  // The event handler needs to reassign the callbacks to override
-  // }
-
   /** Getters */
   get app() {
     return this._app;
