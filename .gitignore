@@ -1,3 +1,7 @@
+.tanstack
+.nitro
+.output
+
 dist
 *.env
 
