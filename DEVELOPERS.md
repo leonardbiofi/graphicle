@@ -30,3 +30,11 @@ To start the demo server simply run the following command
 ```bash
 pnpm dev:demo
 ```
+
+
+## Publish the package the npm
+
+To publish the **@grahpicle/base** package to npm
+```bash
+pnpm publish --filter @graphicle/base --access public
+```
