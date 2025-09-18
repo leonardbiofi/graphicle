@@ -34,7 +34,7 @@ export function GraphicleProvider({
   const value = {
     graphicleRef: graphicleRef,
     setGraphicle: (value: Graphicle | null) => {
-      console.log("CONTEXT CALL:", value);
+      // console.log("CONTEXT CALL:", value);
       setGraphicleInstance(value);
       graphicleRef.current = value;
     },

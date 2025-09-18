@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useSyncExternalStore } from "react";
 import type { Node, Change } from "@graphicle/base";
-import { debounce, throttle } from "@tanstack/pacer";
+import { throttle } from "@tanstack/pacer";
 
-import { useGraphicleStore } from "@/store/graphicleStore";
 import { useForceLayoutStore } from "@/store/layoutStore";
 import { getGraphicle } from "@/components/GraphicleProvider";
 
@@ -23,7 +22,6 @@ export function useForceLayout() {
   // const nodes = useGraphicleStore ((s) => s.nodes);
   const sendTime = useRef<number | null>(null);
   const workerRef = useRef<Worker | null>(null);
-  const setNodes = useGraphicleStore((s) => s.setNodes);
   const isForceActive = useForceLayoutStore((s) => s.active);
   const draggingNodeRef = useRef<null | Node>(null);
   // const simulationRef = useRef<Simulation<any, any>>(null);
