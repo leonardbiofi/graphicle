@@ -282,6 +282,9 @@ importers:
       '@tanstack/pacer':
         specifier: ^0.15.2
         version: 0.15.2
+      '@types/underscore':
+        specifier: ^1.13.0
+        version: 1.13.0
       d3-force:
         specifier: ^3.0.0
         version: 3.0.0
@@ -3470,6 +3473,9 @@ packages:
 
   '@types/sockjs@0.3.36':
     resolution: {integrity: sha512-MK9V6NzAS1+Ud7JV9lJLFqW85VbC9dq3LmwZCuBe4wBDgKC0Kj/jd8Xl+nSviU+Qc3+m7umHHyHg//2KSa0a0Q==}
+
+  '@types/underscore@1.13.0':
+    resolution: {integrity: sha512-L6LBgy1f0EFQZ+7uSA57+n2g/s4Qs5r06Vwrwn0/nuK1de+adz00NWaztRQ30aEqw5qOaWbPI8u2cGQ52lj6VA==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -12823,6 +12829,8 @@ snapshots:
   '@types/sockjs@0.3.36':
     dependencies:
       '@types/node': 22.15.31
+
+  '@types/underscore@1.13.0': {}
 
   '@types/unist@2.0.11': {}
 
