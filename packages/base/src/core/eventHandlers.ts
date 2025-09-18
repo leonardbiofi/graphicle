@@ -3,6 +3,8 @@ import GraphicleContext, { ContextClient } from "./context";
 import { GraphicleEventType } from "./dispatcher";
 import type { Node, Edge, XYPosition } from "./types";
 import type { NodeChange } from "./store";
+// import { throttle } from "@tanstack/pacer";
+import { throttle } from "underscore";
 export default class EventHandlers implements ContextClient {
   context!: GraphicleContext | null;
 
@@ -59,9 +61,7 @@ export default class EventHandlers implements ContextClient {
     this.context?.eventDispatcher.on<
       { node: Node; translation: { dx: number; dy: number } },
       FederatedPointerEvent
-    >(GraphicleEventType.NODE_DRAG, this.onNodeDrag.bind(this), {
-      throttle: 20,
-    });
+    >(GraphicleEventType.NODE_DRAG, this.onNodeDrag.bind(this));
     this.context?.eventDispatcher.on(
       GraphicleEventType.APP_POINTERUP,
       this.onAppPointerUp.bind(this)
@@ -314,8 +314,8 @@ export default class EventHandlers implements ContextClient {
         event
       );
     };
-    this.emitNodeDrag = emitNodeDrag.bind(this);
-    // const throttleNodeDrag = throttle(emitNodeDrag.bind(this), 0);
+    // this.emitNodeDrag = emitNodeDrag.bind(this);
+    this.emitNodeDrag = throttle(emitNodeDrag.bind(this), 16);
 
     this.context?.eventDispatcher.emit(
       GraphicleEventType.NODE_DRAGSTART,

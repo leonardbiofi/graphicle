@@ -357,7 +357,9 @@ export default class GraphicleRenderer implements ContextClient {
   }
 
   renderNodeChanges(changes: NodeChange[]) {
-    // const t0 = performance.now();
+    const t0 = performance.now();
+
+    this.context?.app.stop();
     const nodelayer = this.getLayer(Layers.NODES);
     const edgeLayer = this.getLayer(Layers.EDGES);
     // Perform a render or an update
@@ -417,14 +419,16 @@ export default class GraphicleRenderer implements ContextClient {
         }
       }
     }
+    // this.context?.app.render();
+    this.context?.app.start();
 
     // nodelayer.renderable = true;
     // this.context?.app.renderer.render(nodelayer);
     // this.requestRender();
-    // const t1 = performance.now();
-    // console.log(`🕗 RENDERNODES: ${t1 - t0}ms`);
+    const t1 = performance.now();
+    console.log(`🕗 RENDERNODES: ${t1 - t0}ms`);
   }
-  renderEdgeChanges(changes: EdgeChange[]) {
+  async renderEdgeChanges(changes: EdgeChange[]) {
     // const t0 = performance.now();
 
     const layer = this.getLayer(Layers.EDGES);
@@ -476,12 +480,12 @@ export default class GraphicleRenderer implements ContextClient {
         // TODO: To be implemented
       }
     }
-
+    // this.context?.app.render();
     // const t1 = performance.now();
     // console.log(`🕗 RENDERNODES: ${t1 - t0}ms`);
   }
 
-  applyNodeChangesInternal(changes: NodeChange[], notify = true) {
+  async applyNodeChangesInternal(changes: NodeChange[], notify = true) {
     this.context?.store.applyNodeChanges(changes);
 
     if (notify)
@@ -510,7 +514,7 @@ export default class GraphicleRenderer implements ContextClient {
     },
     { trailing: true, leading: true, wait: 400 }
   );
-  applyEdgeChangesInternal(changes: EdgeChange[], notify = true) {
+  async applyEdgeChangesInternal(changes: EdgeChange[], notify = true) {
     this.context?.store.applyEdgeChanges(changes);
 
     if (notify)

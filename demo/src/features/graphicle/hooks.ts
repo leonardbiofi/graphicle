@@ -114,6 +114,7 @@ export function useForceLayout() {
           //     return { ...n };
           //   }
           // });
+
           const changes: Change<Node>[] = [];
           for (let i = 0; i < nodes.length; i++) {
             const n = nodes[i];
@@ -130,9 +131,11 @@ export function useForceLayout() {
               });
             }
           }
+
           graphicle.renderer?.applyNodeChangesInternal(changes, true);
           // const t1 = performance.now();
           // setNodes(nextNodes);
+
           updateWorkerBuffers();
 
           // console.log(`FunctionOne took ${t1 - t0} ms`);

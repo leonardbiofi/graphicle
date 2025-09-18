@@ -4,11 +4,13 @@ import { ReactiveStyleMixin } from "../mixin";
 
 class CircleNode extends BaseNode {
   styleStore!: ObservableStyle<any>; // Will be injected later
+  previousSelected: boolean;
 
   constructor(node: Node) {
     super(node); // Pass nodeData to the BaseNode constructor
     // this.initGraphics();
     // this.render();
+    this.previousSelected = !!node.selected;
   }
 
   initGraphics() {
@@ -32,13 +34,16 @@ class CircleNode extends BaseNode {
 
   renderSelected() {
     const { selected } = this.node;
-    const circle = this.getChildByLabel("circle") as Pixi.Graphics;
-    const { radius, fillColor } = this.styleStore.get();
-    if (!circle) return;
-    circle.clear();
-    circle.circle(0 + radius, 0 + radius, radius);
-    if (selected) circle.fill("#0084d1");
-    else circle.fill(fillColor);
+    if (this.previousSelected !== selected) {
+      const circle = this.getChildByLabel("circle") as Pixi.Graphics;
+      const { radius, fillColor } = this.styleStore.get();
+      if (!circle) return;
+      circle.clear();
+      circle.circle(0 + radius, 0 + radius, radius);
+      if (selected) circle.fill("#0084d1");
+      else circle.fill(fillColor);
+    }
+    this.previousSelected = selected;
   }
 
   renderLabel() {
@@ -46,10 +51,6 @@ class CircleNode extends BaseNode {
 
     const text = this.node.data.label;
     if (!text) return;
-
-    /** Get the dimensions */
-    // const bounds = this.getBounds();
-    // const maxWidth = bounds.width * 0.9;
 
     let label = this.getChildByLabel("label") as Label;
     if (!label) {
@@ -63,7 +64,7 @@ class CircleNode extends BaseNode {
       label = new Label(text, textStyle);
       label.label = "label";
       label.anchor.set(0.5);
-      label.resolution = 5;
+      label.resolution = 2;
 
       // label.text = truncateTextToFit(text, textStyle, maxWidth);
       const circle = this.getChildByLabel("circle") as Pixi.Graphics;

@@ -67,6 +67,7 @@ class Graphicle {
     await this._app.init({
       // background: "red",
       //   backgroundAlpha: 0, // transparent background
+      // autoStart: false,
       backgroundColor: this.options.backgroundColor,
       backgroundAlpha: this.options.backgroundAlpha,
       resizeTo: wrapper,
@@ -173,7 +174,8 @@ class Graphicle {
    * Destroy the application mthod the be used when unmounting the graphicle object
    */
   destroy() {
-    this._app?.destroy(true);
+    this._app?.stop();
+    this._app?.destroy(true, { context: true, children: true });
     this.eventHandlers.unregisterUserCallbacks();
   }
 }
