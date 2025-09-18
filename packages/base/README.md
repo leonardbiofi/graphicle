@@ -3,8 +3,6 @@
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/leonardbiofi/graphicle/main/packages/base/logo.png" alt="Graphicle Logo" class="logo" width="200" height="200" />
-
- 
 </div>
 <p align="center" style="font-size: 48px; color: #fff; font-weight: 700;">Graphicle</p>
 
