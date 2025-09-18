@@ -5,8 +5,8 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
   return (
-    <main className="bg-zinc-900 flex  h-[calc(100vh_-_64px)] w-screen items-center text-white flex-col">
-      <header className="animate-fade-in-up text-pretty pt-50 mb-30">
+    <main className="bg-zinc-900 flex  h-[calc(100vh_-_64px)] w-screen items-center text-white flex-col p-10">
+      <header className="animate-fade-in-up text-pretty p-5 mb-5 lg:pt-50 lg:mb-30">
         <h1 className="text-6xl/snug font-extrabold tracking-widest">
           Graphicle
         </h1>

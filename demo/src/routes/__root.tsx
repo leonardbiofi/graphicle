@@ -5,8 +5,8 @@ import {
   Scripts,
   createRootRouteWithContext,
 } from "@tanstack/react-router";
-import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { TanstackDevtools } from "@tanstack/react-devtools";
+// import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+// import { TanstackDevtools } from "@tanstack/react-devtools";
 import type { QueryClient } from "@tanstack/react-query";
 
 import Header from "@/components/Header";
@@ -49,7 +49,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         <Header />
         <main>{children}</main>
-        <TanstackDevtools
+        {/* <TanstackDevtools
           config={{
             position: "bottom-left",
           }}
@@ -59,7 +59,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               render: <TanStackRouterDevtoolsPanel />,
             },
           ]}
-        />
+        /> */}
         <Scripts />
       </body>
     </html>
