@@ -10,7 +10,6 @@ import EventHandlers, {
 } from "./eventHandlers";
 import GraphicleContext from "./context";
 import GraphicleViewport from "./viewport";
-import { D3Force, LayoutContext } from "../layout";
 import type { Node, Edge } from "./types";
 interface GraphicleOptions {
   backgroundAlpha?: number;
