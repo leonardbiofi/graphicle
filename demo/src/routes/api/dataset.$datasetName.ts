@@ -1,22 +1,22 @@
 import { createServerFileRoute } from "@tanstack/react-start/server";
 // import { promises as fs } from "fs";
-import * as fs from "node:fs";
-import { join } from "node:path";
+// import * as fs from "node:fs";
+// import { join } from "node:path";
 
 // import path from "path";
 import { json } from "@tanstack/react-start";
 
-// import miserablejson from "@/data/miserables.json";
-// import genejson from "@/data/genes.json";
-// import worldcupjson from "@/data/worldcup.json";
-// import circlejson from "@/data/circle.json";
+import miserablejson from "@/data/miserables.json";
+import genejson from "@/data/genes.json";
+import worldcupjson from "@/data/worldcup.json";
+import circlejson from "@/data/circle.json";
 
-// const datasets: Record<string, object> = {
-//   miserables: miserablejson,
-//   genes: genejson,
-//   circle: circlejson,
-//   worldcup: worldcupjson,
-// };
+const datasets: Record<string, object> = {
+  miserables: miserablejson,
+  genes: genejson,
+  circle: circlejson,
+  worldcup: worldcupjson,
+};
 // import { fileURLToPath } from "url";
 
 // __dirname equivalent in ESM
@@ -36,18 +36,18 @@ async function readDataset(filename: string): Promise<any> {
   try {
     // const filePath = path.join("src", "data", `${filename}.json`);
 
-    const fileContents = await fs.promises.readFile(
-      join(process.cwd(), `data/${filename}.json`),
-      {
-        encoding: "utf-8",
-      }
-    );
+    // const fileContents = await fs.promises.readFile(
+    //   join(process.cwd(), `data/${filename}.json`),
+    //   {
+    //     encoding: "utf-8",
+    //   }
+    // );
 
-    // const fileContents = datasets[filename];
-
+    const fileContents = datasets[filename];
+    return fileContents;
     // console.log("fileConten:", fil);
 
-    return JSON.parse(fileContents);
+    // return JSON.parse(fileContents);
   } catch (error) {
     console.error(`Failed to read dataset file, ${error}`);
     throw new Error(`Dataset "${filename}" not found or invalid JSON.`);

@@ -1,3 +1,8 @@
-[functions]
+[build]
+    base = "demo/"
+    command = "npm run build"
+    publich = "dist/"
+
+[functions."*"]
   node_bundler = "esbuild"
   included_files = ["data/**/*.json"]
