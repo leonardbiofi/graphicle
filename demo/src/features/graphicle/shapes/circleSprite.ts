@@ -1,5 +1,5 @@
 import { Assets, Sprite } from "pixi.js";
-import filledCircle from "@/assets/circle-32.png";
+import filledCircle from "@/assets/shapes/circle-32.png";
 // const texture = await Assets.load("./filled-circle.png");
 
 class CircleSprite extends Sprite {
