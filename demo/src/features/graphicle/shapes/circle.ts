@@ -58,7 +58,7 @@ class CircleNode extends BaseNode {
   }
 
   renderLabel() {
-    const { showLabel, radius } = this.styleStore.get();
+    const { showLabel } = this.styleStore.get();
     const text = this.node.data.label;
     if (!text) return;
     let label = this.getChildByLabel("label") as Label;
