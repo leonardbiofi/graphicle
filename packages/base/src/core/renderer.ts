@@ -401,7 +401,8 @@ export default class GraphicleRenderer implements ContextClient {
         nodeGfx.node = { ...nodeGfx.node, ...change.changes };
         nodeGfx.render();
 
-        // Rerender the edges connected to that node as well
+        //FIXME: Rerender the edges connected to that node as well
+        //TODO: Create a toggle to disable edge rendering as an optimization
         const edgeIds = this.nodeToEdges.get(change.id);
         if (!edgeIds) continue;
         for (const edgeId of edgeIds) {
@@ -419,8 +420,6 @@ export default class GraphicleRenderer implements ContextClient {
         }
       }
     }
-    // this.context?.app.render();
-    // this.context?.app.start();
 
     // nodelayer.renderable = true;
     // this.context?.app.renderer.render(nodelayer);
@@ -428,10 +427,13 @@ export default class GraphicleRenderer implements ContextClient {
     // const t1 = performance.now();
     // console.log(`🕗 RENDERNODES: ${t1 - t0}ms`);
   }
-  async renderEdgeChanges(changes: EdgeChange[]) {
+  renderEdgeChanges(changes: EdgeChange[]) {
     // const t0 = performance.now();
 
     const layer = this.getLayer(Layers.EDGES);
+
+    //TODO: Create a toggle to disable edge rendering as an optimization
+
     for (const change of changes) {
       if (!change) continue;
       if (change.type === "add") {
