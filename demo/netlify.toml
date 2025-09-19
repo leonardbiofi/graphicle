@@ -1,6 +1,3 @@
 [functions]
-  # Use esbuild bundler (optional but recommended for TS/modern JS)
   node_bundler = "esbuild"
-
-  # Include all JSON files under data/
-  included_files = ["data/*.json"]
+  included_files = ["data/**/*.json"]

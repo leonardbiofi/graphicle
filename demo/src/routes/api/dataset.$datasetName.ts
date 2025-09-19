@@ -1,6 +1,7 @@
 import { createServerFileRoute } from "@tanstack/react-start/server";
 // import { promises as fs } from "fs";
 import * as fs from "node:fs";
+import { join } from "node:path";
 
 // import path from "path";
 import { json } from "@tanstack/react-start";
@@ -35,9 +36,12 @@ async function readDataset(filename: string): Promise<any> {
   try {
     // const filePath = path.join("src", "data", `${filename}.json`);
 
-    const fileContents = await fs.promises.readFile(`data/${filename}.json`, {
-      encoding: "utf-8",
-    });
+    const fileContents = await fs.promises.readFile(
+      join(process.cwd(), `data/${filename}.json`),
+      {
+        encoding: "utf-8",
+      }
+    );
 
     // const fileContents = datasets[filename];
 
