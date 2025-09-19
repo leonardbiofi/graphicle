@@ -1,3 +1,9 @@
+---
+name: General Issue
+about: Use this template for reporting general issue about the project
+---
+
+
 ### 📝 General Issue
 
 **Description:**

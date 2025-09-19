@@ -1,3 +1,8 @@
+---
+name: Feature Request
+about: Use this template for requesting new feature
+---
+
 ### 🚀 Feature Request
 
 **Description:**
