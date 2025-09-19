@@ -17,7 +17,7 @@ class CircleNode extends BaseNode {
   initGraphics() {
     super.initGraphics();
     // const circle = new Pixi.Graphics();
-    const { radius, fillColor } = this.styleStore.get();
+    const { fillColor } = this.styleStore.get();
     // circle.circle(0 + radius, 0 + radius, radius);
     // circle.fill(fillColor);
 
