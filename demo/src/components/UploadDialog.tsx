@@ -12,15 +12,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import FileUpload from "./FileUpload";
-import { LayoutContext, D3Force } from "@graphicle/base";
 import { getGraphicle } from "./GraphicleProvider";
 import parser from "@/lib/parser";
 import { graphLoader } from "@/lib/graphLoader";
 import { useForceLayoutStore } from "@/store/layoutStore";
 
-type AcceptedFormats = "json" | "graphml";
+type AcceptedFormats = "json" | "graphml" | "sif";
 
-const acceptedFormats: AcceptedFormats[] = ["json", "graphml"];
+const acceptedFormats: AcceptedFormats[] = ["json", "graphml", "sif"];
 
 const isAcceptedFormat = (ext: string): ext is AcceptedFormats => {
   return acceptedFormats.includes(ext as AcceptedFormats);

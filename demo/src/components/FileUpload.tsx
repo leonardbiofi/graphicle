@@ -105,7 +105,7 @@ export default function FileUpload({
         onDragLeave={handleDragLeave}
       >
         <p>Drag and drop your files here</p>
-        <p className="text-xs">(Accepted formats: {formats.join(",")})</p>
+        <p className="text-xs">(Accepted formats: {formats.join(", ")})</p>
 
         <input
           className=""
